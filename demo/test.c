@@ -23,7 +23,7 @@ static ulong64 TIMFUNC (void)
    {
    #if defined __GNUC__
       #if defined(__i386__) || defined(__x86_64__)
-         unsigned long long a;
+         ulong64 a;
          __asm__ __volatile__ ("rdtsc\nmovl %%eax,%0\nmovl %%edx,4+%0\n"::"m"(a):"%eax","%edx");
          return a;
       #else /* gcc-IA64 version */
@@ -60,7 +60,7 @@ int main(void)
                  div2_n, mul2_n, add_d_n, sub_d_n, mul_d_n, t, cnt, rr, ix;
    ulong64 t1, t2;
 
-
+  srand(time(NULL));
   printf("TFM Ident string:\n%s\n\n", fp_ident());
   fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f); 
   fp_zero(&a); draw(&a);
@@ -135,6 +135,8 @@ int main(void)
   printf("Testing read_radix\n");
   fp_read_radix(&a, "123456789012345678901234567890", 16); draw(&a);
 
+goto testing;
+
 #if 1
   /* test mont */
   printf("Montgomery test #1\n");
@@ -143,7 +145,7 @@ int main(void)
   fp_montgomery_calc_normalization(&b, &a);
 
   fp_read_radix(&d, "123456789123", 16);
-  for (n = 0; n < 100000; n++) {
+  for (n = 0; n < 1000000; n++) {
       fp_add_d(&d, 1, &d); fp_sqrmod(&d, &a, &d); 
       fp_mul(&d, &b, &c);
       fp_montgomery_reduce(&c, &a, fp);
@@ -165,7 +167,7 @@ int main(void)
   fp_montgomery_calc_normalization(&b, &a);
 
   fp_read_radix(&d, "123456789123", 16);
-  for (n = 0; n < 100000; n++) {
+  for (n = 0; n < 1000000; n++) {
       fp_add_d(&d, 1, &d); fp_sqrmod(&d, &a, &d); 
       fp_mul(&d, &b, &c);
       fp_montgomery_reduce(&c, &a, fp);
@@ -194,8 +196,8 @@ int main(void)
    }
    printf("\n\n");
 #endif
-
-#if 0
+  
+#if 1
  /* do some timings... */
   printf("Addition:\n");
   for (t = 2; t <= FP_SIZE/2; t += 2) {
@@ -242,6 +244,7 @@ int main(void)
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
 //#else
+sqrtime:
   printf("Squaring:\n");
   for (t = 2; t <= FP_SIZE/2; t += 2) {
       fp_zero(&a);
@@ -260,6 +263,7 @@ int main(void)
       }
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
+return;
 //#else
   printf("Montgomery:\n");
   for (t = 2; t <= (FP_SIZE/2)-2; t += 2) {
@@ -288,7 +292,9 @@ int main(void)
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
 //#else
+expttime:
   printf("Exptmod:\n");
+ 
   for (t = 512/DIGIT_BIT; t <= (FP_SIZE/2)-2; t += t) {
       fp_zero(&a);
       fp_zero(&b);
@@ -303,7 +309,7 @@ int main(void)
       c.used = t;
 
      t2 = -1;
-     for (ix = 0; ix < 1024; ++ix) {
+     for (ix = 0; ix < 256; ++ix) {
           t1 = TIMFUNC();
           fp_exptmod(&c, &b, &a, &d);
           fp_exptmod(&c, &b, &a, &d);
@@ -311,10 +317,14 @@ int main(void)
           fp_copy(&b, &c);      
           fp_copy(&b, &d);      
           if (t1<t2) { t2 = t1; --ix; }
-      }
-      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
+     }
+     printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
+return;
+
 #endif
+
+testing:
 
    div2_n = mul2_n = inv_n = expt_n = lcm_n = gcd_n = add_n =
    sub_n = mul_n = div_n = sqr_n = mul2d_n = div2d_n = cnt = add_d_n = sub_d_n= mul_d_n = 0;

@@ -16,7 +16,7 @@ void fp_sqr(fp_int *A, fp_int *B)
     fp_int aa, bb, comp, amb, t1;
 
     y = A->used;
-    if (y <= 48) { 
+    if (y <= 64) { 
         if (y <= 4) {
            fp_sqr_comba4(A,B);
         } else if (y <= 8) {
@@ -26,8 +26,10 @@ void fp_sqr(fp_int *A, fp_int *B)
            fp_sqr_comba16(A,B);
 #endif
 #if defined(TFM_HUGE)
-        } else if (y <= 32 && y >= 28) {
+        } else if (y <= 32 && y >= 20) {
            fp_sqr_comba32(A,B);
+        } else if (y <= 64 && y >= 48) {
+           fp_sqr_comba64(A,B);
 #endif
         } else {
            fp_sqr_comba(A, B);

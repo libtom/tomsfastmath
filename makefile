@@ -10,7 +10,7 @@ CFLAGS += -Wall -W -Wshadow -I./ -O3 -funroll-all-loops
 #speed
 CFLAGS += -fomit-frame-pointer
 
-VERSION=0.02
+VERSION=0.03
 
 default: libtfm.a
 

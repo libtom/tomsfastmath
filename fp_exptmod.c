@@ -12,7 +12,6 @@
 /* y = g**x (mod b) 
  * Some restrictions... x must be positive and < b
  */
-
 static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 {
   fp_int   M[64], res;
@@ -34,7 +33,7 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
   } 
 
   /* init M array */
-  memset(M, 0, sizeof(M));	
+  memset(M, 0, sizeof(M)); 
 
   /* now setup montgomery  */
   if ((err = fp_montgomery_setup (P, &mp)) != FP_OKAY) {
@@ -169,11 +168,12 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
   return FP_OKAY;
 }
 
+
 int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 {
    fp_int tmp;
    int    err;
-
+   
    /* is X negative?  */
    if (X->sign == FP_NEG) {
       /* yes, copy G and invmod it */
@@ -181,11 +181,12 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
       if ((err = fp_invmod(&tmp, P, &tmp)) != FP_OKAY) {
          return err;
       }
-      /* _fp_exptmod doesn't care about the sign of X */
-      return _fp_exptmod(&tmp, X, P, Y);
+      X->sign = FP_ZPOS;
+      err =  _fp_exptmod(&tmp, X, P, Y);
+      X->sign = FP_NEG;
+      return err;
    } else {
       /* Positive exponent so just exptmod */
       return _fp_exptmod(G, X, P, Y);
    }
 }
-

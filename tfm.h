@@ -107,11 +107,11 @@
 
 /* we want no asm? */
 #ifdef TFM_NO_ASM
-	#undef TFM_X86
-	#undef TFM_X86_64
-	#undef TFM_SSE2
-	#undef TFM_ARM
-	#undef TFM_ASM   
+   #undef TFM_X86
+   #undef TFM_X86_64
+   #undef TFM_SSE2
+   #undef TFM_ARM
+   #undef TFM_ASM   
 #endif
 
 /* some default configurations.
@@ -350,6 +350,7 @@ void fp_sqr_comba16(fp_int *A, fp_int *B);
 #endif
 #ifdef TFM_HUGE
 void fp_sqr_comba32(fp_int *A, fp_int *B);
+void fp_sqr_comba64(fp_int *A, fp_int *B);
 #endif
 extern const char *fp_s_rmap;
 

@@ -1,3 +1,8 @@
+March 1st, 2005
+0.03 -- Optimized squaring
+     -- 
+
+
 September 18th, 2004
 0.02 -- Added TFM_LARGE to turn on/off 16x combas to save even more space.
         This also helps prevent killing the cache on smaller cpus.
