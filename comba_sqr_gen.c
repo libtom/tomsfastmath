@@ -9,7 +9,6 @@ int main(int argc, char **argv)
 printf(
 "void fp_sqr_comba%d(fp_int *A, fp_int *B)\n"
 "{\n"
-"   fp_word t;\n"
 "   fp_digit *a, b[%d], c0, c1, c2;\n"
 "\n"
 "   a = A->dp;\n"

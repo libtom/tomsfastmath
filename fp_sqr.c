@@ -21,9 +21,11 @@ void fp_sqr(fp_int *A, fp_int *B)
            fp_sqr_comba4(A,B);
         } else if (y <= 8) {
            fp_sqr_comba8(A,B);
+#if defined(TFM_LARGE)
         } else if (y <= 16 && y >= 12) {
            fp_sqr_comba16(A,B);
-#ifdef TFM_HUGE
+#endif
+#if defined(TFM_HUGE)
         } else if (y <= 32 && y >= 28) {
            fp_sqr_comba32(A,B);
 #endif

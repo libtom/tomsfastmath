@@ -235,10 +235,9 @@ int main(void)
       rand_num2(&a);
       rand_num2(&b);
       rand_num2(&c);
-//      if (c.dp[0]&1) mp_add_d(&c, 1, &c);
       a.sign = b.sign = c.sign = 0;
       c.dp[0] |= 1;
-      if (c.used <= 2) continue;
+//      if (c.used <= 4) continue;
 //      if (mp_cmp(&a, &c) != MP_LT) continue;
 //      if (mp_cmp(&b, &c) != MP_LT) continue;
       mp_exptmod(&a, &b, &c, &d);

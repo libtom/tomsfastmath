@@ -28,7 +28,7 @@
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_FINI
 
@@ -68,21 +68,21 @@ asm volatile (                                            \
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_FINI
 
 #define SQRADD(i, j)                                      \
-asm volatile (                                            \
+asm (                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %%rax        \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i) :"%rax","%rdx","%cc");
 
 #define SQRADD2(i, j)                                     \
-asm volatile (                                            \
+asm (                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
@@ -91,7 +91,7 @@ asm volatile (                                            \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i), "m"(j)  :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","%cc");
 
 
 #elif defined(TFM_SSE2)
@@ -109,7 +109,7 @@ asm volatile (                                            \
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_FINI \
    asm("emms");
@@ -120,11 +120,11 @@ asm volatile (                                            \
      "pmuludq %%mm0,%%mm0\n\t"                            \
      "movd  %%mm0,%%eax  \n\t"                            \
      "psrlq $32,%%mm0    \n\t"                            \
-     "movd  %%mm0,%%edx  \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
-     "adcl  %%edx,%1     \n\t"                            \
+     "movd  %%mm0,%%eax  \n\t"                            \
+     "adcl  %%eax,%1     \n\t"                            \
      "adcl  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%eax","%edx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%eax","%cc");
 
 #define SQRADD2(i, j)                                     \
 asm volatile (                                            \
@@ -158,7 +158,7 @@ asm volatile (                                            \
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_FINI
 
@@ -187,7 +187,8 @@ asm(                                                             \
 
 /* ISO C portable code */
 
-#define COMBA_START
+#define COMBA_START \
+   { fp_word tt; 
 
 #define CLEAR_CARRY \
    c0 = c1 = c2 = 0;
@@ -199,23 +200,28 @@ asm(                                                             \
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
-#define COMBA_FINI
+#define COMBA_FINI \
+   }
 
 /* multiplies point i and j, updates carry "c1" and digit c2 */
-#define SQRADD(i, j)                       \
-   t  = ((fp_word)i) * ((fp_word)j);       \
-   c0 = (c0 + t);              if (c0 < ((fp_digit)t))  ++c1; \
-   c1 = (c1 + (t>>DIGIT_BIT)); if (c1 < (t>>DIGIT_BIT)) ++c2; 
+#define SQRADD(i, j)                                 \
+   do { fp_word t;                                   \
+   t = c0 + ((fp_word)i) * ((fp_word)j);  c0 = t;    \
+   t = c1 + (t >> DIGIT_BIT);             c1 = t; c2 += t >> DIGIT_BIT; \
+   } while (0);
+  
 
 /* for squaring some of the terms are doubled... */
-#define SQRADD2(i, j)                       \
-   t  = ((fp_word)i) * ((fp_word)j);       \
-   c0 = (c0 + t);              if (c0 < ((fp_digit)t))  ++c1; \
-   c1 = (c1 + (t>>DIGIT_BIT)); if (c1 < (t>>DIGIT_BIT)) ++c2; \
-   c0 = (c0 + t);              if (c0 < ((fp_digit)t))  ++c1; \
-   c1 = (c1 + (t>>DIGIT_BIT)); if (c1 < (t>>DIGIT_BIT)) ++c2; 
+#define SQRADD2(i, j)                                                 \
+   do { fp_word t;                                                    \
+   t  = ((fp_word)i) * ((fp_word)j);                                  \
+   tt = (fp_word)c0 + t;                 c0 = tt;                              \
+   tt = (fp_word)c1 + (tt >> DIGIT_BIT); c1 = tt; c2 += tt >> DIGIT_BIT;       \
+   tt = (fp_word)c0 + t;                 c0 = tt;                              \
+   tt = (fp_word)c1 + (tt >> DIGIT_BIT); c1 = tt; c2 += tt >> DIGIT_BIT;       \
+   } while (0);
 
 #endif
 
@@ -225,7 +231,6 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
   int       pa, ix, iz;
   fp_digit  c0, c1, c2;
   fp_int    tmp, *dst;
-  fp_word   t;
 
   /* get size of output and trim */
   pa = A->used + A->used;
@@ -298,7 +303,6 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
 
 void fp_sqr_comba4(fp_int *A, fp_int *B)
 {
-   fp_word t;
    fp_digit *a, b[8], c0, c1, c2;
 
    a = A->dp;
@@ -352,7 +356,6 @@ void fp_sqr_comba4(fp_int *A, fp_int *B)
 
 void fp_sqr_comba8(fp_int *A, fp_int *B)
 {
-   fp_word t;
    fp_digit *a, b[16], c0, c1, c2;
 
    a = A->dp;
@@ -443,10 +446,10 @@ void fp_sqr_comba8(fp_int *A, fp_int *B)
    fp_clamp(B);
 }
 
+#if defined(TFM_LARGE)
 
 void fp_sqr_comba16(fp_int *A, fp_int *B)
 {
-   fp_word t;
    fp_digit *a, b[32], c0, c1, c2;
 
    a = A->dp;
@@ -617,11 +620,12 @@ void fp_sqr_comba16(fp_int *A, fp_int *B)
    fp_clamp(B);
 }
 
+#endif /* TFM_LARGE */
+
 #ifdef TFM_HUGE
 
 void fp_sqr_comba32(fp_int *A, fp_int *B)
 {
-   fp_word t;
    fp_digit *a, b[64], c0, c1, c2;
 
    a = A->dp;

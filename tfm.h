@@ -21,8 +21,18 @@
 #undef MAX
 #define MAX(x,y) ((x)>(y)?(x):(y))
 
-/* do we want huge code?  The answer is, yes. */
+/* do we want large code? */
+#define TFM_LARGE
+
+/* do we want huge code (implies large)?  The answer is, yes. */
 #define TFM_HUGE
+
+/* imply TFM_LARGE as required */
+#if defined(TFM_HUGE)
+   #if !defined(TFM_LARGE)
+      #define TFM_LARGE
+   #endif
+#endif
 
 /* Max size of any number in bits.  Basically the largest size you will be multiplying
  * should be half [or smaller] of FP_MAX_SIZE-four_digit
@@ -41,17 +51,67 @@
    #error FP_MAX_SIZE must be a multiple of CHAR_BIT
 #endif
 
-/* make sure we are using 64-bit digits with x86-64 asm */
+/* autodetect x86-64 and make sure we are using 64-bit digits with x86-64 asm */
+#if defined(__x86_64__)
+   #if defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM) 
+       #error x86-64 detected, x86-32/SSE2/ARM optimizations are not valid!
+   #endif
+   #if !defined(TFM_X86_64) && !defined(TFM_NO_ASM)
+      #define TFM_X86_64
+   #endif
+#endif
 #if defined(TFM_X86_64)
-    #ifndef FP_64BIT
+    #if !defined(FP_64BIT)
        #define FP_64BIT
     #endif
+#endif
+
+/* try to detect x86-32 */
+#if defined(__i386__) && !defined(TFM_SSE2)
+   #if defined(TFM_X86_64) || defined(TFM_ARM) 
+       #error x86-32 detected, x86-64/ARM optimizations are not valid!
+   #endif
+   #if !defined(TFM_X86) && !defined(TFM_NO_ASM)
+      #define TFM_X86
+   #endif
 #endif
 
 /* make sure we're 32-bit for x86-32/sse/arm */
 #if (defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM)) && defined(FP_64BIT)
    #warning x86-32, SSE2 and ARM optimizations require 32-bit digits (undefining)
    #undef FP_64BIT
+#endif
+
+/* multi asms? */
+#ifdef TFM_X86
+   #define TFM_ASM
+#endif
+#ifdef TFM_X86_64
+   #ifdef TFM_ASM
+      #error TFM_ASM already defined!
+   #endif
+   #define TFM_ASM
+#endif
+#ifdef TFM_SSE2
+   #ifdef TFM_ASM
+      #error TFM_ASM already defined!
+   #endif
+   #define TFM_ASM
+#endif
+#ifdef TFM_ARM
+   #ifdef TFM_ASM
+      #error TFM_ASM already defined!
+   #endif
+   #define TFM_ASM
+#endif
+
+/* we want no asm? */
+#ifdef TFM_NO_ASM
+	#undef TFM_X86
+	#undef TFM_X86_64
+	#undef TFM_SSE2
+	#undef TFM_ARM
+	#undef TFM_ASM   
 #endif
 
 /* some default configurations.
@@ -110,8 +170,11 @@ typedef struct {
 
 /* functions */
 
+/* returns a TFM ident string useful for debugging... */
+const char *fp_ident(void);
+
 /* initialize [or zero] an fp int */
-#define fp_init(a)  memset((a), 0, sizeof(fp_int))
+#define fp_init(a)  (void)memset((a), 0, sizeof(fp_int))
 #define fp_zero(a)  fp_init(a)
 
 /* zero/even/odd ? */
@@ -123,7 +186,7 @@ typedef struct {
 void fp_set(fp_int *a, fp_digit b);
 
 /* copy from a to b */
-#define fp_copy(a, b)     (((a) != (b)) && memcpy((b), (a), sizeof(fp_int)))
+#define fp_copy(a, b)      (void)(((a) != (b)) && memcpy((b), (a), sizeof(fp_int)))
 #define fp_init_copy(a, b) fp_copy(b, a)
 
 /* negate and absolute */
@@ -139,10 +202,10 @@ void fp_rshd(fp_int *a, int x);
 /* left shift x digits */
 void fp_lshd(fp_int *a, int x);
 
-/* signed comparisonm */
+/* signed comparison */
 int fp_cmp(fp_int *a, fp_int *b);
 
-/* unsigned comparisonm */
+/* unsigned comparison */
 int fp_cmp_mag(fp_int *a, fp_int *b);
 
 /* power of 2 operations */
@@ -273,14 +336,18 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C);
 #ifdef TFM_HUGE
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C);
 #endif
+#ifdef TFM_LARGE
 void fp_mul_comba16(fp_int *A, fp_int *B, fp_int *C);
+#endif
 void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C);
 void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C);
 
 void fp_sqr_comba(fp_int *A, fp_int *B);
 void fp_sqr_comba4(fp_int *A, fp_int *B);
 void fp_sqr_comba8(fp_int *A, fp_int *B);
+#ifdef TFM_LARGE
 void fp_sqr_comba16(fp_int *A, fp_int *B);
+#endif
 #ifdef TFM_HUGE
 void fp_sqr_comba32(fp_int *A, fp_int *B);
 #endif

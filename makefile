@@ -10,7 +10,7 @@ CFLAGS += -Wall -W -Wshadow -I./ -O3 -funroll-all-loops
 #speed
 CFLAGS += -fomit-frame-pointer
 
-VERSION=0.01
+VERSION=0.02
 
 default: libtfm.a
 
@@ -38,8 +38,9 @@ fp_cmp.o fp_cmp_mag.o \
 \
 fp_unsigned_bin_size.o fp_read_unsigned_bin.o fp_to_unsigned_bin.o \
 fp_signed_bin_size.o fp_read_signed_bin.o fp_to_signed_bin.o \
-fp_read_radix.o fp_toradix.o fp_count_bits.o fp_reverse.o fp_s_rmap.o \
+fp_read_radix.o fp_toradix.o fp_radix_size.o fp_count_bits.o fp_reverse.o fp_s_rmap.o \
 \
+fp_ident.o 
 
 libtfm.a: $(OBJECTS)
 	$(AR) $(ARFLAGS) libtfm.a $(OBJECTS)
@@ -49,7 +50,7 @@ mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
 
 test: libtfm.a demo/test.o mtest/mtest
-	$(CC) demo/test.o libtfm.a $(PROF) -o test
+	$(CC) $(CFLAGS) demo/test.o libtfm.a $(PROF) -o test
 
 stest: libtfm.a demo/stest.o 
 	$(CC) demo/stest.o libtfm.a -o stest
@@ -67,7 +68,7 @@ docs: docdvi
 	mv -f tfm.pdf doc
 
 clean:
-	rm -f $(OBJECTS) *.a demo/*.o test tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc stest
+	rm -f $(OBJECTS) *.a demo/*.o test tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc stest *~
 	cd mtest ; make clean
 
 zipup: docs clean

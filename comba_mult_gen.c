@@ -10,7 +10,6 @@ int main(int argc, char **argv)
 printf(
 "void fp_mul_comba%d(fp_int *A, fp_int *B, fp_int *C)\n"
 "{\n"
-"   fp_word t;\n"
 "   fp_digit c0, c1, c2, at[%d];\n"
 "\n"
 "   memcpy(at, A->dp, %d * sizeof(fp_digit));\n"

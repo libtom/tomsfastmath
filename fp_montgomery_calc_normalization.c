@@ -24,7 +24,7 @@ void fp_montgomery_calc_normalization(fp_int *a, fp_int *b)
      fp_2expt (a, (b->used - 1) * DIGIT_BIT + bits - 1);
   } else {
      fp_set(a, 1);
-     ++bits;
+     bits = 1;
   }
 
   /* now compute C = A * B mod b */

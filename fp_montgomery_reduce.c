@@ -66,13 +66,13 @@ asm(                                                                            
 #define PROPCARRY \
 asm(                                                                                               \
 "movq %1,%%rax                \n\t"                                                                \
+"movq %2,%%rbx                \n\t"                                                                \
 "addq  %%rax,%6               \n\t"                                                                \
-"movq %2,%%rax                \n\t"                                                                \
-"adcq  %%rax,%7               \n\t"                                                                \
+"adcq  %%rbx,%7               \n\t"                                                                \
 "adcq $0,%8                   \n\t"                                                                \
 :"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),       \
                                                 "m"(_c[OFF0+1]), "m"(_c[OFF1+1]), "m"(_c[OFF2+1])  \
-: "%rax", "%cc");
+: "%rax", "%rbx", "%cc");
 
 #elif defined(TFM_SSE2)
 
@@ -88,7 +88,7 @@ asm("emms");
 asm(\
 "movd %0,%%mm1                \n\t" \
 "pmuludq %%mm2,%%mm1          \n\t" \
-:: "g"(c[x]), "g"(mp));
+:: "g"(c[x]));
 
 #define INNERMUL \
 asm(                                                                                          \
@@ -112,7 +112,7 @@ asm(                                                                            
 "adcl  %%eax,%7               \n\t"                                                                \
 "adcl $0,%8                   \n\t"                                                                \
 :"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),       \
-                                                "m"(_c[OFF0+1]), "m"(_c[OFF1+1]), "m"(_c[OFF2+1])  \
+                                                "g"(_c[OFF0+1]), "g"(_c[OFF1+1]), "g"(_c[OFF2+1])  \
 : "%eax", "%cc");
 
 #elif defined(TFM_ARM)
@@ -166,14 +166,18 @@ asm(                                             \
    mu = c[x] * mp;
 
 #define INNERMUL \
-   t = ((fp_word)mu) * ((fp_word)*tmpm++);                                             \
-   _c[OFF0] += t;               if (_c[OFF0] < (fp_digit)t)              ++_c[OFF1];   \
-   _c[OFF1] += (t>>DIGIT_BIT);  if (_c[OFF1] < (fp_digit)(t>>DIGIT_BIT)) ++_c[OFF2];   \
+   do { fp_word t;                                                           \
+   t = (fp_word)_c[OFF0] + ((fp_word)mu) * ((fp_word)*tmpm++); _c[OFF0] = t; \
+   t = (fp_word)_c[OFF1] + (t >> DIGIT_BIT);                   _c[OFF1] = t; \
+   _c[OFF2] += (t >> DIGIT_BIT);                                             \
+   } while (0);
 
 #define PROPCARRY \
-   _c[OFF0+1] += _c[OFF1];          if (_c[OFF0+1] < _c[OFF1])                ++_c[OFF1+1]; \
-   _c[OFF1+1] += _c[OFF2];          if (_c[OFF1+1] < _c[OFF2])                ++_c[OFF2+1];
-
+   do { fp_word t;                                                           \
+   t = (fp_word)_c[OFF0+1] + (fp_word)_c[OFF1];                    _c[OFF0+1] = t; \
+   t = (fp_word)_c[OFF1+1] + (t >> DIGIT_BIT) + (fp_word)_c[OFF2]; _c[OFF1+1] = t; \
+   _c[OFF2+1] += (t >> DIGIT_BIT);                                           \
+   } while (0);
 
 #endif
 
@@ -187,7 +191,6 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
 {
    fp_digit c[3*FP_SIZE], *_c, *tmpm, mu;
    int      oldused, x, y, pa;
-   fp_word  t;
 
    /* now zero the buff */
    pa = m->used;
@@ -221,13 +224,13 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
 
   /* fix the rest of the carries */
   _c = c + pa;
-  for (; x < pa * 2 + 2; x++) {
+  for (x = pa; x < pa * 2 + 2; x++) {
      PROPCARRY;
      ++_c;
   }
 
   /* now copy out */
-  _c = c + pa;
+  _c   = c + pa;
   tmpm = a->dp;
   for (x = 0; x < pa+1; x++) {
      *tmpm++ = *_c++;

@@ -28,9 +28,11 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
            fp_mul_comba4(A,B,C);
         } else if (y <= 8) {
            fp_mul_comba8(A,B,C);
+#if defined(TFM_LARGE)
         } else if (y <= 16 && y >= 12) {
            fp_mul_comba16(A,B,C);
-#ifdef TFM_HUGE
+#endif
+#if defined(TFM_HUGE)
         } else if (y <= 32 && y >= 28) {
            fp_mul_comba32(A,B,C);
 #endif

@@ -1,2 +1,21 @@
+September 18th, 2004
+0.02 -- Added TFM_LARGE to turn on/off 16x combas to save even more space.
+        This also helps prevent killing the cache on smaller cpus.
+     -- Cast memset to void in fp_init() to catch people who misuse the function (e.g. expect return)
+        Thanks to Johan Lindh
+     -- Cleaned up x86-64 support [faster montgomery reductions]
+     -- Autodetects x86-32 and x86-64 and enables it's asm now 
+     -- Made test demo build cleaner in multilib platforms [e.g. mixed 32/64 bits]
+     -- Fix to fp_mod to ensure that remainder is of the same sign as the modulus.
+     -- Fixed bug in fp_montgomery_calc_normalization for single digit moduli
+     -- cleaned up ISO C macros in comba/mont to avoid branches [works best with GCC 3.4.x branch]
+     -- Added more testing to tfm.h to help detect misconfigured builds
+     -- Added TFM_NO_ASM which forces ASM off [even if it was autodetected].
+     -- Added fp_radix_size() to API
+     -- Cleaned up demo/test.c to build with far fewer warnings (mostly %d => %lu fixes)
+     -- fp_exptmod() now supports negative exponent and base>modulus cases
+     -- Added fp_ident() which gives a string showing how TFM was configured.  Useful for debuging... 
+     -- fix gen.pl script so it includes the whole source tree now 
+
 August 25th, 2004
-TFM 0.01  -- Initial Release
+0.01 -- Initial Release

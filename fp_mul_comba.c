@@ -27,7 +27,7 @@
 
 /* forward the carry to the next digit */
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 /* store the first sum */
 #define COMBA_STORE(x) \
@@ -42,7 +42,7 @@
 
 /* this should multiply i and j  */
 #define MULADD(i, j)                                      \
-asm volatile (                                            \
+asm (                                                     \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -62,7 +62,7 @@ asm volatile (                                            \
 
 /* forward the carry to the next digit */
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 /* store the first sum */
 #define COMBA_STORE(x) \
@@ -77,13 +77,13 @@ asm volatile (                                            \
 
 /* this should multiply i and j  */
 #define MULADD(i, j)                                      \
-asm volatile (                                            \
+asm  (                                                    \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i), "m"(j)  :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","%cc");
 
 #elif defined(TFM_SSE2)
 /* use SSE2 optimizations */
@@ -97,7 +97,7 @@ asm volatile (                                            \
 
 /* forward the carry to the next digit */
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 /* store the first sum */
 #define COMBA_STORE(x) \
@@ -134,7 +134,7 @@ asm volatile (                                            \
    c0 = c1 = c2 = 0;
 
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_STORE(x) \
    x = c0;
@@ -155,13 +155,13 @@ asm(                                                          \
 #else
 /* ISO C code */
 
-#define COMBA_START 
+#define COMBA_START
 
 #define COMBA_CLEAR \
    c0 = c1 = c2 = 0;
 
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_STORE(x) \
    x = c0;
@@ -169,12 +169,13 @@ asm(                                                          \
 #define COMBA_STORE2(x) \
    x = c1;
 
-#define COMBA_FINI
-
-#define MULADD(i, j)                                          \
-   t  = ((fp_word)i) * ((fp_word)j);                          \
-   c0 = (c0 + t);              if (c0 < ((fp_digit)t))  ++c1; \
-   c1 = (c1 + (t>>DIGIT_BIT)); if (c1 < (t>>DIGIT_BIT)) ++c2;
+#define COMBA_FINI 
+   
+#define MULADD(i, j)                                                              \
+   do { fp_word t;                                                                \
+   t = (fp_word)c0 + ((fp_word)i) * ((fp_word)j); c0 = t;                         \
+   t = (fp_word)c1 + (t >> DIGIT_BIT);            c1 = t; c2 += t >> DIGIT_BIT;   \
+   } while (0);
 
 #endif
 
@@ -184,7 +185,6 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
 {
    int       ix, iy, iz, tx, ty, pa;
    fp_digit  c0, c1, c2, *tmpx, *tmpy;
-   fp_word   t;
    fp_int    tmp, *dst;
 
    COMBA_START;
@@ -239,7 +239,6 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
 
 void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C)
 {
-   fp_word t;
    fp_digit c0, c1, c2, at[8];
 
    memcpy(at, A->dp, 4 * sizeof(fp_digit));
@@ -284,7 +283,6 @@ void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C)
 
 void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C)
 {
-   fp_word t;
    fp_digit c0, c1, c2, at[16];
 
    memcpy(at, A->dp, 8 * sizeof(fp_digit));
@@ -358,10 +356,10 @@ void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FINI;
 }
 
+#if defined(TFM_LARGE)
 
 void fp_mul_comba16(fp_int *A, fp_int *B, fp_int *C)
 {
-   fp_word t;
    fp_digit c0, c1, c2, at[32];
 
    memcpy(at, A->dp, 16 * sizeof(fp_digit));
@@ -499,11 +497,12 @@ void fp_mul_comba16(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FINI;
 }
 
+#endif /* TFM_LARGE */
+
 #ifdef TFM_HUGE
 
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
 {
-   fp_word t;
    fp_digit c0, c1, c2, at[64];
 
    memcpy(at, A->dp, 32 * sizeof(fp_digit));

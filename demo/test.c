@@ -60,6 +60,8 @@ int main(void)
                  div2_n, mul2_n, add_d_n, sub_d_n, mul_d_n, t, cnt, rr, ix;
    ulong64 t1, t2;
 
+
+  printf("TFM Ident string:\n%s\n\n", fp_ident());
   fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f); 
   fp_zero(&a); draw(&a);
 
@@ -133,9 +135,30 @@ int main(void)
   printf("Testing read_radix\n");
   fp_read_radix(&a, "123456789012345678901234567890", 16); draw(&a);
 
+#if 1
   /* test mont */
-  printf("Montgomery test\n");
-  fp_set(&a, 1);
+  printf("Montgomery test #1\n");
+  fp_set(&a, 0x1234567ULL);
+  fp_montgomery_setup(&a, &fp);
+  fp_montgomery_calc_normalization(&b, &a);
+
+  fp_read_radix(&d, "123456789123", 16);
+  for (n = 0; n < 100000; n++) {
+      fp_add_d(&d, 1, &d); fp_sqrmod(&d, &a, &d); 
+      fp_mul(&d, &b, &c);
+      fp_montgomery_reduce(&c, &a, fp);
+      if (fp_cmp(&c, &d) != FP_EQ) {
+         printf("Failed mont %d\n", n);
+         draw(&a);
+         draw(&d);
+         draw(&c);
+         return EXIT_FAILURE;
+      }
+  }
+  printf("Passed.\n");
+
+  printf("Montgomery test #2\n");
+  fp_set(&a, 0x1234567ULL);
   fp_lshd(&a, 4);
   fp_add_d(&a, 1, &a);
   fp_montgomery_setup(&a, &fp);
@@ -158,19 +181,19 @@ int main(void)
 
    /* test for size */
    for (ix = 8*DIGIT_BIT; ix < 10*DIGIT_BIT; ix++) {
-       printf("Testing (not safe-prime): %9d bits    \r", ix); fflush(stdout);
+       printf("Testing (not safe-prime): %9lu bits    \r", ix); fflush(stdout);
        err = fp_prime_random_ex(&a, 8, ix, (rand()&1)?TFM_PRIME_2MSB_OFF:TFM_PRIME_2MSB_ON, myrng, NULL);
        if (err != FP_OKAY) {
           printf("failed with err code %d\n", err);
           return EXIT_FAILURE;
        }
-       if (fp_count_bits(&a) != ix) {
-          printf("Prime is %d not %d bits!!!\n", fp_count_bits(&a), ix);
+       if ((unsigned long)fp_count_bits(&a) != ix) {
+          printf("Prime is %d not %lu bits!!!\n", fp_count_bits(&a), ix);
           return EXIT_FAILURE;
        }
    }
    printf("\n\n");
-
+#endif
 
 #if 0
  /* do some timings... */
@@ -280,7 +303,7 @@ int main(void)
       c.used = t;
 
      t2 = -1;
-     for (ix = 0; ix < 50; ++ix) {
+     for (ix = 0; ix < 1024; ++ix) {
           t1 = TIMFUNC();
           fp_exptmod(&c, &b, &a, &d);
           fp_exptmod(&c, &b, &a, &d);
@@ -293,7 +316,6 @@ int main(void)
   }
 #endif
 
-
    div2_n = mul2_n = inv_n = expt_n = lcm_n = gcd_n = add_n =
    sub_n = mul_n = div_n = sqr_n = mul2d_n = div2d_n = cnt = add_d_n = sub_d_n= mul_d_n = 0;
 
@@ -304,27 +326,27 @@ int main(void)
        printf("%s  ]\r",cmd); fflush(stdout);
        if (!strcmp(cmd, "mul2d")) { ++mul2d_n;
           fgets(buf, 4095, stdin); fp_read_radix(&a, buf, 64);
-          fgets(buf, 4095, stdin); sscanf(buf, "%d", &rr);
+          fgets(buf, 4095, stdin); sscanf(buf, "%lu", &rr);
           fgets(buf, 4095, stdin); fp_read_radix(&b, buf, 64);
 
           fp_mul_2d(&a, rr, &a);
           a.sign = b.sign;
           if (fp_cmp(&a, &b) != FP_EQ) {
-             printf("mul2d failed, rr == %d\n",rr);
+             printf("mul2d failed, rr == %lu\n",rr);
              draw(&a);
              draw(&b);
              return 0;
           }
        } else if (!strcmp(cmd, "div2d")) { ++div2d_n;
           fgets(buf, 4095, stdin); fp_read_radix(&a, buf, 64);
-          fgets(buf, 4095, stdin); sscanf(buf, "%d", &rr);
+          fgets(buf, 4095, stdin); sscanf(buf, "%lu", &rr);
           fgets(buf, 4095, stdin); fp_read_radix(&b, buf, 64);
 
           fp_div_2d(&a, rr, &a, &e);
           a.sign = b.sign;
           if (a.used == b.used && a.used == 0) { a.sign = b.sign = FP_ZPOS; }
           if (fp_cmp(&a, &b) != FP_EQ) {
-             printf("div2d failed, rr == %d\n",rr);
+             printf("div2d failed, rr == %lu\n",rr);
              draw(&a);
              draw(&b);
              return 0;
@@ -492,7 +514,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
              }
        } else if (!strcmp(cmd, "add_d")) { ++add_d_n;
               fgets(buf, 4095, stdin); fp_read_radix(&a, buf, 64);
-              fgets(buf, 4095, stdin); sscanf(buf, "%d", &ix);
+              fgets(buf, 4095, stdin); sscanf(buf, "%lu", &ix);
               fgets(buf, 4095, stdin); fp_read_radix(&b, buf, 64);
               fp_add_d(&a, ix, &c);
               if (fp_cmp(&b, &c) != FP_EQ) {
@@ -500,12 +522,12 @@ draw(&a);draw(&b);draw(&c);draw(&d);
                  draw(&a);
                  draw(&b);
                  draw(&c);
-                 printf("d == %d\n", ix);
+                 printf("d == %lu\n", ix);
                  return 0;
               }
        } else if (!strcmp(cmd, "sub_d")) { ++sub_d_n;
               fgets(buf, 4095, stdin); fp_read_radix(&a, buf, 64);
-              fgets(buf, 4095, stdin); sscanf(buf, "%d", &ix);
+              fgets(buf, 4095, stdin); sscanf(buf, "%lu", &ix);
               fgets(buf, 4095, stdin); fp_read_radix(&b, buf, 64);
               fp_sub_d(&a, ix, &c);
               if (fp_cmp(&b, &c) != FP_EQ) {
@@ -513,12 +535,12 @@ draw(&a);draw(&b);draw(&c);draw(&d);
                  draw(&a);
                  draw(&b);
                  draw(&c);
-                 printf("d == %d\n", ix);
+                 printf("d == %lu\n", ix);
                  return 0;
               }
        } else if (!strcmp(cmd, "mul_d")) { ++mul_d_n;
               fgets(buf, 4095, stdin); fp_read_radix(&a, buf, 64);
-              fgets(buf, 4095, stdin); sscanf(buf, "%d", &ix);
+              fgets(buf, 4095, stdin); sscanf(buf, "%lu", &ix);
               fgets(buf, 4095, stdin); fp_read_radix(&b, buf, 64);
               fp_mul_d(&a, ix, &c);
               if (fp_cmp(&b, &c) != FP_EQ) {
@@ -526,7 +548,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
                  draw(&a);
                  draw(&b);
                  draw(&c);
-                 printf("d == %d\n", ix);
+                 printf("d == %lu\n", ix);
                  return 0;
               }
        }

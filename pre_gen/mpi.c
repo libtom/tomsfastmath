@@ -709,7 +709,7 @@ int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
  * Some restrictions... x must be positive and < b
  */
 
-int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 {
   fp_int   M[64], res;
   fp_digit buf, mp;
@@ -730,7 +730,7 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
   } 
 
   /* init M array */
-  memset(M, 0, sizeof(fp_int)*(1<<winsize));
+  memset(M, 0, sizeof(M));	
 
   /* now setup montgomery  */
   if ((err = fp_montgomery_setup (P, &mp)) != FP_OKAY) {
@@ -865,6 +865,27 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
   return FP_OKAY;
 }
 
+int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+{
+   fp_int tmp;
+   int    err;
+
+   /* is X negative?  */
+   if (X->sign == FP_NEG) {
+      /* yes, copy G and invmod it */
+      fp_copy(G, &tmp);
+      if ((err = fp_invmod(&tmp, P, &tmp)) != FP_OKAY) {
+         return err;
+      }
+      /* _fp_exptmod doesn't care about the sign of X */
+      return _fp_exptmod(&tmp, X, P, Y);
+   } else {
+      /* Positive exponent so just exptmod */
+      return _fp_exptmod(G, X, P, Y);
+   }
+}
+
+
 /* End: fp_exptmod.c */
 
 /* Start: fp_gcd.c */
@@ -921,6 +942,76 @@ void fp_gcd(fp_int *a, fp_int *b, fp_int *c)
 }
 
 /* End: fp_gcd.c */
+
+/* Start: fp_ident.c */
+#include "tfm.h"
+
+const char *fp_ident(void)
+{
+   static char buf[1024];
+
+   memset(buf, 0, sizeof(buf));
+   snprintf(buf, sizeof(buf)-1,
+"TomsFastMath (%s)\n"
+"\n"
+"Sizeofs\n"
+"\tfp_digit = %u\n"
+"\tfp_word  = %u\n"
+"\n"
+"FP_MAX_SIZE = %u\n"
+"\n"
+"Defines: \n"
+#ifdef __i386__
+" __i386__ "
+#endif
+#ifdef __x86_64__
+" __x86_64__ "
+#endif
+#ifdef TFM_X86
+" TFM_X86 "
+#endif
+#ifdef TFM_X86_64
+" TFM_X86_64 "
+#endif
+#ifdef TFM_SSE2
+" TFM_SSE2 "
+#endif
+#ifdef TFM_ARM
+" TFM_ARM "
+#endif
+#ifdef TFM_NO_ASM
+" TFM_NO_ASM "
+#endif
+#ifdef FP_64BIT
+" FP_64BIT "
+#endif
+#ifdef TFM_LARGE
+" TFM_LARGE "
+#endif
+#ifdef TFM_HUGE
+" TFM_HUGE "
+#endif
+"\n", __DATE__, sizeof(fp_digit), sizeof(fp_word), FP_MAX_SIZE);
+
+   if (sizeof(fp_digit) == sizeof(fp_word)) {
+      strncat(buf, "WARNING: sizeof(fp_digit) == sizeof(fp_word), this build is likely to not work properly.\n", 
+              sizeof(buf)-1);
+   }
+   return buf;
+}
+
+#ifdef STANDALONE
+
+int main(void)
+{
+   printf("%s\n", fp_ident());
+   return 0;
+}
+
+#endif
+
+
+/* End: fp_ident.c */
 
 /* Start: fp_invmod.c */
 /* TomsFastMath, a fast ISO C bignum library.
@@ -1186,7 +1277,19 @@ void fp_lshd(fp_int *a, int x)
 /* c = a mod b, 0 <= c < b  */
 int fp_mod(fp_int *a, fp_int *b, fp_int *c)
 {
-   return fp_div(a, b, NULL, c);
+   fp_int t;
+   int    err;
+
+   fp_zero(&t);
+   if ((err = fp_div(a, b, NULL, &t)) != FP_OKAY) {
+      return err;
+   }
+   if (t.sign != b->sign) {
+      fp_add(&t, b, c);
+   } else {
+      fp_copy(&t, c);
+  }
+  return FP_OKAY;
 }
 
 
@@ -1282,7 +1385,7 @@ void fp_montgomery_calc_normalization(fp_int *a, fp_int *b)
      fp_2expt (a, (b->used - 1) * DIGIT_BIT + bits - 1);
   } else {
      fp_set(a, 1);
-     ++bits;
+     bits = 1;
   }
 
   /* now compute C = A * B mod b */
@@ -1366,13 +1469,13 @@ asm(                                                                            
 #define PROPCARRY \
 asm(                                                                                               \
 "movq %1,%%rax                \n\t"                                                                \
+"movq %2,%%rbx                \n\t"                                                                \
 "addq  %%rax,%6               \n\t"                                                                \
-"movq %2,%%rax                \n\t"                                                                \
-"adcq  %%rax,%7               \n\t"                                                                \
+"adcq  %%rbx,%7               \n\t"                                                                \
 "adcq $0,%8                   \n\t"                                                                \
 :"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),       \
                                                 "m"(_c[OFF0+1]), "m"(_c[OFF1+1]), "m"(_c[OFF2+1])  \
-: "%rax", "%cc");
+: "%rax", "%rbx", "%cc");
 
 #elif defined(TFM_SSE2)
 
@@ -1388,7 +1491,7 @@ asm("emms");
 asm(\
 "movd %0,%%mm1                \n\t" \
 "pmuludq %%mm2,%%mm1          \n\t" \
-:: "g"(c[x]), "g"(mp));
+:: "g"(c[x]));
 
 #define INNERMUL \
 asm(                                                                                          \
@@ -1412,7 +1515,7 @@ asm(                                                                            
 "adcl  %%eax,%7               \n\t"                                                                \
 "adcl $0,%8                   \n\t"                                                                \
 :"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),       \
-                                                "m"(_c[OFF0+1]), "m"(_c[OFF1+1]), "m"(_c[OFF2+1])  \
+                                                "g"(_c[OFF0+1]), "g"(_c[OFF1+1]), "g"(_c[OFF2+1])  \
 : "%eax", "%cc");
 
 #elif defined(TFM_ARM)
@@ -1466,14 +1569,18 @@ asm(                                             \
    mu = c[x] * mp;
 
 #define INNERMUL \
-   t = ((fp_word)mu) * ((fp_word)*tmpm++);                                             \
-   _c[OFF0] += t;               if (_c[OFF0] < (fp_digit)t)              ++_c[OFF1];   \
-   _c[OFF1] += (t>>DIGIT_BIT);  if (_c[OFF1] < (fp_digit)(t>>DIGIT_BIT)) ++_c[OFF2];   \
+   do { fp_word t;                                                           \
+   t = (fp_word)_c[OFF0] + ((fp_word)mu) * ((fp_word)*tmpm++); _c[OFF0] = t; \
+   t = (fp_word)_c[OFF1] + (t >> DIGIT_BIT);                   _c[OFF1] = t; \
+   _c[OFF2] += (t >> DIGIT_BIT);                                             \
+   } while (0);
 
 #define PROPCARRY \
-   _c[OFF0+1] += _c[OFF1];          if (_c[OFF0+1] < _c[OFF1])                ++_c[OFF1+1]; \
-   _c[OFF1+1] += _c[OFF2];          if (_c[OFF1+1] < _c[OFF2])                ++_c[OFF2+1];
-
+   do { fp_word t;                                                           \
+   t = (fp_word)_c[OFF0+1] + (fp_word)_c[OFF1];                    _c[OFF0+1] = t; \
+   t = (fp_word)_c[OFF1+1] + (t >> DIGIT_BIT) + (fp_word)_c[OFF2]; _c[OFF1+1] = t; \
+   _c[OFF2+1] += (t >> DIGIT_BIT);                                           \
+   } while (0);
 
 #endif
 
@@ -1487,7 +1594,6 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
 {
    fp_digit c[3*FP_SIZE], *_c, *tmpm, mu;
    int      oldused, x, y, pa;
-   fp_word  t;
 
    /* now zero the buff */
    pa = m->used;
@@ -1521,13 +1627,13 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
 
   /* fix the rest of the carries */
   _c = c + pa;
-  for (; x < pa * 2 + 2; x++) {
+  for (x = pa; x < pa * 2 + 2; x++) {
      PROPCARRY;
      ++_c;
   }
 
   /* now copy out */
-  _c = c + pa;
+  _c   = c + pa;
   tmpm = a->dp;
   for (x = 0; x < pa+1; x++) {
      *tmpm++ = *_c++;
@@ -1629,9 +1735,11 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
            fp_mul_comba4(A,B,C);
         } else if (y <= 8) {
            fp_mul_comba8(A,B,C);
+#if defined(TFM_LARGE)
         } else if (y <= 16 && y >= 12) {
            fp_mul_comba16(A,B,C);
-#ifdef TFM_HUGE
+#endif
+#if defined(TFM_HUGE)
         } else if (y <= 32 && y >= 28) {
            fp_mul_comba32(A,B,C);
 #endif
@@ -1880,7 +1988,7 @@ void fp_mul_2d(fp_int *a, int b, fp_int *c)
 
 /* forward the carry to the next digit */
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 /* store the first sum */
 #define COMBA_STORE(x) \
@@ -1895,7 +2003,7 @@ void fp_mul_2d(fp_int *a, int b, fp_int *c)
 
 /* this should multiply i and j  */
 #define MULADD(i, j)                                      \
-asm volatile (                                            \
+asm (                                                     \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -1915,7 +2023,7 @@ asm volatile (                                            \
 
 /* forward the carry to the next digit */
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 /* store the first sum */
 #define COMBA_STORE(x) \
@@ -1930,13 +2038,13 @@ asm volatile (                                            \
 
 /* this should multiply i and j  */
 #define MULADD(i, j)                                      \
-asm volatile (                                            \
+asm  (                                                    \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i), "m"(j)  :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","%cc");
 
 #elif defined(TFM_SSE2)
 /* use SSE2 optimizations */
@@ -1950,7 +2058,7 @@ asm volatile (                                            \
 
 /* forward the carry to the next digit */
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 /* store the first sum */
 #define COMBA_STORE(x) \
@@ -1987,7 +2095,7 @@ asm volatile (                                            \
    c0 = c1 = c2 = 0;
 
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_STORE(x) \
    x = c0;
@@ -2008,13 +2116,13 @@ asm(                                                          \
 #else
 /* ISO C code */
 
-#define COMBA_START 
+#define COMBA_START
 
 #define COMBA_CLEAR \
    c0 = c1 = c2 = 0;
 
 #define COMBA_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_STORE(x) \
    x = c0;
@@ -2022,12 +2130,13 @@ asm(                                                          \
 #define COMBA_STORE2(x) \
    x = c1;
 
-#define COMBA_FINI
-
-#define MULADD(i, j)                                          \
-   t  = ((fp_word)i) * ((fp_word)j);                          \
-   c0 = (c0 + t);              if (c0 < ((fp_digit)t))  ++c1; \
-   c1 = (c1 + (t>>DIGIT_BIT)); if (c1 < (t>>DIGIT_BIT)) ++c2;
+#define COMBA_FINI 
+   
+#define MULADD(i, j)                                                              \
+   do { fp_word t;                                                                \
+   t = (fp_word)c0 + ((fp_word)i) * ((fp_word)j); c0 = t;                         \
+   t = (fp_word)c1 + (t >> DIGIT_BIT);            c1 = t; c2 += t >> DIGIT_BIT;   \
+   } while (0);
 
 #endif
 
@@ -2037,7 +2146,6 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
 {
    int       ix, iy, iz, tx, ty, pa;
    fp_digit  c0, c1, c2, *tmpx, *tmpy;
-   fp_word   t;
    fp_int    tmp, *dst;
 
    COMBA_START;
@@ -2092,7 +2200,6 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
 
 void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C)
 {
-   fp_word t;
    fp_digit c0, c1, c2, at[8];
 
    memcpy(at, A->dp, 4 * sizeof(fp_digit));
@@ -2137,7 +2244,6 @@ void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C)
 
 void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C)
 {
-   fp_word t;
    fp_digit c0, c1, c2, at[16];
 
    memcpy(at, A->dp, 8 * sizeof(fp_digit));
@@ -2211,10 +2317,10 @@ void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FINI;
 }
 
+#if defined(TFM_LARGE)
 
 void fp_mul_comba16(fp_int *A, fp_int *B, fp_int *C)
 {
-   fp_word t;
    fp_digit c0, c1, c2, at[32];
 
    memcpy(at, A->dp, 16 * sizeof(fp_digit));
@@ -2352,11 +2458,12 @@ void fp_mul_comba16(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FINI;
 }
 
+#endif /* TFM_LARGE */
+
 #ifdef TFM_HUGE
 
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
 {
-   fp_word t;
    fp_digit c0, c1, c2, at[64];
 
    memcpy(at, A->dp, 32 * sizeof(fp_digit));
@@ -2880,6 +2987,41 @@ error:
 
 int fp_radix_size(fp_int *a, int radix, int *size)
 {
+  int     digs;
+  fp_int  t;
+  fp_digit d;
+   
+  *size = 0;
+
+  /* check range of the radix */
+  if (radix < 2 || radix > 64) {
+    return FP_VAL;
+  }
+
+  /* quick out if its zero */
+  if (fp_iszero(a) == 1) {
+     *size = 2;
+     return FP_OKAY;
+  }
+
+  fp_init_copy(&t, a);
+
+  /* if it is negative output a - */
+  if (t.sign == FP_NEG) {
+    *size++;
+    t.sign = FP_ZPOS;
+  }
+
+  digs = 0;
+  while (fp_iszero (&t) == FP_NO) {
+    fp_div_d (&t, (fp_digit) radix, &t, &d);
+    *size++;
+  }
+
+  /* append a NULL so the string is properly terminated */
+  *size++;
+  return FP_OKAY;
+
 }
 
 /* End: fp_radix_size.c */
@@ -3161,9 +3303,11 @@ void fp_sqr(fp_int *A, fp_int *B)
            fp_sqr_comba4(A,B);
         } else if (y <= 8) {
            fp_sqr_comba8(A,B);
+#if defined(TFM_LARGE)
         } else if (y <= 16 && y >= 12) {
            fp_sqr_comba16(A,B);
-#ifdef TFM_HUGE
+#endif
+#if defined(TFM_HUGE)
         } else if (y <= 32 && y >= 28) {
            fp_sqr_comba32(A,B);
 #endif
@@ -3279,7 +3423,7 @@ Obvious points of optimization
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_FINI
 
@@ -3319,21 +3463,21 @@ asm volatile (                                            \
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_FINI
 
 #define SQRADD(i, j)                                      \
-asm volatile (                                            \
+asm (                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %%rax        \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i) :"%rax","%rdx","%cc");
 
 #define SQRADD2(i, j)                                     \
-asm volatile (                                            \
+asm (                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
@@ -3342,7 +3486,7 @@ asm volatile (                                            \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i), "m"(j)  :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","%cc");
 
 
 #elif defined(TFM_SSE2)
@@ -3360,7 +3504,7 @@ asm volatile (                                            \
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_FINI \
    asm("emms");
@@ -3371,11 +3515,11 @@ asm volatile (                                            \
      "pmuludq %%mm0,%%mm0\n\t"                            \
      "movd  %%mm0,%%eax  \n\t"                            \
      "psrlq $32,%%mm0    \n\t"                            \
-     "movd  %%mm0,%%edx  \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
-     "adcl  %%edx,%1     \n\t"                            \
+     "movd  %%mm0,%%eax  \n\t"                            \
+     "adcl  %%eax,%1     \n\t"                            \
      "adcl  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%eax","%edx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%eax","%cc");
 
 #define SQRADD2(i, j)                                     \
 asm volatile (                                            \
@@ -3409,7 +3553,7 @@ asm volatile (                                            \
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
 #define COMBA_FINI
 
@@ -3438,7 +3582,8 @@ asm(                                                             \
 
 /* ISO C portable code */
 
-#define COMBA_START
+#define COMBA_START \
+   { fp_word tt; 
 
 #define CLEAR_CARRY \
    c0 = c1 = c2 = 0;
@@ -3450,23 +3595,28 @@ asm(                                                             \
    x = c1;
 
 #define CARRY_FORWARD \
-   c0 = c1; c1 = c2; c2 = 0;
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
-#define COMBA_FINI
+#define COMBA_FINI \
+   }
 
 /* multiplies point i and j, updates carry "c1" and digit c2 */
-#define SQRADD(i, j)                       \
-   t  = ((fp_word)i) * ((fp_word)j);       \
-   c0 = (c0 + t);              if (c0 < ((fp_digit)t))  ++c1; \
-   c1 = (c1 + (t>>DIGIT_BIT)); if (c1 < (t>>DIGIT_BIT)) ++c2; 
+#define SQRADD(i, j)                                 \
+   do { fp_word t;                                   \
+   t = c0 + ((fp_word)i) * ((fp_word)j);  c0 = t;    \
+   t = c1 + (t >> DIGIT_BIT);             c1 = t; c2 += t >> DIGIT_BIT; \
+   } while (0);
+  
 
 /* for squaring some of the terms are doubled... */
-#define SQRADD2(i, j)                       \
-   t  = ((fp_word)i) * ((fp_word)j);       \
-   c0 = (c0 + t);              if (c0 < ((fp_digit)t))  ++c1; \
-   c1 = (c1 + (t>>DIGIT_BIT)); if (c1 < (t>>DIGIT_BIT)) ++c2; \
-   c0 = (c0 + t);              if (c0 < ((fp_digit)t))  ++c1; \
-   c1 = (c1 + (t>>DIGIT_BIT)); if (c1 < (t>>DIGIT_BIT)) ++c2; 
+#define SQRADD2(i, j)                                                 \
+   do { fp_word t;                                                    \
+   t  = ((fp_word)i) * ((fp_word)j);                                  \
+   tt = (fp_word)c0 + t;                 c0 = tt;                              \
+   tt = (fp_word)c1 + (tt >> DIGIT_BIT); c1 = tt; c2 += tt >> DIGIT_BIT;       \
+   tt = (fp_word)c0 + t;                 c0 = tt;                              \
+   tt = (fp_word)c1 + (tt >> DIGIT_BIT); c1 = tt; c2 += tt >> DIGIT_BIT;       \
+   } while (0);
 
 #endif
 
@@ -3476,7 +3626,6 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
   int       pa, ix, iz;
   fp_digit  c0, c1, c2;
   fp_int    tmp, *dst;
-  fp_word   t;
 
   /* get size of output and trim */
   pa = A->used + A->used;
@@ -3549,7 +3698,6 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
 
 void fp_sqr_comba4(fp_int *A, fp_int *B)
 {
-   fp_word t;
    fp_digit *a, b[8], c0, c1, c2;
 
    a = A->dp;
@@ -3603,7 +3751,6 @@ void fp_sqr_comba4(fp_int *A, fp_int *B)
 
 void fp_sqr_comba8(fp_int *A, fp_int *B)
 {
-   fp_word t;
    fp_digit *a, b[16], c0, c1, c2;
 
    a = A->dp;
@@ -3694,10 +3841,10 @@ void fp_sqr_comba8(fp_int *A, fp_int *B)
    fp_clamp(B);
 }
 
+#if defined(TFM_LARGE)
 
 void fp_sqr_comba16(fp_int *A, fp_int *B)
 {
-   fp_word t;
    fp_digit *a, b[32], c0, c1, c2;
 
    a = A->dp;
@@ -3868,11 +4015,12 @@ void fp_sqr_comba16(fp_int *A, fp_int *B)
    fp_clamp(B);
 }
 
+#endif /* TFM_LARGE */
+
 #ifdef TFM_HUGE
 
 void fp_sqr_comba32(fp_int *A, fp_int *B)
 {
-   fp_word t;
    fp_digit *a, b[64], c0, c1, c2;
 
    a = A->dp;
@@ -4454,6 +4602,82 @@ int fp_unsigned_bin_size(fp_int *a)
 }
 
 /* End: fp_unsigned_bin_size.c */
+
+/* Start: s_fp_add.c */
+/* TomsFastMath, a fast ISO C bignum library.
+ * 
+ * This project is meant to fill in where LibTomMath
+ * falls short.  That is speed ;-)
+ *
+ * This project is public domain and free for all purposes.
+ * 
+ * Tom St Denis, tomstdenis@iahu.ca
+ */
+#include <tfm.h>
+
+/* unsigned addition */
+void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
+{
+  int      x, y, oldused;
+  fp_word  t;
+
+  y       = MAX(a->used, b->used);
+  oldused = c->used;
+  c->used = y;
+ 
+  t = 0;
+  for (x = 0; x < y; x++) {
+      t         += ((fp_word)a->dp[x]) + ((fp_word)b->dp[x]);
+      c->dp[x]   = (fp_digit)t;
+      t        >>= DIGIT_BIT;
+  }
+  if (t != 0 && x != FP_SIZE) {
+     c->dp[c->used++] = (fp_digit)t;
+     ++x;
+  }
+  
+  for (; x < oldused; x++) {
+     c->dp[x] = 0;
+  }
+  fp_clamp(c);
+}
+
+/* End: s_fp_add.c */
+
+/* Start: s_fp_sub.c */
+/* TomsFastMath, a fast ISO C bignum library.
+ * 
+ * This project is meant to fill in where LibTomMath
+ * falls short.  That is speed ;-)
+ *
+ * This project is public domain and free for all purposes.
+ * 
+ * Tom St Denis, tomstdenis@iahu.ca
+ */
+#include <tfm.h>
+
+/* unsigned subtraction ||a|| >= ||b|| ALWAYS! */
+void s_fp_sub(fp_int *a, fp_int *b, fp_int *c)
+{
+  int      x, oldused;
+  fp_word  t;
+
+  oldused = c->used;
+  c->used = a->used;
+  t       = 0;
+  for (x = 0; x < a->used; x++) {
+      t         = ((fp_word)a->dp[x]) - (((fp_word)b->dp[x]) + t);
+      c->dp[x]  = (fp_digit)t;
+      t         = (t >> DIGIT_BIT) & 1;
+  }
+  
+  for (; x < oldused; x++) {
+     c->dp[x] = 0;
+  }
+  fp_clamp(c);
+}
+
+/* End: s_fp_sub.c */
 
 
 /* EOF */

@@ -49,7 +49,7 @@
 \begin{document}
 \frontmatter
 \pagestyle{empty}
-\title{TomsFastMath User Manual \\ v0.01}
+\title{TomsFastMath User Manual \\ v0.02}
 \author{Tom St Denis \\ tomstdenis@iahu.ca}
 \maketitle
 This text and library are all hereby placed in the public domain.  This book has been formatted for B5 
@@ -128,23 +128,27 @@ several ``CFLAGS'' defines.
 For example, to build with with SSE2 optimizations type 
 
 \begin{verbatim}
-export CFLAGS=-DTFM_SSE2
-make clean libtfm.a
+CFLAGS=-DTFM_SSE2 make clean libtfm.a
 \end{verbatim}
 
 \subsubsection{x86--32}  The ``x86--32'' mode is defined by ``TFM\_X86'' and covers all
 i386 and beyond processors.  It requires GCC to build and only works with 32--bit digits.  In this 
-mode fp\_digit is 32--bits and fp\_word is 64--bits.
+mode fp\_digit is 32--bits and fp\_word is 64--bits.  This mode will be autodetected when building 
+with GCC to an  ``i386'' target.  You can override this behaviour by defining TFM\_NO\_ASM or 
+another optimization mode (such as SSE2).
 
 \subsubsection{SSE2} The ``SSE2'' mode is defined by ``TFM\_SSE2'' and requires a Pentium 4, Pentium
 M or Athlon64 processor.  It requires GCC to build.  Note that you shouldn't define both
 TFM\_X86 and TFM\_SSE2 at the same time.   This mode only works with 32--bit digits.  In this 
-mode fp\_digit is 32--bits and fp\_word is 64--bits.
+mode fp\_digit is 32--bits and fp\_word is 64--bits.  While this mode will work on the AMD Athlon64 
+series of processors it is less efficient than the native ``x86--64'' mode and not recommended.
 
 \subsubsection{x86--64}  The ``x86--64'' mode is defined by ``TFM\_X86\_64'' and requires a 
 ``x86--64'' capable processor (Athlon64 and future Pentium processors).  It requires GCC to
 build and only works with 64--bit digits.  Note that by enabling this mode it will automatically
-enable 64--bit digits.  In this mode fp\_digit is 64--bits and fp\_word is 128--bits.
+enable 64--bit digits.  In this mode fp\_digit is 64--bits and fp\_word is 128--bits.  This mode will
+be autodetected when building with GCC to an ``x86--64'' target.  You can override this behaviour by defining
+TFM\_NO\_ASM.
 
 \subsubsection{ARM}  The ``ARM'' mode is defined by ``TFM\_ARM'' and requires a ARMv4 or higher
 processor.  It requires GCC and works with 32--bit digits.  In this mode fp\_digit is 32--bits and 
@@ -163,6 +167,8 @@ Developers of MIPS and PPC platforms are encouraged to submit GCC asm inline pat
 \hline Pentium 4                  & TFM\_SSE2 \\
 \hline Athlon64                   & TFM\_X86\_64 \\
 \hline ARMv4 or higher            & TFM\_ARM \\
+\hline &\\
+\hline x86--32 or x86--64 (with GCC) & Leave blank and let autodetect work \\
 \hline
 \end{tabular}
 \caption{Recommended Build Modes}
@@ -339,9 +345,10 @@ To compute a modular exponentiation use the following function.
 \begin{verbatim}
 int fp_exptmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
 \end{verbatim}
-This computes $d \equiv a^b \mbox{ (mod }c)$ for any odd $c$ and positive $b$.  The size of $c$
-must be half of the maximum precision used during the build of the library.  For example,
-by default $c$ must be less than $2^{2048}$.  
+This computes $d \equiv a^b \mbox{ (mod }c\mbox{)}$ for any odd $c$ and $b$.  $b$ may be negative so long as 
+$a^{-1} \mbox{ (mod }c\mbox{)}$ exists.  The initial value of $a$ may be larger than $c$.  The size of $c$ must be 
+half of the maximum precision used during the build of the library.  For example, by default $c$ must be less 
+than $2^{2048}$.  
 
 \section{Number Theoretic}
 
