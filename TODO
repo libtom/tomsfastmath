@@ -1,0 +1,6 @@
+1. Write more documentation ;-)
+2. Ports to PPC and MIPS
+3. Fix any lingering bugs, add additional requested functionality.
+
+NOTE:  The library is still fairly new.  I've tested it quite a bit but that doesn't mean surprises
+can't happen.  Please test the results you get for correctness.
