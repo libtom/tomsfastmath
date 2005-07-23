@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -24,19 +24,26 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
        inputs are not close to the next power of two.  That is, for example,
        if say y=17 then we would do (32-17)^2 = 225 unneeded multiplications 
     */
-        if (y <= 4) {
-           fp_mul_comba4(A,B,C);
-        } else if (y <= 8) {
-           fp_mul_comba8(A,B,C);
-#if defined(TFM_LARGE)
-        } else if (y <= 16 && y >= 10) {
-           fp_mul_comba16(A,B,C);
+
+#ifdef TFM_SMALL_SET
+        if (y <= 16) {
+           fp_mul_comba_small(A,B,C);
+#elif defined(TFM_HUGE)
+        if (0) { 1;
 #endif
 #if defined(TFM_HUGE)
-        } else if (y <= 32 && y >= 24) {
+        } else if (y <= 32) {
            fp_mul_comba32(A,B,C);
+        } else if (y <= 48) {
+           fp_mul_comba48(A,B,C);
+        } else if (y <= 64) {
+           fp_mul_comba64(A,B,C);
 #endif
+#if !defined(TFM_HUGE) && !defined(TFM_SMALL_SET)
+        {
+#else
         } else {
+#endif
            fp_mul_comba(A,B,C);
         }
     } else {
@@ -44,7 +51,7 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
 
            if A = ab and B = cd for ||a|| = r we need to solve 
 
-           ac*r^2 + (-(a-b)(c-d) + ac + bd)*r + bd
+           ac*r^2 + ((a+b)(c+d) - (ac + bd))*r + bd
 
            So we solve for the three products then we form the final result with careful shifting 
            and addition.
@@ -72,7 +79,7 @@ Obvious points of optimization
         } else {
            t1.used = 0;
         }
-        t1.sign = A->sign;
+        t1.sign = 0;
 
 //        fp_copy(B, &t2); fp_rshd(&t2, r); 
         for (s = 0; s < B->used - r; s++) {
@@ -86,7 +93,7 @@ Obvious points of optimization
         } else {
            t2.used = 0;
         }
-        t2.sign = B->sign;
+        t2.sign = 0;
 
         fp_copy(&t1, &amb); fp_copy(&t2, &cmd);
         fp_zero(&ac);
@@ -100,7 +107,7 @@ Obvious points of optimization
             t2.dp[s] = B->dp[s];
         }
         for (; s < FP_SIZE; s++) {
-            t1.dp[s]   = 0; 
+            t1.dp[s] = 0; 
             t2.dp[s] = 0; 
         }
         t1.used = r;
@@ -108,18 +115,17 @@ Obvious points of optimization
         fp_clamp(&t1);
         fp_clamp(&t2);
         
-        fp_sub(&amb, &t1, &amb); fp_sub(&cmd, &t2, &cmd);
+        s_fp_add(&amb, &t1, &amb); s_fp_add(&cmd, &t2, &cmd);
         fp_zero(&bd);
         fp_mul(&t1, &t2, &bd);
 
-        /* now get the (a-b)(c-d) term */
+        /* now get the (a+b)(c+d) term */
         fp_zero(&comp);
         fp_mul(&amb, &cmd, &comp);
 
         /* now solve the system, do the middle term first */
-        comp.sign ^= 1;
-        fp_add(&comp, &ac, &comp);
-        fp_add(&comp, &bd, &comp);
+        s_fp_sub(&comp, &ac, &comp);
+        s_fp_sub(&comp, &bd, &comp);
         fp_lshd(&comp, r);
   
         /* leading term */
@@ -134,3 +140,7 @@ Obvious points of optimization
     }
 }
 
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

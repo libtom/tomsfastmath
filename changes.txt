@@ -1,7 +1,25 @@
+0.04 -- Fixed bugs in the SSE2 squaring code
+     -- Rewrote the multipliers to be optimized for small inputs 
+     -- Nelson Bolyard of the NSS crew submitted [among other things] new faster Montgomery reduction
+        code.  It brings the performance for small numbers on the AMD64 and all numbers on the P4
+        to a new level.  Thanks!
+     -- Added missing ARM support for fp_montgomery_reduce.c that the NSS folk left off, Officially 
+        the ARM code is for v4 and above WITH the "M" multiplier support (e.g. umlal instruction)
+     -- Added PPC32 support, define TFM_PPC32 to enable it, I used the "PowerPC 6xx" instruction
+        databook for reference.  Does not require altivec.  Should be fairly portable to the other
+        32-bit PPCs provided they have mullw and mulhwu instructions.
+        [Note: porting the macros to PPC64 should be trivial, anyone with a shell to lend... email me!]
+     -- Rewrote the config a bit in tfm.h so you can better choose which set of "oh my god that's huge" code to 
+        enable for your task.  "generic" functions are ALWAYS included which are smaller but will cover the
+        gaps in the coverage for ya.
+     -- The PPC32 code has been verified to function on a Darwin box running GCC 2.95.2 
+        [Thanks to the folk at PeerSec for lending me a shell to use]
+     -- Fixed a bug in fp_exptmod() where if the exponent was negative AND the destination the output
+        would have the sign set to FP_NEG.
+
 March 1st, 2005
 0.03 -- Optimized squaring
-     -- 
-
+     -- Applied new license header to all files (still PD)
 
 September 18th, 2004
 0.02 -- Added TFM_LARGE to turn on/off 16x combas to save even more space.

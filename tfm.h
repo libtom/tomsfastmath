@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #ifndef TFM_H_
 #define TFM_H_
@@ -16,28 +16,44 @@
 #include <ctype.h>
 #include <limits.h>
 
-#undef MIN
-#define MIN(x,y) ((x)<(y)?(x):(y))
-#undef MAX
-#define MAX(x,y) ((x)>(y)?(x):(y))
+#ifndef MIN
+   #define MIN(x,y) ((x)<(y)?(x):(y))
+#endif
 
-/* do we want large code? */
-#define TFM_LARGE
+#ifndef MAX
+   #define MAX(x,y) ((x)>(y)?(x):(y))
+#endif
 
-/* do we want huge code (implies large)?  The answer is, yes. */
+/* externally define this symbol to ignore the default settings, useful for changing the build from the make process */
+#ifndef TFM_ALREADY_SET
+
+/* do we want the large set of small multiplications ? 
+   Enable these if you are going to be doing a lot of small (<= 16 digit) multiplications say in ECC
+   Or if you're on a 64-bit machine doing RSA as a 1024-bit integer == 16 digits ;-)
+ */
+#define TFM_SMALL_SET
+
+/* do we want huge code 
+   Enable these if you are doing 32, 48 or 64 digit multiplications (useful for RSA)
+   Less important on 64-bit machines as 32 digits == 2048 bits
+ */
 #define TFM_HUGE
 
-/* imply TFM_LARGE as required */
-#if defined(TFM_HUGE)
-   #if !defined(TFM_LARGE)
-      #define TFM_LARGE
-   #endif
+/* do we want some overflow checks
+   Not required if you make sure your numbers are within range (e.g. by default a modulus for fp_exptmod() can only be upto 2048 bits long)
+ */
+/* #define TFM_CHECK */
+
+/* Is the target a P4 Prescott
+ */
+/* #define TFM_PRESCOTT */
+
 #endif
 
 /* Max size of any number in bits.  Basically the largest size you will be multiplying
  * should be half [or smaller] of FP_MAX_SIZE-four_digit
  *
- * You can externally define this or it defaults to 4096-bits.
+ * You can externally define this or it defaults to 4096-bits [allowing multiplications upto 2048x2048 bits ]
  */
 #ifndef FP_MAX_SIZE
    #define FP_MAX_SIZE           (4096+(4*DIGIT_BIT))
@@ -76,9 +92,9 @@
    #endif
 #endif
 
-/* make sure we're 32-bit for x86-32/sse/arm */
-#if (defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM)) && defined(FP_64BIT)
-   #warning x86-32, SSE2 and ARM optimizations require 32-bit digits (undefining)
+/* make sure we're 32-bit for x86-32/sse/arm/ppc32 */
+#if (defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM) || defined(TFM_PPC32)) && defined(FP_64BIT)
+   #warning x86-32, SSE2 and ARM, PPC32 optimizations require 32-bit digits (undefining)
    #undef FP_64BIT
 #endif
 
@@ -104,6 +120,12 @@
    #endif
    #define TFM_ASM
 #endif
+#ifdef TFM_PPC32
+   #ifdef TFM_ASM
+      #error TFM_ASM already defined!
+   #endif
+   #define TFM_ASM
+#endif
 
 /* we want no asm? */
 #ifdef TFM_NO_ASM
@@ -111,6 +133,7 @@
    #undef TFM_X86_64
    #undef TFM_SSE2
    #undef TFM_ARM
+   #undef TFM_PPC32
    #undef TFM_ASM   
 #endif
 
@@ -179,8 +202,8 @@ const char *fp_ident(void);
 
 /* zero/even/odd ? */
 #define fp_iszero(a) (((a)->used == 0) ? FP_YES : FP_NO)
-#define fp_iseven(a) (((a)->used > 0 && (((a)->dp[0] & 1) == 0)) ? FP_YES : FP_NO)
-#define fp_isodd(a)  (((a)->used > 0 && (((a)->dp[0] & 1) == 1)) ? FP_YES : FP_NO)
+#define fp_iseven(a) (((a)->used >= 0 && (((a)->dp[0] & 1) == 0)) ? FP_YES : FP_NO)
+#define fp_isodd(a)  (((a)->used > 0  && (((a)->dp[0] & 1) == 1)) ? FP_YES : FP_NO)
 
 /* set to a small digit */
 void fp_set(fp_int *a, fp_digit b);
@@ -335,24 +358,22 @@ void bn_reverse(unsigned char *s, int len);
 void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C);
 #ifdef TFM_HUGE
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C);
+void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C);
+void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C);
 #endif
-#ifdef TFM_LARGE
-void fp_mul_comba16(fp_int *A, fp_int *B, fp_int *C);
-#endif
-void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C);
-void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C);
+void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C);
 
-void fp_sqr_comba(fp_int *A, fp_int *B);
-void fp_sqr_comba4(fp_int *A, fp_int *B);
-void fp_sqr_comba8(fp_int *A, fp_int *B);
-#ifdef TFM_LARGE
-void fp_sqr_comba16(fp_int *A, fp_int *B);
-#endif
+void fp_sqr_comba_small(fp_int *A, fp_int *B);
 #ifdef TFM_HUGE
 void fp_sqr_comba32(fp_int *A, fp_int *B);
+void fp_sqr_comba48(fp_int *A, fp_int *B);
 void fp_sqr_comba64(fp_int *A, fp_int *B);
 #endif
 extern const char *fp_s_rmap;
 
 #endif
 
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

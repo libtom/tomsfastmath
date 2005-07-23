@@ -22,9 +22,17 @@ int myrng(unsigned char *dst, int len, void *dat)
 static ulong64 TIMFUNC (void)
    {
    #if defined __GNUC__
-      #if defined(__i386__) || defined(__x86_64__)
+      #if defined(INTEL_CC)
+			ulong64 a;
+         asm ("rdtsc":"=A"(a));
+         return a;
+      #elif defined(__i386__) || defined(__x86_64__)
          ulong64 a;
          __asm__ __volatile__ ("rdtsc\nmovl %%eax,%0\nmovl %%edx,4+%0\n"::"m"(a):"%eax","%edx");
+         return a;
+      #elif defined(TFM_PPC32) 
+         unsigned long a;
+         __asm__ __volatile__ ("mftb %0":"=r"(a));
          return a;
       #else /* gcc-IA64 version */
          unsigned long result;
@@ -135,9 +143,7 @@ int main(void)
   printf("Testing read_radix\n");
   fp_read_radix(&a, "123456789012345678901234567890", 16); draw(&a);
 
-goto testing;
-
-#if 1
+#if 0
   /* test mont */
   printf("Montgomery test #1\n");
   fp_set(&a, 0x1234567ULL);
@@ -196,8 +202,18 @@ goto testing;
    }
    printf("\n\n");
 #endif
-  
+
+#ifdef TESTING
+goto testing;
+#endif
+
 #if 1
+
+t1 = TIMFUNC();
+sleep(1);
+printf("Ticks per second: %llu\n", TIMFUNC() - t1);
+
+goto expttime;
  /* do some timings... */
   printf("Addition:\n");
   for (t = 2; t <= FP_SIZE/2; t += 2) {
@@ -211,7 +227,7 @@ goto testing;
       a.used = t;
       b.used = t;
       t2 = -1;
-      for (ix = 0; ix < 2500; ++ix) {
+      for (ix = 0; ix < 25000; ++ix) {
           t1 = TIMFUNC();
           fp_add(&a, &b, &c); fp_add(&a, &b, &c);
           fp_add(&a, &b, &c); fp_add(&a, &b, &c);
@@ -222,6 +238,7 @@ goto testing;
       }
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
+multtime:
   printf("Multiplication:\n");
   for (t = 2; t <= FP_SIZE/2; t += 2) {
       fp_zero(&a);
@@ -263,8 +280,8 @@ sqrtime:
       }
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
-return;
 //#else
+monttime:
   printf("Montgomery:\n");
   for (t = 2; t <= (FP_SIZE/2)-2; t += 2) {
       fp_zero(&a);
@@ -295,7 +312,7 @@ return;
 expttime:
   printf("Exptmod:\n");
  
-  for (t = 512/DIGIT_BIT; t <= (FP_SIZE/2)-2; t += t) {
+  for (t = 512/DIGIT_BIT; t <= (FP_SIZE/2)-2; t += 256/DIGIT_BIT) {
       fp_zero(&a);
       fp_zero(&b);
       fp_zero(&c);
@@ -309,7 +326,7 @@ expttime:
       c.used = t;
 
      t2 = -1;
-     for (ix = 0; ix < 256; ++ix) {
+     for (ix = 0; ix < 500; ++ix) {
           t1 = TIMFUNC();
           fp_exptmod(&c, &b, &a, &d);
           fp_exptmod(&c, &b, &a, &d);
@@ -320,10 +337,10 @@ expttime:
      }
      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
-return;
-
+  return;
 #endif
 
+return;
 testing:
 
    div2_n = mul2_n = inv_n = expt_n = lcm_n = gcd_n = add_n =
@@ -567,3 +584,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
 }
   
   
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

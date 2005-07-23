@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -47,3 +47,7 @@ int fp_radix_size(fp_int *a, int radix, int *size)
   return FP_OKAY;
 
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

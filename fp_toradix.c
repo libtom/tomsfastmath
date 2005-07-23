@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -53,3 +53,7 @@ int fp_toradix(fp_int *a, char *str, int radix)
   *str = '\0';
   return FP_OKAY;
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

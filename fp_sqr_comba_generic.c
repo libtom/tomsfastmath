@@ -1,3 +1,13 @@
+/* TomsFastMath, a fast ISO C bignum library.
+ * 
+ * This project is meant to fill in where LibTomMath
+ * falls short.  That is speed ;-)
+ *
+ * This project is public domain and free for all purposes.
+ * 
+ * Tom St Denis, tomstdenis@gmail.com
+ */
+
 /* generic comba squarer */
 void fp_sqr_comba(fp_int *A, fp_int *B)
 {
@@ -73,3 +83,7 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
      fp_copy(dst, B);
   }
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

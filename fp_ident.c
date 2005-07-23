@@ -1,3 +1,12 @@
+/* TomsFastMath, a fast ISO C bignum library.
+ * 
+ * This project is meant to fill in where LibTomMath
+ * falls short.  That is speed ;-)
+ *
+ * This project is public domain and free for all purposes.
+ * 
+ * Tom St Denis, tomstdenis@gmail.com
+ */
 #include "tfm.h"
 
 const char *fp_ident(void)
@@ -39,9 +48,6 @@ const char *fp_ident(void)
 #ifdef FP_64BIT
 " FP_64BIT "
 #endif
-#ifdef TFM_LARGE
-" TFM_LARGE "
-#endif
 #ifdef TFM_HUGE
 " TFM_HUGE "
 #endif
@@ -64,3 +70,7 @@ int main(void)
 
 #endif
 
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

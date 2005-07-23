@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -17,21 +17,26 @@ void fp_sqr(fp_int *A, fp_int *B)
 
     y = A->used;
     if (y <= 64) { 
-        if (y <= 4) {
-           fp_sqr_comba4(A,B);
-        } else if (y <= 8) {
-           fp_sqr_comba8(A,B);
-#if defined(TFM_LARGE)
-        } else if (y <= 16 && y >= 12) {
-           fp_sqr_comba16(A,B);
+
+#if defined(TFM_SMALL_SET)
+        if (y <= 16) {
+           fp_sqr_comba_small(A,B);
+#elif defined(TFM_HUGE)
+        if (0) { 1; 
 #endif
 #if defined(TFM_HUGE)
-        } else if (y <= 32 && y >= 20) {
+        } else if (y <= 32) {
            fp_sqr_comba32(A,B);
-        } else if (y <= 64 && y >= 48) {
+        } else if (y <= 48) {
+           fp_sqr_comba48(A,B);
+        } else if (y <= 64) {
            fp_sqr_comba64(A,B);
 #endif
+#if !defined(TFM_SMALL_SET) && !defined(TFM_HUGE)
+        {
+#else
         } else {
+#endif
            fp_sqr_comba(A, B);
         }
        
@@ -109,3 +114,7 @@ Obvious points of optimization
     }
 }
 
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

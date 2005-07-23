@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -96,3 +96,7 @@ top:
   c->sign = neg;
   return FP_OKAY;
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

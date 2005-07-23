@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -64,3 +64,7 @@ int fp_read_radix(fp_int *a, char *str, int radix)
   }
   return FP_OKAY;
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

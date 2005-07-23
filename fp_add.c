@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -37,3 +37,7 @@ void fp_add(fp_int *a, fp_int *b, fp_int *c)
     }
   }
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

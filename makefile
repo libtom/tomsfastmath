@@ -10,7 +10,7 @@ CFLAGS += -Wall -W -Wshadow -I./ -O3 -funroll-all-loops
 #speed
 CFLAGS += -fomit-frame-pointer
 
-VERSION=0.03
+VERSION=0.04
 
 default: libtfm.a
 
@@ -42,9 +42,37 @@ fp_read_radix.o fp_toradix.o fp_radix_size.o fp_count_bits.o fp_reverse.o fp_s_r
 \
 fp_ident.o 
 
-libtfm.a: $(OBJECTS)
-	$(AR) $(ARFLAGS) libtfm.a $(OBJECTS)
-	ranlib libtfm.a
+HEADERS=tfm.h
+
+ifndef LIBPATH
+   LIBPATH=/usr/lib
+endif
+
+ifndef INCPATH
+   INCPATH=/usr/include
+endif
+
+ifndef TFM_GROUP
+   GROUP=wheel
+endif
+
+ifndef TFM_USER
+   USER=root
+endif
+
+ifndef LIBNAME
+	LIBNAME=libtfm.a
+endif
+
+$(LIBNAME): $(OBJECTS)
+	$(AR) $(ARFLAGS) $(LIBNAME) $(OBJECTS)
+	ranlib $(LIBNAME)
+
+install: libtfm.a
+	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
+	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
+	install -g $(GROUP) -o $(USER) $(LIBNAME) $(DESTDIR)$(LIBPATH)
+	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
 
 mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
@@ -52,8 +80,14 @@ mtest/mtest: mtest/mtest.c
 test: libtfm.a demo/test.o mtest/mtest
 	$(CC) $(CFLAGS) demo/test.o libtfm.a $(PROF) -o test
 
+timing: libtfm.a demo/test.o
+	$(CC) $(CFLAGS) demo/test.o libtfm.a $(PROF) -o test
+	
 stest: libtfm.a demo/stest.o 
-	$(CC) demo/stest.o libtfm.a -o stest
+	$(CC) $(CFLAGS) demo/stest.o libtfm.a -o stest
+
+rsatest: libtfm.a demo/rsa.o
+	$(CC) $(CFLAGS) demo/rsa.o libtfm.a -o rsatest
 
 docdvi: tfm.tex
 	touch tfm.ind
@@ -68,10 +102,15 @@ docs: docdvi
 	mv -f tfm.pdf doc
 
 clean:
-	rm -f $(OBJECTS) *.a demo/*.o test tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc stest *~
+	rm -f $(OBJECTS) *.a demo/*.o test tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc stest *~ rsatest *.gcda *.gcno demo/*.gcda demo/*.gcno mtest/*.gcno mtest/*.gcda
 	cd mtest ; make clean
 
-zipup: docs clean
+no_oops: clean
+	cd .. ; cvs commit
+	echo Scanning for scratch/dirty files
+	find . -type f | grep -v CVS | xargs -n 1 bash mess.sh
+
+zipup: no_oops docs clean
 	perl gen.pl ; mv mpi.c pre_gen/ ; \
 	cd .. ; rm -rf tfm* tomsfastmath-$(VERSION) ; mkdir tomsfastmath-$(VERSION) ; \
 	cp -R ./tomsfastmath/* ./tomsfastmath-$(VERSION)/ ; \

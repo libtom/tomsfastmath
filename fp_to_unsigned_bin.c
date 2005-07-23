@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -23,3 +23,7 @@ void fp_to_unsigned_bin(fp_int *a, unsigned char *b)
   }
   bn_reverse (b, x);
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

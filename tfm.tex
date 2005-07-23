@@ -49,7 +49,7 @@
 \begin{document}
 \frontmatter
 \pagestyle{empty}
-\title{TomsFastMath User Manual \\ v0.03}
+\title{TomsFastMath User Manual \\ v0.04}
 \author{Tom St Denis \\ tomstdenis@iahu.ca}
 \maketitle
 This text and library are all hereby placed in the public domain.  This book has been formatted for B5 
@@ -143,6 +143,10 @@ TFM\_X86 and TFM\_SSE2 at the same time.   This mode only works with 32--bit dig
 mode fp\_digit is 32--bits and fp\_word is 64--bits.  While this mode will work on the AMD Athlon64 
 series of processors it is less efficient than the native ``x86--64'' mode and not recommended.
 
+There is an additional ``TFM\_PRESCOTT'' flag that you can define for P4 Prescott processors.  This causes
+the mul/sqr functions to use x86\_32 and the montgomery reduction to use SSE2 which is (so far) the fastest
+combination.  If you are using an older (e.g. Northwood) generation P4 don't define this.
+
 \subsubsection{x86--64}  The ``x86--64'' mode is defined by ``TFM\_X86\_64'' and requires a 
 ``x86--64'' capable processor (Athlon64 and future Pentium processors).  It requires GCC to
 build and only works with 64--bit digits.  Note that by enabling this mode it will automatically
@@ -150,12 +154,16 @@ enable 64--bit digits.  In this mode fp\_digit is 64--bits and fp\_word is 128--
 be autodetected when building with GCC to an ``x86--64'' target.  You can override this behaviour by defining
 TFM\_NO\_ASM.
 
-\subsubsection{ARM}  The ``ARM'' mode is defined by ``TFM\_ARM'' and requires a ARMv4 or higher
-processor.  It requires GCC and works with 32--bit digits.  In this mode fp\_digit is 32--bits and 
+\subsubsection{ARM}  The ``ARM'' mode is defined by ``TFM\_ARM'' and requires a ARMv4 with the M instructions (enhanced 
+multipliers) or higher processor.  It requires GCC and works with 32--bit digits.  In this mode fp\_digit is 32--bits and 
 fp\_word is 64--bits.
 
+\subsubsection{PPC32} The ``PPC32'' mode is defined by ``TFM\_PPC32'' and requires a standard PPC processor.  It doesn't 
+use altivec or other extensions so it should work on all compliant implementations of PPC.  It requires GCC and works
+with 32--bit digits.  In this mode fp\_digit is 32--bits and fp\_word is 64--bits.
+
 \subsubsection{Future Releases}  Future releases will support additional platform optimizations.
-Developers of MIPS and PPC platforms are encouraged to submit GCC asm inline patches 
+Developers of MIPS and SPARC platforms are encouraged to submit GCC asm inline patches 
 (see chapter \ref{chap:asmops} for more information).
 
 \begin{figure}[here]
@@ -165,8 +173,10 @@ Developers of MIPS and PPC platforms are encouraged to submit GCC asm inline pat
 \hline \textbf{Processor} & \textbf{Recommended Mode} \\
 \hline All 32--bit x86 platforms  & TFM\_X86 \\
 \hline Pentium 4                  & TFM\_SSE2 \\
+\hline Pentium 4 Prescott         & TFM\_SSE2 + TFM\_PRESCOTT \\
 \hline Athlon64                   & TFM\_X86\_64 \\
-\hline ARMv4 or higher            & TFM\_ARM \\
+\hline ARMv4 or higher with M     & TFM\_ARM \\
+\hline G3/G4 (32-bit PPC)         & TFM\_PPC32 \\
 \hline &\\
 \hline x86--32 or x86--64 (with GCC) & Leave blank and let autodetect work \\
 \hline
@@ -589,26 +599,26 @@ This computes the $\mu$ value for the inner loop.  You can safely alias $mu$ and
 a register if you want.
 
 \begin{verbatim}
-#define INNERMUL \
-   t = ((fp_word)mu) * ((fp_word)*tmpm++);                \
-   _c[OFF0] += t;                                         \
-   if (_c[OFF0] < (fp_digit)t)              ++_c[OFF1];   \
-   _c[OFF1] += (t>>DIGIT_BIT);                            \
-   if (_c[OFF1] < (fp_digit)(t>>DIGIT_BIT)) ++_c[OFF2];   
+#define INNERMUL                                      \
+   do { fp_word t;                                    \
+   _c[0] = t  = ((fp_word)_c[0] + (fp_word)cy) +      \
+                (((fp_word)mu) * ((fp_word)*tmpm++)); \
+   cy = (t >> DIGIT_BIT);                             \
+   } while (0)
 \end{verbatim}
 
-This computes the inner product and adds it to the correct set of carry variables.  The variable
-$\_c$ is a pointer alias to $c[x+y]$ and used to simplify the code.
+This computes the inner product and adds it to the destination and carry variable $cy$.
+This uses the $mu$ value computed above (can be in a register already) and the 
+$cy$ which is a chaining carry.  Inside the INNERMUL loop the $cy$ value can be kept
+inside a register (hint: it always starts as $cy = 0$ in the first iteration).
 
-You can safely alias $\_c$ to a register for INNERMUL by setting it equal to ``c + x''
-\footnote{Where ``c'' is an array on the stack.} by modifying LOOP\_START.
+Upon completion of the inner loop the macro LOOP\_END is called which is used to fetch
+$cy$ into the variable the C program can see.  This is where, if you cached $cy$ in a
+register you would copy it to the locally accessible C variable.
 
 \begin{verbatim}
 #define PROPCARRY \
-   _c[OFF0+1] += _c[OFF1];                                \
-   if (_c[OFF0+1] < _c[OFF1])       ++_c[OFF1+1];         \
-   _c[OFF1+1] += _c[OFF2];                                \
-   if (_c[OFF1+1] < _c[OFF2])       ++_c[OFF2+1];         
+   do { fp_digit t = _c[0] += cy; cy = (t < cy); } while (0)
 \end{verbatim}
 
 This propagates the carry upwards by one digit.  

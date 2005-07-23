@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -47,3 +47,7 @@ void fp_div_2(fp_int * a, fp_int * b)
   b->sign = a->sign;
   fp_clamp (b);
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

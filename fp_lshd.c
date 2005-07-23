@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -32,3 +32,7 @@ void fp_lshd(fp_int *a, int x)
    /* clamp digits */
    fp_clamp(a);
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

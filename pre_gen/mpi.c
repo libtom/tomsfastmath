@@ -6,7 +6,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -35,6 +35,10 @@ void fp_2expt(fp_int *a, int b)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_2expt.c */
 
 /* Start: fp_add.c */
@@ -45,7 +49,7 @@ void fp_2expt(fp_int *a, int b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -78,6 +82,10 @@ void fp_add(fp_int *a, fp_int *b, fp_int *c)
   }
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_add.c */
 
 /* Start: fp_add_d.c */
@@ -88,7 +96,7 @@ void fp_add(fp_int *a, fp_int *b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -100,6 +108,10 @@ void fp_add_d(fp_int *a, fp_digit b, fp_int *c)
    fp_add(a,&tmp,c);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_add_d.c */
 
 /* Start: fp_addmod.c */
@@ -110,7 +122,7 @@ void fp_add_d(fp_int *a, fp_digit b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -123,6 +135,10 @@ int fp_addmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
   return fp_mod(&tmp, c, d);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_addmod.c */
 
 /* Start: fp_cmp.c */
@@ -133,7 +149,7 @@ int fp_addmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -154,6 +170,10 @@ int fp_cmp(fp_int *a, fp_int *b)
    }
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_cmp.c */
 
 /* Start: fp_cmp_d.c */
@@ -164,7 +184,7 @@ int fp_cmp(fp_int *a, fp_int *b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -192,6 +212,10 @@ int fp_cmp_d(fp_int *a, fp_digit b)
 
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_cmp_d.c */
 
 /* Start: fp_cmp_mag.c */
@@ -202,7 +226,7 @@ int fp_cmp_d(fp_int *a, fp_digit b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -227,6 +251,10 @@ int fp_cmp_mag(fp_int *a, fp_int *b)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_cmp_mag.c */
 
 /* Start: fp_cnt_lsb.c */
@@ -237,7 +265,7 @@ int fp_cmp_mag(fp_int *a, fp_int *b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -273,6 +301,10 @@ int fp_cnt_lsb(fp_int *a)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_cnt_lsb.c */
 
 /* Start: fp_count_bits.c */
@@ -283,7 +315,7 @@ int fp_cnt_lsb(fp_int *a)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -309,6 +341,10 @@ int fp_count_bits (fp_int * a)
   return r;
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_count_bits.c */
 
 /* Start: fp_div.c */
@@ -319,7 +355,7 @@ int fp_count_bits (fp_int * a)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -466,6 +502,10 @@ int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
   return FP_OKAY;
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_div.c */
 
 /* Start: fp_div_2.c */
@@ -476,7 +516,7 @@ int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -519,6 +559,10 @@ void fp_div_2(fp_int * a, fp_int * b)
   fp_clamp (b);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_div_2.c */
 
 /* Start: fp_div_2d.c */
@@ -529,7 +573,7 @@ void fp_div_2(fp_int * a, fp_int * b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -598,6 +642,10 @@ void fp_div_2d(fp_int *a, int b, fp_int *c, fp_int *d)
   }
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_div_2d.c */
 
 /* Start: fp_div_d.c */
@@ -608,7 +656,7 @@ void fp_div_2d(fp_int *a, int b, fp_int *c, fp_int *d)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -691,6 +739,10 @@ int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_div_d.c */
 
 /* Start: fp_exptmod.c */
@@ -701,7 +753,7 @@ int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -870,6 +922,13 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
    fp_int tmp;
    int    err;
    
+#ifdef TFM_CHECK
+   /* prevent overflows */
+   if (P->used > (FP_SIZE/2)) {
+      return FP_VAL;
+   }
+#endif
+
    /* is X negative?  */
    if (X->sign == FP_NEG) {
       /* yes, copy G and invmod it */
@@ -879,13 +938,19 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
       }
       X->sign = FP_ZPOS;
       err =  _fp_exptmod(&tmp, X, P, Y);
-      X->sign = FP_NEG;
+      if (X != Y) {
+         X->sign = FP_NEG;
+      }
       return err;
    } else {
       /* Positive exponent so just exptmod */
       return _fp_exptmod(G, X, P, Y);
    }
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: fp_exptmod.c */
 
@@ -897,7 +962,7 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -942,9 +1007,22 @@ void fp_gcd(fp_int *a, fp_int *b, fp_int *c)
    fp_copy(&u, c);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_gcd.c */
 
 /* Start: fp_ident.c */
+/* TomsFastMath, a fast ISO C bignum library.
+ * 
+ * This project is meant to fill in where LibTomMath
+ * falls short.  That is speed ;-)
+ *
+ * This project is public domain and free for all purposes.
+ * 
+ * Tom St Denis, tomstdenis@gmail.com
+ */
 #include "tfm.h"
 
 const char *fp_ident(void)
@@ -986,9 +1064,6 @@ const char *fp_ident(void)
 #ifdef FP_64BIT
 " FP_64BIT "
 #endif
-#ifdef TFM_LARGE
-" TFM_LARGE "
-#endif
 #ifdef TFM_HUGE
 " TFM_HUGE "
 #endif
@@ -1012,6 +1087,10 @@ int main(void)
 #endif
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_ident.c */
 
 /* Start: fp_invmod.c */
@@ -1022,7 +1101,7 @@ int main(void)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1114,6 +1193,10 @@ top:
   return FP_OKAY;
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_invmod.c */
 
 /* Start: fp_isprime.c */
@@ -1124,7 +1207,7 @@ top:
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1192,6 +1275,10 @@ int fp_isprime(fp_int *a)
    return FP_YES;
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_isprime.c */
 
 /* Start: fp_lcm.c */
@@ -1202,7 +1289,7 @@ int fp_isprime(fp_int *a)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1223,6 +1310,10 @@ void fp_lcm(fp_int *a, fp_int *b, fp_int *c)
    }   
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_lcm.c */
 
 /* Start: fp_lshd.c */
@@ -1233,7 +1324,7 @@ void fp_lcm(fp_int *a, fp_int *b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1261,6 +1352,10 @@ void fp_lshd(fp_int *a, int x)
    fp_clamp(a);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_lshd.c */
 
 /* Start: fp_mod.c */
@@ -1271,7 +1366,7 @@ void fp_lshd(fp_int *a, int x)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1295,6 +1390,10 @@ int fp_mod(fp_int *a, fp_int *b, fp_int *c)
 
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_mod.c */
 
 /* Start: fp_mod_2d.c */
@@ -1305,7 +1404,7 @@ int fp_mod(fp_int *a, fp_int *b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1337,6 +1436,10 @@ void fp_mod_2d(fp_int *a, int b, fp_int *c)
   fp_clamp (c);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_mod_2d.c */
 
 /* Start: fp_mod_d.c */
@@ -1347,7 +1450,7 @@ void fp_mod_2d(fp_int *a, int b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1356,6 +1459,10 @@ int fp_mod_d(fp_int *a, fp_digit b, fp_digit *c)
 {
    return fp_div_d(a, b, NULL, c);
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: fp_mod_d.c */
 
@@ -1367,7 +1474,7 @@ int fp_mod_d(fp_int *a, fp_digit b, fp_digit *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1399,6 +1506,10 @@ void fp_montgomery_calc_normalization(fp_int *a, fp_int *b)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_montgomery_calc_normalization.c */
 
 /* Start: fp_montgomery_reduce.c */
@@ -1409,229 +1520,352 @@ void fp_montgomery_calc_normalization(fp_int *a, fp_int *b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
+/******************************************************************/
 #if defined(TFM_X86) 
-
 /* x86-32 code */
 
 #define MONT_START 
-
 #define MONT_FINI
-
+#define LOOP_END
 #define LOOP_START \
-   mu = c[x] * mp;
+   mu = c[x] * mp
 
-#define INNERMUL \
-asm(                                                                                          \
-"movl %7,%%eax                \n\t"                                                           \
-"mull %6                      \n\t"                                                           \
-"addl %%eax,%0                \n\t"                                                           \
-"adcl %%edx,%1                \n\t"                                                           \
-"adcl $0,%2                   \n\t"                                                           \
-:"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),  \
-                                                "g"(mu), "g"(*tmpm++)                          \
-                                               : "%eax", "%edx", "%cc");
+#define INNERMUL                                          \
+asm(                                                      \
+   "movl %5,%%eax \n\t"                                   \
+   "mull %4       \n\t"                                   \
+   "addl %1,%%eax \n\t"                                   \
+   "adcl $0,%%edx \n\t"                                   \
+   "addl %%eax,%0 \n\t"                                   \
+   "adcl $0,%%edx \n\t"                                   \
+   "movl %%edx,%1 \n\t"                                   \
+:"=g"(_c[LO]), "=r"(cy)                                   \
+:"0"(_c[LO]), "1"(cy), "g"(mu), "g"(*tmpm++)              \
+: "%eax", "%edx", "%cc")
 
-#define PROPCARRY \
-asm(                                                                                               \
-"movl %1,%%eax                \n\t"                                                                \
-"addl  %%eax,%6               \n\t"                                                                \
-"movl %2,%%eax                \n\t"                                                                \
-"adcl  %%eax,%7               \n\t"                                                                \
-"adcl $0,%8                   \n\t"                                                                \
-:"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),       \
-                                                "m"(_c[OFF0+1]), "m"(_c[OFF1+1]), "m"(_c[OFF2+1])  \
-: "%eax", "%cc");
+#define PROPCARRY                           \
+asm(                                        \
+   "addl   %1,%0    \n\t"                   \
+   "setb   %%al     \n\t"                   \
+   "movzbl %%al,%1 \n\t"                    \
+:"=g"(_c[LO]), "=r"(cy)                     \
+:"0"(_c[LO]), "1"(cy)                       \
+: "%eax", "%cc")
 
+/******************************************************************/
 #elif defined(TFM_X86_64)
 /* x86-64 code */
 
 #define MONT_START 
-
 #define MONT_FINI
-
+#define LOOP_END
 #define LOOP_START \
-   mu = c[x] * mp;
+   mu = c[x] * mp
 
-#define INNERMUL \
-asm(                                                                                          \
-"movq %7,%%rax                \n\t"                                                           \
-"mulq %6                      \n\t"                                                           \
-"addq %%rax,%0                \n\t"                                                           \
-"adcq %%rdx,%1                \n\t"                                                           \
-"adcq $0,%2                   \n\t"                                                           \
-:"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),  \
-                                                "g"(mu), "g"(*tmpm++)                          \
-                                               : "%rax", "%rdx", "%cc");
+#define INNERMUL                                          \
+asm(                                                      \
+   "movq %5,%%rax \n\t"                                   \
+   "mulq %4       \n\t"                                   \
+   "addq %1,%%rax \n\t"                                   \
+   "adcq $0,%%rdx \n\t"                                   \
+   "addq %%rax,%0 \n\t"                                   \
+   "adcq $0,%%rdx \n\t"                                   \
+   "movq %%rdx,%1 \n\t"                                   \
+:"=g"(_c[LO]), "=r"(cy)                                   \
+:"0"(_c[LO]), "1"(cy), "r"(mu), "r"(*tmpm++)              \
+: "%rax", "%rdx", "%cc")
 
-#define PROPCARRY \
-asm(                                                                                               \
-"movq %1,%%rax                \n\t"                                                                \
-"movq %2,%%rbx                \n\t"                                                                \
-"addq  %%rax,%6               \n\t"                                                                \
-"adcq  %%rbx,%7               \n\t"                                                                \
-"adcq $0,%8                   \n\t"                                                                \
-:"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),       \
-                                                "m"(_c[OFF0+1]), "m"(_c[OFF1+1]), "m"(_c[OFF2+1])  \
-: "%rax", "%rbx", "%cc");
+#define INNERMUL8 \
+ asm(                  \
+ "movq 0(%5),%%rax    \n\t"  \
+ "movq 0(%2),%%r10    \n\t"  \
+ "movq 0x8(%5),%%r11  \n\t"  \
+ "mulq %4             \n\t"  \
+ "addq %%r10,%%rax    \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq 0x8(%2),%%r10  \n\t"  \
+ "addq %3,%%rax       \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq %%rax,0(%0)    \n\t"  \
+ "movq %%rdx,%1       \n\t"  \
+ \
+ "movq %%r11,%%rax    \n\t"  \
+ "movq 0x10(%5),%%r11 \n\t"  \
+ "mulq %4             \n\t"  \
+ "addq %%r10,%%rax    \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq 0x10(%2),%%r10 \n\t"  \
+ "addq %3,%%rax       \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq %%rax,0x8(%0)  \n\t"  \
+ "movq %%rdx,%1       \n\t"  \
+ \
+ "movq %%r11,%%rax    \n\t"  \
+ "movq 0x18(%5),%%r11 \n\t"  \
+ "mulq %4             \n\t"  \
+ "addq %%r10,%%rax    \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq 0x18(%2),%%r10 \n\t"  \
+ "addq %3,%%rax       \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq %%rax,0x10(%0) \n\t"  \
+ "movq %%rdx,%1       \n\t"  \
+ \
+ "movq %%r11,%%rax    \n\t"  \
+ "movq 0x20(%5),%%r11 \n\t"  \
+ "mulq %4             \n\t"  \
+ "addq %%r10,%%rax    \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq 0x20(%2),%%r10 \n\t"  \
+ "addq %3,%%rax       \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq %%rax,0x18(%0) \n\t"  \
+ "movq %%rdx,%1       \n\t"  \
+ \
+ "movq %%r11,%%rax    \n\t"  \
+ "movq 0x28(%5),%%r11 \n\t"  \
+ "mulq %4             \n\t"  \
+ "addq %%r10,%%rax    \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq 0x28(%2),%%r10 \n\t"  \
+ "addq %3,%%rax       \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq %%rax,0x20(%0) \n\t"  \
+ "movq %%rdx,%1       \n\t"  \
+ \
+ "movq %%r11,%%rax    \n\t"  \
+ "movq 0x30(%5),%%r11 \n\t"  \
+ "mulq %4             \n\t"  \
+ "addq %%r10,%%rax    \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq 0x30(%2),%%r10 \n\t"  \
+ "addq %3,%%rax       \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq %%rax,0x28(%0) \n\t"  \
+ "movq %%rdx,%1       \n\t"  \
+ \
+ "movq %%r11,%%rax    \n\t"  \
+ "movq 0x38(%5),%%r11 \n\t"  \
+ "mulq %4             \n\t"  \
+ "addq %%r10,%%rax    \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq 0x38(%2),%%r10 \n\t"  \
+ "addq %3,%%rax       \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq %%rax,0x30(%0) \n\t"  \
+ "movq %%rdx,%1       \n\t"  \
+ \
+ "movq %%r11,%%rax    \n\t"  \
+ "mulq %4             \n\t"  \
+ "addq %%r10,%%rax    \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "addq %3,%%rax       \n\t"  \
+ "adcq $0,%%rdx       \n\t"  \
+ "movq %%rax,0x38(%0) \n\t"  \
+ "movq %%rdx,%1       \n\t"  \
+ \
+:"=r"(_c), "=r"(cy)                    \
+: "0"(_c),  "1"(cy), "g"(mu), "r"(tmpm)\
+: "%rax", "%rdx", "%r10", "%r11", "%cc")
 
-#elif defined(TFM_SSE2)
 
-/* SSE2 code */
+#define PROPCARRY                           \
+asm(                                        \
+   "addq   %1,%0    \n\t"                   \
+   "setb   %%al     \n\t"                   \
+   "movzbq %%al,%1 \n\t"                    \
+:"=g"(_c[LO]), "=r"(cy)                     \
+:"0"(_c[LO]), "1"(cy)                       \
+: "%rax", "%cc")
+
+/******************************************************************/
+#elif defined(TFM_SSE2)  
+/* SSE2 code (assumes 32-bit fp_digits) */
+/* XMM register assignments:
+ * xmm0  *tmpm++, then Mu * (*tmpm++)
+ * xmm1  c[x], then Mu
+ * xmm2  mp
+ * xmm3  cy
+ * xmm4  _c[LO]
+ */
 
 #define MONT_START \
-asm("movd %0,%%mm2"::"g"(mp));
+   asm("movd %0,%%mm2"::"g"(mp))
 
 #define MONT_FINI \
-asm("emms");
+   asm("emms")
 
-#define LOOP_START \
-asm(\
-"movd %0,%%mm1                \n\t" \
-"pmuludq %%mm2,%%mm1          \n\t" \
-:: "g"(c[x]));
+#define LOOP_START          \
+asm(                        \
+"movd %0,%%mm1        \n\t" \
+"pxor %%mm3,%%mm3     \n\t" \
+"pmuludq %%mm2,%%mm1  \n\t" \
+:: "g"(c[x]))
 
-#define INNERMUL \
-asm(                                                                                          \
-"movd %6,%%mm0                \n\t"                                                           \
-"pmuludq %%mm1,%%mm0          \n\t"                                                           \
-"movd %%mm0,%%eax             \n\t"                                                           \
-"psrlq $32, %%mm0             \n\t"                                                           \
-"addl %%eax,%0                \n\t"                                                           \
-"movd %%mm0,%%eax             \n\t"                                                           \
-"adcl %%eax,%1                \n\t"                                                           \
-"adcl $0,%2                   \n\t"                                                           \
-:"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),  \
-                                                "g"(*tmpm++)                                  \
-                                               : "%eax", "%cc");
+/* pmuludq on mmx registers does a 32x32->64 multiply. */
+#define INNERMUL               \
+asm(                           \
+   "movd %1,%%mm4        \n\t" \
+   "movd %2,%%mm0        \n\t" \
+   "paddq %%mm4,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm0  \n\t" \
+   "paddq %%mm0,%%mm3    \n\t" \
+   "movd %%mm3,%0        \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+:"=g"(_c[LO]) : "0"(_c[LO]), "g"(*tmpm++) );
 
-#define PROPCARRY \
-asm(                                                                                               \
-"movl %1,%%eax                \n\t"                                                                \
-"addl  %%eax,%6               \n\t"                                                                \
-"movl %2,%%eax                \n\t"                                                                \
-"adcl  %%eax,%7               \n\t"                                                                \
-"adcl $0,%8                   \n\t"                                                                \
-:"=g"(_c[OFF0]), "=g"(_c[OFF1]), "=g"(_c[OFF2]):"0"(_c[OFF0]), "1"(_c[OFF1]), "2"(_c[OFF2]),       \
-                                                "g"(_c[OFF0+1]), "g"(_c[OFF1+1]), "g"(_c[OFF2+1])  \
-: "%eax", "%cc");
+#define LOOP_END \
+asm( "movd %%mm3,%0  \n" :"=r"(cy))
 
+#define PROPCARRY                           \
+asm(                                        \
+   "addl   %1,%0    \n\t"                   \
+   "setb   %%al     \n\t"                   \
+   "movzbl %%al,%1 \n\t"                    \
+:"=g"(_c[LO]), "=r"(cy)                     \
+:"0"(_c[LO]), "1"(cy)                       \
+: "%eax", "%cc")
+
+/******************************************************************/
 #elif defined(TFM_ARM)
+   /* ARMv4 code */
 
-/* ISO C code */
 #define MONT_START 
-
 #define MONT_FINI
-
+#define LOOP_END
 #define LOOP_START \
-   mu = c[x] * mp;
+   mu = c[x] * mp
 
-/* NOTE: later write it using two regs instead of three for _c + ... */
-#define INNERMUL \
-asm(                                             \
-"UMULL r0,r1,%0,%1                \n\t"          \
-"LDR   r2,[%2]                    \n\t"          \
-"ADDS  r2,r2,r0                   \n\t"          \
-"STR   r2,[%2]                    \n\t"          \
-"LDR   r2,[%3]                    \n\t"          \
-"ADCS  r2,r2,r1                   \n\t"          \
-"STR   r2,[%3]                    \n\t"          \
-"LDR   r2,[%4]                    \n\t"          \
-"ADC   r2,r2,#0                   \n\t"          \
-"STR   r2,[%4]                    \n\t"          \
-::"r"(mu),"r"(*tmpm++),"r"(_c + OFF0),"r"(_c + OFF1),"r"(_c + OFF2):"r0", "r1", "r2", "%cc");
+#define INNERMUL                    \
+asm(                                \
+    " LDR    r0,%1            \n\t" \
+    " ADDS   r0,r0,%0         \n\t" \
+    " MOVCS  %0,#1            \n\t" \
+    " MOVCC  %0,#0            \n\t" \
+    " UMLAL  r0,%0,%3,%4      \n\t" \
+    " STR    r0,%1            \n\t" \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"r"(mu),"r"(*tmpm++),"1"(_c[0]):"r0","%cc");
 
-#define PROPCARRY \
-asm(                                             \
-"LDR   r0,[%1]                    \n\t"          \
-"LDR   r1,[%0,#4]                 \n\t"          \
-"ADDS  r0,r0,r1                   \n\t"          \
-"STR   r0,[%0,#4]                 \n\t"          \
-"LDR   r0,[%2]                    \n\t"          \
-"LDR   r1,[%1,#4]                 \n\t"          \
-"ADCS  r0,r0,r1                   \n\t"          \
-"STR   r0,[%1,#4]                 \n\t"          \
-"LDR   r0,[%2,#4]                 \n\t"          \
-"ADC   r0,r0,#0                   \n\t"          \
-"STR   r0,[%2,#4]                 \n\t"          \
-::"r"(_c + OFF0),"r"(_c + OFF1),"r"(_c + OFF2):"r0", "r1", "%cc");
+#define PROPCARRY                  \
+asm(                               \
+    " LDR   r0,%1            \n\t" \
+    " ADDS  r0,r0,%0         \n\t" \
+    " STR   r0,%1            \n\t" \
+    " MOVCS %0,#1            \n\t" \
+    " MOVCC %0,#0            \n\t" \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"r0","%cc");
 
+#elif defined(TFM_PPC32)
+
+/* PPC32 */
+#define MONT_START 
+#define MONT_FINI
+#define LOOP_END
+#define LOOP_START \
+   mu = c[x] * mp
+
+#define INNERMUL                     \
+asm(                                 \
+   " mullw    r16,%3,%4       \n\t"  \
+   " mulhwu   r17,%3,%4       \n\t"  \
+   " addc     r16,r16,%0      \n\t"  \
+   " addze    r17,r17         \n\t"  \
+   " lwz      r18,%1          \n\t"  \
+   " addc     r16,r16,r18     \n\t"  \
+   " addze    %0,r17          \n\t"  \
+   " stw      r16,%1          \n\t"  \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"r"(mu),"r"(*tmpm++),"1"(_c[0]):"r16", "r17", "r18","%cc");
+
+#define PROPCARRY                    \
+asm(                                 \
+   " lwz      r16,%1          \n\t"  \
+   " addc     r16,r16,%0      \n\t"  \
+   " stw      r16,%1          \n\t"  \
+   " xor      %0,%0,%0        \n\t"  \
+   " addze    %0,%0           \n\t"  \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"r16","%cc");
+
+/******************************************************************/
 #else
 
 /* ISO C code */
 #define MONT_START 
-
 #define MONT_FINI
-
+#define LOOP_END
 #define LOOP_START \
-   mu = c[x] * mp;
+   mu = c[x] * mp
 
-#define INNERMUL \
-   do { fp_word t;                                                           \
-   t = (fp_word)_c[OFF0] + ((fp_word)mu) * ((fp_word)*tmpm++); _c[OFF0] = t; \
-   t = (fp_word)_c[OFF1] + (t >> DIGIT_BIT);                   _c[OFF1] = t; \
-   _c[OFF2] += (t >> DIGIT_BIT);                                             \
-   } while (0);
+#define INNERMUL                                      \
+   do { fp_word t;                                    \
+   _c[0] = t  = ((fp_word)_c[0] + (fp_word)cy) +      \
+                (((fp_word)mu) * ((fp_word)*tmpm++)); \
+   cy = (t >> DIGIT_BIT);                             \
+   } while (0)
 
 #define PROPCARRY \
-   do { fp_word t;                                                           \
-   t = (fp_word)_c[OFF0+1] + (fp_word)_c[OFF1];                    _c[OFF0+1] = t; \
-   t = (fp_word)_c[OFF1+1] + (t >> DIGIT_BIT) + (fp_word)_c[OFF2]; _c[OFF1+1] = t; \
-   _c[OFF2+1] += (t >> DIGIT_BIT);                                           \
-   } while (0);
+   do { fp_digit t = _c[0] += cy; cy = (t < cy); } while (0)
 
 #endif
+/******************************************************************/
 
 
-#define OFF0  (0)
-#define OFF1  (FP_SIZE)
-#define OFF2  (FP_SIZE+FP_SIZE)
+#define LO  0
+#define HI  1
+#define CY  2
 
 /* computes x/R == x (mod N) via Montgomery Reduction */
 void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
 {
-   fp_digit c[3*FP_SIZE], *_c, *tmpm, mu;
+   fp_digit c[FP_SIZE], *_c, *tmpm, mu;
    int      oldused, x, y, pa;
 
+#if defined(USE_MEMSET)
    /* now zero the buff */
+   memset(c, 0, sizeof c);
+#endif
    pa = m->used;
-   memset(c, 0, sizeof(c));
 
    /* copy the input */
    oldused = a->used;
    for (x = 0; x < oldused; x++) {
        c[x] = a->dp[x];
    }
-
+#if !defined(USE_MEMSET)
+   for (; x < 2*pa+3; x++) {
+       c[x] = 0;
+   }
+#endif
    MONT_START;
 
-   /* now let's get bizz-sy! */
    for (x = 0; x < pa; x++) {
+       fp_digit cy = 0;
        /* get Mu for this round */
        LOOP_START;
-
-       /* our friendly neighbourhood alias */
        _c   = c + x;
        tmpm = m->dp;
+       y = 0;
+       #if defined(TFM_X86_64)
+           for (; y < (pa & ~7); y += 8) {
+              INNERMUL8;
+              _c   += 8;
+              tmpm += 8;
+           }
+       #endif
 
-       for (y = 0; y < pa; y++) {
+       for (; y < pa; y++) {
           INNERMUL;
           ++_c;
        }
-       /* send carry up man... */
-       _c = c + x;
-       PROPCARRY;
+       LOOP_END;
+       while (cy) {
+           PROPCARRY; //  cy = cy > (*_c += cy);
+           ++_c;
+       }
   }         
-
-  /* fix the rest of the carries */
-  _c = c + pa;
-  for (x = pa; x < pa * 2 + 2; x++) {
-     PROPCARRY;
-     ++_c;
-  }
 
   /* now copy out */
   _c   = c + pa;
@@ -1655,6 +1889,11 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
   }
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
+
 /* End: fp_montgomery_reduce.c */
 
 /* Start: fp_montgomery_setup.c */
@@ -1665,7 +1904,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1703,6 +1942,10 @@ int fp_montgomery_setup(fp_int *a, fp_digit *rho)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_montgomery_setup.c */
 
 /* Start: fp_mul.c */
@@ -1713,7 +1956,7 @@ int fp_montgomery_setup(fp_int *a, fp_digit *rho)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1732,19 +1975,26 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
        inputs are not close to the next power of two.  That is, for example,
        if say y=17 then we would do (32-17)^2 = 225 unneeded multiplications 
     */
-        if (y <= 4) {
-           fp_mul_comba4(A,B,C);
-        } else if (y <= 8) {
-           fp_mul_comba8(A,B,C);
-#if defined(TFM_LARGE)
-        } else if (y <= 16 && y >= 10) {
-           fp_mul_comba16(A,B,C);
+
+#ifdef TFM_SMALL_SET
+        if (y <= 16) {
+           fp_mul_comba_small(A,B,C);
+#elif defined(TFM_HUGE)
+        if (0) { 1;
 #endif
 #if defined(TFM_HUGE)
-        } else if (y <= 32 && y >= 24) {
+        } else if (y <= 32) {
            fp_mul_comba32(A,B,C);
+        } else if (y <= 48) {
+           fp_mul_comba48(A,B,C);
+        } else if (y <= 64) {
+           fp_mul_comba64(A,B,C);
 #endif
+#if !defined(TFM_HUGE) && !defined(TFM_SMALL_SET)
+        {
+#else
         } else {
+#endif
            fp_mul_comba(A,B,C);
         }
     } else {
@@ -1752,7 +2002,7 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
 
            if A = ab and B = cd for ||a|| = r we need to solve 
 
-           ac*r^2 + (-(a-b)(c-d) + ac + bd)*r + bd
+           ac*r^2 + ((a+b)(c+d) - (ac + bd))*r + bd
 
            So we solve for the three products then we form the final result with careful shifting 
            and addition.
@@ -1780,7 +2030,7 @@ Obvious points of optimization
         } else {
            t1.used = 0;
         }
-        t1.sign = A->sign;
+        t1.sign = 0;
 
 //        fp_copy(B, &t2); fp_rshd(&t2, r); 
         for (s = 0; s < B->used - r; s++) {
@@ -1794,7 +2044,7 @@ Obvious points of optimization
         } else {
            t2.used = 0;
         }
-        t2.sign = B->sign;
+        t2.sign = 0;
 
         fp_copy(&t1, &amb); fp_copy(&t2, &cmd);
         fp_zero(&ac);
@@ -1808,7 +2058,7 @@ Obvious points of optimization
             t2.dp[s] = B->dp[s];
         }
         for (; s < FP_SIZE; s++) {
-            t1.dp[s]   = 0; 
+            t1.dp[s] = 0; 
             t2.dp[s] = 0; 
         }
         t1.used = r;
@@ -1816,18 +2066,17 @@ Obvious points of optimization
         fp_clamp(&t1);
         fp_clamp(&t2);
         
-        fp_sub(&amb, &t1, &amb); fp_sub(&cmd, &t2, &cmd);
+        s_fp_add(&amb, &t1, &amb); s_fp_add(&cmd, &t2, &cmd);
         fp_zero(&bd);
         fp_mul(&t1, &t2, &bd);
 
-        /* now get the (a-b)(c-d) term */
+        /* now get the (a+b)(c+d) term */
         fp_zero(&comp);
         fp_mul(&amb, &cmd, &comp);
 
         /* now solve the system, do the middle term first */
-        comp.sign ^= 1;
-        fp_add(&comp, &ac, &comp);
-        fp_add(&comp, &bd, &comp);
+        s_fp_sub(&comp, &ac, &comp);
+        s_fp_sub(&comp, &bd, &comp);
         fp_lshd(&comp, r);
   
         /* leading term */
@@ -1843,6 +2092,10 @@ Obvious points of optimization
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_mul.c */
 
 /* Start: fp_mul_2.c */
@@ -1853,7 +2106,7 @@ Obvious points of optimization
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1910,6 +2163,10 @@ void fp_mul_2(fp_int * a, fp_int * b)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_mul_2.c */
 
 /* Start: fp_mul_2d.c */
@@ -1920,7 +2177,7 @@ void fp_mul_2(fp_int * a, fp_int * b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -1957,6 +2214,10 @@ void fp_mul_2d(fp_int *a, int b, fp_int *c)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_mul_2d.c */
 
 /* Start: fp_mul_comba.c */
@@ -1967,7 +2228,7 @@ void fp_mul_2d(fp_int *a, int b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 
 /* About this file...
@@ -1975,6 +2236,11 @@ void fp_mul_2d(fp_int *a, int b, fp_int *c)
 */
 
 #include <tfm.h>
+
+#if defined(TFM_PRESCOTT) && defined(TFM_SSE2)
+   #undef TFM_SSE2
+   #define TFM_X86
+#endif
 
 /* these are the combas.  Worship them. */
 #if defined(TFM_X86)
@@ -2111,8 +2377,37 @@ asm(                                                          \
 "  UMULL  r0,r1,%6,%7           \n\t"                         \
 "  ADDS   %0,%0,r0              \n\t"                         \
 "  ADCS   %1,%1,r1              \n\t"                         \
-"  ADC    %2, %2, #0            \n\t"                         \
+"  ADC    %2,%2,#0              \n\t"                         \
 :"=r"(c0), "=r"(c1), "=r"(c2) : "0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j) : "r0", "r1", "%cc");
+
+#elif defined(TFM_PPC32)
+/* For 32-bit PPC */
+
+#define COMBA_START
+
+#define COMBA_CLEAR \
+   c0 = c1 = c2 = 0;
+
+#define COMBA_FORWARD \
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
+
+#define COMBA_STORE(x) \
+   x = c0;
+
+#define COMBA_STORE2(x) \
+   x = c1;
+
+#define COMBA_FINI 
+   
+/* untested: will mulhwu change the flags?  Docs say no */
+#define MULADD(i, j)              \
+asm(                              \
+   " mullw  r16,%6,%7       \n\t" \
+   " addc   %0,%0,r16       \n\t" \
+   " mulhwu r16,%6,%7       \n\t" \
+   " adde   %1,%1,r16       \n\t" \
+   " addze  %2,%2           \n\t" \
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"r16");
 
 #else
 /* ISO C code */
@@ -2199,267 +2494,1231 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
   fp_copy(dst, C);
 }
 
-void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C)
-{
-   fp_digit c0, c1, c2, at[8];
-
-   memcpy(at, A->dp, 4 * sizeof(fp_digit));
-   memcpy(at+4, B->dp, 4 * sizeof(fp_digit));
-   COMBA_START;
-
-   COMBA_CLEAR;
-   /* 0 */
-   MULADD(at[0], at[4]); 
-   COMBA_STORE(C->dp[0]);
-   /* 1 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[5]);    MULADD(at[1], at[4]); 
-   COMBA_STORE(C->dp[1]);
-   /* 2 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[6]);    MULADD(at[1], at[5]);    MULADD(at[2], at[4]); 
-   COMBA_STORE(C->dp[2]);
-   /* 3 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[7]);    MULADD(at[1], at[6]);    MULADD(at[2], at[5]);    MULADD(at[3], at[4]); 
-   COMBA_STORE(C->dp[3]);
-   /* 4 */
-   COMBA_FORWARD;
-   MULADD(at[1], at[7]);    MULADD(at[2], at[6]);    MULADD(at[3], at[5]); 
-   COMBA_STORE(C->dp[4]);
-   /* 5 */
-   COMBA_FORWARD;
-   MULADD(at[2], at[7]);    MULADD(at[3], at[6]); 
-   COMBA_STORE(C->dp[5]);
-   /* 6 */
-   COMBA_FORWARD;
-   MULADD(at[3], at[7]); 
-   COMBA_STORE(C->dp[6]);
-   COMBA_STORE2(C->dp[7]);
-   C->used = 8;
-   C->sign = A->sign ^ B->sign;
-   fp_clamp(C);
-   COMBA_FINI;
-}
-
-
-void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C)
-{
-   fp_digit c0, c1, c2, at[16];
-
-   memcpy(at, A->dp, 8 * sizeof(fp_digit));
-   memcpy(at+8, B->dp, 8 * sizeof(fp_digit));
-   COMBA_START;
-
-   COMBA_CLEAR;
-   /* 0 */
-   MULADD(at[0], at[8]); 
-   COMBA_STORE(C->dp[0]);
-   /* 1 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[9]);    MULADD(at[1], at[8]); 
-   COMBA_STORE(C->dp[1]);
-   /* 2 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[10]);    MULADD(at[1], at[9]);    MULADD(at[2], at[8]); 
-   COMBA_STORE(C->dp[2]);
-   /* 3 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[11]);    MULADD(at[1], at[10]);    MULADD(at[2], at[9]);    MULADD(at[3], at[8]); 
-   COMBA_STORE(C->dp[3]);
-   /* 4 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[12]);    MULADD(at[1], at[11]);    MULADD(at[2], at[10]);    MULADD(at[3], at[9]);    MULADD(at[4], at[8]); 
-   COMBA_STORE(C->dp[4]);
-   /* 5 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[13]);    MULADD(at[1], at[12]);    MULADD(at[2], at[11]);    MULADD(at[3], at[10]);    MULADD(at[4], at[9]);    MULADD(at[5], at[8]); 
-   COMBA_STORE(C->dp[5]);
-   /* 6 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[14]);    MULADD(at[1], at[13]);    MULADD(at[2], at[12]);    MULADD(at[3], at[11]);    MULADD(at[4], at[10]);    MULADD(at[5], at[9]);    MULADD(at[6], at[8]); 
-   COMBA_STORE(C->dp[6]);
-   /* 7 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[15]);    MULADD(at[1], at[14]);    MULADD(at[2], at[13]);    MULADD(at[3], at[12]);    MULADD(at[4], at[11]);    MULADD(at[5], at[10]);    MULADD(at[6], at[9]);    MULADD(at[7], at[8]); 
-   COMBA_STORE(C->dp[7]);
-   /* 8 */
-   COMBA_FORWARD;
-   MULADD(at[1], at[15]);    MULADD(at[2], at[14]);    MULADD(at[3], at[13]);    MULADD(at[4], at[12]);    MULADD(at[5], at[11]);    MULADD(at[6], at[10]);    MULADD(at[7], at[9]); 
-   COMBA_STORE(C->dp[8]);
-   /* 9 */
-   COMBA_FORWARD;
-   MULADD(at[2], at[15]);    MULADD(at[3], at[14]);    MULADD(at[4], at[13]);    MULADD(at[5], at[12]);    MULADD(at[6], at[11]);    MULADD(at[7], at[10]); 
-   COMBA_STORE(C->dp[9]);
-   /* 10 */
-   COMBA_FORWARD;
-   MULADD(at[3], at[15]);    MULADD(at[4], at[14]);    MULADD(at[5], at[13]);    MULADD(at[6], at[12]);    MULADD(at[7], at[11]); 
-   COMBA_STORE(C->dp[10]);
-   /* 11 */
-   COMBA_FORWARD;
-   MULADD(at[4], at[15]);    MULADD(at[5], at[14]);    MULADD(at[6], at[13]);    MULADD(at[7], at[12]); 
-   COMBA_STORE(C->dp[11]);
-   /* 12 */
-   COMBA_FORWARD;
-   MULADD(at[5], at[15]);    MULADD(at[6], at[14]);    MULADD(at[7], at[13]); 
-   COMBA_STORE(C->dp[12]);
-   /* 13 */
-   COMBA_FORWARD;
-   MULADD(at[6], at[15]);    MULADD(at[7], at[14]); 
-   COMBA_STORE(C->dp[13]);
-   /* 14 */
-   COMBA_FORWARD;
-   MULADD(at[7], at[15]); 
-   COMBA_STORE(C->dp[14]);
-   COMBA_STORE2(C->dp[15]);
-   C->used = 16;
-   C->sign = A->sign ^ B->sign;
-   fp_clamp(C);
-   COMBA_FINI;
-}
-
-#if defined(TFM_LARGE)
-
-void fp_mul_comba16(fp_int *A, fp_int *B, fp_int *C)
+#if defined(TFM_SMALL_SET)
+void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[32];
+   switch (MAX(A->used, B->used)) { 
 
-   memcpy(at, A->dp, 16 * sizeof(fp_digit));
-   memcpy(at+16, B->dp, 16 * sizeof(fp_digit));
-   COMBA_START;
+   case 1:
+      memcpy(at, A->dp, 1 * sizeof(fp_digit));
+      memcpy(at+1, B->dp, 1 * sizeof(fp_digit));
+      COMBA_START;
 
-   COMBA_CLEAR;
-   /* 0 */
-   MULADD(at[0], at[16]); 
-   COMBA_STORE(C->dp[0]);
-   /* 1 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[17]);    MULADD(at[1], at[16]); 
-   COMBA_STORE(C->dp[1]);
-   /* 2 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[18]);    MULADD(at[1], at[17]);    MULADD(at[2], at[16]); 
-   COMBA_STORE(C->dp[2]);
-   /* 3 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[19]);    MULADD(at[1], at[18]);    MULADD(at[2], at[17]);    MULADD(at[3], at[16]); 
-   COMBA_STORE(C->dp[3]);
-   /* 4 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[20]);    MULADD(at[1], at[19]);    MULADD(at[2], at[18]);    MULADD(at[3], at[17]);    MULADD(at[4], at[16]); 
-   COMBA_STORE(C->dp[4]);
-   /* 5 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[21]);    MULADD(at[1], at[20]);    MULADD(at[2], at[19]);    MULADD(at[3], at[18]);    MULADD(at[4], at[17]);    MULADD(at[5], at[16]); 
-   COMBA_STORE(C->dp[5]);
-   /* 6 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[22]);    MULADD(at[1], at[21]);    MULADD(at[2], at[20]);    MULADD(at[3], at[19]);    MULADD(at[4], at[18]);    MULADD(at[5], at[17]);    MULADD(at[6], at[16]); 
-   COMBA_STORE(C->dp[6]);
-   /* 7 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[23]);    MULADD(at[1], at[22]);    MULADD(at[2], at[21]);    MULADD(at[3], at[20]);    MULADD(at[4], at[19]);    MULADD(at[5], at[18]);    MULADD(at[6], at[17]);    MULADD(at[7], at[16]); 
-   COMBA_STORE(C->dp[7]);
-   /* 8 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[24]);    MULADD(at[1], at[23]);    MULADD(at[2], at[22]);    MULADD(at[3], at[21]);    MULADD(at[4], at[20]);    MULADD(at[5], at[19]);    MULADD(at[6], at[18]);    MULADD(at[7], at[17]);    MULADD(at[8], at[16]); 
-   COMBA_STORE(C->dp[8]);
-   /* 9 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[25]);    MULADD(at[1], at[24]);    MULADD(at[2], at[23]);    MULADD(at[3], at[22]);    MULADD(at[4], at[21]);    MULADD(at[5], at[20]);    MULADD(at[6], at[19]);    MULADD(at[7], at[18]);    MULADD(at[8], at[17]);    MULADD(at[9], at[16]); 
-   COMBA_STORE(C->dp[9]);
-   /* 10 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[26]);    MULADD(at[1], at[25]);    MULADD(at[2], at[24]);    MULADD(at[3], at[23]);    MULADD(at[4], at[22]);    MULADD(at[5], at[21]);    MULADD(at[6], at[20]);    MULADD(at[7], at[19]);    MULADD(at[8], at[18]);    MULADD(at[9], at[17]);    MULADD(at[10], at[16]); 
-   COMBA_STORE(C->dp[10]);
-   /* 11 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[27]);    MULADD(at[1], at[26]);    MULADD(at[2], at[25]);    MULADD(at[3], at[24]);    MULADD(at[4], at[23]);    MULADD(at[5], at[22]);    MULADD(at[6], at[21]);    MULADD(at[7], at[20]);    MULADD(at[8], at[19]);    MULADD(at[9], at[18]);    MULADD(at[10], at[17]);    MULADD(at[11], at[16]); 
-   COMBA_STORE(C->dp[11]);
-   /* 12 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[28]);    MULADD(at[1], at[27]);    MULADD(at[2], at[26]);    MULADD(at[3], at[25]);    MULADD(at[4], at[24]);    MULADD(at[5], at[23]);    MULADD(at[6], at[22]);    MULADD(at[7], at[21]);    MULADD(at[8], at[20]);    MULADD(at[9], at[19]);    MULADD(at[10], at[18]);    MULADD(at[11], at[17]);    MULADD(at[12], at[16]); 
-   COMBA_STORE(C->dp[12]);
-   /* 13 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[29]);    MULADD(at[1], at[28]);    MULADD(at[2], at[27]);    MULADD(at[3], at[26]);    MULADD(at[4], at[25]);    MULADD(at[5], at[24]);    MULADD(at[6], at[23]);    MULADD(at[7], at[22]);    MULADD(at[8], at[21]);    MULADD(at[9], at[20]);    MULADD(at[10], at[19]);    MULADD(at[11], at[18]);    MULADD(at[12], at[17]);    MULADD(at[13], at[16]); 
-   COMBA_STORE(C->dp[13]);
-   /* 14 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[30]);    MULADD(at[1], at[29]);    MULADD(at[2], at[28]);    MULADD(at[3], at[27]);    MULADD(at[4], at[26]);    MULADD(at[5], at[25]);    MULADD(at[6], at[24]);    MULADD(at[7], at[23]);    MULADD(at[8], at[22]);    MULADD(at[9], at[21]);    MULADD(at[10], at[20]);    MULADD(at[11], at[19]);    MULADD(at[12], at[18]);    MULADD(at[13], at[17]);    MULADD(at[14], at[16]); 
-   COMBA_STORE(C->dp[14]);
-   /* 15 */
-   COMBA_FORWARD;
-   MULADD(at[0], at[31]);    MULADD(at[1], at[30]);    MULADD(at[2], at[29]);    MULADD(at[3], at[28]);    MULADD(at[4], at[27]);    MULADD(at[5], at[26]);    MULADD(at[6], at[25]);    MULADD(at[7], at[24]);    MULADD(at[8], at[23]);    MULADD(at[9], at[22]);    MULADD(at[10], at[21]);    MULADD(at[11], at[20]);    MULADD(at[12], at[19]);    MULADD(at[13], at[18]);    MULADD(at[14], at[17]);    MULADD(at[15], at[16]); 
-   COMBA_STORE(C->dp[15]);
-   /* 16 */
-   COMBA_FORWARD;
-   MULADD(at[1], at[31]);    MULADD(at[2], at[30]);    MULADD(at[3], at[29]);    MULADD(at[4], at[28]);    MULADD(at[5], at[27]);    MULADD(at[6], at[26]);    MULADD(at[7], at[25]);    MULADD(at[8], at[24]);    MULADD(at[9], at[23]);    MULADD(at[10], at[22]);    MULADD(at[11], at[21]);    MULADD(at[12], at[20]);    MULADD(at[13], at[19]);    MULADD(at[14], at[18]);    MULADD(at[15], at[17]); 
-   COMBA_STORE(C->dp[16]);
-   /* 17 */
-   COMBA_FORWARD;
-   MULADD(at[2], at[31]);    MULADD(at[3], at[30]);    MULADD(at[4], at[29]);    MULADD(at[5], at[28]);    MULADD(at[6], at[27]);    MULADD(at[7], at[26]);    MULADD(at[8], at[25]);    MULADD(at[9], at[24]);    MULADD(at[10], at[23]);    MULADD(at[11], at[22]);    MULADD(at[12], at[21]);    MULADD(at[13], at[20]);    MULADD(at[14], at[19]);    MULADD(at[15], at[18]); 
-   COMBA_STORE(C->dp[17]);
-   /* 18 */
-   COMBA_FORWARD;
-   MULADD(at[3], at[31]);    MULADD(at[4], at[30]);    MULADD(at[5], at[29]);    MULADD(at[6], at[28]);    MULADD(at[7], at[27]);    MULADD(at[8], at[26]);    MULADD(at[9], at[25]);    MULADD(at[10], at[24]);    MULADD(at[11], at[23]);    MULADD(at[12], at[22]);    MULADD(at[13], at[21]);    MULADD(at[14], at[20]);    MULADD(at[15], at[19]); 
-   COMBA_STORE(C->dp[18]);
-   /* 19 */
-   COMBA_FORWARD;
-   MULADD(at[4], at[31]);    MULADD(at[5], at[30]);    MULADD(at[6], at[29]);    MULADD(at[7], at[28]);    MULADD(at[8], at[27]);    MULADD(at[9], at[26]);    MULADD(at[10], at[25]);    MULADD(at[11], at[24]);    MULADD(at[12], at[23]);    MULADD(at[13], at[22]);    MULADD(at[14], at[21]);    MULADD(at[15], at[20]); 
-   COMBA_STORE(C->dp[19]);
-   /* 20 */
-   COMBA_FORWARD;
-   MULADD(at[5], at[31]);    MULADD(at[6], at[30]);    MULADD(at[7], at[29]);    MULADD(at[8], at[28]);    MULADD(at[9], at[27]);    MULADD(at[10], at[26]);    MULADD(at[11], at[25]);    MULADD(at[12], at[24]);    MULADD(at[13], at[23]);    MULADD(at[14], at[22]);    MULADD(at[15], at[21]); 
-   COMBA_STORE(C->dp[20]);
-   /* 21 */
-   COMBA_FORWARD;
-   MULADD(at[6], at[31]);    MULADD(at[7], at[30]);    MULADD(at[8], at[29]);    MULADD(at[9], at[28]);    MULADD(at[10], at[27]);    MULADD(at[11], at[26]);    MULADD(at[12], at[25]);    MULADD(at[13], at[24]);    MULADD(at[14], at[23]);    MULADD(at[15], at[22]); 
-   COMBA_STORE(C->dp[21]);
-   /* 22 */
-   COMBA_FORWARD;
-   MULADD(at[7], at[31]);    MULADD(at[8], at[30]);    MULADD(at[9], at[29]);    MULADD(at[10], at[28]);    MULADD(at[11], at[27]);    MULADD(at[12], at[26]);    MULADD(at[13], at[25]);    MULADD(at[14], at[24]);    MULADD(at[15], at[23]); 
-   COMBA_STORE(C->dp[22]);
-   /* 23 */
-   COMBA_FORWARD;
-   MULADD(at[8], at[31]);    MULADD(at[9], at[30]);    MULADD(at[10], at[29]);    MULADD(at[11], at[28]);    MULADD(at[12], at[27]);    MULADD(at[13], at[26]);    MULADD(at[14], at[25]);    MULADD(at[15], at[24]); 
-   COMBA_STORE(C->dp[23]);
-   /* 24 */
-   COMBA_FORWARD;
-   MULADD(at[9], at[31]);    MULADD(at[10], at[30]);    MULADD(at[11], at[29]);    MULADD(at[12], at[28]);    MULADD(at[13], at[27]);    MULADD(at[14], at[26]);    MULADD(at[15], at[25]); 
-   COMBA_STORE(C->dp[24]);
-   /* 25 */
-   COMBA_FORWARD;
-   MULADD(at[10], at[31]);    MULADD(at[11], at[30]);    MULADD(at[12], at[29]);    MULADD(at[13], at[28]);    MULADD(at[14], at[27]);    MULADD(at[15], at[26]); 
-   COMBA_STORE(C->dp[25]);
-   /* 26 */
-   COMBA_FORWARD;
-   MULADD(at[11], at[31]);    MULADD(at[12], at[30]);    MULADD(at[13], at[29]);    MULADD(at[14], at[28]);    MULADD(at[15], at[27]); 
-   COMBA_STORE(C->dp[26]);
-   /* 27 */
-   COMBA_FORWARD;
-   MULADD(at[12], at[31]);    MULADD(at[13], at[30]);    MULADD(at[14], at[29]);    MULADD(at[15], at[28]); 
-   COMBA_STORE(C->dp[27]);
-   /* 28 */
-   COMBA_FORWARD;
-   MULADD(at[13], at[31]);    MULADD(at[14], at[30]);    MULADD(at[15], at[29]); 
-   COMBA_STORE(C->dp[28]);
-   /* 29 */
-   COMBA_FORWARD;
-   MULADD(at[14], at[31]);    MULADD(at[15], at[30]); 
-   COMBA_STORE(C->dp[29]);
-   /* 30 */
-   COMBA_FORWARD;
-   MULADD(at[15], at[31]); 
-   COMBA_STORE(C->dp[30]);
-   COMBA_STORE2(C->dp[31]);
-   C->used = 32;
-   C->sign = A->sign ^ B->sign;
-   fp_clamp(C);
-   COMBA_FINI;
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[1]); 
+      COMBA_STORE(C->dp[0]);
+      COMBA_STORE2(C->dp[1]);
+      C->used = 2;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 2:
+      memcpy(at, A->dp, 2 * sizeof(fp_digit));
+      memcpy(at+2, B->dp, 2 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[2]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[3]);       MULADD(at[1], at[2]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[3]); 
+      COMBA_STORE(C->dp[2]);
+      COMBA_STORE2(C->dp[3]);
+      C->used = 4;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 3:
+      memcpy(at, A->dp, 3 * sizeof(fp_digit));
+      memcpy(at+3, B->dp, 3 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[3]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[4]);       MULADD(at[1], at[3]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[5]);       MULADD(at[1], at[4]);       MULADD(at[2], at[3]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[5]);       MULADD(at[2], at[4]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[5]); 
+      COMBA_STORE(C->dp[4]);
+      COMBA_STORE2(C->dp[5]);
+      C->used = 6;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 4:
+      memcpy(at, A->dp, 4 * sizeof(fp_digit));
+      memcpy(at+4, B->dp, 4 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[4]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[5]);       MULADD(at[1], at[4]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[6]);       MULADD(at[1], at[5]);       MULADD(at[2], at[4]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[7]);       MULADD(at[1], at[6]);       MULADD(at[2], at[5]);       MULADD(at[3], at[4]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[7]);       MULADD(at[2], at[6]);       MULADD(at[3], at[5]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[7]);       MULADD(at[3], at[6]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[7]); 
+      COMBA_STORE(C->dp[6]);
+      COMBA_STORE2(C->dp[7]);
+      C->used = 8;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 5:
+      memcpy(at, A->dp, 5 * sizeof(fp_digit));
+      memcpy(at+5, B->dp, 5 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[5]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[6]);       MULADD(at[1], at[5]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[7]);       MULADD(at[1], at[6]);       MULADD(at[2], at[5]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[8]);       MULADD(at[1], at[7]);       MULADD(at[2], at[6]);       MULADD(at[3], at[5]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[9]);       MULADD(at[1], at[8]);       MULADD(at[2], at[7]);       MULADD(at[3], at[6]);       MULADD(at[4], at[5]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[9]);       MULADD(at[2], at[8]);       MULADD(at[3], at[7]);       MULADD(at[4], at[6]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[9]);       MULADD(at[3], at[8]);       MULADD(at[4], at[7]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[9]);       MULADD(at[4], at[8]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[9]); 
+      COMBA_STORE(C->dp[8]);
+      COMBA_STORE2(C->dp[9]);
+      C->used = 10;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 6:
+      memcpy(at, A->dp, 6 * sizeof(fp_digit));
+      memcpy(at+6, B->dp, 6 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[6]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[7]);       MULADD(at[1], at[6]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[8]);       MULADD(at[1], at[7]);       MULADD(at[2], at[6]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[9]);       MULADD(at[1], at[8]);       MULADD(at[2], at[7]);       MULADD(at[3], at[6]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[10]);       MULADD(at[1], at[9]);       MULADD(at[2], at[8]);       MULADD(at[3], at[7]);       MULADD(at[4], at[6]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[11]);       MULADD(at[1], at[10]);       MULADD(at[2], at[9]);       MULADD(at[3], at[8]);       MULADD(at[4], at[7]);       MULADD(at[5], at[6]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[11]);       MULADD(at[2], at[10]);       MULADD(at[3], at[9]);       MULADD(at[4], at[8]);       MULADD(at[5], at[7]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[11]);       MULADD(at[3], at[10]);       MULADD(at[4], at[9]);       MULADD(at[5], at[8]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[11]);       MULADD(at[4], at[10]);       MULADD(at[5], at[9]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[11]);       MULADD(at[5], at[10]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[11]); 
+      COMBA_STORE(C->dp[10]);
+      COMBA_STORE2(C->dp[11]);
+      C->used = 12;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 7:
+      memcpy(at, A->dp, 7 * sizeof(fp_digit));
+      memcpy(at+7, B->dp, 7 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[7]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[8]);       MULADD(at[1], at[7]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[9]);       MULADD(at[1], at[8]);       MULADD(at[2], at[7]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[10]);       MULADD(at[1], at[9]);       MULADD(at[2], at[8]);       MULADD(at[3], at[7]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[11]);       MULADD(at[1], at[10]);       MULADD(at[2], at[9]);       MULADD(at[3], at[8]);       MULADD(at[4], at[7]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[12]);       MULADD(at[1], at[11]);       MULADD(at[2], at[10]);       MULADD(at[3], at[9]);       MULADD(at[4], at[8]);       MULADD(at[5], at[7]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[13]);       MULADD(at[1], at[12]);       MULADD(at[2], at[11]);       MULADD(at[3], at[10]);       MULADD(at[4], at[9]);       MULADD(at[5], at[8]);       MULADD(at[6], at[7]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[13]);       MULADD(at[2], at[12]);       MULADD(at[3], at[11]);       MULADD(at[4], at[10]);       MULADD(at[5], at[9]);       MULADD(at[6], at[8]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[13]);       MULADD(at[3], at[12]);       MULADD(at[4], at[11]);       MULADD(at[5], at[10]);       MULADD(at[6], at[9]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[13]);       MULADD(at[4], at[12]);       MULADD(at[5], at[11]);       MULADD(at[6], at[10]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[13]);       MULADD(at[5], at[12]);       MULADD(at[6], at[11]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[13]);       MULADD(at[6], at[12]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[13]); 
+      COMBA_STORE(C->dp[12]);
+      COMBA_STORE2(C->dp[13]);
+      C->used = 14;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 8:
+      memcpy(at, A->dp, 8 * sizeof(fp_digit));
+      memcpy(at+8, B->dp, 8 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[8]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[9]);       MULADD(at[1], at[8]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[10]);       MULADD(at[1], at[9]);       MULADD(at[2], at[8]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[11]);       MULADD(at[1], at[10]);       MULADD(at[2], at[9]);       MULADD(at[3], at[8]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[12]);       MULADD(at[1], at[11]);       MULADD(at[2], at[10]);       MULADD(at[3], at[9]);       MULADD(at[4], at[8]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[13]);       MULADD(at[1], at[12]);       MULADD(at[2], at[11]);       MULADD(at[3], at[10]);       MULADD(at[4], at[9]);       MULADD(at[5], at[8]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[14]);       MULADD(at[1], at[13]);       MULADD(at[2], at[12]);       MULADD(at[3], at[11]);       MULADD(at[4], at[10]);       MULADD(at[5], at[9]);       MULADD(at[6], at[8]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[15]);       MULADD(at[1], at[14]);       MULADD(at[2], at[13]);       MULADD(at[3], at[12]);       MULADD(at[4], at[11]);       MULADD(at[5], at[10]);       MULADD(at[6], at[9]);       MULADD(at[7], at[8]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[15]);       MULADD(at[2], at[14]);       MULADD(at[3], at[13]);       MULADD(at[4], at[12]);       MULADD(at[5], at[11]);       MULADD(at[6], at[10]);       MULADD(at[7], at[9]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[15]);       MULADD(at[3], at[14]);       MULADD(at[4], at[13]);       MULADD(at[5], at[12]);       MULADD(at[6], at[11]);       MULADD(at[7], at[10]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[15]);       MULADD(at[4], at[14]);       MULADD(at[5], at[13]);       MULADD(at[6], at[12]);       MULADD(at[7], at[11]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[15]);       MULADD(at[5], at[14]);       MULADD(at[6], at[13]);       MULADD(at[7], at[12]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[15]);       MULADD(at[6], at[14]);       MULADD(at[7], at[13]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[15]);       MULADD(at[7], at[14]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[15]); 
+      COMBA_STORE(C->dp[14]);
+      COMBA_STORE2(C->dp[15]);
+      C->used = 16;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 9:
+      memcpy(at, A->dp, 9 * sizeof(fp_digit));
+      memcpy(at+9, B->dp, 9 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[9]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[10]);       MULADD(at[1], at[9]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[11]);       MULADD(at[1], at[10]);       MULADD(at[2], at[9]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[12]);       MULADD(at[1], at[11]);       MULADD(at[2], at[10]);       MULADD(at[3], at[9]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[13]);       MULADD(at[1], at[12]);       MULADD(at[2], at[11]);       MULADD(at[3], at[10]);       MULADD(at[4], at[9]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[14]);       MULADD(at[1], at[13]);       MULADD(at[2], at[12]);       MULADD(at[3], at[11]);       MULADD(at[4], at[10]);       MULADD(at[5], at[9]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[15]);       MULADD(at[1], at[14]);       MULADD(at[2], at[13]);       MULADD(at[3], at[12]);       MULADD(at[4], at[11]);       MULADD(at[5], at[10]);       MULADD(at[6], at[9]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[16]);       MULADD(at[1], at[15]);       MULADD(at[2], at[14]);       MULADD(at[3], at[13]);       MULADD(at[4], at[12]);       MULADD(at[5], at[11]);       MULADD(at[6], at[10]);       MULADD(at[7], at[9]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[17]);       MULADD(at[1], at[16]);       MULADD(at[2], at[15]);       MULADD(at[3], at[14]);       MULADD(at[4], at[13]);       MULADD(at[5], at[12]);       MULADD(at[6], at[11]);       MULADD(at[7], at[10]);       MULADD(at[8], at[9]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[17]);       MULADD(at[2], at[16]);       MULADD(at[3], at[15]);       MULADD(at[4], at[14]);       MULADD(at[5], at[13]);       MULADD(at[6], at[12]);       MULADD(at[7], at[11]);       MULADD(at[8], at[10]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[17]);       MULADD(at[3], at[16]);       MULADD(at[4], at[15]);       MULADD(at[5], at[14]);       MULADD(at[6], at[13]);       MULADD(at[7], at[12]);       MULADD(at[8], at[11]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[17]);       MULADD(at[4], at[16]);       MULADD(at[5], at[15]);       MULADD(at[6], at[14]);       MULADD(at[7], at[13]);       MULADD(at[8], at[12]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[17]);       MULADD(at[5], at[16]);       MULADD(at[6], at[15]);       MULADD(at[7], at[14]);       MULADD(at[8], at[13]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[17]);       MULADD(at[6], at[16]);       MULADD(at[7], at[15]);       MULADD(at[8], at[14]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[17]);       MULADD(at[7], at[16]);       MULADD(at[8], at[15]); 
+      COMBA_STORE(C->dp[14]);
+      /* 15 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[17]);       MULADD(at[8], at[16]); 
+      COMBA_STORE(C->dp[15]);
+      /* 16 */
+      COMBA_FORWARD;
+      MULADD(at[8], at[17]); 
+      COMBA_STORE(C->dp[16]);
+      COMBA_STORE2(C->dp[17]);
+      C->used = 18;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 10:
+      memcpy(at, A->dp, 10 * sizeof(fp_digit));
+      memcpy(at+10, B->dp, 10 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[10]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[11]);       MULADD(at[1], at[10]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[12]);       MULADD(at[1], at[11]);       MULADD(at[2], at[10]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[13]);       MULADD(at[1], at[12]);       MULADD(at[2], at[11]);       MULADD(at[3], at[10]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[14]);       MULADD(at[1], at[13]);       MULADD(at[2], at[12]);       MULADD(at[3], at[11]);       MULADD(at[4], at[10]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[15]);       MULADD(at[1], at[14]);       MULADD(at[2], at[13]);       MULADD(at[3], at[12]);       MULADD(at[4], at[11]);       MULADD(at[5], at[10]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[16]);       MULADD(at[1], at[15]);       MULADD(at[2], at[14]);       MULADD(at[3], at[13]);       MULADD(at[4], at[12]);       MULADD(at[5], at[11]);       MULADD(at[6], at[10]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[17]);       MULADD(at[1], at[16]);       MULADD(at[2], at[15]);       MULADD(at[3], at[14]);       MULADD(at[4], at[13]);       MULADD(at[5], at[12]);       MULADD(at[6], at[11]);       MULADD(at[7], at[10]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[18]);       MULADD(at[1], at[17]);       MULADD(at[2], at[16]);       MULADD(at[3], at[15]);       MULADD(at[4], at[14]);       MULADD(at[5], at[13]);       MULADD(at[6], at[12]);       MULADD(at[7], at[11]);       MULADD(at[8], at[10]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[19]);       MULADD(at[1], at[18]);       MULADD(at[2], at[17]);       MULADD(at[3], at[16]);       MULADD(at[4], at[15]);       MULADD(at[5], at[14]);       MULADD(at[6], at[13]);       MULADD(at[7], at[12]);       MULADD(at[8], at[11]);       MULADD(at[9], at[10]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[19]);       MULADD(at[2], at[18]);       MULADD(at[3], at[17]);       MULADD(at[4], at[16]);       MULADD(at[5], at[15]);       MULADD(at[6], at[14]);       MULADD(at[7], at[13]);       MULADD(at[8], at[12]);       MULADD(at[9], at[11]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[19]);       MULADD(at[3], at[18]);       MULADD(at[4], at[17]);       MULADD(at[5], at[16]);       MULADD(at[6], at[15]);       MULADD(at[7], at[14]);       MULADD(at[8], at[13]);       MULADD(at[9], at[12]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[19]);       MULADD(at[4], at[18]);       MULADD(at[5], at[17]);       MULADD(at[6], at[16]);       MULADD(at[7], at[15]);       MULADD(at[8], at[14]);       MULADD(at[9], at[13]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[19]);       MULADD(at[5], at[18]);       MULADD(at[6], at[17]);       MULADD(at[7], at[16]);       MULADD(at[8], at[15]);       MULADD(at[9], at[14]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[19]);       MULADD(at[6], at[18]);       MULADD(at[7], at[17]);       MULADD(at[8], at[16]);       MULADD(at[9], at[15]); 
+      COMBA_STORE(C->dp[14]);
+      /* 15 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[19]);       MULADD(at[7], at[18]);       MULADD(at[8], at[17]);       MULADD(at[9], at[16]); 
+      COMBA_STORE(C->dp[15]);
+      /* 16 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[19]);       MULADD(at[8], at[18]);       MULADD(at[9], at[17]); 
+      COMBA_STORE(C->dp[16]);
+      /* 17 */
+      COMBA_FORWARD;
+      MULADD(at[8], at[19]);       MULADD(at[9], at[18]); 
+      COMBA_STORE(C->dp[17]);
+      /* 18 */
+      COMBA_FORWARD;
+      MULADD(at[9], at[19]); 
+      COMBA_STORE(C->dp[18]);
+      COMBA_STORE2(C->dp[19]);
+      C->used = 20;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 11:
+      memcpy(at, A->dp, 11 * sizeof(fp_digit));
+      memcpy(at+11, B->dp, 11 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[11]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[12]);       MULADD(at[1], at[11]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[13]);       MULADD(at[1], at[12]);       MULADD(at[2], at[11]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[14]);       MULADD(at[1], at[13]);       MULADD(at[2], at[12]);       MULADD(at[3], at[11]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[15]);       MULADD(at[1], at[14]);       MULADD(at[2], at[13]);       MULADD(at[3], at[12]);       MULADD(at[4], at[11]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[16]);       MULADD(at[1], at[15]);       MULADD(at[2], at[14]);       MULADD(at[3], at[13]);       MULADD(at[4], at[12]);       MULADD(at[5], at[11]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[17]);       MULADD(at[1], at[16]);       MULADD(at[2], at[15]);       MULADD(at[3], at[14]);       MULADD(at[4], at[13]);       MULADD(at[5], at[12]);       MULADD(at[6], at[11]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[18]);       MULADD(at[1], at[17]);       MULADD(at[2], at[16]);       MULADD(at[3], at[15]);       MULADD(at[4], at[14]);       MULADD(at[5], at[13]);       MULADD(at[6], at[12]);       MULADD(at[7], at[11]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[19]);       MULADD(at[1], at[18]);       MULADD(at[2], at[17]);       MULADD(at[3], at[16]);       MULADD(at[4], at[15]);       MULADD(at[5], at[14]);       MULADD(at[6], at[13]);       MULADD(at[7], at[12]);       MULADD(at[8], at[11]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[20]);       MULADD(at[1], at[19]);       MULADD(at[2], at[18]);       MULADD(at[3], at[17]);       MULADD(at[4], at[16]);       MULADD(at[5], at[15]);       MULADD(at[6], at[14]);       MULADD(at[7], at[13]);       MULADD(at[8], at[12]);       MULADD(at[9], at[11]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[21]);       MULADD(at[1], at[20]);       MULADD(at[2], at[19]);       MULADD(at[3], at[18]);       MULADD(at[4], at[17]);       MULADD(at[5], at[16]);       MULADD(at[6], at[15]);       MULADD(at[7], at[14]);       MULADD(at[8], at[13]);       MULADD(at[9], at[12]);       MULADD(at[10], at[11]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[21]);       MULADD(at[2], at[20]);       MULADD(at[3], at[19]);       MULADD(at[4], at[18]);       MULADD(at[5], at[17]);       MULADD(at[6], at[16]);       MULADD(at[7], at[15]);       MULADD(at[8], at[14]);       MULADD(at[9], at[13]);       MULADD(at[10], at[12]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[21]);       MULADD(at[3], at[20]);       MULADD(at[4], at[19]);       MULADD(at[5], at[18]);       MULADD(at[6], at[17]);       MULADD(at[7], at[16]);       MULADD(at[8], at[15]);       MULADD(at[9], at[14]);       MULADD(at[10], at[13]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[21]);       MULADD(at[4], at[20]);       MULADD(at[5], at[19]);       MULADD(at[6], at[18]);       MULADD(at[7], at[17]);       MULADD(at[8], at[16]);       MULADD(at[9], at[15]);       MULADD(at[10], at[14]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[21]);       MULADD(at[5], at[20]);       MULADD(at[6], at[19]);       MULADD(at[7], at[18]);       MULADD(at[8], at[17]);       MULADD(at[9], at[16]);       MULADD(at[10], at[15]); 
+      COMBA_STORE(C->dp[14]);
+      /* 15 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[21]);       MULADD(at[6], at[20]);       MULADD(at[7], at[19]);       MULADD(at[8], at[18]);       MULADD(at[9], at[17]);       MULADD(at[10], at[16]); 
+      COMBA_STORE(C->dp[15]);
+      /* 16 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[21]);       MULADD(at[7], at[20]);       MULADD(at[8], at[19]);       MULADD(at[9], at[18]);       MULADD(at[10], at[17]); 
+      COMBA_STORE(C->dp[16]);
+      /* 17 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[21]);       MULADD(at[8], at[20]);       MULADD(at[9], at[19]);       MULADD(at[10], at[18]); 
+      COMBA_STORE(C->dp[17]);
+      /* 18 */
+      COMBA_FORWARD;
+      MULADD(at[8], at[21]);       MULADD(at[9], at[20]);       MULADD(at[10], at[19]); 
+      COMBA_STORE(C->dp[18]);
+      /* 19 */
+      COMBA_FORWARD;
+      MULADD(at[9], at[21]);       MULADD(at[10], at[20]); 
+      COMBA_STORE(C->dp[19]);
+      /* 20 */
+      COMBA_FORWARD;
+      MULADD(at[10], at[21]); 
+      COMBA_STORE(C->dp[20]);
+      COMBA_STORE2(C->dp[21]);
+      C->used = 22;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 12:
+      memcpy(at, A->dp, 12 * sizeof(fp_digit));
+      memcpy(at+12, B->dp, 12 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[12]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[13]);       MULADD(at[1], at[12]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[14]);       MULADD(at[1], at[13]);       MULADD(at[2], at[12]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[15]);       MULADD(at[1], at[14]);       MULADD(at[2], at[13]);       MULADD(at[3], at[12]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[16]);       MULADD(at[1], at[15]);       MULADD(at[2], at[14]);       MULADD(at[3], at[13]);       MULADD(at[4], at[12]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[17]);       MULADD(at[1], at[16]);       MULADD(at[2], at[15]);       MULADD(at[3], at[14]);       MULADD(at[4], at[13]);       MULADD(at[5], at[12]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[18]);       MULADD(at[1], at[17]);       MULADD(at[2], at[16]);       MULADD(at[3], at[15]);       MULADD(at[4], at[14]);       MULADD(at[5], at[13]);       MULADD(at[6], at[12]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[19]);       MULADD(at[1], at[18]);       MULADD(at[2], at[17]);       MULADD(at[3], at[16]);       MULADD(at[4], at[15]);       MULADD(at[5], at[14]);       MULADD(at[6], at[13]);       MULADD(at[7], at[12]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[20]);       MULADD(at[1], at[19]);       MULADD(at[2], at[18]);       MULADD(at[3], at[17]);       MULADD(at[4], at[16]);       MULADD(at[5], at[15]);       MULADD(at[6], at[14]);       MULADD(at[7], at[13]);       MULADD(at[8], at[12]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[21]);       MULADD(at[1], at[20]);       MULADD(at[2], at[19]);       MULADD(at[3], at[18]);       MULADD(at[4], at[17]);       MULADD(at[5], at[16]);       MULADD(at[6], at[15]);       MULADD(at[7], at[14]);       MULADD(at[8], at[13]);       MULADD(at[9], at[12]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[22]);       MULADD(at[1], at[21]);       MULADD(at[2], at[20]);       MULADD(at[3], at[19]);       MULADD(at[4], at[18]);       MULADD(at[5], at[17]);       MULADD(at[6], at[16]);       MULADD(at[7], at[15]);       MULADD(at[8], at[14]);       MULADD(at[9], at[13]);       MULADD(at[10], at[12]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[23]);       MULADD(at[1], at[22]);       MULADD(at[2], at[21]);       MULADD(at[3], at[20]);       MULADD(at[4], at[19]);       MULADD(at[5], at[18]);       MULADD(at[6], at[17]);       MULADD(at[7], at[16]);       MULADD(at[8], at[15]);       MULADD(at[9], at[14]);       MULADD(at[10], at[13]);       MULADD(at[11], at[12]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[23]);       MULADD(at[2], at[22]);       MULADD(at[3], at[21]);       MULADD(at[4], at[20]);       MULADD(at[5], at[19]);       MULADD(at[6], at[18]);       MULADD(at[7], at[17]);       MULADD(at[8], at[16]);       MULADD(at[9], at[15]);       MULADD(at[10], at[14]);       MULADD(at[11], at[13]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[23]);       MULADD(at[3], at[22]);       MULADD(at[4], at[21]);       MULADD(at[5], at[20]);       MULADD(at[6], at[19]);       MULADD(at[7], at[18]);       MULADD(at[8], at[17]);       MULADD(at[9], at[16]);       MULADD(at[10], at[15]);       MULADD(at[11], at[14]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[23]);       MULADD(at[4], at[22]);       MULADD(at[5], at[21]);       MULADD(at[6], at[20]);       MULADD(at[7], at[19]);       MULADD(at[8], at[18]);       MULADD(at[9], at[17]);       MULADD(at[10], at[16]);       MULADD(at[11], at[15]); 
+      COMBA_STORE(C->dp[14]);
+      /* 15 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[23]);       MULADD(at[5], at[22]);       MULADD(at[6], at[21]);       MULADD(at[7], at[20]);       MULADD(at[8], at[19]);       MULADD(at[9], at[18]);       MULADD(at[10], at[17]);       MULADD(at[11], at[16]); 
+      COMBA_STORE(C->dp[15]);
+      /* 16 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[23]);       MULADD(at[6], at[22]);       MULADD(at[7], at[21]);       MULADD(at[8], at[20]);       MULADD(at[9], at[19]);       MULADD(at[10], at[18]);       MULADD(at[11], at[17]); 
+      COMBA_STORE(C->dp[16]);
+      /* 17 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[23]);       MULADD(at[7], at[22]);       MULADD(at[8], at[21]);       MULADD(at[9], at[20]);       MULADD(at[10], at[19]);       MULADD(at[11], at[18]); 
+      COMBA_STORE(C->dp[17]);
+      /* 18 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[23]);       MULADD(at[8], at[22]);       MULADD(at[9], at[21]);       MULADD(at[10], at[20]);       MULADD(at[11], at[19]); 
+      COMBA_STORE(C->dp[18]);
+      /* 19 */
+      COMBA_FORWARD;
+      MULADD(at[8], at[23]);       MULADD(at[9], at[22]);       MULADD(at[10], at[21]);       MULADD(at[11], at[20]); 
+      COMBA_STORE(C->dp[19]);
+      /* 20 */
+      COMBA_FORWARD;
+      MULADD(at[9], at[23]);       MULADD(at[10], at[22]);       MULADD(at[11], at[21]); 
+      COMBA_STORE(C->dp[20]);
+      /* 21 */
+      COMBA_FORWARD;
+      MULADD(at[10], at[23]);       MULADD(at[11], at[22]); 
+      COMBA_STORE(C->dp[21]);
+      /* 22 */
+      COMBA_FORWARD;
+      MULADD(at[11], at[23]); 
+      COMBA_STORE(C->dp[22]);
+      COMBA_STORE2(C->dp[23]);
+      C->used = 24;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 13:
+      memcpy(at, A->dp, 13 * sizeof(fp_digit));
+      memcpy(at+13, B->dp, 13 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[13]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[14]);       MULADD(at[1], at[13]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[15]);       MULADD(at[1], at[14]);       MULADD(at[2], at[13]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[16]);       MULADD(at[1], at[15]);       MULADD(at[2], at[14]);       MULADD(at[3], at[13]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[17]);       MULADD(at[1], at[16]);       MULADD(at[2], at[15]);       MULADD(at[3], at[14]);       MULADD(at[4], at[13]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[18]);       MULADD(at[1], at[17]);       MULADD(at[2], at[16]);       MULADD(at[3], at[15]);       MULADD(at[4], at[14]);       MULADD(at[5], at[13]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[19]);       MULADD(at[1], at[18]);       MULADD(at[2], at[17]);       MULADD(at[3], at[16]);       MULADD(at[4], at[15]);       MULADD(at[5], at[14]);       MULADD(at[6], at[13]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[20]);       MULADD(at[1], at[19]);       MULADD(at[2], at[18]);       MULADD(at[3], at[17]);       MULADD(at[4], at[16]);       MULADD(at[5], at[15]);       MULADD(at[6], at[14]);       MULADD(at[7], at[13]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[21]);       MULADD(at[1], at[20]);       MULADD(at[2], at[19]);       MULADD(at[3], at[18]);       MULADD(at[4], at[17]);       MULADD(at[5], at[16]);       MULADD(at[6], at[15]);       MULADD(at[7], at[14]);       MULADD(at[8], at[13]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[22]);       MULADD(at[1], at[21]);       MULADD(at[2], at[20]);       MULADD(at[3], at[19]);       MULADD(at[4], at[18]);       MULADD(at[5], at[17]);       MULADD(at[6], at[16]);       MULADD(at[7], at[15]);       MULADD(at[8], at[14]);       MULADD(at[9], at[13]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[23]);       MULADD(at[1], at[22]);       MULADD(at[2], at[21]);       MULADD(at[3], at[20]);       MULADD(at[4], at[19]);       MULADD(at[5], at[18]);       MULADD(at[6], at[17]);       MULADD(at[7], at[16]);       MULADD(at[8], at[15]);       MULADD(at[9], at[14]);       MULADD(at[10], at[13]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[24]);       MULADD(at[1], at[23]);       MULADD(at[2], at[22]);       MULADD(at[3], at[21]);       MULADD(at[4], at[20]);       MULADD(at[5], at[19]);       MULADD(at[6], at[18]);       MULADD(at[7], at[17]);       MULADD(at[8], at[16]);       MULADD(at[9], at[15]);       MULADD(at[10], at[14]);       MULADD(at[11], at[13]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[25]);       MULADD(at[1], at[24]);       MULADD(at[2], at[23]);       MULADD(at[3], at[22]);       MULADD(at[4], at[21]);       MULADD(at[5], at[20]);       MULADD(at[6], at[19]);       MULADD(at[7], at[18]);       MULADD(at[8], at[17]);       MULADD(at[9], at[16]);       MULADD(at[10], at[15]);       MULADD(at[11], at[14]);       MULADD(at[12], at[13]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[25]);       MULADD(at[2], at[24]);       MULADD(at[3], at[23]);       MULADD(at[4], at[22]);       MULADD(at[5], at[21]);       MULADD(at[6], at[20]);       MULADD(at[7], at[19]);       MULADD(at[8], at[18]);       MULADD(at[9], at[17]);       MULADD(at[10], at[16]);       MULADD(at[11], at[15]);       MULADD(at[12], at[14]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[25]);       MULADD(at[3], at[24]);       MULADD(at[4], at[23]);       MULADD(at[5], at[22]);       MULADD(at[6], at[21]);       MULADD(at[7], at[20]);       MULADD(at[8], at[19]);       MULADD(at[9], at[18]);       MULADD(at[10], at[17]);       MULADD(at[11], at[16]);       MULADD(at[12], at[15]); 
+      COMBA_STORE(C->dp[14]);
+      /* 15 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[25]);       MULADD(at[4], at[24]);       MULADD(at[5], at[23]);       MULADD(at[6], at[22]);       MULADD(at[7], at[21]);       MULADD(at[8], at[20]);       MULADD(at[9], at[19]);       MULADD(at[10], at[18]);       MULADD(at[11], at[17]);       MULADD(at[12], at[16]); 
+      COMBA_STORE(C->dp[15]);
+      /* 16 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[25]);       MULADD(at[5], at[24]);       MULADD(at[6], at[23]);       MULADD(at[7], at[22]);       MULADD(at[8], at[21]);       MULADD(at[9], at[20]);       MULADD(at[10], at[19]);       MULADD(at[11], at[18]);       MULADD(at[12], at[17]); 
+      COMBA_STORE(C->dp[16]);
+      /* 17 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[25]);       MULADD(at[6], at[24]);       MULADD(at[7], at[23]);       MULADD(at[8], at[22]);       MULADD(at[9], at[21]);       MULADD(at[10], at[20]);       MULADD(at[11], at[19]);       MULADD(at[12], at[18]); 
+      COMBA_STORE(C->dp[17]);
+      /* 18 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[25]);       MULADD(at[7], at[24]);       MULADD(at[8], at[23]);       MULADD(at[9], at[22]);       MULADD(at[10], at[21]);       MULADD(at[11], at[20]);       MULADD(at[12], at[19]); 
+      COMBA_STORE(C->dp[18]);
+      /* 19 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[25]);       MULADD(at[8], at[24]);       MULADD(at[9], at[23]);       MULADD(at[10], at[22]);       MULADD(at[11], at[21]);       MULADD(at[12], at[20]); 
+      COMBA_STORE(C->dp[19]);
+      /* 20 */
+      COMBA_FORWARD;
+      MULADD(at[8], at[25]);       MULADD(at[9], at[24]);       MULADD(at[10], at[23]);       MULADD(at[11], at[22]);       MULADD(at[12], at[21]); 
+      COMBA_STORE(C->dp[20]);
+      /* 21 */
+      COMBA_FORWARD;
+      MULADD(at[9], at[25]);       MULADD(at[10], at[24]);       MULADD(at[11], at[23]);       MULADD(at[12], at[22]); 
+      COMBA_STORE(C->dp[21]);
+      /* 22 */
+      COMBA_FORWARD;
+      MULADD(at[10], at[25]);       MULADD(at[11], at[24]);       MULADD(at[12], at[23]); 
+      COMBA_STORE(C->dp[22]);
+      /* 23 */
+      COMBA_FORWARD;
+      MULADD(at[11], at[25]);       MULADD(at[12], at[24]); 
+      COMBA_STORE(C->dp[23]);
+      /* 24 */
+      COMBA_FORWARD;
+      MULADD(at[12], at[25]); 
+      COMBA_STORE(C->dp[24]);
+      COMBA_STORE2(C->dp[25]);
+      C->used = 26;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 14:
+      memcpy(at, A->dp, 14 * sizeof(fp_digit));
+      memcpy(at+14, B->dp, 14 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[14]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[15]);       MULADD(at[1], at[14]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[16]);       MULADD(at[1], at[15]);       MULADD(at[2], at[14]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[17]);       MULADD(at[1], at[16]);       MULADD(at[2], at[15]);       MULADD(at[3], at[14]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[18]);       MULADD(at[1], at[17]);       MULADD(at[2], at[16]);       MULADD(at[3], at[15]);       MULADD(at[4], at[14]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[19]);       MULADD(at[1], at[18]);       MULADD(at[2], at[17]);       MULADD(at[3], at[16]);       MULADD(at[4], at[15]);       MULADD(at[5], at[14]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[20]);       MULADD(at[1], at[19]);       MULADD(at[2], at[18]);       MULADD(at[3], at[17]);       MULADD(at[4], at[16]);       MULADD(at[5], at[15]);       MULADD(at[6], at[14]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[21]);       MULADD(at[1], at[20]);       MULADD(at[2], at[19]);       MULADD(at[3], at[18]);       MULADD(at[4], at[17]);       MULADD(at[5], at[16]);       MULADD(at[6], at[15]);       MULADD(at[7], at[14]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[22]);       MULADD(at[1], at[21]);       MULADD(at[2], at[20]);       MULADD(at[3], at[19]);       MULADD(at[4], at[18]);       MULADD(at[5], at[17]);       MULADD(at[6], at[16]);       MULADD(at[7], at[15]);       MULADD(at[8], at[14]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[23]);       MULADD(at[1], at[22]);       MULADD(at[2], at[21]);       MULADD(at[3], at[20]);       MULADD(at[4], at[19]);       MULADD(at[5], at[18]);       MULADD(at[6], at[17]);       MULADD(at[7], at[16]);       MULADD(at[8], at[15]);       MULADD(at[9], at[14]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[24]);       MULADD(at[1], at[23]);       MULADD(at[2], at[22]);       MULADD(at[3], at[21]);       MULADD(at[4], at[20]);       MULADD(at[5], at[19]);       MULADD(at[6], at[18]);       MULADD(at[7], at[17]);       MULADD(at[8], at[16]);       MULADD(at[9], at[15]);       MULADD(at[10], at[14]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[25]);       MULADD(at[1], at[24]);       MULADD(at[2], at[23]);       MULADD(at[3], at[22]);       MULADD(at[4], at[21]);       MULADD(at[5], at[20]);       MULADD(at[6], at[19]);       MULADD(at[7], at[18]);       MULADD(at[8], at[17]);       MULADD(at[9], at[16]);       MULADD(at[10], at[15]);       MULADD(at[11], at[14]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[26]);       MULADD(at[1], at[25]);       MULADD(at[2], at[24]);       MULADD(at[3], at[23]);       MULADD(at[4], at[22]);       MULADD(at[5], at[21]);       MULADD(at[6], at[20]);       MULADD(at[7], at[19]);       MULADD(at[8], at[18]);       MULADD(at[9], at[17]);       MULADD(at[10], at[16]);       MULADD(at[11], at[15]);       MULADD(at[12], at[14]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[27]);       MULADD(at[1], at[26]);       MULADD(at[2], at[25]);       MULADD(at[3], at[24]);       MULADD(at[4], at[23]);       MULADD(at[5], at[22]);       MULADD(at[6], at[21]);       MULADD(at[7], at[20]);       MULADD(at[8], at[19]);       MULADD(at[9], at[18]);       MULADD(at[10], at[17]);       MULADD(at[11], at[16]);       MULADD(at[12], at[15]);       MULADD(at[13], at[14]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[27]);       MULADD(at[2], at[26]);       MULADD(at[3], at[25]);       MULADD(at[4], at[24]);       MULADD(at[5], at[23]);       MULADD(at[6], at[22]);       MULADD(at[7], at[21]);       MULADD(at[8], at[20]);       MULADD(at[9], at[19]);       MULADD(at[10], at[18]);       MULADD(at[11], at[17]);       MULADD(at[12], at[16]);       MULADD(at[13], at[15]); 
+      COMBA_STORE(C->dp[14]);
+      /* 15 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[27]);       MULADD(at[3], at[26]);       MULADD(at[4], at[25]);       MULADD(at[5], at[24]);       MULADD(at[6], at[23]);       MULADD(at[7], at[22]);       MULADD(at[8], at[21]);       MULADD(at[9], at[20]);       MULADD(at[10], at[19]);       MULADD(at[11], at[18]);       MULADD(at[12], at[17]);       MULADD(at[13], at[16]); 
+      COMBA_STORE(C->dp[15]);
+      /* 16 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[27]);       MULADD(at[4], at[26]);       MULADD(at[5], at[25]);       MULADD(at[6], at[24]);       MULADD(at[7], at[23]);       MULADD(at[8], at[22]);       MULADD(at[9], at[21]);       MULADD(at[10], at[20]);       MULADD(at[11], at[19]);       MULADD(at[12], at[18]);       MULADD(at[13], at[17]); 
+      COMBA_STORE(C->dp[16]);
+      /* 17 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[27]);       MULADD(at[5], at[26]);       MULADD(at[6], at[25]);       MULADD(at[7], at[24]);       MULADD(at[8], at[23]);       MULADD(at[9], at[22]);       MULADD(at[10], at[21]);       MULADD(at[11], at[20]);       MULADD(at[12], at[19]);       MULADD(at[13], at[18]); 
+      COMBA_STORE(C->dp[17]);
+      /* 18 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[27]);       MULADD(at[6], at[26]);       MULADD(at[7], at[25]);       MULADD(at[8], at[24]);       MULADD(at[9], at[23]);       MULADD(at[10], at[22]);       MULADD(at[11], at[21]);       MULADD(at[12], at[20]);       MULADD(at[13], at[19]); 
+      COMBA_STORE(C->dp[18]);
+      /* 19 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[27]);       MULADD(at[7], at[26]);       MULADD(at[8], at[25]);       MULADD(at[9], at[24]);       MULADD(at[10], at[23]);       MULADD(at[11], at[22]);       MULADD(at[12], at[21]);       MULADD(at[13], at[20]); 
+      COMBA_STORE(C->dp[19]);
+      /* 20 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[27]);       MULADD(at[8], at[26]);       MULADD(at[9], at[25]);       MULADD(at[10], at[24]);       MULADD(at[11], at[23]);       MULADD(at[12], at[22]);       MULADD(at[13], at[21]); 
+      COMBA_STORE(C->dp[20]);
+      /* 21 */
+      COMBA_FORWARD;
+      MULADD(at[8], at[27]);       MULADD(at[9], at[26]);       MULADD(at[10], at[25]);       MULADD(at[11], at[24]);       MULADD(at[12], at[23]);       MULADD(at[13], at[22]); 
+      COMBA_STORE(C->dp[21]);
+      /* 22 */
+      COMBA_FORWARD;
+      MULADD(at[9], at[27]);       MULADD(at[10], at[26]);       MULADD(at[11], at[25]);       MULADD(at[12], at[24]);       MULADD(at[13], at[23]); 
+      COMBA_STORE(C->dp[22]);
+      /* 23 */
+      COMBA_FORWARD;
+      MULADD(at[10], at[27]);       MULADD(at[11], at[26]);       MULADD(at[12], at[25]);       MULADD(at[13], at[24]); 
+      COMBA_STORE(C->dp[23]);
+      /* 24 */
+      COMBA_FORWARD;
+      MULADD(at[11], at[27]);       MULADD(at[12], at[26]);       MULADD(at[13], at[25]); 
+      COMBA_STORE(C->dp[24]);
+      /* 25 */
+      COMBA_FORWARD;
+      MULADD(at[12], at[27]);       MULADD(at[13], at[26]); 
+      COMBA_STORE(C->dp[25]);
+      /* 26 */
+      COMBA_FORWARD;
+      MULADD(at[13], at[27]); 
+      COMBA_STORE(C->dp[26]);
+      COMBA_STORE2(C->dp[27]);
+      C->used = 28;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 15:
+      memcpy(at, A->dp, 15 * sizeof(fp_digit));
+      memcpy(at+15, B->dp, 15 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[15]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[16]);       MULADD(at[1], at[15]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[17]);       MULADD(at[1], at[16]);       MULADD(at[2], at[15]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[18]);       MULADD(at[1], at[17]);       MULADD(at[2], at[16]);       MULADD(at[3], at[15]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[19]);       MULADD(at[1], at[18]);       MULADD(at[2], at[17]);       MULADD(at[3], at[16]);       MULADD(at[4], at[15]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[20]);       MULADD(at[1], at[19]);       MULADD(at[2], at[18]);       MULADD(at[3], at[17]);       MULADD(at[4], at[16]);       MULADD(at[5], at[15]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[21]);       MULADD(at[1], at[20]);       MULADD(at[2], at[19]);       MULADD(at[3], at[18]);       MULADD(at[4], at[17]);       MULADD(at[5], at[16]);       MULADD(at[6], at[15]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[22]);       MULADD(at[1], at[21]);       MULADD(at[2], at[20]);       MULADD(at[3], at[19]);       MULADD(at[4], at[18]);       MULADD(at[5], at[17]);       MULADD(at[6], at[16]);       MULADD(at[7], at[15]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[23]);       MULADD(at[1], at[22]);       MULADD(at[2], at[21]);       MULADD(at[3], at[20]);       MULADD(at[4], at[19]);       MULADD(at[5], at[18]);       MULADD(at[6], at[17]);       MULADD(at[7], at[16]);       MULADD(at[8], at[15]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[24]);       MULADD(at[1], at[23]);       MULADD(at[2], at[22]);       MULADD(at[3], at[21]);       MULADD(at[4], at[20]);       MULADD(at[5], at[19]);       MULADD(at[6], at[18]);       MULADD(at[7], at[17]);       MULADD(at[8], at[16]);       MULADD(at[9], at[15]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[25]);       MULADD(at[1], at[24]);       MULADD(at[2], at[23]);       MULADD(at[3], at[22]);       MULADD(at[4], at[21]);       MULADD(at[5], at[20]);       MULADD(at[6], at[19]);       MULADD(at[7], at[18]);       MULADD(at[8], at[17]);       MULADD(at[9], at[16]);       MULADD(at[10], at[15]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[26]);       MULADD(at[1], at[25]);       MULADD(at[2], at[24]);       MULADD(at[3], at[23]);       MULADD(at[4], at[22]);       MULADD(at[5], at[21]);       MULADD(at[6], at[20]);       MULADD(at[7], at[19]);       MULADD(at[8], at[18]);       MULADD(at[9], at[17]);       MULADD(at[10], at[16]);       MULADD(at[11], at[15]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[27]);       MULADD(at[1], at[26]);       MULADD(at[2], at[25]);       MULADD(at[3], at[24]);       MULADD(at[4], at[23]);       MULADD(at[5], at[22]);       MULADD(at[6], at[21]);       MULADD(at[7], at[20]);       MULADD(at[8], at[19]);       MULADD(at[9], at[18]);       MULADD(at[10], at[17]);       MULADD(at[11], at[16]);       MULADD(at[12], at[15]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[28]);       MULADD(at[1], at[27]);       MULADD(at[2], at[26]);       MULADD(at[3], at[25]);       MULADD(at[4], at[24]);       MULADD(at[5], at[23]);       MULADD(at[6], at[22]);       MULADD(at[7], at[21]);       MULADD(at[8], at[20]);       MULADD(at[9], at[19]);       MULADD(at[10], at[18]);       MULADD(at[11], at[17]);       MULADD(at[12], at[16]);       MULADD(at[13], at[15]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[29]);       MULADD(at[1], at[28]);       MULADD(at[2], at[27]);       MULADD(at[3], at[26]);       MULADD(at[4], at[25]);       MULADD(at[5], at[24]);       MULADD(at[6], at[23]);       MULADD(at[7], at[22]);       MULADD(at[8], at[21]);       MULADD(at[9], at[20]);       MULADD(at[10], at[19]);       MULADD(at[11], at[18]);       MULADD(at[12], at[17]);       MULADD(at[13], at[16]);       MULADD(at[14], at[15]); 
+      COMBA_STORE(C->dp[14]);
+      /* 15 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[29]);       MULADD(at[2], at[28]);       MULADD(at[3], at[27]);       MULADD(at[4], at[26]);       MULADD(at[5], at[25]);       MULADD(at[6], at[24]);       MULADD(at[7], at[23]);       MULADD(at[8], at[22]);       MULADD(at[9], at[21]);       MULADD(at[10], at[20]);       MULADD(at[11], at[19]);       MULADD(at[12], at[18]);       MULADD(at[13], at[17]);       MULADD(at[14], at[16]); 
+      COMBA_STORE(C->dp[15]);
+      /* 16 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[29]);       MULADD(at[3], at[28]);       MULADD(at[4], at[27]);       MULADD(at[5], at[26]);       MULADD(at[6], at[25]);       MULADD(at[7], at[24]);       MULADD(at[8], at[23]);       MULADD(at[9], at[22]);       MULADD(at[10], at[21]);       MULADD(at[11], at[20]);       MULADD(at[12], at[19]);       MULADD(at[13], at[18]);       MULADD(at[14], at[17]); 
+      COMBA_STORE(C->dp[16]);
+      /* 17 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[29]);       MULADD(at[4], at[28]);       MULADD(at[5], at[27]);       MULADD(at[6], at[26]);       MULADD(at[7], at[25]);       MULADD(at[8], at[24]);       MULADD(at[9], at[23]);       MULADD(at[10], at[22]);       MULADD(at[11], at[21]);       MULADD(at[12], at[20]);       MULADD(at[13], at[19]);       MULADD(at[14], at[18]); 
+      COMBA_STORE(C->dp[17]);
+      /* 18 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[29]);       MULADD(at[5], at[28]);       MULADD(at[6], at[27]);       MULADD(at[7], at[26]);       MULADD(at[8], at[25]);       MULADD(at[9], at[24]);       MULADD(at[10], at[23]);       MULADD(at[11], at[22]);       MULADD(at[12], at[21]);       MULADD(at[13], at[20]);       MULADD(at[14], at[19]); 
+      COMBA_STORE(C->dp[18]);
+      /* 19 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[29]);       MULADD(at[6], at[28]);       MULADD(at[7], at[27]);       MULADD(at[8], at[26]);       MULADD(at[9], at[25]);       MULADD(at[10], at[24]);       MULADD(at[11], at[23]);       MULADD(at[12], at[22]);       MULADD(at[13], at[21]);       MULADD(at[14], at[20]); 
+      COMBA_STORE(C->dp[19]);
+      /* 20 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[29]);       MULADD(at[7], at[28]);       MULADD(at[8], at[27]);       MULADD(at[9], at[26]);       MULADD(at[10], at[25]);       MULADD(at[11], at[24]);       MULADD(at[12], at[23]);       MULADD(at[13], at[22]);       MULADD(at[14], at[21]); 
+      COMBA_STORE(C->dp[20]);
+      /* 21 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[29]);       MULADD(at[8], at[28]);       MULADD(at[9], at[27]);       MULADD(at[10], at[26]);       MULADD(at[11], at[25]);       MULADD(at[12], at[24]);       MULADD(at[13], at[23]);       MULADD(at[14], at[22]); 
+      COMBA_STORE(C->dp[21]);
+      /* 22 */
+      COMBA_FORWARD;
+      MULADD(at[8], at[29]);       MULADD(at[9], at[28]);       MULADD(at[10], at[27]);       MULADD(at[11], at[26]);       MULADD(at[12], at[25]);       MULADD(at[13], at[24]);       MULADD(at[14], at[23]); 
+      COMBA_STORE(C->dp[22]);
+      /* 23 */
+      COMBA_FORWARD;
+      MULADD(at[9], at[29]);       MULADD(at[10], at[28]);       MULADD(at[11], at[27]);       MULADD(at[12], at[26]);       MULADD(at[13], at[25]);       MULADD(at[14], at[24]); 
+      COMBA_STORE(C->dp[23]);
+      /* 24 */
+      COMBA_FORWARD;
+      MULADD(at[10], at[29]);       MULADD(at[11], at[28]);       MULADD(at[12], at[27]);       MULADD(at[13], at[26]);       MULADD(at[14], at[25]); 
+      COMBA_STORE(C->dp[24]);
+      /* 25 */
+      COMBA_FORWARD;
+      MULADD(at[11], at[29]);       MULADD(at[12], at[28]);       MULADD(at[13], at[27]);       MULADD(at[14], at[26]); 
+      COMBA_STORE(C->dp[25]);
+      /* 26 */
+      COMBA_FORWARD;
+      MULADD(at[12], at[29]);       MULADD(at[13], at[28]);       MULADD(at[14], at[27]); 
+      COMBA_STORE(C->dp[26]);
+      /* 27 */
+      COMBA_FORWARD;
+      MULADD(at[13], at[29]);       MULADD(at[14], at[28]); 
+      COMBA_STORE(C->dp[27]);
+      /* 28 */
+      COMBA_FORWARD;
+      MULADD(at[14], at[29]); 
+      COMBA_STORE(C->dp[28]);
+      COMBA_STORE2(C->dp[29]);
+      C->used = 30;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+
+   case 16:
+      memcpy(at, A->dp, 16 * sizeof(fp_digit));
+      memcpy(at+16, B->dp, 16 * sizeof(fp_digit));
+      COMBA_START;
+
+      COMBA_CLEAR;
+      /* 0 */
+      MULADD(at[0], at[16]); 
+      COMBA_STORE(C->dp[0]);
+      /* 1 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[17]);       MULADD(at[1], at[16]); 
+      COMBA_STORE(C->dp[1]);
+      /* 2 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[18]);       MULADD(at[1], at[17]);       MULADD(at[2], at[16]); 
+      COMBA_STORE(C->dp[2]);
+      /* 3 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[19]);       MULADD(at[1], at[18]);       MULADD(at[2], at[17]);       MULADD(at[3], at[16]); 
+      COMBA_STORE(C->dp[3]);
+      /* 4 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[20]);       MULADD(at[1], at[19]);       MULADD(at[2], at[18]);       MULADD(at[3], at[17]);       MULADD(at[4], at[16]); 
+      COMBA_STORE(C->dp[4]);
+      /* 5 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[21]);       MULADD(at[1], at[20]);       MULADD(at[2], at[19]);       MULADD(at[3], at[18]);       MULADD(at[4], at[17]);       MULADD(at[5], at[16]); 
+      COMBA_STORE(C->dp[5]);
+      /* 6 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[22]);       MULADD(at[1], at[21]);       MULADD(at[2], at[20]);       MULADD(at[3], at[19]);       MULADD(at[4], at[18]);       MULADD(at[5], at[17]);       MULADD(at[6], at[16]); 
+      COMBA_STORE(C->dp[6]);
+      /* 7 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[23]);       MULADD(at[1], at[22]);       MULADD(at[2], at[21]);       MULADD(at[3], at[20]);       MULADD(at[4], at[19]);       MULADD(at[5], at[18]);       MULADD(at[6], at[17]);       MULADD(at[7], at[16]); 
+      COMBA_STORE(C->dp[7]);
+      /* 8 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[24]);       MULADD(at[1], at[23]);       MULADD(at[2], at[22]);       MULADD(at[3], at[21]);       MULADD(at[4], at[20]);       MULADD(at[5], at[19]);       MULADD(at[6], at[18]);       MULADD(at[7], at[17]);       MULADD(at[8], at[16]); 
+      COMBA_STORE(C->dp[8]);
+      /* 9 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[25]);       MULADD(at[1], at[24]);       MULADD(at[2], at[23]);       MULADD(at[3], at[22]);       MULADD(at[4], at[21]);       MULADD(at[5], at[20]);       MULADD(at[6], at[19]);       MULADD(at[7], at[18]);       MULADD(at[8], at[17]);       MULADD(at[9], at[16]); 
+      COMBA_STORE(C->dp[9]);
+      /* 10 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[26]);       MULADD(at[1], at[25]);       MULADD(at[2], at[24]);       MULADD(at[3], at[23]);       MULADD(at[4], at[22]);       MULADD(at[5], at[21]);       MULADD(at[6], at[20]);       MULADD(at[7], at[19]);       MULADD(at[8], at[18]);       MULADD(at[9], at[17]);       MULADD(at[10], at[16]); 
+      COMBA_STORE(C->dp[10]);
+      /* 11 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[27]);       MULADD(at[1], at[26]);       MULADD(at[2], at[25]);       MULADD(at[3], at[24]);       MULADD(at[4], at[23]);       MULADD(at[5], at[22]);       MULADD(at[6], at[21]);       MULADD(at[7], at[20]);       MULADD(at[8], at[19]);       MULADD(at[9], at[18]);       MULADD(at[10], at[17]);       MULADD(at[11], at[16]); 
+      COMBA_STORE(C->dp[11]);
+      /* 12 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[28]);       MULADD(at[1], at[27]);       MULADD(at[2], at[26]);       MULADD(at[3], at[25]);       MULADD(at[4], at[24]);       MULADD(at[5], at[23]);       MULADD(at[6], at[22]);       MULADD(at[7], at[21]);       MULADD(at[8], at[20]);       MULADD(at[9], at[19]);       MULADD(at[10], at[18]);       MULADD(at[11], at[17]);       MULADD(at[12], at[16]); 
+      COMBA_STORE(C->dp[12]);
+      /* 13 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[29]);       MULADD(at[1], at[28]);       MULADD(at[2], at[27]);       MULADD(at[3], at[26]);       MULADD(at[4], at[25]);       MULADD(at[5], at[24]);       MULADD(at[6], at[23]);       MULADD(at[7], at[22]);       MULADD(at[8], at[21]);       MULADD(at[9], at[20]);       MULADD(at[10], at[19]);       MULADD(at[11], at[18]);       MULADD(at[12], at[17]);       MULADD(at[13], at[16]); 
+      COMBA_STORE(C->dp[13]);
+      /* 14 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[30]);       MULADD(at[1], at[29]);       MULADD(at[2], at[28]);       MULADD(at[3], at[27]);       MULADD(at[4], at[26]);       MULADD(at[5], at[25]);       MULADD(at[6], at[24]);       MULADD(at[7], at[23]);       MULADD(at[8], at[22]);       MULADD(at[9], at[21]);       MULADD(at[10], at[20]);       MULADD(at[11], at[19]);       MULADD(at[12], at[18]);       MULADD(at[13], at[17]);       MULADD(at[14], at[16]); 
+      COMBA_STORE(C->dp[14]);
+      /* 15 */
+      COMBA_FORWARD;
+      MULADD(at[0], at[31]);       MULADD(at[1], at[30]);       MULADD(at[2], at[29]);       MULADD(at[3], at[28]);       MULADD(at[4], at[27]);       MULADD(at[5], at[26]);       MULADD(at[6], at[25]);       MULADD(at[7], at[24]);       MULADD(at[8], at[23]);       MULADD(at[9], at[22]);       MULADD(at[10], at[21]);       MULADD(at[11], at[20]);       MULADD(at[12], at[19]);       MULADD(at[13], at[18]);       MULADD(at[14], at[17]);       MULADD(at[15], at[16]); 
+      COMBA_STORE(C->dp[15]);
+      /* 16 */
+      COMBA_FORWARD;
+      MULADD(at[1], at[31]);       MULADD(at[2], at[30]);       MULADD(at[3], at[29]);       MULADD(at[4], at[28]);       MULADD(at[5], at[27]);       MULADD(at[6], at[26]);       MULADD(at[7], at[25]);       MULADD(at[8], at[24]);       MULADD(at[9], at[23]);       MULADD(at[10], at[22]);       MULADD(at[11], at[21]);       MULADD(at[12], at[20]);       MULADD(at[13], at[19]);       MULADD(at[14], at[18]);       MULADD(at[15], at[17]); 
+      COMBA_STORE(C->dp[16]);
+      /* 17 */
+      COMBA_FORWARD;
+      MULADD(at[2], at[31]);       MULADD(at[3], at[30]);       MULADD(at[4], at[29]);       MULADD(at[5], at[28]);       MULADD(at[6], at[27]);       MULADD(at[7], at[26]);       MULADD(at[8], at[25]);       MULADD(at[9], at[24]);       MULADD(at[10], at[23]);       MULADD(at[11], at[22]);       MULADD(at[12], at[21]);       MULADD(at[13], at[20]);       MULADD(at[14], at[19]);       MULADD(at[15], at[18]); 
+      COMBA_STORE(C->dp[17]);
+      /* 18 */
+      COMBA_FORWARD;
+      MULADD(at[3], at[31]);       MULADD(at[4], at[30]);       MULADD(at[5], at[29]);       MULADD(at[6], at[28]);       MULADD(at[7], at[27]);       MULADD(at[8], at[26]);       MULADD(at[9], at[25]);       MULADD(at[10], at[24]);       MULADD(at[11], at[23]);       MULADD(at[12], at[22]);       MULADD(at[13], at[21]);       MULADD(at[14], at[20]);       MULADD(at[15], at[19]); 
+      COMBA_STORE(C->dp[18]);
+      /* 19 */
+      COMBA_FORWARD;
+      MULADD(at[4], at[31]);       MULADD(at[5], at[30]);       MULADD(at[6], at[29]);       MULADD(at[7], at[28]);       MULADD(at[8], at[27]);       MULADD(at[9], at[26]);       MULADD(at[10], at[25]);       MULADD(at[11], at[24]);       MULADD(at[12], at[23]);       MULADD(at[13], at[22]);       MULADD(at[14], at[21]);       MULADD(at[15], at[20]); 
+      COMBA_STORE(C->dp[19]);
+      /* 20 */
+      COMBA_FORWARD;
+      MULADD(at[5], at[31]);       MULADD(at[6], at[30]);       MULADD(at[7], at[29]);       MULADD(at[8], at[28]);       MULADD(at[9], at[27]);       MULADD(at[10], at[26]);       MULADD(at[11], at[25]);       MULADD(at[12], at[24]);       MULADD(at[13], at[23]);       MULADD(at[14], at[22]);       MULADD(at[15], at[21]); 
+      COMBA_STORE(C->dp[20]);
+      /* 21 */
+      COMBA_FORWARD;
+      MULADD(at[6], at[31]);       MULADD(at[7], at[30]);       MULADD(at[8], at[29]);       MULADD(at[9], at[28]);       MULADD(at[10], at[27]);       MULADD(at[11], at[26]);       MULADD(at[12], at[25]);       MULADD(at[13], at[24]);       MULADD(at[14], at[23]);       MULADD(at[15], at[22]); 
+      COMBA_STORE(C->dp[21]);
+      /* 22 */
+      COMBA_FORWARD;
+      MULADD(at[7], at[31]);       MULADD(at[8], at[30]);       MULADD(at[9], at[29]);       MULADD(at[10], at[28]);       MULADD(at[11], at[27]);       MULADD(at[12], at[26]);       MULADD(at[13], at[25]);       MULADD(at[14], at[24]);       MULADD(at[15], at[23]); 
+      COMBA_STORE(C->dp[22]);
+      /* 23 */
+      COMBA_FORWARD;
+      MULADD(at[8], at[31]);       MULADD(at[9], at[30]);       MULADD(at[10], at[29]);       MULADD(at[11], at[28]);       MULADD(at[12], at[27]);       MULADD(at[13], at[26]);       MULADD(at[14], at[25]);       MULADD(at[15], at[24]); 
+      COMBA_STORE(C->dp[23]);
+      /* 24 */
+      COMBA_FORWARD;
+      MULADD(at[9], at[31]);       MULADD(at[10], at[30]);       MULADD(at[11], at[29]);       MULADD(at[12], at[28]);       MULADD(at[13], at[27]);       MULADD(at[14], at[26]);       MULADD(at[15], at[25]); 
+      COMBA_STORE(C->dp[24]);
+      /* 25 */
+      COMBA_FORWARD;
+      MULADD(at[10], at[31]);       MULADD(at[11], at[30]);       MULADD(at[12], at[29]);       MULADD(at[13], at[28]);       MULADD(at[14], at[27]);       MULADD(at[15], at[26]); 
+      COMBA_STORE(C->dp[25]);
+      /* 26 */
+      COMBA_FORWARD;
+      MULADD(at[11], at[31]);       MULADD(at[12], at[30]);       MULADD(at[13], at[29]);       MULADD(at[14], at[28]);       MULADD(at[15], at[27]); 
+      COMBA_STORE(C->dp[26]);
+      /* 27 */
+      COMBA_FORWARD;
+      MULADD(at[12], at[31]);       MULADD(at[13], at[30]);       MULADD(at[14], at[29]);       MULADD(at[15], at[28]); 
+      COMBA_STORE(C->dp[27]);
+      /* 28 */
+      COMBA_FORWARD;
+      MULADD(at[13], at[31]);       MULADD(at[14], at[30]);       MULADD(at[15], at[29]); 
+      COMBA_STORE(C->dp[28]);
+      /* 29 */
+      COMBA_FORWARD;
+      MULADD(at[14], at[31]);       MULADD(at[15], at[30]); 
+      COMBA_STORE(C->dp[29]);
+      /* 30 */
+      COMBA_FORWARD;
+      MULADD(at[15], at[31]); 
+      COMBA_STORE(C->dp[30]);
+      COMBA_STORE2(C->dp[31]);
+      C->used = 32;
+      C->sign = A->sign ^ B->sign;
+      fp_clamp(C);
+      COMBA_FINI;
+      break;
+   }
 }
 
-#endif /* TFM_LARGE */
+#endif
 
 #ifdef TFM_HUGE
 
@@ -2730,7 +3989,931 @@ void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FINI;
 }
 
+void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C)
+{
+   fp_digit c0, c1, c2, at[128];
+
+   memcpy(at, A->dp, 64 * sizeof(fp_digit));
+   memcpy(at+64, B->dp, 64 * sizeof(fp_digit));
+   COMBA_START;
+
+   COMBA_CLEAR;
+   /* 0 */
+   MULADD(at[0], at[64]); 
+   COMBA_STORE(C->dp[0]);
+   /* 1 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[65]);    MULADD(at[1], at[64]); 
+   COMBA_STORE(C->dp[1]);
+   /* 2 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[66]);    MULADD(at[1], at[65]);    MULADD(at[2], at[64]); 
+   COMBA_STORE(C->dp[2]);
+   /* 3 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[67]);    MULADD(at[1], at[66]);    MULADD(at[2], at[65]);    MULADD(at[3], at[64]); 
+   COMBA_STORE(C->dp[3]);
+   /* 4 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[68]);    MULADD(at[1], at[67]);    MULADD(at[2], at[66]);    MULADD(at[3], at[65]);    MULADD(at[4], at[64]); 
+   COMBA_STORE(C->dp[4]);
+   /* 5 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[69]);    MULADD(at[1], at[68]);    MULADD(at[2], at[67]);    MULADD(at[3], at[66]);    MULADD(at[4], at[65]);    MULADD(at[5], at[64]); 
+   COMBA_STORE(C->dp[5]);
+   /* 6 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[70]);    MULADD(at[1], at[69]);    MULADD(at[2], at[68]);    MULADD(at[3], at[67]);    MULADD(at[4], at[66]);    MULADD(at[5], at[65]);    MULADD(at[6], at[64]); 
+   COMBA_STORE(C->dp[6]);
+   /* 7 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[71]);    MULADD(at[1], at[70]);    MULADD(at[2], at[69]);    MULADD(at[3], at[68]);    MULADD(at[4], at[67]);    MULADD(at[5], at[66]);    MULADD(at[6], at[65]);    MULADD(at[7], at[64]); 
+   COMBA_STORE(C->dp[7]);
+   /* 8 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[72]);    MULADD(at[1], at[71]);    MULADD(at[2], at[70]);    MULADD(at[3], at[69]);    MULADD(at[4], at[68]);    MULADD(at[5], at[67]);    MULADD(at[6], at[66]);    MULADD(at[7], at[65]);    MULADD(at[8], at[64]); 
+   COMBA_STORE(C->dp[8]);
+   /* 9 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[73]);    MULADD(at[1], at[72]);    MULADD(at[2], at[71]);    MULADD(at[3], at[70]);    MULADD(at[4], at[69]);    MULADD(at[5], at[68]);    MULADD(at[6], at[67]);    MULADD(at[7], at[66]);    MULADD(at[8], at[65]);    MULADD(at[9], at[64]); 
+   COMBA_STORE(C->dp[9]);
+   /* 10 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[74]);    MULADD(at[1], at[73]);    MULADD(at[2], at[72]);    MULADD(at[3], at[71]);    MULADD(at[4], at[70]);    MULADD(at[5], at[69]);    MULADD(at[6], at[68]);    MULADD(at[7], at[67]);    MULADD(at[8], at[66]);    MULADD(at[9], at[65]);    MULADD(at[10], at[64]); 
+   COMBA_STORE(C->dp[10]);
+   /* 11 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[75]);    MULADD(at[1], at[74]);    MULADD(at[2], at[73]);    MULADD(at[3], at[72]);    MULADD(at[4], at[71]);    MULADD(at[5], at[70]);    MULADD(at[6], at[69]);    MULADD(at[7], at[68]);    MULADD(at[8], at[67]);    MULADD(at[9], at[66]);    MULADD(at[10], at[65]);    MULADD(at[11], at[64]); 
+   COMBA_STORE(C->dp[11]);
+   /* 12 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[76]);    MULADD(at[1], at[75]);    MULADD(at[2], at[74]);    MULADD(at[3], at[73]);    MULADD(at[4], at[72]);    MULADD(at[5], at[71]);    MULADD(at[6], at[70]);    MULADD(at[7], at[69]);    MULADD(at[8], at[68]);    MULADD(at[9], at[67]);    MULADD(at[10], at[66]);    MULADD(at[11], at[65]);    MULADD(at[12], at[64]); 
+   COMBA_STORE(C->dp[12]);
+   /* 13 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[77]);    MULADD(at[1], at[76]);    MULADD(at[2], at[75]);    MULADD(at[3], at[74]);    MULADD(at[4], at[73]);    MULADD(at[5], at[72]);    MULADD(at[6], at[71]);    MULADD(at[7], at[70]);    MULADD(at[8], at[69]);    MULADD(at[9], at[68]);    MULADD(at[10], at[67]);    MULADD(at[11], at[66]);    MULADD(at[12], at[65]);    MULADD(at[13], at[64]); 
+   COMBA_STORE(C->dp[13]);
+   /* 14 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[78]);    MULADD(at[1], at[77]);    MULADD(at[2], at[76]);    MULADD(at[3], at[75]);    MULADD(at[4], at[74]);    MULADD(at[5], at[73]);    MULADD(at[6], at[72]);    MULADD(at[7], at[71]);    MULADD(at[8], at[70]);    MULADD(at[9], at[69]);    MULADD(at[10], at[68]);    MULADD(at[11], at[67]);    MULADD(at[12], at[66]);    MULADD(at[13], at[65]);    MULADD(at[14], at[64]); 
+   COMBA_STORE(C->dp[14]);
+   /* 15 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[79]);    MULADD(at[1], at[78]);    MULADD(at[2], at[77]);    MULADD(at[3], at[76]);    MULADD(at[4], at[75]);    MULADD(at[5], at[74]);    MULADD(at[6], at[73]);    MULADD(at[7], at[72]);    MULADD(at[8], at[71]);    MULADD(at[9], at[70]);    MULADD(at[10], at[69]);    MULADD(at[11], at[68]);    MULADD(at[12], at[67]);    MULADD(at[13], at[66]);    MULADD(at[14], at[65]);    MULADD(at[15], at[64]); 
+   COMBA_STORE(C->dp[15]);
+   /* 16 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[80]);    MULADD(at[1], at[79]);    MULADD(at[2], at[78]);    MULADD(at[3], at[77]);    MULADD(at[4], at[76]);    MULADD(at[5], at[75]);    MULADD(at[6], at[74]);    MULADD(at[7], at[73]);    MULADD(at[8], at[72]);    MULADD(at[9], at[71]);    MULADD(at[10], at[70]);    MULADD(at[11], at[69]);    MULADD(at[12], at[68]);    MULADD(at[13], at[67]);    MULADD(at[14], at[66]);    MULADD(at[15], at[65]);    MULADD(at[16], at[64]); 
+   COMBA_STORE(C->dp[16]);
+   /* 17 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[81]);    MULADD(at[1], at[80]);    MULADD(at[2], at[79]);    MULADD(at[3], at[78]);    MULADD(at[4], at[77]);    MULADD(at[5], at[76]);    MULADD(at[6], at[75]);    MULADD(at[7], at[74]);    MULADD(at[8], at[73]);    MULADD(at[9], at[72]);    MULADD(at[10], at[71]);    MULADD(at[11], at[70]);    MULADD(at[12], at[69]);    MULADD(at[13], at[68]);    MULADD(at[14], at[67]);    MULADD(at[15], at[66]);    MULADD(at[16], at[65]);    MULADD(at[17], at[64]); 
+   COMBA_STORE(C->dp[17]);
+   /* 18 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[82]);    MULADD(at[1], at[81]);    MULADD(at[2], at[80]);    MULADD(at[3], at[79]);    MULADD(at[4], at[78]);    MULADD(at[5], at[77]);    MULADD(at[6], at[76]);    MULADD(at[7], at[75]);    MULADD(at[8], at[74]);    MULADD(at[9], at[73]);    MULADD(at[10], at[72]);    MULADD(at[11], at[71]);    MULADD(at[12], at[70]);    MULADD(at[13], at[69]);    MULADD(at[14], at[68]);    MULADD(at[15], at[67]);    MULADD(at[16], at[66]);    MULADD(at[17], at[65]);    MULADD(at[18], at[64]); 
+   COMBA_STORE(C->dp[18]);
+   /* 19 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[83]);    MULADD(at[1], at[82]);    MULADD(at[2], at[81]);    MULADD(at[3], at[80]);    MULADD(at[4], at[79]);    MULADD(at[5], at[78]);    MULADD(at[6], at[77]);    MULADD(at[7], at[76]);    MULADD(at[8], at[75]);    MULADD(at[9], at[74]);    MULADD(at[10], at[73]);    MULADD(at[11], at[72]);    MULADD(at[12], at[71]);    MULADD(at[13], at[70]);    MULADD(at[14], at[69]);    MULADD(at[15], at[68]);    MULADD(at[16], at[67]);    MULADD(at[17], at[66]);    MULADD(at[18], at[65]);    MULADD(at[19], at[64]); 
+   COMBA_STORE(C->dp[19]);
+   /* 20 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[84]);    MULADD(at[1], at[83]);    MULADD(at[2], at[82]);    MULADD(at[3], at[81]);    MULADD(at[4], at[80]);    MULADD(at[5], at[79]);    MULADD(at[6], at[78]);    MULADD(at[7], at[77]);    MULADD(at[8], at[76]);    MULADD(at[9], at[75]);    MULADD(at[10], at[74]);    MULADD(at[11], at[73]);    MULADD(at[12], at[72]);    MULADD(at[13], at[71]);    MULADD(at[14], at[70]);    MULADD(at[15], at[69]);    MULADD(at[16], at[68]);    MULADD(at[17], at[67]);    MULADD(at[18], at[66]);    MULADD(at[19], at[65]);    MULADD(at[20], at[64]); 
+   COMBA_STORE(C->dp[20]);
+   /* 21 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[85]);    MULADD(at[1], at[84]);    MULADD(at[2], at[83]);    MULADD(at[3], at[82]);    MULADD(at[4], at[81]);    MULADD(at[5], at[80]);    MULADD(at[6], at[79]);    MULADD(at[7], at[78]);    MULADD(at[8], at[77]);    MULADD(at[9], at[76]);    MULADD(at[10], at[75]);    MULADD(at[11], at[74]);    MULADD(at[12], at[73]);    MULADD(at[13], at[72]);    MULADD(at[14], at[71]);    MULADD(at[15], at[70]);    MULADD(at[16], at[69]);    MULADD(at[17], at[68]);    MULADD(at[18], at[67]);    MULADD(at[19], at[66]);    MULADD(at[20], at[65]);    MULADD(at[21], at[64]); 
+   COMBA_STORE(C->dp[21]);
+   /* 22 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[86]);    MULADD(at[1], at[85]);    MULADD(at[2], at[84]);    MULADD(at[3], at[83]);    MULADD(at[4], at[82]);    MULADD(at[5], at[81]);    MULADD(at[6], at[80]);    MULADD(at[7], at[79]);    MULADD(at[8], at[78]);    MULADD(at[9], at[77]);    MULADD(at[10], at[76]);    MULADD(at[11], at[75]);    MULADD(at[12], at[74]);    MULADD(at[13], at[73]);    MULADD(at[14], at[72]);    MULADD(at[15], at[71]);    MULADD(at[16], at[70]);    MULADD(at[17], at[69]);    MULADD(at[18], at[68]);    MULADD(at[19], at[67]);    MULADD(at[20], at[66]);    MULADD(at[21], at[65]);    MULADD(at[22], at[64]); 
+   COMBA_STORE(C->dp[22]);
+   /* 23 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[87]);    MULADD(at[1], at[86]);    MULADD(at[2], at[85]);    MULADD(at[3], at[84]);    MULADD(at[4], at[83]);    MULADD(at[5], at[82]);    MULADD(at[6], at[81]);    MULADD(at[7], at[80]);    MULADD(at[8], at[79]);    MULADD(at[9], at[78]);    MULADD(at[10], at[77]);    MULADD(at[11], at[76]);    MULADD(at[12], at[75]);    MULADD(at[13], at[74]);    MULADD(at[14], at[73]);    MULADD(at[15], at[72]);    MULADD(at[16], at[71]);    MULADD(at[17], at[70]);    MULADD(at[18], at[69]);    MULADD(at[19], at[68]);    MULADD(at[20], at[67]);    MULADD(at[21], at[66]);    MULADD(at[22], at[65]);    MULADD(at[23], at[64]); 
+   COMBA_STORE(C->dp[23]);
+   /* 24 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[88]);    MULADD(at[1], at[87]);    MULADD(at[2], at[86]);    MULADD(at[3], at[85]);    MULADD(at[4], at[84]);    MULADD(at[5], at[83]);    MULADD(at[6], at[82]);    MULADD(at[7], at[81]);    MULADD(at[8], at[80]);    MULADD(at[9], at[79]);    MULADD(at[10], at[78]);    MULADD(at[11], at[77]);    MULADD(at[12], at[76]);    MULADD(at[13], at[75]);    MULADD(at[14], at[74]);    MULADD(at[15], at[73]);    MULADD(at[16], at[72]);    MULADD(at[17], at[71]);    MULADD(at[18], at[70]);    MULADD(at[19], at[69]);    MULADD(at[20], at[68]);    MULADD(at[21], at[67]);    MULADD(at[22], at[66]);    MULADD(at[23], at[65]);    MULADD(at[24], at[64]); 
+   COMBA_STORE(C->dp[24]);
+   /* 25 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[89]);    MULADD(at[1], at[88]);    MULADD(at[2], at[87]);    MULADD(at[3], at[86]);    MULADD(at[4], at[85]);    MULADD(at[5], at[84]);    MULADD(at[6], at[83]);    MULADD(at[7], at[82]);    MULADD(at[8], at[81]);    MULADD(at[9], at[80]);    MULADD(at[10], at[79]);    MULADD(at[11], at[78]);    MULADD(at[12], at[77]);    MULADD(at[13], at[76]);    MULADD(at[14], at[75]);    MULADD(at[15], at[74]);    MULADD(at[16], at[73]);    MULADD(at[17], at[72]);    MULADD(at[18], at[71]);    MULADD(at[19], at[70]);    MULADD(at[20], at[69]);    MULADD(at[21], at[68]);    MULADD(at[22], at[67]);    MULADD(at[23], at[66]);    MULADD(at[24], at[65]);    MULADD(at[25], at[64]); 
+   COMBA_STORE(C->dp[25]);
+   /* 26 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[90]);    MULADD(at[1], at[89]);    MULADD(at[2], at[88]);    MULADD(at[3], at[87]);    MULADD(at[4], at[86]);    MULADD(at[5], at[85]);    MULADD(at[6], at[84]);    MULADD(at[7], at[83]);    MULADD(at[8], at[82]);    MULADD(at[9], at[81]);    MULADD(at[10], at[80]);    MULADD(at[11], at[79]);    MULADD(at[12], at[78]);    MULADD(at[13], at[77]);    MULADD(at[14], at[76]);    MULADD(at[15], at[75]);    MULADD(at[16], at[74]);    MULADD(at[17], at[73]);    MULADD(at[18], at[72]);    MULADD(at[19], at[71]);    MULADD(at[20], at[70]);    MULADD(at[21], at[69]);    MULADD(at[22], at[68]);    MULADD(at[23], at[67]);    MULADD(at[24], at[66]);    MULADD(at[25], at[65]);    MULADD(at[26], at[64]); 
+   COMBA_STORE(C->dp[26]);
+   /* 27 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[91]);    MULADD(at[1], at[90]);    MULADD(at[2], at[89]);    MULADD(at[3], at[88]);    MULADD(at[4], at[87]);    MULADD(at[5], at[86]);    MULADD(at[6], at[85]);    MULADD(at[7], at[84]);    MULADD(at[8], at[83]);    MULADD(at[9], at[82]);    MULADD(at[10], at[81]);    MULADD(at[11], at[80]);    MULADD(at[12], at[79]);    MULADD(at[13], at[78]);    MULADD(at[14], at[77]);    MULADD(at[15], at[76]);    MULADD(at[16], at[75]);    MULADD(at[17], at[74]);    MULADD(at[18], at[73]);    MULADD(at[19], at[72]);    MULADD(at[20], at[71]);    MULADD(at[21], at[70]);    MULADD(at[22], at[69]);    MULADD(at[23], at[68]);    MULADD(at[24], at[67]);    MULADD(at[25], at[66]);    MULADD(at[26], at[65]);    MULADD(at[27], at[64]); 
+   COMBA_STORE(C->dp[27]);
+   /* 28 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[92]);    MULADD(at[1], at[91]);    MULADD(at[2], at[90]);    MULADD(at[3], at[89]);    MULADD(at[4], at[88]);    MULADD(at[5], at[87]);    MULADD(at[6], at[86]);    MULADD(at[7], at[85]);    MULADD(at[8], at[84]);    MULADD(at[9], at[83]);    MULADD(at[10], at[82]);    MULADD(at[11], at[81]);    MULADD(at[12], at[80]);    MULADD(at[13], at[79]);    MULADD(at[14], at[78]);    MULADD(at[15], at[77]);    MULADD(at[16], at[76]);    MULADD(at[17], at[75]);    MULADD(at[18], at[74]);    MULADD(at[19], at[73]);    MULADD(at[20], at[72]);    MULADD(at[21], at[71]);    MULADD(at[22], at[70]);    MULADD(at[23], at[69]);    MULADD(at[24], at[68]);    MULADD(at[25], at[67]);    MULADD(at[26], at[66]);    MULADD(at[27], at[65]);    MULADD(at[28], at[64]); 
+   COMBA_STORE(C->dp[28]);
+   /* 29 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[93]);    MULADD(at[1], at[92]);    MULADD(at[2], at[91]);    MULADD(at[3], at[90]);    MULADD(at[4], at[89]);    MULADD(at[5], at[88]);    MULADD(at[6], at[87]);    MULADD(at[7], at[86]);    MULADD(at[8], at[85]);    MULADD(at[9], at[84]);    MULADD(at[10], at[83]);    MULADD(at[11], at[82]);    MULADD(at[12], at[81]);    MULADD(at[13], at[80]);    MULADD(at[14], at[79]);    MULADD(at[15], at[78]);    MULADD(at[16], at[77]);    MULADD(at[17], at[76]);    MULADD(at[18], at[75]);    MULADD(at[19], at[74]);    MULADD(at[20], at[73]);    MULADD(at[21], at[72]);    MULADD(at[22], at[71]);    MULADD(at[23], at[70]);    MULADD(at[24], at[69]);    MULADD(at[25], at[68]);    MULADD(at[26], at[67]);    MULADD(at[27], at[66]);    MULADD(at[28], at[65]);    MULADD(at[29], at[64]); 
+   COMBA_STORE(C->dp[29]);
+   /* 30 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[94]);    MULADD(at[1], at[93]);    MULADD(at[2], at[92]);    MULADD(at[3], at[91]);    MULADD(at[4], at[90]);    MULADD(at[5], at[89]);    MULADD(at[6], at[88]);    MULADD(at[7], at[87]);    MULADD(at[8], at[86]);    MULADD(at[9], at[85]);    MULADD(at[10], at[84]);    MULADD(at[11], at[83]);    MULADD(at[12], at[82]);    MULADD(at[13], at[81]);    MULADD(at[14], at[80]);    MULADD(at[15], at[79]);    MULADD(at[16], at[78]);    MULADD(at[17], at[77]);    MULADD(at[18], at[76]);    MULADD(at[19], at[75]);    MULADD(at[20], at[74]);    MULADD(at[21], at[73]);    MULADD(at[22], at[72]);    MULADD(at[23], at[71]);    MULADD(at[24], at[70]);    MULADD(at[25], at[69]);    MULADD(at[26], at[68]);    MULADD(at[27], at[67]);    MULADD(at[28], at[66]);    MULADD(at[29], at[65]);    MULADD(at[30], at[64]); 
+   COMBA_STORE(C->dp[30]);
+   /* 31 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[95]);    MULADD(at[1], at[94]);    MULADD(at[2], at[93]);    MULADD(at[3], at[92]);    MULADD(at[4], at[91]);    MULADD(at[5], at[90]);    MULADD(at[6], at[89]);    MULADD(at[7], at[88]);    MULADD(at[8], at[87]);    MULADD(at[9], at[86]);    MULADD(at[10], at[85]);    MULADD(at[11], at[84]);    MULADD(at[12], at[83]);    MULADD(at[13], at[82]);    MULADD(at[14], at[81]);    MULADD(at[15], at[80]);    MULADD(at[16], at[79]);    MULADD(at[17], at[78]);    MULADD(at[18], at[77]);    MULADD(at[19], at[76]);    MULADD(at[20], at[75]);    MULADD(at[21], at[74]);    MULADD(at[22], at[73]);    MULADD(at[23], at[72]);    MULADD(at[24], at[71]);    MULADD(at[25], at[70]);    MULADD(at[26], at[69]);    MULADD(at[27], at[68]);    MULADD(at[28], at[67]);    MULADD(at[29], at[66]);    MULADD(at[30], at[65]);    MULADD(at[31], at[64]); 
+   COMBA_STORE(C->dp[31]);
+   /* 32 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[96]);    MULADD(at[1], at[95]);    MULADD(at[2], at[94]);    MULADD(at[3], at[93]);    MULADD(at[4], at[92]);    MULADD(at[5], at[91]);    MULADD(at[6], at[90]);    MULADD(at[7], at[89]);    MULADD(at[8], at[88]);    MULADD(at[9], at[87]);    MULADD(at[10], at[86]);    MULADD(at[11], at[85]);    MULADD(at[12], at[84]);    MULADD(at[13], at[83]);    MULADD(at[14], at[82]);    MULADD(at[15], at[81]);    MULADD(at[16], at[80]);    MULADD(at[17], at[79]);    MULADD(at[18], at[78]);    MULADD(at[19], at[77]);    MULADD(at[20], at[76]);    MULADD(at[21], at[75]);    MULADD(at[22], at[74]);    MULADD(at[23], at[73]);    MULADD(at[24], at[72]);    MULADD(at[25], at[71]);    MULADD(at[26], at[70]);    MULADD(at[27], at[69]);    MULADD(at[28], at[68]);    MULADD(at[29], at[67]);    MULADD(at[30], at[66]);    MULADD(at[31], at[65]);    MULADD(at[32], at[64]); 
+   COMBA_STORE(C->dp[32]);
+   /* 33 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[97]);    MULADD(at[1], at[96]);    MULADD(at[2], at[95]);    MULADD(at[3], at[94]);    MULADD(at[4], at[93]);    MULADD(at[5], at[92]);    MULADD(at[6], at[91]);    MULADD(at[7], at[90]);    MULADD(at[8], at[89]);    MULADD(at[9], at[88]);    MULADD(at[10], at[87]);    MULADD(at[11], at[86]);    MULADD(at[12], at[85]);    MULADD(at[13], at[84]);    MULADD(at[14], at[83]);    MULADD(at[15], at[82]);    MULADD(at[16], at[81]);    MULADD(at[17], at[80]);    MULADD(at[18], at[79]);    MULADD(at[19], at[78]);    MULADD(at[20], at[77]);    MULADD(at[21], at[76]);    MULADD(at[22], at[75]);    MULADD(at[23], at[74]);    MULADD(at[24], at[73]);    MULADD(at[25], at[72]);    MULADD(at[26], at[71]);    MULADD(at[27], at[70]);    MULADD(at[28], at[69]);    MULADD(at[29], at[68]);    MULADD(at[30], at[67]);    MULADD(at[31], at[66]);    MULADD(at[32], at[65]);    MULADD(at[33], at[64]); 
+   COMBA_STORE(C->dp[33]);
+   /* 34 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[98]);    MULADD(at[1], at[97]);    MULADD(at[2], at[96]);    MULADD(at[3], at[95]);    MULADD(at[4], at[94]);    MULADD(at[5], at[93]);    MULADD(at[6], at[92]);    MULADD(at[7], at[91]);    MULADD(at[8], at[90]);    MULADD(at[9], at[89]);    MULADD(at[10], at[88]);    MULADD(at[11], at[87]);    MULADD(at[12], at[86]);    MULADD(at[13], at[85]);    MULADD(at[14], at[84]);    MULADD(at[15], at[83]);    MULADD(at[16], at[82]);    MULADD(at[17], at[81]);    MULADD(at[18], at[80]);    MULADD(at[19], at[79]);    MULADD(at[20], at[78]);    MULADD(at[21], at[77]);    MULADD(at[22], at[76]);    MULADD(at[23], at[75]);    MULADD(at[24], at[74]);    MULADD(at[25], at[73]);    MULADD(at[26], at[72]);    MULADD(at[27], at[71]);    MULADD(at[28], at[70]);    MULADD(at[29], at[69]);    MULADD(at[30], at[68]);    MULADD(at[31], at[67]);    MULADD(at[32], at[66]);    MULADD(at[33], at[65]);    MULADD(at[34], at[64]); 
+   COMBA_STORE(C->dp[34]);
+   /* 35 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[99]);    MULADD(at[1], at[98]);    MULADD(at[2], at[97]);    MULADD(at[3], at[96]);    MULADD(at[4], at[95]);    MULADD(at[5], at[94]);    MULADD(at[6], at[93]);    MULADD(at[7], at[92]);    MULADD(at[8], at[91]);    MULADD(at[9], at[90]);    MULADD(at[10], at[89]);    MULADD(at[11], at[88]);    MULADD(at[12], at[87]);    MULADD(at[13], at[86]);    MULADD(at[14], at[85]);    MULADD(at[15], at[84]);    MULADD(at[16], at[83]);    MULADD(at[17], at[82]);    MULADD(at[18], at[81]);    MULADD(at[19], at[80]);    MULADD(at[20], at[79]);    MULADD(at[21], at[78]);    MULADD(at[22], at[77]);    MULADD(at[23], at[76]);    MULADD(at[24], at[75]);    MULADD(at[25], at[74]);    MULADD(at[26], at[73]);    MULADD(at[27], at[72]);    MULADD(at[28], at[71]);    MULADD(at[29], at[70]);    MULADD(at[30], at[69]);    MULADD(at[31], at[68]);    MULADD(at[32], at[67]);    MULADD(at[33], at[66]);    MULADD(at[34], at[65]);    MULADD(at[35], at[64]); 
+   COMBA_STORE(C->dp[35]);
+   /* 36 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[100]);    MULADD(at[1], at[99]);    MULADD(at[2], at[98]);    MULADD(at[3], at[97]);    MULADD(at[4], at[96]);    MULADD(at[5], at[95]);    MULADD(at[6], at[94]);    MULADD(at[7], at[93]);    MULADD(at[8], at[92]);    MULADD(at[9], at[91]);    MULADD(at[10], at[90]);    MULADD(at[11], at[89]);    MULADD(at[12], at[88]);    MULADD(at[13], at[87]);    MULADD(at[14], at[86]);    MULADD(at[15], at[85]);    MULADD(at[16], at[84]);    MULADD(at[17], at[83]);    MULADD(at[18], at[82]);    MULADD(at[19], at[81]);    MULADD(at[20], at[80]);    MULADD(at[21], at[79]);    MULADD(at[22], at[78]);    MULADD(at[23], at[77]);    MULADD(at[24], at[76]);    MULADD(at[25], at[75]);    MULADD(at[26], at[74]);    MULADD(at[27], at[73]);    MULADD(at[28], at[72]);    MULADD(at[29], at[71]);    MULADD(at[30], at[70]);    MULADD(at[31], at[69]);    MULADD(at[32], at[68]);    MULADD(at[33], at[67]);    MULADD(at[34], at[66]);    MULADD(at[35], at[65]);    MULADD(at[36], at[64]); 
+   COMBA_STORE(C->dp[36]);
+   /* 37 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[101]);    MULADD(at[1], at[100]);    MULADD(at[2], at[99]);    MULADD(at[3], at[98]);    MULADD(at[4], at[97]);    MULADD(at[5], at[96]);    MULADD(at[6], at[95]);    MULADD(at[7], at[94]);    MULADD(at[8], at[93]);    MULADD(at[9], at[92]);    MULADD(at[10], at[91]);    MULADD(at[11], at[90]);    MULADD(at[12], at[89]);    MULADD(at[13], at[88]);    MULADD(at[14], at[87]);    MULADD(at[15], at[86]);    MULADD(at[16], at[85]);    MULADD(at[17], at[84]);    MULADD(at[18], at[83]);    MULADD(at[19], at[82]);    MULADD(at[20], at[81]);    MULADD(at[21], at[80]);    MULADD(at[22], at[79]);    MULADD(at[23], at[78]);    MULADD(at[24], at[77]);    MULADD(at[25], at[76]);    MULADD(at[26], at[75]);    MULADD(at[27], at[74]);    MULADD(at[28], at[73]);    MULADD(at[29], at[72]);    MULADD(at[30], at[71]);    MULADD(at[31], at[70]);    MULADD(at[32], at[69]);    MULADD(at[33], at[68]);    MULADD(at[34], at[67]);    MULADD(at[35], at[66]);    MULADD(at[36], at[65]);    MULADD(at[37], at[64]); 
+   COMBA_STORE(C->dp[37]);
+   /* 38 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[102]);    MULADD(at[1], at[101]);    MULADD(at[2], at[100]);    MULADD(at[3], at[99]);    MULADD(at[4], at[98]);    MULADD(at[5], at[97]);    MULADD(at[6], at[96]);    MULADD(at[7], at[95]);    MULADD(at[8], at[94]);    MULADD(at[9], at[93]);    MULADD(at[10], at[92]);    MULADD(at[11], at[91]);    MULADD(at[12], at[90]);    MULADD(at[13], at[89]);    MULADD(at[14], at[88]);    MULADD(at[15], at[87]);    MULADD(at[16], at[86]);    MULADD(at[17], at[85]);    MULADD(at[18], at[84]);    MULADD(at[19], at[83]);    MULADD(at[20], at[82]);    MULADD(at[21], at[81]);    MULADD(at[22], at[80]);    MULADD(at[23], at[79]);    MULADD(at[24], at[78]);    MULADD(at[25], at[77]);    MULADD(at[26], at[76]);    MULADD(at[27], at[75]);    MULADD(at[28], at[74]);    MULADD(at[29], at[73]);    MULADD(at[30], at[72]);    MULADD(at[31], at[71]);    MULADD(at[32], at[70]);    MULADD(at[33], at[69]);    MULADD(at[34], at[68]);    MULADD(at[35], at[67]);    MULADD(at[36], at[66]);    MULADD(at[37], at[65]);    MULADD(at[38], at[64]); 
+   COMBA_STORE(C->dp[38]);
+   /* 39 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[103]);    MULADD(at[1], at[102]);    MULADD(at[2], at[101]);    MULADD(at[3], at[100]);    MULADD(at[4], at[99]);    MULADD(at[5], at[98]);    MULADD(at[6], at[97]);    MULADD(at[7], at[96]);    MULADD(at[8], at[95]);    MULADD(at[9], at[94]);    MULADD(at[10], at[93]);    MULADD(at[11], at[92]);    MULADD(at[12], at[91]);    MULADD(at[13], at[90]);    MULADD(at[14], at[89]);    MULADD(at[15], at[88]);    MULADD(at[16], at[87]);    MULADD(at[17], at[86]);    MULADD(at[18], at[85]);    MULADD(at[19], at[84]);    MULADD(at[20], at[83]);    MULADD(at[21], at[82]);    MULADD(at[22], at[81]);    MULADD(at[23], at[80]);    MULADD(at[24], at[79]);    MULADD(at[25], at[78]);    MULADD(at[26], at[77]);    MULADD(at[27], at[76]);    MULADD(at[28], at[75]);    MULADD(at[29], at[74]);    MULADD(at[30], at[73]);    MULADD(at[31], at[72]);    MULADD(at[32], at[71]);    MULADD(at[33], at[70]);    MULADD(at[34], at[69]);    MULADD(at[35], at[68]);    MULADD(at[36], at[67]);    MULADD(at[37], at[66]);    MULADD(at[38], at[65]);    MULADD(at[39], at[64]); 
+   COMBA_STORE(C->dp[39]);
+   /* 40 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[104]);    MULADD(at[1], at[103]);    MULADD(at[2], at[102]);    MULADD(at[3], at[101]);    MULADD(at[4], at[100]);    MULADD(at[5], at[99]);    MULADD(at[6], at[98]);    MULADD(at[7], at[97]);    MULADD(at[8], at[96]);    MULADD(at[9], at[95]);    MULADD(at[10], at[94]);    MULADD(at[11], at[93]);    MULADD(at[12], at[92]);    MULADD(at[13], at[91]);    MULADD(at[14], at[90]);    MULADD(at[15], at[89]);    MULADD(at[16], at[88]);    MULADD(at[17], at[87]);    MULADD(at[18], at[86]);    MULADD(at[19], at[85]);    MULADD(at[20], at[84]);    MULADD(at[21], at[83]);    MULADD(at[22], at[82]);    MULADD(at[23], at[81]);    MULADD(at[24], at[80]);    MULADD(at[25], at[79]);    MULADD(at[26], at[78]);    MULADD(at[27], at[77]);    MULADD(at[28], at[76]);    MULADD(at[29], at[75]);    MULADD(at[30], at[74]);    MULADD(at[31], at[73]);    MULADD(at[32], at[72]);    MULADD(at[33], at[71]);    MULADD(at[34], at[70]);    MULADD(at[35], at[69]);    MULADD(at[36], at[68]);    MULADD(at[37], at[67]);    MULADD(at[38], at[66]);    MULADD(at[39], at[65]);    MULADD(at[40], at[64]); 
+   COMBA_STORE(C->dp[40]);
+   /* 41 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[105]);    MULADD(at[1], at[104]);    MULADD(at[2], at[103]);    MULADD(at[3], at[102]);    MULADD(at[4], at[101]);    MULADD(at[5], at[100]);    MULADD(at[6], at[99]);    MULADD(at[7], at[98]);    MULADD(at[8], at[97]);    MULADD(at[9], at[96]);    MULADD(at[10], at[95]);    MULADD(at[11], at[94]);    MULADD(at[12], at[93]);    MULADD(at[13], at[92]);    MULADD(at[14], at[91]);    MULADD(at[15], at[90]);    MULADD(at[16], at[89]);    MULADD(at[17], at[88]);    MULADD(at[18], at[87]);    MULADD(at[19], at[86]);    MULADD(at[20], at[85]);    MULADD(at[21], at[84]);    MULADD(at[22], at[83]);    MULADD(at[23], at[82]);    MULADD(at[24], at[81]);    MULADD(at[25], at[80]);    MULADD(at[26], at[79]);    MULADD(at[27], at[78]);    MULADD(at[28], at[77]);    MULADD(at[29], at[76]);    MULADD(at[30], at[75]);    MULADD(at[31], at[74]);    MULADD(at[32], at[73]);    MULADD(at[33], at[72]);    MULADD(at[34], at[71]);    MULADD(at[35], at[70]);    MULADD(at[36], at[69]);    MULADD(at[37], at[68]);    MULADD(at[38], at[67]);    MULADD(at[39], at[66]);    MULADD(at[40], at[65]);    MULADD(at[41], at[64]); 
+   COMBA_STORE(C->dp[41]);
+   /* 42 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[106]);    MULADD(at[1], at[105]);    MULADD(at[2], at[104]);    MULADD(at[3], at[103]);    MULADD(at[4], at[102]);    MULADD(at[5], at[101]);    MULADD(at[6], at[100]);    MULADD(at[7], at[99]);    MULADD(at[8], at[98]);    MULADD(at[9], at[97]);    MULADD(at[10], at[96]);    MULADD(at[11], at[95]);    MULADD(at[12], at[94]);    MULADD(at[13], at[93]);    MULADD(at[14], at[92]);    MULADD(at[15], at[91]);    MULADD(at[16], at[90]);    MULADD(at[17], at[89]);    MULADD(at[18], at[88]);    MULADD(at[19], at[87]);    MULADD(at[20], at[86]);    MULADD(at[21], at[85]);    MULADD(at[22], at[84]);    MULADD(at[23], at[83]);    MULADD(at[24], at[82]);    MULADD(at[25], at[81]);    MULADD(at[26], at[80]);    MULADD(at[27], at[79]);    MULADD(at[28], at[78]);    MULADD(at[29], at[77]);    MULADD(at[30], at[76]);    MULADD(at[31], at[75]);    MULADD(at[32], at[74]);    MULADD(at[33], at[73]);    MULADD(at[34], at[72]);    MULADD(at[35], at[71]);    MULADD(at[36], at[70]);    MULADD(at[37], at[69]);    MULADD(at[38], at[68]);    MULADD(at[39], at[67]);    MULADD(at[40], at[66]);    MULADD(at[41], at[65]);    MULADD(at[42], at[64]); 
+   COMBA_STORE(C->dp[42]);
+   /* 43 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[107]);    MULADD(at[1], at[106]);    MULADD(at[2], at[105]);    MULADD(at[3], at[104]);    MULADD(at[4], at[103]);    MULADD(at[5], at[102]);    MULADD(at[6], at[101]);    MULADD(at[7], at[100]);    MULADD(at[8], at[99]);    MULADD(at[9], at[98]);    MULADD(at[10], at[97]);    MULADD(at[11], at[96]);    MULADD(at[12], at[95]);    MULADD(at[13], at[94]);    MULADD(at[14], at[93]);    MULADD(at[15], at[92]);    MULADD(at[16], at[91]);    MULADD(at[17], at[90]);    MULADD(at[18], at[89]);    MULADD(at[19], at[88]);    MULADD(at[20], at[87]);    MULADD(at[21], at[86]);    MULADD(at[22], at[85]);    MULADD(at[23], at[84]);    MULADD(at[24], at[83]);    MULADD(at[25], at[82]);    MULADD(at[26], at[81]);    MULADD(at[27], at[80]);    MULADD(at[28], at[79]);    MULADD(at[29], at[78]);    MULADD(at[30], at[77]);    MULADD(at[31], at[76]);    MULADD(at[32], at[75]);    MULADD(at[33], at[74]);    MULADD(at[34], at[73]);    MULADD(at[35], at[72]);    MULADD(at[36], at[71]);    MULADD(at[37], at[70]);    MULADD(at[38], at[69]);    MULADD(at[39], at[68]);    MULADD(at[40], at[67]);    MULADD(at[41], at[66]);    MULADD(at[42], at[65]);    MULADD(at[43], at[64]); 
+   COMBA_STORE(C->dp[43]);
+   /* 44 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[108]);    MULADD(at[1], at[107]);    MULADD(at[2], at[106]);    MULADD(at[3], at[105]);    MULADD(at[4], at[104]);    MULADD(at[5], at[103]);    MULADD(at[6], at[102]);    MULADD(at[7], at[101]);    MULADD(at[8], at[100]);    MULADD(at[9], at[99]);    MULADD(at[10], at[98]);    MULADD(at[11], at[97]);    MULADD(at[12], at[96]);    MULADD(at[13], at[95]);    MULADD(at[14], at[94]);    MULADD(at[15], at[93]);    MULADD(at[16], at[92]);    MULADD(at[17], at[91]);    MULADD(at[18], at[90]);    MULADD(at[19], at[89]);    MULADD(at[20], at[88]);    MULADD(at[21], at[87]);    MULADD(at[22], at[86]);    MULADD(at[23], at[85]);    MULADD(at[24], at[84]);    MULADD(at[25], at[83]);    MULADD(at[26], at[82]);    MULADD(at[27], at[81]);    MULADD(at[28], at[80]);    MULADD(at[29], at[79]);    MULADD(at[30], at[78]);    MULADD(at[31], at[77]);    MULADD(at[32], at[76]);    MULADD(at[33], at[75]);    MULADD(at[34], at[74]);    MULADD(at[35], at[73]);    MULADD(at[36], at[72]);    MULADD(at[37], at[71]);    MULADD(at[38], at[70]);    MULADD(at[39], at[69]);    MULADD(at[40], at[68]);    MULADD(at[41], at[67]);    MULADD(at[42], at[66]);    MULADD(at[43], at[65]);    MULADD(at[44], at[64]); 
+   COMBA_STORE(C->dp[44]);
+   /* 45 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[109]);    MULADD(at[1], at[108]);    MULADD(at[2], at[107]);    MULADD(at[3], at[106]);    MULADD(at[4], at[105]);    MULADD(at[5], at[104]);    MULADD(at[6], at[103]);    MULADD(at[7], at[102]);    MULADD(at[8], at[101]);    MULADD(at[9], at[100]);    MULADD(at[10], at[99]);    MULADD(at[11], at[98]);    MULADD(at[12], at[97]);    MULADD(at[13], at[96]);    MULADD(at[14], at[95]);    MULADD(at[15], at[94]);    MULADD(at[16], at[93]);    MULADD(at[17], at[92]);    MULADD(at[18], at[91]);    MULADD(at[19], at[90]);    MULADD(at[20], at[89]);    MULADD(at[21], at[88]);    MULADD(at[22], at[87]);    MULADD(at[23], at[86]);    MULADD(at[24], at[85]);    MULADD(at[25], at[84]);    MULADD(at[26], at[83]);    MULADD(at[27], at[82]);    MULADD(at[28], at[81]);    MULADD(at[29], at[80]);    MULADD(at[30], at[79]);    MULADD(at[31], at[78]);    MULADD(at[32], at[77]);    MULADD(at[33], at[76]);    MULADD(at[34], at[75]);    MULADD(at[35], at[74]);    MULADD(at[36], at[73]);    MULADD(at[37], at[72]);    MULADD(at[38], at[71]);    MULADD(at[39], at[70]);    MULADD(at[40], at[69]);    MULADD(at[41], at[68]);    MULADD(at[42], at[67]);    MULADD(at[43], at[66]);    MULADD(at[44], at[65]);    MULADD(at[45], at[64]); 
+   COMBA_STORE(C->dp[45]);
+   /* 46 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[110]);    MULADD(at[1], at[109]);    MULADD(at[2], at[108]);    MULADD(at[3], at[107]);    MULADD(at[4], at[106]);    MULADD(at[5], at[105]);    MULADD(at[6], at[104]);    MULADD(at[7], at[103]);    MULADD(at[8], at[102]);    MULADD(at[9], at[101]);    MULADD(at[10], at[100]);    MULADD(at[11], at[99]);    MULADD(at[12], at[98]);    MULADD(at[13], at[97]);    MULADD(at[14], at[96]);    MULADD(at[15], at[95]);    MULADD(at[16], at[94]);    MULADD(at[17], at[93]);    MULADD(at[18], at[92]);    MULADD(at[19], at[91]);    MULADD(at[20], at[90]);    MULADD(at[21], at[89]);    MULADD(at[22], at[88]);    MULADD(at[23], at[87]);    MULADD(at[24], at[86]);    MULADD(at[25], at[85]);    MULADD(at[26], at[84]);    MULADD(at[27], at[83]);    MULADD(at[28], at[82]);    MULADD(at[29], at[81]);    MULADD(at[30], at[80]);    MULADD(at[31], at[79]);    MULADD(at[32], at[78]);    MULADD(at[33], at[77]);    MULADD(at[34], at[76]);    MULADD(at[35], at[75]);    MULADD(at[36], at[74]);    MULADD(at[37], at[73]);    MULADD(at[38], at[72]);    MULADD(at[39], at[71]);    MULADD(at[40], at[70]);    MULADD(at[41], at[69]);    MULADD(at[42], at[68]);    MULADD(at[43], at[67]);    MULADD(at[44], at[66]);    MULADD(at[45], at[65]);    MULADD(at[46], at[64]); 
+   COMBA_STORE(C->dp[46]);
+   /* 47 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[111]);    MULADD(at[1], at[110]);    MULADD(at[2], at[109]);    MULADD(at[3], at[108]);    MULADD(at[4], at[107]);    MULADD(at[5], at[106]);    MULADD(at[6], at[105]);    MULADD(at[7], at[104]);    MULADD(at[8], at[103]);    MULADD(at[9], at[102]);    MULADD(at[10], at[101]);    MULADD(at[11], at[100]);    MULADD(at[12], at[99]);    MULADD(at[13], at[98]);    MULADD(at[14], at[97]);    MULADD(at[15], at[96]);    MULADD(at[16], at[95]);    MULADD(at[17], at[94]);    MULADD(at[18], at[93]);    MULADD(at[19], at[92]);    MULADD(at[20], at[91]);    MULADD(at[21], at[90]);    MULADD(at[22], at[89]);    MULADD(at[23], at[88]);    MULADD(at[24], at[87]);    MULADD(at[25], at[86]);    MULADD(at[26], at[85]);    MULADD(at[27], at[84]);    MULADD(at[28], at[83]);    MULADD(at[29], at[82]);    MULADD(at[30], at[81]);    MULADD(at[31], at[80]);    MULADD(at[32], at[79]);    MULADD(at[33], at[78]);    MULADD(at[34], at[77]);    MULADD(at[35], at[76]);    MULADD(at[36], at[75]);    MULADD(at[37], at[74]);    MULADD(at[38], at[73]);    MULADD(at[39], at[72]);    MULADD(at[40], at[71]);    MULADD(at[41], at[70]);    MULADD(at[42], at[69]);    MULADD(at[43], at[68]);    MULADD(at[44], at[67]);    MULADD(at[45], at[66]);    MULADD(at[46], at[65]);    MULADD(at[47], at[64]); 
+   COMBA_STORE(C->dp[47]);
+   /* 48 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[112]);    MULADD(at[1], at[111]);    MULADD(at[2], at[110]);    MULADD(at[3], at[109]);    MULADD(at[4], at[108]);    MULADD(at[5], at[107]);    MULADD(at[6], at[106]);    MULADD(at[7], at[105]);    MULADD(at[8], at[104]);    MULADD(at[9], at[103]);    MULADD(at[10], at[102]);    MULADD(at[11], at[101]);    MULADD(at[12], at[100]);    MULADD(at[13], at[99]);    MULADD(at[14], at[98]);    MULADD(at[15], at[97]);    MULADD(at[16], at[96]);    MULADD(at[17], at[95]);    MULADD(at[18], at[94]);    MULADD(at[19], at[93]);    MULADD(at[20], at[92]);    MULADD(at[21], at[91]);    MULADD(at[22], at[90]);    MULADD(at[23], at[89]);    MULADD(at[24], at[88]);    MULADD(at[25], at[87]);    MULADD(at[26], at[86]);    MULADD(at[27], at[85]);    MULADD(at[28], at[84]);    MULADD(at[29], at[83]);    MULADD(at[30], at[82]);    MULADD(at[31], at[81]);    MULADD(at[32], at[80]);    MULADD(at[33], at[79]);    MULADD(at[34], at[78]);    MULADD(at[35], at[77]);    MULADD(at[36], at[76]);    MULADD(at[37], at[75]);    MULADD(at[38], at[74]);    MULADD(at[39], at[73]);    MULADD(at[40], at[72]);    MULADD(at[41], at[71]);    MULADD(at[42], at[70]);    MULADD(at[43], at[69]);    MULADD(at[44], at[68]);    MULADD(at[45], at[67]);    MULADD(at[46], at[66]);    MULADD(at[47], at[65]);    MULADD(at[48], at[64]); 
+   COMBA_STORE(C->dp[48]);
+   /* 49 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[113]);    MULADD(at[1], at[112]);    MULADD(at[2], at[111]);    MULADD(at[3], at[110]);    MULADD(at[4], at[109]);    MULADD(at[5], at[108]);    MULADD(at[6], at[107]);    MULADD(at[7], at[106]);    MULADD(at[8], at[105]);    MULADD(at[9], at[104]);    MULADD(at[10], at[103]);    MULADD(at[11], at[102]);    MULADD(at[12], at[101]);    MULADD(at[13], at[100]);    MULADD(at[14], at[99]);    MULADD(at[15], at[98]);    MULADD(at[16], at[97]);    MULADD(at[17], at[96]);    MULADD(at[18], at[95]);    MULADD(at[19], at[94]);    MULADD(at[20], at[93]);    MULADD(at[21], at[92]);    MULADD(at[22], at[91]);    MULADD(at[23], at[90]);    MULADD(at[24], at[89]);    MULADD(at[25], at[88]);    MULADD(at[26], at[87]);    MULADD(at[27], at[86]);    MULADD(at[28], at[85]);    MULADD(at[29], at[84]);    MULADD(at[30], at[83]);    MULADD(at[31], at[82]);    MULADD(at[32], at[81]);    MULADD(at[33], at[80]);    MULADD(at[34], at[79]);    MULADD(at[35], at[78]);    MULADD(at[36], at[77]);    MULADD(at[37], at[76]);    MULADD(at[38], at[75]);    MULADD(at[39], at[74]);    MULADD(at[40], at[73]);    MULADD(at[41], at[72]);    MULADD(at[42], at[71]);    MULADD(at[43], at[70]);    MULADD(at[44], at[69]);    MULADD(at[45], at[68]);    MULADD(at[46], at[67]);    MULADD(at[47], at[66]);    MULADD(at[48], at[65]);    MULADD(at[49], at[64]); 
+   COMBA_STORE(C->dp[49]);
+   /* 50 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[114]);    MULADD(at[1], at[113]);    MULADD(at[2], at[112]);    MULADD(at[3], at[111]);    MULADD(at[4], at[110]);    MULADD(at[5], at[109]);    MULADD(at[6], at[108]);    MULADD(at[7], at[107]);    MULADD(at[8], at[106]);    MULADD(at[9], at[105]);    MULADD(at[10], at[104]);    MULADD(at[11], at[103]);    MULADD(at[12], at[102]);    MULADD(at[13], at[101]);    MULADD(at[14], at[100]);    MULADD(at[15], at[99]);    MULADD(at[16], at[98]);    MULADD(at[17], at[97]);    MULADD(at[18], at[96]);    MULADD(at[19], at[95]);    MULADD(at[20], at[94]);    MULADD(at[21], at[93]);    MULADD(at[22], at[92]);    MULADD(at[23], at[91]);    MULADD(at[24], at[90]);    MULADD(at[25], at[89]);    MULADD(at[26], at[88]);    MULADD(at[27], at[87]);    MULADD(at[28], at[86]);    MULADD(at[29], at[85]);    MULADD(at[30], at[84]);    MULADD(at[31], at[83]);    MULADD(at[32], at[82]);    MULADD(at[33], at[81]);    MULADD(at[34], at[80]);    MULADD(at[35], at[79]);    MULADD(at[36], at[78]);    MULADD(at[37], at[77]);    MULADD(at[38], at[76]);    MULADD(at[39], at[75]);    MULADD(at[40], at[74]);    MULADD(at[41], at[73]);    MULADD(at[42], at[72]);    MULADD(at[43], at[71]);    MULADD(at[44], at[70]);    MULADD(at[45], at[69]);    MULADD(at[46], at[68]);    MULADD(at[47], at[67]);    MULADD(at[48], at[66]);    MULADD(at[49], at[65]);    MULADD(at[50], at[64]); 
+   COMBA_STORE(C->dp[50]);
+   /* 51 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[115]);    MULADD(at[1], at[114]);    MULADD(at[2], at[113]);    MULADD(at[3], at[112]);    MULADD(at[4], at[111]);    MULADD(at[5], at[110]);    MULADD(at[6], at[109]);    MULADD(at[7], at[108]);    MULADD(at[8], at[107]);    MULADD(at[9], at[106]);    MULADD(at[10], at[105]);    MULADD(at[11], at[104]);    MULADD(at[12], at[103]);    MULADD(at[13], at[102]);    MULADD(at[14], at[101]);    MULADD(at[15], at[100]);    MULADD(at[16], at[99]);    MULADD(at[17], at[98]);    MULADD(at[18], at[97]);    MULADD(at[19], at[96]);    MULADD(at[20], at[95]);    MULADD(at[21], at[94]);    MULADD(at[22], at[93]);    MULADD(at[23], at[92]);    MULADD(at[24], at[91]);    MULADD(at[25], at[90]);    MULADD(at[26], at[89]);    MULADD(at[27], at[88]);    MULADD(at[28], at[87]);    MULADD(at[29], at[86]);    MULADD(at[30], at[85]);    MULADD(at[31], at[84]);    MULADD(at[32], at[83]);    MULADD(at[33], at[82]);    MULADD(at[34], at[81]);    MULADD(at[35], at[80]);    MULADD(at[36], at[79]);    MULADD(at[37], at[78]);    MULADD(at[38], at[77]);    MULADD(at[39], at[76]);    MULADD(at[40], at[75]);    MULADD(at[41], at[74]);    MULADD(at[42], at[73]);    MULADD(at[43], at[72]);    MULADD(at[44], at[71]);    MULADD(at[45], at[70]);    MULADD(at[46], at[69]);    MULADD(at[47], at[68]);    MULADD(at[48], at[67]);    MULADD(at[49], at[66]);    MULADD(at[50], at[65]);    MULADD(at[51], at[64]); 
+   COMBA_STORE(C->dp[51]);
+   /* 52 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[116]);    MULADD(at[1], at[115]);    MULADD(at[2], at[114]);    MULADD(at[3], at[113]);    MULADD(at[4], at[112]);    MULADD(at[5], at[111]);    MULADD(at[6], at[110]);    MULADD(at[7], at[109]);    MULADD(at[8], at[108]);    MULADD(at[9], at[107]);    MULADD(at[10], at[106]);    MULADD(at[11], at[105]);    MULADD(at[12], at[104]);    MULADD(at[13], at[103]);    MULADD(at[14], at[102]);    MULADD(at[15], at[101]);    MULADD(at[16], at[100]);    MULADD(at[17], at[99]);    MULADD(at[18], at[98]);    MULADD(at[19], at[97]);    MULADD(at[20], at[96]);    MULADD(at[21], at[95]);    MULADD(at[22], at[94]);    MULADD(at[23], at[93]);    MULADD(at[24], at[92]);    MULADD(at[25], at[91]);    MULADD(at[26], at[90]);    MULADD(at[27], at[89]);    MULADD(at[28], at[88]);    MULADD(at[29], at[87]);    MULADD(at[30], at[86]);    MULADD(at[31], at[85]);    MULADD(at[32], at[84]);    MULADD(at[33], at[83]);    MULADD(at[34], at[82]);    MULADD(at[35], at[81]);    MULADD(at[36], at[80]);    MULADD(at[37], at[79]);    MULADD(at[38], at[78]);    MULADD(at[39], at[77]);    MULADD(at[40], at[76]);    MULADD(at[41], at[75]);    MULADD(at[42], at[74]);    MULADD(at[43], at[73]);    MULADD(at[44], at[72]);    MULADD(at[45], at[71]);    MULADD(at[46], at[70]);    MULADD(at[47], at[69]);    MULADD(at[48], at[68]);    MULADD(at[49], at[67]);    MULADD(at[50], at[66]);    MULADD(at[51], at[65]);    MULADD(at[52], at[64]); 
+   COMBA_STORE(C->dp[52]);
+   /* 53 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[117]);    MULADD(at[1], at[116]);    MULADD(at[2], at[115]);    MULADD(at[3], at[114]);    MULADD(at[4], at[113]);    MULADD(at[5], at[112]);    MULADD(at[6], at[111]);    MULADD(at[7], at[110]);    MULADD(at[8], at[109]);    MULADD(at[9], at[108]);    MULADD(at[10], at[107]);    MULADD(at[11], at[106]);    MULADD(at[12], at[105]);    MULADD(at[13], at[104]);    MULADD(at[14], at[103]);    MULADD(at[15], at[102]);    MULADD(at[16], at[101]);    MULADD(at[17], at[100]);    MULADD(at[18], at[99]);    MULADD(at[19], at[98]);    MULADD(at[20], at[97]);    MULADD(at[21], at[96]);    MULADD(at[22], at[95]);    MULADD(at[23], at[94]);    MULADD(at[24], at[93]);    MULADD(at[25], at[92]);    MULADD(at[26], at[91]);    MULADD(at[27], at[90]);    MULADD(at[28], at[89]);    MULADD(at[29], at[88]);    MULADD(at[30], at[87]);    MULADD(at[31], at[86]);    MULADD(at[32], at[85]);    MULADD(at[33], at[84]);    MULADD(at[34], at[83]);    MULADD(at[35], at[82]);    MULADD(at[36], at[81]);    MULADD(at[37], at[80]);    MULADD(at[38], at[79]);    MULADD(at[39], at[78]);    MULADD(at[40], at[77]);    MULADD(at[41], at[76]);    MULADD(at[42], at[75]);    MULADD(at[43], at[74]);    MULADD(at[44], at[73]);    MULADD(at[45], at[72]);    MULADD(at[46], at[71]);    MULADD(at[47], at[70]);    MULADD(at[48], at[69]);    MULADD(at[49], at[68]);    MULADD(at[50], at[67]);    MULADD(at[51], at[66]);    MULADD(at[52], at[65]);    MULADD(at[53], at[64]); 
+   COMBA_STORE(C->dp[53]);
+   /* 54 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[118]);    MULADD(at[1], at[117]);    MULADD(at[2], at[116]);    MULADD(at[3], at[115]);    MULADD(at[4], at[114]);    MULADD(at[5], at[113]);    MULADD(at[6], at[112]);    MULADD(at[7], at[111]);    MULADD(at[8], at[110]);    MULADD(at[9], at[109]);    MULADD(at[10], at[108]);    MULADD(at[11], at[107]);    MULADD(at[12], at[106]);    MULADD(at[13], at[105]);    MULADD(at[14], at[104]);    MULADD(at[15], at[103]);    MULADD(at[16], at[102]);    MULADD(at[17], at[101]);    MULADD(at[18], at[100]);    MULADD(at[19], at[99]);    MULADD(at[20], at[98]);    MULADD(at[21], at[97]);    MULADD(at[22], at[96]);    MULADD(at[23], at[95]);    MULADD(at[24], at[94]);    MULADD(at[25], at[93]);    MULADD(at[26], at[92]);    MULADD(at[27], at[91]);    MULADD(at[28], at[90]);    MULADD(at[29], at[89]);    MULADD(at[30], at[88]);    MULADD(at[31], at[87]);    MULADD(at[32], at[86]);    MULADD(at[33], at[85]);    MULADD(at[34], at[84]);    MULADD(at[35], at[83]);    MULADD(at[36], at[82]);    MULADD(at[37], at[81]);    MULADD(at[38], at[80]);    MULADD(at[39], at[79]);    MULADD(at[40], at[78]);    MULADD(at[41], at[77]);    MULADD(at[42], at[76]);    MULADD(at[43], at[75]);    MULADD(at[44], at[74]);    MULADD(at[45], at[73]);    MULADD(at[46], at[72]);    MULADD(at[47], at[71]);    MULADD(at[48], at[70]);    MULADD(at[49], at[69]);    MULADD(at[50], at[68]);    MULADD(at[51], at[67]);    MULADD(at[52], at[66]);    MULADD(at[53], at[65]);    MULADD(at[54], at[64]); 
+   COMBA_STORE(C->dp[54]);
+   /* 55 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[119]);    MULADD(at[1], at[118]);    MULADD(at[2], at[117]);    MULADD(at[3], at[116]);    MULADD(at[4], at[115]);    MULADD(at[5], at[114]);    MULADD(at[6], at[113]);    MULADD(at[7], at[112]);    MULADD(at[8], at[111]);    MULADD(at[9], at[110]);    MULADD(at[10], at[109]);    MULADD(at[11], at[108]);    MULADD(at[12], at[107]);    MULADD(at[13], at[106]);    MULADD(at[14], at[105]);    MULADD(at[15], at[104]);    MULADD(at[16], at[103]);    MULADD(at[17], at[102]);    MULADD(at[18], at[101]);    MULADD(at[19], at[100]);    MULADD(at[20], at[99]);    MULADD(at[21], at[98]);    MULADD(at[22], at[97]);    MULADD(at[23], at[96]);    MULADD(at[24], at[95]);    MULADD(at[25], at[94]);    MULADD(at[26], at[93]);    MULADD(at[27], at[92]);    MULADD(at[28], at[91]);    MULADD(at[29], at[90]);    MULADD(at[30], at[89]);    MULADD(at[31], at[88]);    MULADD(at[32], at[87]);    MULADD(at[33], at[86]);    MULADD(at[34], at[85]);    MULADD(at[35], at[84]);    MULADD(at[36], at[83]);    MULADD(at[37], at[82]);    MULADD(at[38], at[81]);    MULADD(at[39], at[80]);    MULADD(at[40], at[79]);    MULADD(at[41], at[78]);    MULADD(at[42], at[77]);    MULADD(at[43], at[76]);    MULADD(at[44], at[75]);    MULADD(at[45], at[74]);    MULADD(at[46], at[73]);    MULADD(at[47], at[72]);    MULADD(at[48], at[71]);    MULADD(at[49], at[70]);    MULADD(at[50], at[69]);    MULADD(at[51], at[68]);    MULADD(at[52], at[67]);    MULADD(at[53], at[66]);    MULADD(at[54], at[65]);    MULADD(at[55], at[64]); 
+   COMBA_STORE(C->dp[55]);
+   /* 56 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[120]);    MULADD(at[1], at[119]);    MULADD(at[2], at[118]);    MULADD(at[3], at[117]);    MULADD(at[4], at[116]);    MULADD(at[5], at[115]);    MULADD(at[6], at[114]);    MULADD(at[7], at[113]);    MULADD(at[8], at[112]);    MULADD(at[9], at[111]);    MULADD(at[10], at[110]);    MULADD(at[11], at[109]);    MULADD(at[12], at[108]);    MULADD(at[13], at[107]);    MULADD(at[14], at[106]);    MULADD(at[15], at[105]);    MULADD(at[16], at[104]);    MULADD(at[17], at[103]);    MULADD(at[18], at[102]);    MULADD(at[19], at[101]);    MULADD(at[20], at[100]);    MULADD(at[21], at[99]);    MULADD(at[22], at[98]);    MULADD(at[23], at[97]);    MULADD(at[24], at[96]);    MULADD(at[25], at[95]);    MULADD(at[26], at[94]);    MULADD(at[27], at[93]);    MULADD(at[28], at[92]);    MULADD(at[29], at[91]);    MULADD(at[30], at[90]);    MULADD(at[31], at[89]);    MULADD(at[32], at[88]);    MULADD(at[33], at[87]);    MULADD(at[34], at[86]);    MULADD(at[35], at[85]);    MULADD(at[36], at[84]);    MULADD(at[37], at[83]);    MULADD(at[38], at[82]);    MULADD(at[39], at[81]);    MULADD(at[40], at[80]);    MULADD(at[41], at[79]);    MULADD(at[42], at[78]);    MULADD(at[43], at[77]);    MULADD(at[44], at[76]);    MULADD(at[45], at[75]);    MULADD(at[46], at[74]);    MULADD(at[47], at[73]);    MULADD(at[48], at[72]);    MULADD(at[49], at[71]);    MULADD(at[50], at[70]);    MULADD(at[51], at[69]);    MULADD(at[52], at[68]);    MULADD(at[53], at[67]);    MULADD(at[54], at[66]);    MULADD(at[55], at[65]);    MULADD(at[56], at[64]); 
+   COMBA_STORE(C->dp[56]);
+   /* 57 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[121]);    MULADD(at[1], at[120]);    MULADD(at[2], at[119]);    MULADD(at[3], at[118]);    MULADD(at[4], at[117]);    MULADD(at[5], at[116]);    MULADD(at[6], at[115]);    MULADD(at[7], at[114]);    MULADD(at[8], at[113]);    MULADD(at[9], at[112]);    MULADD(at[10], at[111]);    MULADD(at[11], at[110]);    MULADD(at[12], at[109]);    MULADD(at[13], at[108]);    MULADD(at[14], at[107]);    MULADD(at[15], at[106]);    MULADD(at[16], at[105]);    MULADD(at[17], at[104]);    MULADD(at[18], at[103]);    MULADD(at[19], at[102]);    MULADD(at[20], at[101]);    MULADD(at[21], at[100]);    MULADD(at[22], at[99]);    MULADD(at[23], at[98]);    MULADD(at[24], at[97]);    MULADD(at[25], at[96]);    MULADD(at[26], at[95]);    MULADD(at[27], at[94]);    MULADD(at[28], at[93]);    MULADD(at[29], at[92]);    MULADD(at[30], at[91]);    MULADD(at[31], at[90]);    MULADD(at[32], at[89]);    MULADD(at[33], at[88]);    MULADD(at[34], at[87]);    MULADD(at[35], at[86]);    MULADD(at[36], at[85]);    MULADD(at[37], at[84]);    MULADD(at[38], at[83]);    MULADD(at[39], at[82]);    MULADD(at[40], at[81]);    MULADD(at[41], at[80]);    MULADD(at[42], at[79]);    MULADD(at[43], at[78]);    MULADD(at[44], at[77]);    MULADD(at[45], at[76]);    MULADD(at[46], at[75]);    MULADD(at[47], at[74]);    MULADD(at[48], at[73]);    MULADD(at[49], at[72]);    MULADD(at[50], at[71]);    MULADD(at[51], at[70]);    MULADD(at[52], at[69]);    MULADD(at[53], at[68]);    MULADD(at[54], at[67]);    MULADD(at[55], at[66]);    MULADD(at[56], at[65]);    MULADD(at[57], at[64]); 
+   COMBA_STORE(C->dp[57]);
+   /* 58 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[122]);    MULADD(at[1], at[121]);    MULADD(at[2], at[120]);    MULADD(at[3], at[119]);    MULADD(at[4], at[118]);    MULADD(at[5], at[117]);    MULADD(at[6], at[116]);    MULADD(at[7], at[115]);    MULADD(at[8], at[114]);    MULADD(at[9], at[113]);    MULADD(at[10], at[112]);    MULADD(at[11], at[111]);    MULADD(at[12], at[110]);    MULADD(at[13], at[109]);    MULADD(at[14], at[108]);    MULADD(at[15], at[107]);    MULADD(at[16], at[106]);    MULADD(at[17], at[105]);    MULADD(at[18], at[104]);    MULADD(at[19], at[103]);    MULADD(at[20], at[102]);    MULADD(at[21], at[101]);    MULADD(at[22], at[100]);    MULADD(at[23], at[99]);    MULADD(at[24], at[98]);    MULADD(at[25], at[97]);    MULADD(at[26], at[96]);    MULADD(at[27], at[95]);    MULADD(at[28], at[94]);    MULADD(at[29], at[93]);    MULADD(at[30], at[92]);    MULADD(at[31], at[91]);    MULADD(at[32], at[90]);    MULADD(at[33], at[89]);    MULADD(at[34], at[88]);    MULADD(at[35], at[87]);    MULADD(at[36], at[86]);    MULADD(at[37], at[85]);    MULADD(at[38], at[84]);    MULADD(at[39], at[83]);    MULADD(at[40], at[82]);    MULADD(at[41], at[81]);    MULADD(at[42], at[80]);    MULADD(at[43], at[79]);    MULADD(at[44], at[78]);    MULADD(at[45], at[77]);    MULADD(at[46], at[76]);    MULADD(at[47], at[75]);    MULADD(at[48], at[74]);    MULADD(at[49], at[73]);    MULADD(at[50], at[72]);    MULADD(at[51], at[71]);    MULADD(at[52], at[70]);    MULADD(at[53], at[69]);    MULADD(at[54], at[68]);    MULADD(at[55], at[67]);    MULADD(at[56], at[66]);    MULADD(at[57], at[65]);    MULADD(at[58], at[64]); 
+   COMBA_STORE(C->dp[58]);
+   /* 59 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[123]);    MULADD(at[1], at[122]);    MULADD(at[2], at[121]);    MULADD(at[3], at[120]);    MULADD(at[4], at[119]);    MULADD(at[5], at[118]);    MULADD(at[6], at[117]);    MULADD(at[7], at[116]);    MULADD(at[8], at[115]);    MULADD(at[9], at[114]);    MULADD(at[10], at[113]);    MULADD(at[11], at[112]);    MULADD(at[12], at[111]);    MULADD(at[13], at[110]);    MULADD(at[14], at[109]);    MULADD(at[15], at[108]);    MULADD(at[16], at[107]);    MULADD(at[17], at[106]);    MULADD(at[18], at[105]);    MULADD(at[19], at[104]);    MULADD(at[20], at[103]);    MULADD(at[21], at[102]);    MULADD(at[22], at[101]);    MULADD(at[23], at[100]);    MULADD(at[24], at[99]);    MULADD(at[25], at[98]);    MULADD(at[26], at[97]);    MULADD(at[27], at[96]);    MULADD(at[28], at[95]);    MULADD(at[29], at[94]);    MULADD(at[30], at[93]);    MULADD(at[31], at[92]);    MULADD(at[32], at[91]);    MULADD(at[33], at[90]);    MULADD(at[34], at[89]);    MULADD(at[35], at[88]);    MULADD(at[36], at[87]);    MULADD(at[37], at[86]);    MULADD(at[38], at[85]);    MULADD(at[39], at[84]);    MULADD(at[40], at[83]);    MULADD(at[41], at[82]);    MULADD(at[42], at[81]);    MULADD(at[43], at[80]);    MULADD(at[44], at[79]);    MULADD(at[45], at[78]);    MULADD(at[46], at[77]);    MULADD(at[47], at[76]);    MULADD(at[48], at[75]);    MULADD(at[49], at[74]);    MULADD(at[50], at[73]);    MULADD(at[51], at[72]);    MULADD(at[52], at[71]);    MULADD(at[53], at[70]);    MULADD(at[54], at[69]);    MULADD(at[55], at[68]);    MULADD(at[56], at[67]);    MULADD(at[57], at[66]);    MULADD(at[58], at[65]);    MULADD(at[59], at[64]); 
+   COMBA_STORE(C->dp[59]);
+   /* 60 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[124]);    MULADD(at[1], at[123]);    MULADD(at[2], at[122]);    MULADD(at[3], at[121]);    MULADD(at[4], at[120]);    MULADD(at[5], at[119]);    MULADD(at[6], at[118]);    MULADD(at[7], at[117]);    MULADD(at[8], at[116]);    MULADD(at[9], at[115]);    MULADD(at[10], at[114]);    MULADD(at[11], at[113]);    MULADD(at[12], at[112]);    MULADD(at[13], at[111]);    MULADD(at[14], at[110]);    MULADD(at[15], at[109]);    MULADD(at[16], at[108]);    MULADD(at[17], at[107]);    MULADD(at[18], at[106]);    MULADD(at[19], at[105]);    MULADD(at[20], at[104]);    MULADD(at[21], at[103]);    MULADD(at[22], at[102]);    MULADD(at[23], at[101]);    MULADD(at[24], at[100]);    MULADD(at[25], at[99]);    MULADD(at[26], at[98]);    MULADD(at[27], at[97]);    MULADD(at[28], at[96]);    MULADD(at[29], at[95]);    MULADD(at[30], at[94]);    MULADD(at[31], at[93]);    MULADD(at[32], at[92]);    MULADD(at[33], at[91]);    MULADD(at[34], at[90]);    MULADD(at[35], at[89]);    MULADD(at[36], at[88]);    MULADD(at[37], at[87]);    MULADD(at[38], at[86]);    MULADD(at[39], at[85]);    MULADD(at[40], at[84]);    MULADD(at[41], at[83]);    MULADD(at[42], at[82]);    MULADD(at[43], at[81]);    MULADD(at[44], at[80]);    MULADD(at[45], at[79]);    MULADD(at[46], at[78]);    MULADD(at[47], at[77]);    MULADD(at[48], at[76]);    MULADD(at[49], at[75]);    MULADD(at[50], at[74]);    MULADD(at[51], at[73]);    MULADD(at[52], at[72]);    MULADD(at[53], at[71]);    MULADD(at[54], at[70]);    MULADD(at[55], at[69]);    MULADD(at[56], at[68]);    MULADD(at[57], at[67]);    MULADD(at[58], at[66]);    MULADD(at[59], at[65]);    MULADD(at[60], at[64]); 
+   COMBA_STORE(C->dp[60]);
+   /* 61 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[125]);    MULADD(at[1], at[124]);    MULADD(at[2], at[123]);    MULADD(at[3], at[122]);    MULADD(at[4], at[121]);    MULADD(at[5], at[120]);    MULADD(at[6], at[119]);    MULADD(at[7], at[118]);    MULADD(at[8], at[117]);    MULADD(at[9], at[116]);    MULADD(at[10], at[115]);    MULADD(at[11], at[114]);    MULADD(at[12], at[113]);    MULADD(at[13], at[112]);    MULADD(at[14], at[111]);    MULADD(at[15], at[110]);    MULADD(at[16], at[109]);    MULADD(at[17], at[108]);    MULADD(at[18], at[107]);    MULADD(at[19], at[106]);    MULADD(at[20], at[105]);    MULADD(at[21], at[104]);    MULADD(at[22], at[103]);    MULADD(at[23], at[102]);    MULADD(at[24], at[101]);    MULADD(at[25], at[100]);    MULADD(at[26], at[99]);    MULADD(at[27], at[98]);    MULADD(at[28], at[97]);    MULADD(at[29], at[96]);    MULADD(at[30], at[95]);    MULADD(at[31], at[94]);    MULADD(at[32], at[93]);    MULADD(at[33], at[92]);    MULADD(at[34], at[91]);    MULADD(at[35], at[90]);    MULADD(at[36], at[89]);    MULADD(at[37], at[88]);    MULADD(at[38], at[87]);    MULADD(at[39], at[86]);    MULADD(at[40], at[85]);    MULADD(at[41], at[84]);    MULADD(at[42], at[83]);    MULADD(at[43], at[82]);    MULADD(at[44], at[81]);    MULADD(at[45], at[80]);    MULADD(at[46], at[79]);    MULADD(at[47], at[78]);    MULADD(at[48], at[77]);    MULADD(at[49], at[76]);    MULADD(at[50], at[75]);    MULADD(at[51], at[74]);    MULADD(at[52], at[73]);    MULADD(at[53], at[72]);    MULADD(at[54], at[71]);    MULADD(at[55], at[70]);    MULADD(at[56], at[69]);    MULADD(at[57], at[68]);    MULADD(at[58], at[67]);    MULADD(at[59], at[66]);    MULADD(at[60], at[65]);    MULADD(at[61], at[64]); 
+   COMBA_STORE(C->dp[61]);
+   /* 62 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[126]);    MULADD(at[1], at[125]);    MULADD(at[2], at[124]);    MULADD(at[3], at[123]);    MULADD(at[4], at[122]);    MULADD(at[5], at[121]);    MULADD(at[6], at[120]);    MULADD(at[7], at[119]);    MULADD(at[8], at[118]);    MULADD(at[9], at[117]);    MULADD(at[10], at[116]);    MULADD(at[11], at[115]);    MULADD(at[12], at[114]);    MULADD(at[13], at[113]);    MULADD(at[14], at[112]);    MULADD(at[15], at[111]);    MULADD(at[16], at[110]);    MULADD(at[17], at[109]);    MULADD(at[18], at[108]);    MULADD(at[19], at[107]);    MULADD(at[20], at[106]);    MULADD(at[21], at[105]);    MULADD(at[22], at[104]);    MULADD(at[23], at[103]);    MULADD(at[24], at[102]);    MULADD(at[25], at[101]);    MULADD(at[26], at[100]);    MULADD(at[27], at[99]);    MULADD(at[28], at[98]);    MULADD(at[29], at[97]);    MULADD(at[30], at[96]);    MULADD(at[31], at[95]);    MULADD(at[32], at[94]);    MULADD(at[33], at[93]);    MULADD(at[34], at[92]);    MULADD(at[35], at[91]);    MULADD(at[36], at[90]);    MULADD(at[37], at[89]);    MULADD(at[38], at[88]);    MULADD(at[39], at[87]);    MULADD(at[40], at[86]);    MULADD(at[41], at[85]);    MULADD(at[42], at[84]);    MULADD(at[43], at[83]);    MULADD(at[44], at[82]);    MULADD(at[45], at[81]);    MULADD(at[46], at[80]);    MULADD(at[47], at[79]);    MULADD(at[48], at[78]);    MULADD(at[49], at[77]);    MULADD(at[50], at[76]);    MULADD(at[51], at[75]);    MULADD(at[52], at[74]);    MULADD(at[53], at[73]);    MULADD(at[54], at[72]);    MULADD(at[55], at[71]);    MULADD(at[56], at[70]);    MULADD(at[57], at[69]);    MULADD(at[58], at[68]);    MULADD(at[59], at[67]);    MULADD(at[60], at[66]);    MULADD(at[61], at[65]);    MULADD(at[62], at[64]); 
+   COMBA_STORE(C->dp[62]);
+   /* 63 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[127]);    MULADD(at[1], at[126]);    MULADD(at[2], at[125]);    MULADD(at[3], at[124]);    MULADD(at[4], at[123]);    MULADD(at[5], at[122]);    MULADD(at[6], at[121]);    MULADD(at[7], at[120]);    MULADD(at[8], at[119]);    MULADD(at[9], at[118]);    MULADD(at[10], at[117]);    MULADD(at[11], at[116]);    MULADD(at[12], at[115]);    MULADD(at[13], at[114]);    MULADD(at[14], at[113]);    MULADD(at[15], at[112]);    MULADD(at[16], at[111]);    MULADD(at[17], at[110]);    MULADD(at[18], at[109]);    MULADD(at[19], at[108]);    MULADD(at[20], at[107]);    MULADD(at[21], at[106]);    MULADD(at[22], at[105]);    MULADD(at[23], at[104]);    MULADD(at[24], at[103]);    MULADD(at[25], at[102]);    MULADD(at[26], at[101]);    MULADD(at[27], at[100]);    MULADD(at[28], at[99]);    MULADD(at[29], at[98]);    MULADD(at[30], at[97]);    MULADD(at[31], at[96]);    MULADD(at[32], at[95]);    MULADD(at[33], at[94]);    MULADD(at[34], at[93]);    MULADD(at[35], at[92]);    MULADD(at[36], at[91]);    MULADD(at[37], at[90]);    MULADD(at[38], at[89]);    MULADD(at[39], at[88]);    MULADD(at[40], at[87]);    MULADD(at[41], at[86]);    MULADD(at[42], at[85]);    MULADD(at[43], at[84]);    MULADD(at[44], at[83]);    MULADD(at[45], at[82]);    MULADD(at[46], at[81]);    MULADD(at[47], at[80]);    MULADD(at[48], at[79]);    MULADD(at[49], at[78]);    MULADD(at[50], at[77]);    MULADD(at[51], at[76]);    MULADD(at[52], at[75]);    MULADD(at[53], at[74]);    MULADD(at[54], at[73]);    MULADD(at[55], at[72]);    MULADD(at[56], at[71]);    MULADD(at[57], at[70]);    MULADD(at[58], at[69]);    MULADD(at[59], at[68]);    MULADD(at[60], at[67]);    MULADD(at[61], at[66]);    MULADD(at[62], at[65]);    MULADD(at[63], at[64]); 
+   COMBA_STORE(C->dp[63]);
+   /* 64 */
+   COMBA_FORWARD;
+   MULADD(at[1], at[127]);    MULADD(at[2], at[126]);    MULADD(at[3], at[125]);    MULADD(at[4], at[124]);    MULADD(at[5], at[123]);    MULADD(at[6], at[122]);    MULADD(at[7], at[121]);    MULADD(at[8], at[120]);    MULADD(at[9], at[119]);    MULADD(at[10], at[118]);    MULADD(at[11], at[117]);    MULADD(at[12], at[116]);    MULADD(at[13], at[115]);    MULADD(at[14], at[114]);    MULADD(at[15], at[113]);    MULADD(at[16], at[112]);    MULADD(at[17], at[111]);    MULADD(at[18], at[110]);    MULADD(at[19], at[109]);    MULADD(at[20], at[108]);    MULADD(at[21], at[107]);    MULADD(at[22], at[106]);    MULADD(at[23], at[105]);    MULADD(at[24], at[104]);    MULADD(at[25], at[103]);    MULADD(at[26], at[102]);    MULADD(at[27], at[101]);    MULADD(at[28], at[100]);    MULADD(at[29], at[99]);    MULADD(at[30], at[98]);    MULADD(at[31], at[97]);    MULADD(at[32], at[96]);    MULADD(at[33], at[95]);    MULADD(at[34], at[94]);    MULADD(at[35], at[93]);    MULADD(at[36], at[92]);    MULADD(at[37], at[91]);    MULADD(at[38], at[90]);    MULADD(at[39], at[89]);    MULADD(at[40], at[88]);    MULADD(at[41], at[87]);    MULADD(at[42], at[86]);    MULADD(at[43], at[85]);    MULADD(at[44], at[84]);    MULADD(at[45], at[83]);    MULADD(at[46], at[82]);    MULADD(at[47], at[81]);    MULADD(at[48], at[80]);    MULADD(at[49], at[79]);    MULADD(at[50], at[78]);    MULADD(at[51], at[77]);    MULADD(at[52], at[76]);    MULADD(at[53], at[75]);    MULADD(at[54], at[74]);    MULADD(at[55], at[73]);    MULADD(at[56], at[72]);    MULADD(at[57], at[71]);    MULADD(at[58], at[70]);    MULADD(at[59], at[69]);    MULADD(at[60], at[68]);    MULADD(at[61], at[67]);    MULADD(at[62], at[66]);    MULADD(at[63], at[65]); 
+   COMBA_STORE(C->dp[64]);
+   /* 65 */
+   COMBA_FORWARD;
+   MULADD(at[2], at[127]);    MULADD(at[3], at[126]);    MULADD(at[4], at[125]);    MULADD(at[5], at[124]);    MULADD(at[6], at[123]);    MULADD(at[7], at[122]);    MULADD(at[8], at[121]);    MULADD(at[9], at[120]);    MULADD(at[10], at[119]);    MULADD(at[11], at[118]);    MULADD(at[12], at[117]);    MULADD(at[13], at[116]);    MULADD(at[14], at[115]);    MULADD(at[15], at[114]);    MULADD(at[16], at[113]);    MULADD(at[17], at[112]);    MULADD(at[18], at[111]);    MULADD(at[19], at[110]);    MULADD(at[20], at[109]);    MULADD(at[21], at[108]);    MULADD(at[22], at[107]);    MULADD(at[23], at[106]);    MULADD(at[24], at[105]);    MULADD(at[25], at[104]);    MULADD(at[26], at[103]);    MULADD(at[27], at[102]);    MULADD(at[28], at[101]);    MULADD(at[29], at[100]);    MULADD(at[30], at[99]);    MULADD(at[31], at[98]);    MULADD(at[32], at[97]);    MULADD(at[33], at[96]);    MULADD(at[34], at[95]);    MULADD(at[35], at[94]);    MULADD(at[36], at[93]);    MULADD(at[37], at[92]);    MULADD(at[38], at[91]);    MULADD(at[39], at[90]);    MULADD(at[40], at[89]);    MULADD(at[41], at[88]);    MULADD(at[42], at[87]);    MULADD(at[43], at[86]);    MULADD(at[44], at[85]);    MULADD(at[45], at[84]);    MULADD(at[46], at[83]);    MULADD(at[47], at[82]);    MULADD(at[48], at[81]);    MULADD(at[49], at[80]);    MULADD(at[50], at[79]);    MULADD(at[51], at[78]);    MULADD(at[52], at[77]);    MULADD(at[53], at[76]);    MULADD(at[54], at[75]);    MULADD(at[55], at[74]);    MULADD(at[56], at[73]);    MULADD(at[57], at[72]);    MULADD(at[58], at[71]);    MULADD(at[59], at[70]);    MULADD(at[60], at[69]);    MULADD(at[61], at[68]);    MULADD(at[62], at[67]);    MULADD(at[63], at[66]); 
+   COMBA_STORE(C->dp[65]);
+   /* 66 */
+   COMBA_FORWARD;
+   MULADD(at[3], at[127]);    MULADD(at[4], at[126]);    MULADD(at[5], at[125]);    MULADD(at[6], at[124]);    MULADD(at[7], at[123]);    MULADD(at[8], at[122]);    MULADD(at[9], at[121]);    MULADD(at[10], at[120]);    MULADD(at[11], at[119]);    MULADD(at[12], at[118]);    MULADD(at[13], at[117]);    MULADD(at[14], at[116]);    MULADD(at[15], at[115]);    MULADD(at[16], at[114]);    MULADD(at[17], at[113]);    MULADD(at[18], at[112]);    MULADD(at[19], at[111]);    MULADD(at[20], at[110]);    MULADD(at[21], at[109]);    MULADD(at[22], at[108]);    MULADD(at[23], at[107]);    MULADD(at[24], at[106]);    MULADD(at[25], at[105]);    MULADD(at[26], at[104]);    MULADD(at[27], at[103]);    MULADD(at[28], at[102]);    MULADD(at[29], at[101]);    MULADD(at[30], at[100]);    MULADD(at[31], at[99]);    MULADD(at[32], at[98]);    MULADD(at[33], at[97]);    MULADD(at[34], at[96]);    MULADD(at[35], at[95]);    MULADD(at[36], at[94]);    MULADD(at[37], at[93]);    MULADD(at[38], at[92]);    MULADD(at[39], at[91]);    MULADD(at[40], at[90]);    MULADD(at[41], at[89]);    MULADD(at[42], at[88]);    MULADD(at[43], at[87]);    MULADD(at[44], at[86]);    MULADD(at[45], at[85]);    MULADD(at[46], at[84]);    MULADD(at[47], at[83]);    MULADD(at[48], at[82]);    MULADD(at[49], at[81]);    MULADD(at[50], at[80]);    MULADD(at[51], at[79]);    MULADD(at[52], at[78]);    MULADD(at[53], at[77]);    MULADD(at[54], at[76]);    MULADD(at[55], at[75]);    MULADD(at[56], at[74]);    MULADD(at[57], at[73]);    MULADD(at[58], at[72]);    MULADD(at[59], at[71]);    MULADD(at[60], at[70]);    MULADD(at[61], at[69]);    MULADD(at[62], at[68]);    MULADD(at[63], at[67]); 
+   COMBA_STORE(C->dp[66]);
+   /* 67 */
+   COMBA_FORWARD;
+   MULADD(at[4], at[127]);    MULADD(at[5], at[126]);    MULADD(at[6], at[125]);    MULADD(at[7], at[124]);    MULADD(at[8], at[123]);    MULADD(at[9], at[122]);    MULADD(at[10], at[121]);    MULADD(at[11], at[120]);    MULADD(at[12], at[119]);    MULADD(at[13], at[118]);    MULADD(at[14], at[117]);    MULADD(at[15], at[116]);    MULADD(at[16], at[115]);    MULADD(at[17], at[114]);    MULADD(at[18], at[113]);    MULADD(at[19], at[112]);    MULADD(at[20], at[111]);    MULADD(at[21], at[110]);    MULADD(at[22], at[109]);    MULADD(at[23], at[108]);    MULADD(at[24], at[107]);    MULADD(at[25], at[106]);    MULADD(at[26], at[105]);    MULADD(at[27], at[104]);    MULADD(at[28], at[103]);    MULADD(at[29], at[102]);    MULADD(at[30], at[101]);    MULADD(at[31], at[100]);    MULADD(at[32], at[99]);    MULADD(at[33], at[98]);    MULADD(at[34], at[97]);    MULADD(at[35], at[96]);    MULADD(at[36], at[95]);    MULADD(at[37], at[94]);    MULADD(at[38], at[93]);    MULADD(at[39], at[92]);    MULADD(at[40], at[91]);    MULADD(at[41], at[90]);    MULADD(at[42], at[89]);    MULADD(at[43], at[88]);    MULADD(at[44], at[87]);    MULADD(at[45], at[86]);    MULADD(at[46], at[85]);    MULADD(at[47], at[84]);    MULADD(at[48], at[83]);    MULADD(at[49], at[82]);    MULADD(at[50], at[81]);    MULADD(at[51], at[80]);    MULADD(at[52], at[79]);    MULADD(at[53], at[78]);    MULADD(at[54], at[77]);    MULADD(at[55], at[76]);    MULADD(at[56], at[75]);    MULADD(at[57], at[74]);    MULADD(at[58], at[73]);    MULADD(at[59], at[72]);    MULADD(at[60], at[71]);    MULADD(at[61], at[70]);    MULADD(at[62], at[69]);    MULADD(at[63], at[68]); 
+   COMBA_STORE(C->dp[67]);
+   /* 68 */
+   COMBA_FORWARD;
+   MULADD(at[5], at[127]);    MULADD(at[6], at[126]);    MULADD(at[7], at[125]);    MULADD(at[8], at[124]);    MULADD(at[9], at[123]);    MULADD(at[10], at[122]);    MULADD(at[11], at[121]);    MULADD(at[12], at[120]);    MULADD(at[13], at[119]);    MULADD(at[14], at[118]);    MULADD(at[15], at[117]);    MULADD(at[16], at[116]);    MULADD(at[17], at[115]);    MULADD(at[18], at[114]);    MULADD(at[19], at[113]);    MULADD(at[20], at[112]);    MULADD(at[21], at[111]);    MULADD(at[22], at[110]);    MULADD(at[23], at[109]);    MULADD(at[24], at[108]);    MULADD(at[25], at[107]);    MULADD(at[26], at[106]);    MULADD(at[27], at[105]);    MULADD(at[28], at[104]);    MULADD(at[29], at[103]);    MULADD(at[30], at[102]);    MULADD(at[31], at[101]);    MULADD(at[32], at[100]);    MULADD(at[33], at[99]);    MULADD(at[34], at[98]);    MULADD(at[35], at[97]);    MULADD(at[36], at[96]);    MULADD(at[37], at[95]);    MULADD(at[38], at[94]);    MULADD(at[39], at[93]);    MULADD(at[40], at[92]);    MULADD(at[41], at[91]);    MULADD(at[42], at[90]);    MULADD(at[43], at[89]);    MULADD(at[44], at[88]);    MULADD(at[45], at[87]);    MULADD(at[46], at[86]);    MULADD(at[47], at[85]);    MULADD(at[48], at[84]);    MULADD(at[49], at[83]);    MULADD(at[50], at[82]);    MULADD(at[51], at[81]);    MULADD(at[52], at[80]);    MULADD(at[53], at[79]);    MULADD(at[54], at[78]);    MULADD(at[55], at[77]);    MULADD(at[56], at[76]);    MULADD(at[57], at[75]);    MULADD(at[58], at[74]);    MULADD(at[59], at[73]);    MULADD(at[60], at[72]);    MULADD(at[61], at[71]);    MULADD(at[62], at[70]);    MULADD(at[63], at[69]); 
+   COMBA_STORE(C->dp[68]);
+   /* 69 */
+   COMBA_FORWARD;
+   MULADD(at[6], at[127]);    MULADD(at[7], at[126]);    MULADD(at[8], at[125]);    MULADD(at[9], at[124]);    MULADD(at[10], at[123]);    MULADD(at[11], at[122]);    MULADD(at[12], at[121]);    MULADD(at[13], at[120]);    MULADD(at[14], at[119]);    MULADD(at[15], at[118]);    MULADD(at[16], at[117]);    MULADD(at[17], at[116]);    MULADD(at[18], at[115]);    MULADD(at[19], at[114]);    MULADD(at[20], at[113]);    MULADD(at[21], at[112]);    MULADD(at[22], at[111]);    MULADD(at[23], at[110]);    MULADD(at[24], at[109]);    MULADD(at[25], at[108]);    MULADD(at[26], at[107]);    MULADD(at[27], at[106]);    MULADD(at[28], at[105]);    MULADD(at[29], at[104]);    MULADD(at[30], at[103]);    MULADD(at[31], at[102]);    MULADD(at[32], at[101]);    MULADD(at[33], at[100]);    MULADD(at[34], at[99]);    MULADD(at[35], at[98]);    MULADD(at[36], at[97]);    MULADD(at[37], at[96]);    MULADD(at[38], at[95]);    MULADD(at[39], at[94]);    MULADD(at[40], at[93]);    MULADD(at[41], at[92]);    MULADD(at[42], at[91]);    MULADD(at[43], at[90]);    MULADD(at[44], at[89]);    MULADD(at[45], at[88]);    MULADD(at[46], at[87]);    MULADD(at[47], at[86]);    MULADD(at[48], at[85]);    MULADD(at[49], at[84]);    MULADD(at[50], at[83]);    MULADD(at[51], at[82]);    MULADD(at[52], at[81]);    MULADD(at[53], at[80]);    MULADD(at[54], at[79]);    MULADD(at[55], at[78]);    MULADD(at[56], at[77]);    MULADD(at[57], at[76]);    MULADD(at[58], at[75]);    MULADD(at[59], at[74]);    MULADD(at[60], at[73]);    MULADD(at[61], at[72]);    MULADD(at[62], at[71]);    MULADD(at[63], at[70]); 
+   COMBA_STORE(C->dp[69]);
+   /* 70 */
+   COMBA_FORWARD;
+   MULADD(at[7], at[127]);    MULADD(at[8], at[126]);    MULADD(at[9], at[125]);    MULADD(at[10], at[124]);    MULADD(at[11], at[123]);    MULADD(at[12], at[122]);    MULADD(at[13], at[121]);    MULADD(at[14], at[120]);    MULADD(at[15], at[119]);    MULADD(at[16], at[118]);    MULADD(at[17], at[117]);    MULADD(at[18], at[116]);    MULADD(at[19], at[115]);    MULADD(at[20], at[114]);    MULADD(at[21], at[113]);    MULADD(at[22], at[112]);    MULADD(at[23], at[111]);    MULADD(at[24], at[110]);    MULADD(at[25], at[109]);    MULADD(at[26], at[108]);    MULADD(at[27], at[107]);    MULADD(at[28], at[106]);    MULADD(at[29], at[105]);    MULADD(at[30], at[104]);    MULADD(at[31], at[103]);    MULADD(at[32], at[102]);    MULADD(at[33], at[101]);    MULADD(at[34], at[100]);    MULADD(at[35], at[99]);    MULADD(at[36], at[98]);    MULADD(at[37], at[97]);    MULADD(at[38], at[96]);    MULADD(at[39], at[95]);    MULADD(at[40], at[94]);    MULADD(at[41], at[93]);    MULADD(at[42], at[92]);    MULADD(at[43], at[91]);    MULADD(at[44], at[90]);    MULADD(at[45], at[89]);    MULADD(at[46], at[88]);    MULADD(at[47], at[87]);    MULADD(at[48], at[86]);    MULADD(at[49], at[85]);    MULADD(at[50], at[84]);    MULADD(at[51], at[83]);    MULADD(at[52], at[82]);    MULADD(at[53], at[81]);    MULADD(at[54], at[80]);    MULADD(at[55], at[79]);    MULADD(at[56], at[78]);    MULADD(at[57], at[77]);    MULADD(at[58], at[76]);    MULADD(at[59], at[75]);    MULADD(at[60], at[74]);    MULADD(at[61], at[73]);    MULADD(at[62], at[72]);    MULADD(at[63], at[71]); 
+   COMBA_STORE(C->dp[70]);
+   /* 71 */
+   COMBA_FORWARD;
+   MULADD(at[8], at[127]);    MULADD(at[9], at[126]);    MULADD(at[10], at[125]);    MULADD(at[11], at[124]);    MULADD(at[12], at[123]);    MULADD(at[13], at[122]);    MULADD(at[14], at[121]);    MULADD(at[15], at[120]);    MULADD(at[16], at[119]);    MULADD(at[17], at[118]);    MULADD(at[18], at[117]);    MULADD(at[19], at[116]);    MULADD(at[20], at[115]);    MULADD(at[21], at[114]);    MULADD(at[22], at[113]);    MULADD(at[23], at[112]);    MULADD(at[24], at[111]);    MULADD(at[25], at[110]);    MULADD(at[26], at[109]);    MULADD(at[27], at[108]);    MULADD(at[28], at[107]);    MULADD(at[29], at[106]);    MULADD(at[30], at[105]);    MULADD(at[31], at[104]);    MULADD(at[32], at[103]);    MULADD(at[33], at[102]);    MULADD(at[34], at[101]);    MULADD(at[35], at[100]);    MULADD(at[36], at[99]);    MULADD(at[37], at[98]);    MULADD(at[38], at[97]);    MULADD(at[39], at[96]);    MULADD(at[40], at[95]);    MULADD(at[41], at[94]);    MULADD(at[42], at[93]);    MULADD(at[43], at[92]);    MULADD(at[44], at[91]);    MULADD(at[45], at[90]);    MULADD(at[46], at[89]);    MULADD(at[47], at[88]);    MULADD(at[48], at[87]);    MULADD(at[49], at[86]);    MULADD(at[50], at[85]);    MULADD(at[51], at[84]);    MULADD(at[52], at[83]);    MULADD(at[53], at[82]);    MULADD(at[54], at[81]);    MULADD(at[55], at[80]);    MULADD(at[56], at[79]);    MULADD(at[57], at[78]);    MULADD(at[58], at[77]);    MULADD(at[59], at[76]);    MULADD(at[60], at[75]);    MULADD(at[61], at[74]);    MULADD(at[62], at[73]);    MULADD(at[63], at[72]); 
+   COMBA_STORE(C->dp[71]);
+   /* 72 */
+   COMBA_FORWARD;
+   MULADD(at[9], at[127]);    MULADD(at[10], at[126]);    MULADD(at[11], at[125]);    MULADD(at[12], at[124]);    MULADD(at[13], at[123]);    MULADD(at[14], at[122]);    MULADD(at[15], at[121]);    MULADD(at[16], at[120]);    MULADD(at[17], at[119]);    MULADD(at[18], at[118]);    MULADD(at[19], at[117]);    MULADD(at[20], at[116]);    MULADD(at[21], at[115]);    MULADD(at[22], at[114]);    MULADD(at[23], at[113]);    MULADD(at[24], at[112]);    MULADD(at[25], at[111]);    MULADD(at[26], at[110]);    MULADD(at[27], at[109]);    MULADD(at[28], at[108]);    MULADD(at[29], at[107]);    MULADD(at[30], at[106]);    MULADD(at[31], at[105]);    MULADD(at[32], at[104]);    MULADD(at[33], at[103]);    MULADD(at[34], at[102]);    MULADD(at[35], at[101]);    MULADD(at[36], at[100]);    MULADD(at[37], at[99]);    MULADD(at[38], at[98]);    MULADD(at[39], at[97]);    MULADD(at[40], at[96]);    MULADD(at[41], at[95]);    MULADD(at[42], at[94]);    MULADD(at[43], at[93]);    MULADD(at[44], at[92]);    MULADD(at[45], at[91]);    MULADD(at[46], at[90]);    MULADD(at[47], at[89]);    MULADD(at[48], at[88]);    MULADD(at[49], at[87]);    MULADD(at[50], at[86]);    MULADD(at[51], at[85]);    MULADD(at[52], at[84]);    MULADD(at[53], at[83]);    MULADD(at[54], at[82]);    MULADD(at[55], at[81]);    MULADD(at[56], at[80]);    MULADD(at[57], at[79]);    MULADD(at[58], at[78]);    MULADD(at[59], at[77]);    MULADD(at[60], at[76]);    MULADD(at[61], at[75]);    MULADD(at[62], at[74]);    MULADD(at[63], at[73]); 
+   COMBA_STORE(C->dp[72]);
+   /* 73 */
+   COMBA_FORWARD;
+   MULADD(at[10], at[127]);    MULADD(at[11], at[126]);    MULADD(at[12], at[125]);    MULADD(at[13], at[124]);    MULADD(at[14], at[123]);    MULADD(at[15], at[122]);    MULADD(at[16], at[121]);    MULADD(at[17], at[120]);    MULADD(at[18], at[119]);    MULADD(at[19], at[118]);    MULADD(at[20], at[117]);    MULADD(at[21], at[116]);    MULADD(at[22], at[115]);    MULADD(at[23], at[114]);    MULADD(at[24], at[113]);    MULADD(at[25], at[112]);    MULADD(at[26], at[111]);    MULADD(at[27], at[110]);    MULADD(at[28], at[109]);    MULADD(at[29], at[108]);    MULADD(at[30], at[107]);    MULADD(at[31], at[106]);    MULADD(at[32], at[105]);    MULADD(at[33], at[104]);    MULADD(at[34], at[103]);    MULADD(at[35], at[102]);    MULADD(at[36], at[101]);    MULADD(at[37], at[100]);    MULADD(at[38], at[99]);    MULADD(at[39], at[98]);    MULADD(at[40], at[97]);    MULADD(at[41], at[96]);    MULADD(at[42], at[95]);    MULADD(at[43], at[94]);    MULADD(at[44], at[93]);    MULADD(at[45], at[92]);    MULADD(at[46], at[91]);    MULADD(at[47], at[90]);    MULADD(at[48], at[89]);    MULADD(at[49], at[88]);    MULADD(at[50], at[87]);    MULADD(at[51], at[86]);    MULADD(at[52], at[85]);    MULADD(at[53], at[84]);    MULADD(at[54], at[83]);    MULADD(at[55], at[82]);    MULADD(at[56], at[81]);    MULADD(at[57], at[80]);    MULADD(at[58], at[79]);    MULADD(at[59], at[78]);    MULADD(at[60], at[77]);    MULADD(at[61], at[76]);    MULADD(at[62], at[75]);    MULADD(at[63], at[74]); 
+   COMBA_STORE(C->dp[73]);
+   /* 74 */
+   COMBA_FORWARD;
+   MULADD(at[11], at[127]);    MULADD(at[12], at[126]);    MULADD(at[13], at[125]);    MULADD(at[14], at[124]);    MULADD(at[15], at[123]);    MULADD(at[16], at[122]);    MULADD(at[17], at[121]);    MULADD(at[18], at[120]);    MULADD(at[19], at[119]);    MULADD(at[20], at[118]);    MULADD(at[21], at[117]);    MULADD(at[22], at[116]);    MULADD(at[23], at[115]);    MULADD(at[24], at[114]);    MULADD(at[25], at[113]);    MULADD(at[26], at[112]);    MULADD(at[27], at[111]);    MULADD(at[28], at[110]);    MULADD(at[29], at[109]);    MULADD(at[30], at[108]);    MULADD(at[31], at[107]);    MULADD(at[32], at[106]);    MULADD(at[33], at[105]);    MULADD(at[34], at[104]);    MULADD(at[35], at[103]);    MULADD(at[36], at[102]);    MULADD(at[37], at[101]);    MULADD(at[38], at[100]);    MULADD(at[39], at[99]);    MULADD(at[40], at[98]);    MULADD(at[41], at[97]);    MULADD(at[42], at[96]);    MULADD(at[43], at[95]);    MULADD(at[44], at[94]);    MULADD(at[45], at[93]);    MULADD(at[46], at[92]);    MULADD(at[47], at[91]);    MULADD(at[48], at[90]);    MULADD(at[49], at[89]);    MULADD(at[50], at[88]);    MULADD(at[51], at[87]);    MULADD(at[52], at[86]);    MULADD(at[53], at[85]);    MULADD(at[54], at[84]);    MULADD(at[55], at[83]);    MULADD(at[56], at[82]);    MULADD(at[57], at[81]);    MULADD(at[58], at[80]);    MULADD(at[59], at[79]);    MULADD(at[60], at[78]);    MULADD(at[61], at[77]);    MULADD(at[62], at[76]);    MULADD(at[63], at[75]); 
+   COMBA_STORE(C->dp[74]);
+   /* 75 */
+   COMBA_FORWARD;
+   MULADD(at[12], at[127]);    MULADD(at[13], at[126]);    MULADD(at[14], at[125]);    MULADD(at[15], at[124]);    MULADD(at[16], at[123]);    MULADD(at[17], at[122]);    MULADD(at[18], at[121]);    MULADD(at[19], at[120]);    MULADD(at[20], at[119]);    MULADD(at[21], at[118]);    MULADD(at[22], at[117]);    MULADD(at[23], at[116]);    MULADD(at[24], at[115]);    MULADD(at[25], at[114]);    MULADD(at[26], at[113]);    MULADD(at[27], at[112]);    MULADD(at[28], at[111]);    MULADD(at[29], at[110]);    MULADD(at[30], at[109]);    MULADD(at[31], at[108]);    MULADD(at[32], at[107]);    MULADD(at[33], at[106]);    MULADD(at[34], at[105]);    MULADD(at[35], at[104]);    MULADD(at[36], at[103]);    MULADD(at[37], at[102]);    MULADD(at[38], at[101]);    MULADD(at[39], at[100]);    MULADD(at[40], at[99]);    MULADD(at[41], at[98]);    MULADD(at[42], at[97]);    MULADD(at[43], at[96]);    MULADD(at[44], at[95]);    MULADD(at[45], at[94]);    MULADD(at[46], at[93]);    MULADD(at[47], at[92]);    MULADD(at[48], at[91]);    MULADD(at[49], at[90]);    MULADD(at[50], at[89]);    MULADD(at[51], at[88]);    MULADD(at[52], at[87]);    MULADD(at[53], at[86]);    MULADD(at[54], at[85]);    MULADD(at[55], at[84]);    MULADD(at[56], at[83]);    MULADD(at[57], at[82]);    MULADD(at[58], at[81]);    MULADD(at[59], at[80]);    MULADD(at[60], at[79]);    MULADD(at[61], at[78]);    MULADD(at[62], at[77]);    MULADD(at[63], at[76]); 
+   COMBA_STORE(C->dp[75]);
+   /* 76 */
+   COMBA_FORWARD;
+   MULADD(at[13], at[127]);    MULADD(at[14], at[126]);    MULADD(at[15], at[125]);    MULADD(at[16], at[124]);    MULADD(at[17], at[123]);    MULADD(at[18], at[122]);    MULADD(at[19], at[121]);    MULADD(at[20], at[120]);    MULADD(at[21], at[119]);    MULADD(at[22], at[118]);    MULADD(at[23], at[117]);    MULADD(at[24], at[116]);    MULADD(at[25], at[115]);    MULADD(at[26], at[114]);    MULADD(at[27], at[113]);    MULADD(at[28], at[112]);    MULADD(at[29], at[111]);    MULADD(at[30], at[110]);    MULADD(at[31], at[109]);    MULADD(at[32], at[108]);    MULADD(at[33], at[107]);    MULADD(at[34], at[106]);    MULADD(at[35], at[105]);    MULADD(at[36], at[104]);    MULADD(at[37], at[103]);    MULADD(at[38], at[102]);    MULADD(at[39], at[101]);    MULADD(at[40], at[100]);    MULADD(at[41], at[99]);    MULADD(at[42], at[98]);    MULADD(at[43], at[97]);    MULADD(at[44], at[96]);    MULADD(at[45], at[95]);    MULADD(at[46], at[94]);    MULADD(at[47], at[93]);    MULADD(at[48], at[92]);    MULADD(at[49], at[91]);    MULADD(at[50], at[90]);    MULADD(at[51], at[89]);    MULADD(at[52], at[88]);    MULADD(at[53], at[87]);    MULADD(at[54], at[86]);    MULADD(at[55], at[85]);    MULADD(at[56], at[84]);    MULADD(at[57], at[83]);    MULADD(at[58], at[82]);    MULADD(at[59], at[81]);    MULADD(at[60], at[80]);    MULADD(at[61], at[79]);    MULADD(at[62], at[78]);    MULADD(at[63], at[77]); 
+   COMBA_STORE(C->dp[76]);
+   /* 77 */
+   COMBA_FORWARD;
+   MULADD(at[14], at[127]);    MULADD(at[15], at[126]);    MULADD(at[16], at[125]);    MULADD(at[17], at[124]);    MULADD(at[18], at[123]);    MULADD(at[19], at[122]);    MULADD(at[20], at[121]);    MULADD(at[21], at[120]);    MULADD(at[22], at[119]);    MULADD(at[23], at[118]);    MULADD(at[24], at[117]);    MULADD(at[25], at[116]);    MULADD(at[26], at[115]);    MULADD(at[27], at[114]);    MULADD(at[28], at[113]);    MULADD(at[29], at[112]);    MULADD(at[30], at[111]);    MULADD(at[31], at[110]);    MULADD(at[32], at[109]);    MULADD(at[33], at[108]);    MULADD(at[34], at[107]);    MULADD(at[35], at[106]);    MULADD(at[36], at[105]);    MULADD(at[37], at[104]);    MULADD(at[38], at[103]);    MULADD(at[39], at[102]);    MULADD(at[40], at[101]);    MULADD(at[41], at[100]);    MULADD(at[42], at[99]);    MULADD(at[43], at[98]);    MULADD(at[44], at[97]);    MULADD(at[45], at[96]);    MULADD(at[46], at[95]);    MULADD(at[47], at[94]);    MULADD(at[48], at[93]);    MULADD(at[49], at[92]);    MULADD(at[50], at[91]);    MULADD(at[51], at[90]);    MULADD(at[52], at[89]);    MULADD(at[53], at[88]);    MULADD(at[54], at[87]);    MULADD(at[55], at[86]);    MULADD(at[56], at[85]);    MULADD(at[57], at[84]);    MULADD(at[58], at[83]);    MULADD(at[59], at[82]);    MULADD(at[60], at[81]);    MULADD(at[61], at[80]);    MULADD(at[62], at[79]);    MULADD(at[63], at[78]); 
+   COMBA_STORE(C->dp[77]);
+   /* 78 */
+   COMBA_FORWARD;
+   MULADD(at[15], at[127]);    MULADD(at[16], at[126]);    MULADD(at[17], at[125]);    MULADD(at[18], at[124]);    MULADD(at[19], at[123]);    MULADD(at[20], at[122]);    MULADD(at[21], at[121]);    MULADD(at[22], at[120]);    MULADD(at[23], at[119]);    MULADD(at[24], at[118]);    MULADD(at[25], at[117]);    MULADD(at[26], at[116]);    MULADD(at[27], at[115]);    MULADD(at[28], at[114]);    MULADD(at[29], at[113]);    MULADD(at[30], at[112]);    MULADD(at[31], at[111]);    MULADD(at[32], at[110]);    MULADD(at[33], at[109]);    MULADD(at[34], at[108]);    MULADD(at[35], at[107]);    MULADD(at[36], at[106]);    MULADD(at[37], at[105]);    MULADD(at[38], at[104]);    MULADD(at[39], at[103]);    MULADD(at[40], at[102]);    MULADD(at[41], at[101]);    MULADD(at[42], at[100]);    MULADD(at[43], at[99]);    MULADD(at[44], at[98]);    MULADD(at[45], at[97]);    MULADD(at[46], at[96]);    MULADD(at[47], at[95]);    MULADD(at[48], at[94]);    MULADD(at[49], at[93]);    MULADD(at[50], at[92]);    MULADD(at[51], at[91]);    MULADD(at[52], at[90]);    MULADD(at[53], at[89]);    MULADD(at[54], at[88]);    MULADD(at[55], at[87]);    MULADD(at[56], at[86]);    MULADD(at[57], at[85]);    MULADD(at[58], at[84]);    MULADD(at[59], at[83]);    MULADD(at[60], at[82]);    MULADD(at[61], at[81]);    MULADD(at[62], at[80]);    MULADD(at[63], at[79]); 
+   COMBA_STORE(C->dp[78]);
+   /* 79 */
+   COMBA_FORWARD;
+   MULADD(at[16], at[127]);    MULADD(at[17], at[126]);    MULADD(at[18], at[125]);    MULADD(at[19], at[124]);    MULADD(at[20], at[123]);    MULADD(at[21], at[122]);    MULADD(at[22], at[121]);    MULADD(at[23], at[120]);    MULADD(at[24], at[119]);    MULADD(at[25], at[118]);    MULADD(at[26], at[117]);    MULADD(at[27], at[116]);    MULADD(at[28], at[115]);    MULADD(at[29], at[114]);    MULADD(at[30], at[113]);    MULADD(at[31], at[112]);    MULADD(at[32], at[111]);    MULADD(at[33], at[110]);    MULADD(at[34], at[109]);    MULADD(at[35], at[108]);    MULADD(at[36], at[107]);    MULADD(at[37], at[106]);    MULADD(at[38], at[105]);    MULADD(at[39], at[104]);    MULADD(at[40], at[103]);    MULADD(at[41], at[102]);    MULADD(at[42], at[101]);    MULADD(at[43], at[100]);    MULADD(at[44], at[99]);    MULADD(at[45], at[98]);    MULADD(at[46], at[97]);    MULADD(at[47], at[96]);    MULADD(at[48], at[95]);    MULADD(at[49], at[94]);    MULADD(at[50], at[93]);    MULADD(at[51], at[92]);    MULADD(at[52], at[91]);    MULADD(at[53], at[90]);    MULADD(at[54], at[89]);    MULADD(at[55], at[88]);    MULADD(at[56], at[87]);    MULADD(at[57], at[86]);    MULADD(at[58], at[85]);    MULADD(at[59], at[84]);    MULADD(at[60], at[83]);    MULADD(at[61], at[82]);    MULADD(at[62], at[81]);    MULADD(at[63], at[80]); 
+   COMBA_STORE(C->dp[79]);
+   /* 80 */
+   COMBA_FORWARD;
+   MULADD(at[17], at[127]);    MULADD(at[18], at[126]);    MULADD(at[19], at[125]);    MULADD(at[20], at[124]);    MULADD(at[21], at[123]);    MULADD(at[22], at[122]);    MULADD(at[23], at[121]);    MULADD(at[24], at[120]);    MULADD(at[25], at[119]);    MULADD(at[26], at[118]);    MULADD(at[27], at[117]);    MULADD(at[28], at[116]);    MULADD(at[29], at[115]);    MULADD(at[30], at[114]);    MULADD(at[31], at[113]);    MULADD(at[32], at[112]);    MULADD(at[33], at[111]);    MULADD(at[34], at[110]);    MULADD(at[35], at[109]);    MULADD(at[36], at[108]);    MULADD(at[37], at[107]);    MULADD(at[38], at[106]);    MULADD(at[39], at[105]);    MULADD(at[40], at[104]);    MULADD(at[41], at[103]);    MULADD(at[42], at[102]);    MULADD(at[43], at[101]);    MULADD(at[44], at[100]);    MULADD(at[45], at[99]);    MULADD(at[46], at[98]);    MULADD(at[47], at[97]);    MULADD(at[48], at[96]);    MULADD(at[49], at[95]);    MULADD(at[50], at[94]);    MULADD(at[51], at[93]);    MULADD(at[52], at[92]);    MULADD(at[53], at[91]);    MULADD(at[54], at[90]);    MULADD(at[55], at[89]);    MULADD(at[56], at[88]);    MULADD(at[57], at[87]);    MULADD(at[58], at[86]);    MULADD(at[59], at[85]);    MULADD(at[60], at[84]);    MULADD(at[61], at[83]);    MULADD(at[62], at[82]);    MULADD(at[63], at[81]); 
+   COMBA_STORE(C->dp[80]);
+   /* 81 */
+   COMBA_FORWARD;
+   MULADD(at[18], at[127]);    MULADD(at[19], at[126]);    MULADD(at[20], at[125]);    MULADD(at[21], at[124]);    MULADD(at[22], at[123]);    MULADD(at[23], at[122]);    MULADD(at[24], at[121]);    MULADD(at[25], at[120]);    MULADD(at[26], at[119]);    MULADD(at[27], at[118]);    MULADD(at[28], at[117]);    MULADD(at[29], at[116]);    MULADD(at[30], at[115]);    MULADD(at[31], at[114]);    MULADD(at[32], at[113]);    MULADD(at[33], at[112]);    MULADD(at[34], at[111]);    MULADD(at[35], at[110]);    MULADD(at[36], at[109]);    MULADD(at[37], at[108]);    MULADD(at[38], at[107]);    MULADD(at[39], at[106]);    MULADD(at[40], at[105]);    MULADD(at[41], at[104]);    MULADD(at[42], at[103]);    MULADD(at[43], at[102]);    MULADD(at[44], at[101]);    MULADD(at[45], at[100]);    MULADD(at[46], at[99]);    MULADD(at[47], at[98]);    MULADD(at[48], at[97]);    MULADD(at[49], at[96]);    MULADD(at[50], at[95]);    MULADD(at[51], at[94]);    MULADD(at[52], at[93]);    MULADD(at[53], at[92]);    MULADD(at[54], at[91]);    MULADD(at[55], at[90]);    MULADD(at[56], at[89]);    MULADD(at[57], at[88]);    MULADD(at[58], at[87]);    MULADD(at[59], at[86]);    MULADD(at[60], at[85]);    MULADD(at[61], at[84]);    MULADD(at[62], at[83]);    MULADD(at[63], at[82]); 
+   COMBA_STORE(C->dp[81]);
+   /* 82 */
+   COMBA_FORWARD;
+   MULADD(at[19], at[127]);    MULADD(at[20], at[126]);    MULADD(at[21], at[125]);    MULADD(at[22], at[124]);    MULADD(at[23], at[123]);    MULADD(at[24], at[122]);    MULADD(at[25], at[121]);    MULADD(at[26], at[120]);    MULADD(at[27], at[119]);    MULADD(at[28], at[118]);    MULADD(at[29], at[117]);    MULADD(at[30], at[116]);    MULADD(at[31], at[115]);    MULADD(at[32], at[114]);    MULADD(at[33], at[113]);    MULADD(at[34], at[112]);    MULADD(at[35], at[111]);    MULADD(at[36], at[110]);    MULADD(at[37], at[109]);    MULADD(at[38], at[108]);    MULADD(at[39], at[107]);    MULADD(at[40], at[106]);    MULADD(at[41], at[105]);    MULADD(at[42], at[104]);    MULADD(at[43], at[103]);    MULADD(at[44], at[102]);    MULADD(at[45], at[101]);    MULADD(at[46], at[100]);    MULADD(at[47], at[99]);    MULADD(at[48], at[98]);    MULADD(at[49], at[97]);    MULADD(at[50], at[96]);    MULADD(at[51], at[95]);    MULADD(at[52], at[94]);    MULADD(at[53], at[93]);    MULADD(at[54], at[92]);    MULADD(at[55], at[91]);    MULADD(at[56], at[90]);    MULADD(at[57], at[89]);    MULADD(at[58], at[88]);    MULADD(at[59], at[87]);    MULADD(at[60], at[86]);    MULADD(at[61], at[85]);    MULADD(at[62], at[84]);    MULADD(at[63], at[83]); 
+   COMBA_STORE(C->dp[82]);
+   /* 83 */
+   COMBA_FORWARD;
+   MULADD(at[20], at[127]);    MULADD(at[21], at[126]);    MULADD(at[22], at[125]);    MULADD(at[23], at[124]);    MULADD(at[24], at[123]);    MULADD(at[25], at[122]);    MULADD(at[26], at[121]);    MULADD(at[27], at[120]);    MULADD(at[28], at[119]);    MULADD(at[29], at[118]);    MULADD(at[30], at[117]);    MULADD(at[31], at[116]);    MULADD(at[32], at[115]);    MULADD(at[33], at[114]);    MULADD(at[34], at[113]);    MULADD(at[35], at[112]);    MULADD(at[36], at[111]);    MULADD(at[37], at[110]);    MULADD(at[38], at[109]);    MULADD(at[39], at[108]);    MULADD(at[40], at[107]);    MULADD(at[41], at[106]);    MULADD(at[42], at[105]);    MULADD(at[43], at[104]);    MULADD(at[44], at[103]);    MULADD(at[45], at[102]);    MULADD(at[46], at[101]);    MULADD(at[47], at[100]);    MULADD(at[48], at[99]);    MULADD(at[49], at[98]);    MULADD(at[50], at[97]);    MULADD(at[51], at[96]);    MULADD(at[52], at[95]);    MULADD(at[53], at[94]);    MULADD(at[54], at[93]);    MULADD(at[55], at[92]);    MULADD(at[56], at[91]);    MULADD(at[57], at[90]);    MULADD(at[58], at[89]);    MULADD(at[59], at[88]);    MULADD(at[60], at[87]);    MULADD(at[61], at[86]);    MULADD(at[62], at[85]);    MULADD(at[63], at[84]); 
+   COMBA_STORE(C->dp[83]);
+   /* 84 */
+   COMBA_FORWARD;
+   MULADD(at[21], at[127]);    MULADD(at[22], at[126]);    MULADD(at[23], at[125]);    MULADD(at[24], at[124]);    MULADD(at[25], at[123]);    MULADD(at[26], at[122]);    MULADD(at[27], at[121]);    MULADD(at[28], at[120]);    MULADD(at[29], at[119]);    MULADD(at[30], at[118]);    MULADD(at[31], at[117]);    MULADD(at[32], at[116]);    MULADD(at[33], at[115]);    MULADD(at[34], at[114]);    MULADD(at[35], at[113]);    MULADD(at[36], at[112]);    MULADD(at[37], at[111]);    MULADD(at[38], at[110]);    MULADD(at[39], at[109]);    MULADD(at[40], at[108]);    MULADD(at[41], at[107]);    MULADD(at[42], at[106]);    MULADD(at[43], at[105]);    MULADD(at[44], at[104]);    MULADD(at[45], at[103]);    MULADD(at[46], at[102]);    MULADD(at[47], at[101]);    MULADD(at[48], at[100]);    MULADD(at[49], at[99]);    MULADD(at[50], at[98]);    MULADD(at[51], at[97]);    MULADD(at[52], at[96]);    MULADD(at[53], at[95]);    MULADD(at[54], at[94]);    MULADD(at[55], at[93]);    MULADD(at[56], at[92]);    MULADD(at[57], at[91]);    MULADD(at[58], at[90]);    MULADD(at[59], at[89]);    MULADD(at[60], at[88]);    MULADD(at[61], at[87]);    MULADD(at[62], at[86]);    MULADD(at[63], at[85]); 
+   COMBA_STORE(C->dp[84]);
+   /* 85 */
+   COMBA_FORWARD;
+   MULADD(at[22], at[127]);    MULADD(at[23], at[126]);    MULADD(at[24], at[125]);    MULADD(at[25], at[124]);    MULADD(at[26], at[123]);    MULADD(at[27], at[122]);    MULADD(at[28], at[121]);    MULADD(at[29], at[120]);    MULADD(at[30], at[119]);    MULADD(at[31], at[118]);    MULADD(at[32], at[117]);    MULADD(at[33], at[116]);    MULADD(at[34], at[115]);    MULADD(at[35], at[114]);    MULADD(at[36], at[113]);    MULADD(at[37], at[112]);    MULADD(at[38], at[111]);    MULADD(at[39], at[110]);    MULADD(at[40], at[109]);    MULADD(at[41], at[108]);    MULADD(at[42], at[107]);    MULADD(at[43], at[106]);    MULADD(at[44], at[105]);    MULADD(at[45], at[104]);    MULADD(at[46], at[103]);    MULADD(at[47], at[102]);    MULADD(at[48], at[101]);    MULADD(at[49], at[100]);    MULADD(at[50], at[99]);    MULADD(at[51], at[98]);    MULADD(at[52], at[97]);    MULADD(at[53], at[96]);    MULADD(at[54], at[95]);    MULADD(at[55], at[94]);    MULADD(at[56], at[93]);    MULADD(at[57], at[92]);    MULADD(at[58], at[91]);    MULADD(at[59], at[90]);    MULADD(at[60], at[89]);    MULADD(at[61], at[88]);    MULADD(at[62], at[87]);    MULADD(at[63], at[86]); 
+   COMBA_STORE(C->dp[85]);
+   /* 86 */
+   COMBA_FORWARD;
+   MULADD(at[23], at[127]);    MULADD(at[24], at[126]);    MULADD(at[25], at[125]);    MULADD(at[26], at[124]);    MULADD(at[27], at[123]);    MULADD(at[28], at[122]);    MULADD(at[29], at[121]);    MULADD(at[30], at[120]);    MULADD(at[31], at[119]);    MULADD(at[32], at[118]);    MULADD(at[33], at[117]);    MULADD(at[34], at[116]);    MULADD(at[35], at[115]);    MULADD(at[36], at[114]);    MULADD(at[37], at[113]);    MULADD(at[38], at[112]);    MULADD(at[39], at[111]);    MULADD(at[40], at[110]);    MULADD(at[41], at[109]);    MULADD(at[42], at[108]);    MULADD(at[43], at[107]);    MULADD(at[44], at[106]);    MULADD(at[45], at[105]);    MULADD(at[46], at[104]);    MULADD(at[47], at[103]);    MULADD(at[48], at[102]);    MULADD(at[49], at[101]);    MULADD(at[50], at[100]);    MULADD(at[51], at[99]);    MULADD(at[52], at[98]);    MULADD(at[53], at[97]);    MULADD(at[54], at[96]);    MULADD(at[55], at[95]);    MULADD(at[56], at[94]);    MULADD(at[57], at[93]);    MULADD(at[58], at[92]);    MULADD(at[59], at[91]);    MULADD(at[60], at[90]);    MULADD(at[61], at[89]);    MULADD(at[62], at[88]);    MULADD(at[63], at[87]); 
+   COMBA_STORE(C->dp[86]);
+   /* 87 */
+   COMBA_FORWARD;
+   MULADD(at[24], at[127]);    MULADD(at[25], at[126]);    MULADD(at[26], at[125]);    MULADD(at[27], at[124]);    MULADD(at[28], at[123]);    MULADD(at[29], at[122]);    MULADD(at[30], at[121]);    MULADD(at[31], at[120]);    MULADD(at[32], at[119]);    MULADD(at[33], at[118]);    MULADD(at[34], at[117]);    MULADD(at[35], at[116]);    MULADD(at[36], at[115]);    MULADD(at[37], at[114]);    MULADD(at[38], at[113]);    MULADD(at[39], at[112]);    MULADD(at[40], at[111]);    MULADD(at[41], at[110]);    MULADD(at[42], at[109]);    MULADD(at[43], at[108]);    MULADD(at[44], at[107]);    MULADD(at[45], at[106]);    MULADD(at[46], at[105]);    MULADD(at[47], at[104]);    MULADD(at[48], at[103]);    MULADD(at[49], at[102]);    MULADD(at[50], at[101]);    MULADD(at[51], at[100]);    MULADD(at[52], at[99]);    MULADD(at[53], at[98]);    MULADD(at[54], at[97]);    MULADD(at[55], at[96]);    MULADD(at[56], at[95]);    MULADD(at[57], at[94]);    MULADD(at[58], at[93]);    MULADD(at[59], at[92]);    MULADD(at[60], at[91]);    MULADD(at[61], at[90]);    MULADD(at[62], at[89]);    MULADD(at[63], at[88]); 
+   COMBA_STORE(C->dp[87]);
+   /* 88 */
+   COMBA_FORWARD;
+   MULADD(at[25], at[127]);    MULADD(at[26], at[126]);    MULADD(at[27], at[125]);    MULADD(at[28], at[124]);    MULADD(at[29], at[123]);    MULADD(at[30], at[122]);    MULADD(at[31], at[121]);    MULADD(at[32], at[120]);    MULADD(at[33], at[119]);    MULADD(at[34], at[118]);    MULADD(at[35], at[117]);    MULADD(at[36], at[116]);    MULADD(at[37], at[115]);    MULADD(at[38], at[114]);    MULADD(at[39], at[113]);    MULADD(at[40], at[112]);    MULADD(at[41], at[111]);    MULADD(at[42], at[110]);    MULADD(at[43], at[109]);    MULADD(at[44], at[108]);    MULADD(at[45], at[107]);    MULADD(at[46], at[106]);    MULADD(at[47], at[105]);    MULADD(at[48], at[104]);    MULADD(at[49], at[103]);    MULADD(at[50], at[102]);    MULADD(at[51], at[101]);    MULADD(at[52], at[100]);    MULADD(at[53], at[99]);    MULADD(at[54], at[98]);    MULADD(at[55], at[97]);    MULADD(at[56], at[96]);    MULADD(at[57], at[95]);    MULADD(at[58], at[94]);    MULADD(at[59], at[93]);    MULADD(at[60], at[92]);    MULADD(at[61], at[91]);    MULADD(at[62], at[90]);    MULADD(at[63], at[89]); 
+   COMBA_STORE(C->dp[88]);
+   /* 89 */
+   COMBA_FORWARD;
+   MULADD(at[26], at[127]);    MULADD(at[27], at[126]);    MULADD(at[28], at[125]);    MULADD(at[29], at[124]);    MULADD(at[30], at[123]);    MULADD(at[31], at[122]);    MULADD(at[32], at[121]);    MULADD(at[33], at[120]);    MULADD(at[34], at[119]);    MULADD(at[35], at[118]);    MULADD(at[36], at[117]);    MULADD(at[37], at[116]);    MULADD(at[38], at[115]);    MULADD(at[39], at[114]);    MULADD(at[40], at[113]);    MULADD(at[41], at[112]);    MULADD(at[42], at[111]);    MULADD(at[43], at[110]);    MULADD(at[44], at[109]);    MULADD(at[45], at[108]);    MULADD(at[46], at[107]);    MULADD(at[47], at[106]);    MULADD(at[48], at[105]);    MULADD(at[49], at[104]);    MULADD(at[50], at[103]);    MULADD(at[51], at[102]);    MULADD(at[52], at[101]);    MULADD(at[53], at[100]);    MULADD(at[54], at[99]);    MULADD(at[55], at[98]);    MULADD(at[56], at[97]);    MULADD(at[57], at[96]);    MULADD(at[58], at[95]);    MULADD(at[59], at[94]);    MULADD(at[60], at[93]);    MULADD(at[61], at[92]);    MULADD(at[62], at[91]);    MULADD(at[63], at[90]); 
+   COMBA_STORE(C->dp[89]);
+   /* 90 */
+   COMBA_FORWARD;
+   MULADD(at[27], at[127]);    MULADD(at[28], at[126]);    MULADD(at[29], at[125]);    MULADD(at[30], at[124]);    MULADD(at[31], at[123]);    MULADD(at[32], at[122]);    MULADD(at[33], at[121]);    MULADD(at[34], at[120]);    MULADD(at[35], at[119]);    MULADD(at[36], at[118]);    MULADD(at[37], at[117]);    MULADD(at[38], at[116]);    MULADD(at[39], at[115]);    MULADD(at[40], at[114]);    MULADD(at[41], at[113]);    MULADD(at[42], at[112]);    MULADD(at[43], at[111]);    MULADD(at[44], at[110]);    MULADD(at[45], at[109]);    MULADD(at[46], at[108]);    MULADD(at[47], at[107]);    MULADD(at[48], at[106]);    MULADD(at[49], at[105]);    MULADD(at[50], at[104]);    MULADD(at[51], at[103]);    MULADD(at[52], at[102]);    MULADD(at[53], at[101]);    MULADD(at[54], at[100]);    MULADD(at[55], at[99]);    MULADD(at[56], at[98]);    MULADD(at[57], at[97]);    MULADD(at[58], at[96]);    MULADD(at[59], at[95]);    MULADD(at[60], at[94]);    MULADD(at[61], at[93]);    MULADD(at[62], at[92]);    MULADD(at[63], at[91]); 
+   COMBA_STORE(C->dp[90]);
+   /* 91 */
+   COMBA_FORWARD;
+   MULADD(at[28], at[127]);    MULADD(at[29], at[126]);    MULADD(at[30], at[125]);    MULADD(at[31], at[124]);    MULADD(at[32], at[123]);    MULADD(at[33], at[122]);    MULADD(at[34], at[121]);    MULADD(at[35], at[120]);    MULADD(at[36], at[119]);    MULADD(at[37], at[118]);    MULADD(at[38], at[117]);    MULADD(at[39], at[116]);    MULADD(at[40], at[115]);    MULADD(at[41], at[114]);    MULADD(at[42], at[113]);    MULADD(at[43], at[112]);    MULADD(at[44], at[111]);    MULADD(at[45], at[110]);    MULADD(at[46], at[109]);    MULADD(at[47], at[108]);    MULADD(at[48], at[107]);    MULADD(at[49], at[106]);    MULADD(at[50], at[105]);    MULADD(at[51], at[104]);    MULADD(at[52], at[103]);    MULADD(at[53], at[102]);    MULADD(at[54], at[101]);    MULADD(at[55], at[100]);    MULADD(at[56], at[99]);    MULADD(at[57], at[98]);    MULADD(at[58], at[97]);    MULADD(at[59], at[96]);    MULADD(at[60], at[95]);    MULADD(at[61], at[94]);    MULADD(at[62], at[93]);    MULADD(at[63], at[92]); 
+   COMBA_STORE(C->dp[91]);
+   /* 92 */
+   COMBA_FORWARD;
+   MULADD(at[29], at[127]);    MULADD(at[30], at[126]);    MULADD(at[31], at[125]);    MULADD(at[32], at[124]);    MULADD(at[33], at[123]);    MULADD(at[34], at[122]);    MULADD(at[35], at[121]);    MULADD(at[36], at[120]);    MULADD(at[37], at[119]);    MULADD(at[38], at[118]);    MULADD(at[39], at[117]);    MULADD(at[40], at[116]);    MULADD(at[41], at[115]);    MULADD(at[42], at[114]);    MULADD(at[43], at[113]);    MULADD(at[44], at[112]);    MULADD(at[45], at[111]);    MULADD(at[46], at[110]);    MULADD(at[47], at[109]);    MULADD(at[48], at[108]);    MULADD(at[49], at[107]);    MULADD(at[50], at[106]);    MULADD(at[51], at[105]);    MULADD(at[52], at[104]);    MULADD(at[53], at[103]);    MULADD(at[54], at[102]);    MULADD(at[55], at[101]);    MULADD(at[56], at[100]);    MULADD(at[57], at[99]);    MULADD(at[58], at[98]);    MULADD(at[59], at[97]);    MULADD(at[60], at[96]);    MULADD(at[61], at[95]);    MULADD(at[62], at[94]);    MULADD(at[63], at[93]); 
+   COMBA_STORE(C->dp[92]);
+   /* 93 */
+   COMBA_FORWARD;
+   MULADD(at[30], at[127]);    MULADD(at[31], at[126]);    MULADD(at[32], at[125]);    MULADD(at[33], at[124]);    MULADD(at[34], at[123]);    MULADD(at[35], at[122]);    MULADD(at[36], at[121]);    MULADD(at[37], at[120]);    MULADD(at[38], at[119]);    MULADD(at[39], at[118]);    MULADD(at[40], at[117]);    MULADD(at[41], at[116]);    MULADD(at[42], at[115]);    MULADD(at[43], at[114]);    MULADD(at[44], at[113]);    MULADD(at[45], at[112]);    MULADD(at[46], at[111]);    MULADD(at[47], at[110]);    MULADD(at[48], at[109]);    MULADD(at[49], at[108]);    MULADD(at[50], at[107]);    MULADD(at[51], at[106]);    MULADD(at[52], at[105]);    MULADD(at[53], at[104]);    MULADD(at[54], at[103]);    MULADD(at[55], at[102]);    MULADD(at[56], at[101]);    MULADD(at[57], at[100]);    MULADD(at[58], at[99]);    MULADD(at[59], at[98]);    MULADD(at[60], at[97]);    MULADD(at[61], at[96]);    MULADD(at[62], at[95]);    MULADD(at[63], at[94]); 
+   COMBA_STORE(C->dp[93]);
+   /* 94 */
+   COMBA_FORWARD;
+   MULADD(at[31], at[127]);    MULADD(at[32], at[126]);    MULADD(at[33], at[125]);    MULADD(at[34], at[124]);    MULADD(at[35], at[123]);    MULADD(at[36], at[122]);    MULADD(at[37], at[121]);    MULADD(at[38], at[120]);    MULADD(at[39], at[119]);    MULADD(at[40], at[118]);    MULADD(at[41], at[117]);    MULADD(at[42], at[116]);    MULADD(at[43], at[115]);    MULADD(at[44], at[114]);    MULADD(at[45], at[113]);    MULADD(at[46], at[112]);    MULADD(at[47], at[111]);    MULADD(at[48], at[110]);    MULADD(at[49], at[109]);    MULADD(at[50], at[108]);    MULADD(at[51], at[107]);    MULADD(at[52], at[106]);    MULADD(at[53], at[105]);    MULADD(at[54], at[104]);    MULADD(at[55], at[103]);    MULADD(at[56], at[102]);    MULADD(at[57], at[101]);    MULADD(at[58], at[100]);    MULADD(at[59], at[99]);    MULADD(at[60], at[98]);    MULADD(at[61], at[97]);    MULADD(at[62], at[96]);    MULADD(at[63], at[95]); 
+   COMBA_STORE(C->dp[94]);
+   /* 95 */
+   COMBA_FORWARD;
+   MULADD(at[32], at[127]);    MULADD(at[33], at[126]);    MULADD(at[34], at[125]);    MULADD(at[35], at[124]);    MULADD(at[36], at[123]);    MULADD(at[37], at[122]);    MULADD(at[38], at[121]);    MULADD(at[39], at[120]);    MULADD(at[40], at[119]);    MULADD(at[41], at[118]);    MULADD(at[42], at[117]);    MULADD(at[43], at[116]);    MULADD(at[44], at[115]);    MULADD(at[45], at[114]);    MULADD(at[46], at[113]);    MULADD(at[47], at[112]);    MULADD(at[48], at[111]);    MULADD(at[49], at[110]);    MULADD(at[50], at[109]);    MULADD(at[51], at[108]);    MULADD(at[52], at[107]);    MULADD(at[53], at[106]);    MULADD(at[54], at[105]);    MULADD(at[55], at[104]);    MULADD(at[56], at[103]);    MULADD(at[57], at[102]);    MULADD(at[58], at[101]);    MULADD(at[59], at[100]);    MULADD(at[60], at[99]);    MULADD(at[61], at[98]);    MULADD(at[62], at[97]);    MULADD(at[63], at[96]); 
+   COMBA_STORE(C->dp[95]);
+   /* 96 */
+   COMBA_FORWARD;
+   MULADD(at[33], at[127]);    MULADD(at[34], at[126]);    MULADD(at[35], at[125]);    MULADD(at[36], at[124]);    MULADD(at[37], at[123]);    MULADD(at[38], at[122]);    MULADD(at[39], at[121]);    MULADD(at[40], at[120]);    MULADD(at[41], at[119]);    MULADD(at[42], at[118]);    MULADD(at[43], at[117]);    MULADD(at[44], at[116]);    MULADD(at[45], at[115]);    MULADD(at[46], at[114]);    MULADD(at[47], at[113]);    MULADD(at[48], at[112]);    MULADD(at[49], at[111]);    MULADD(at[50], at[110]);    MULADD(at[51], at[109]);    MULADD(at[52], at[108]);    MULADD(at[53], at[107]);    MULADD(at[54], at[106]);    MULADD(at[55], at[105]);    MULADD(at[56], at[104]);    MULADD(at[57], at[103]);    MULADD(at[58], at[102]);    MULADD(at[59], at[101]);    MULADD(at[60], at[100]);    MULADD(at[61], at[99]);    MULADD(at[62], at[98]);    MULADD(at[63], at[97]); 
+   COMBA_STORE(C->dp[96]);
+   /* 97 */
+   COMBA_FORWARD;
+   MULADD(at[34], at[127]);    MULADD(at[35], at[126]);    MULADD(at[36], at[125]);    MULADD(at[37], at[124]);    MULADD(at[38], at[123]);    MULADD(at[39], at[122]);    MULADD(at[40], at[121]);    MULADD(at[41], at[120]);    MULADD(at[42], at[119]);    MULADD(at[43], at[118]);    MULADD(at[44], at[117]);    MULADD(at[45], at[116]);    MULADD(at[46], at[115]);    MULADD(at[47], at[114]);    MULADD(at[48], at[113]);    MULADD(at[49], at[112]);    MULADD(at[50], at[111]);    MULADD(at[51], at[110]);    MULADD(at[52], at[109]);    MULADD(at[53], at[108]);    MULADD(at[54], at[107]);    MULADD(at[55], at[106]);    MULADD(at[56], at[105]);    MULADD(at[57], at[104]);    MULADD(at[58], at[103]);    MULADD(at[59], at[102]);    MULADD(at[60], at[101]);    MULADD(at[61], at[100]);    MULADD(at[62], at[99]);    MULADD(at[63], at[98]); 
+   COMBA_STORE(C->dp[97]);
+   /* 98 */
+   COMBA_FORWARD;
+   MULADD(at[35], at[127]);    MULADD(at[36], at[126]);    MULADD(at[37], at[125]);    MULADD(at[38], at[124]);    MULADD(at[39], at[123]);    MULADD(at[40], at[122]);    MULADD(at[41], at[121]);    MULADD(at[42], at[120]);    MULADD(at[43], at[119]);    MULADD(at[44], at[118]);    MULADD(at[45], at[117]);    MULADD(at[46], at[116]);    MULADD(at[47], at[115]);    MULADD(at[48], at[114]);    MULADD(at[49], at[113]);    MULADD(at[50], at[112]);    MULADD(at[51], at[111]);    MULADD(at[52], at[110]);    MULADD(at[53], at[109]);    MULADD(at[54], at[108]);    MULADD(at[55], at[107]);    MULADD(at[56], at[106]);    MULADD(at[57], at[105]);    MULADD(at[58], at[104]);    MULADD(at[59], at[103]);    MULADD(at[60], at[102]);    MULADD(at[61], at[101]);    MULADD(at[62], at[100]);    MULADD(at[63], at[99]); 
+   COMBA_STORE(C->dp[98]);
+   /* 99 */
+   COMBA_FORWARD;
+   MULADD(at[36], at[127]);    MULADD(at[37], at[126]);    MULADD(at[38], at[125]);    MULADD(at[39], at[124]);    MULADD(at[40], at[123]);    MULADD(at[41], at[122]);    MULADD(at[42], at[121]);    MULADD(at[43], at[120]);    MULADD(at[44], at[119]);    MULADD(at[45], at[118]);    MULADD(at[46], at[117]);    MULADD(at[47], at[116]);    MULADD(at[48], at[115]);    MULADD(at[49], at[114]);    MULADD(at[50], at[113]);    MULADD(at[51], at[112]);    MULADD(at[52], at[111]);    MULADD(at[53], at[110]);    MULADD(at[54], at[109]);    MULADD(at[55], at[108]);    MULADD(at[56], at[107]);    MULADD(at[57], at[106]);    MULADD(at[58], at[105]);    MULADD(at[59], at[104]);    MULADD(at[60], at[103]);    MULADD(at[61], at[102]);    MULADD(at[62], at[101]);    MULADD(at[63], at[100]); 
+   COMBA_STORE(C->dp[99]);
+   /* 100 */
+   COMBA_FORWARD;
+   MULADD(at[37], at[127]);    MULADD(at[38], at[126]);    MULADD(at[39], at[125]);    MULADD(at[40], at[124]);    MULADD(at[41], at[123]);    MULADD(at[42], at[122]);    MULADD(at[43], at[121]);    MULADD(at[44], at[120]);    MULADD(at[45], at[119]);    MULADD(at[46], at[118]);    MULADD(at[47], at[117]);    MULADD(at[48], at[116]);    MULADD(at[49], at[115]);    MULADD(at[50], at[114]);    MULADD(at[51], at[113]);    MULADD(at[52], at[112]);    MULADD(at[53], at[111]);    MULADD(at[54], at[110]);    MULADD(at[55], at[109]);    MULADD(at[56], at[108]);    MULADD(at[57], at[107]);    MULADD(at[58], at[106]);    MULADD(at[59], at[105]);    MULADD(at[60], at[104]);    MULADD(at[61], at[103]);    MULADD(at[62], at[102]);    MULADD(at[63], at[101]); 
+   COMBA_STORE(C->dp[100]);
+   /* 101 */
+   COMBA_FORWARD;
+   MULADD(at[38], at[127]);    MULADD(at[39], at[126]);    MULADD(at[40], at[125]);    MULADD(at[41], at[124]);    MULADD(at[42], at[123]);    MULADD(at[43], at[122]);    MULADD(at[44], at[121]);    MULADD(at[45], at[120]);    MULADD(at[46], at[119]);    MULADD(at[47], at[118]);    MULADD(at[48], at[117]);    MULADD(at[49], at[116]);    MULADD(at[50], at[115]);    MULADD(at[51], at[114]);    MULADD(at[52], at[113]);    MULADD(at[53], at[112]);    MULADD(at[54], at[111]);    MULADD(at[55], at[110]);    MULADD(at[56], at[109]);    MULADD(at[57], at[108]);    MULADD(at[58], at[107]);    MULADD(at[59], at[106]);    MULADD(at[60], at[105]);    MULADD(at[61], at[104]);    MULADD(at[62], at[103]);    MULADD(at[63], at[102]); 
+   COMBA_STORE(C->dp[101]);
+   /* 102 */
+   COMBA_FORWARD;
+   MULADD(at[39], at[127]);    MULADD(at[40], at[126]);    MULADD(at[41], at[125]);    MULADD(at[42], at[124]);    MULADD(at[43], at[123]);    MULADD(at[44], at[122]);    MULADD(at[45], at[121]);    MULADD(at[46], at[120]);    MULADD(at[47], at[119]);    MULADD(at[48], at[118]);    MULADD(at[49], at[117]);    MULADD(at[50], at[116]);    MULADD(at[51], at[115]);    MULADD(at[52], at[114]);    MULADD(at[53], at[113]);    MULADD(at[54], at[112]);    MULADD(at[55], at[111]);    MULADD(at[56], at[110]);    MULADD(at[57], at[109]);    MULADD(at[58], at[108]);    MULADD(at[59], at[107]);    MULADD(at[60], at[106]);    MULADD(at[61], at[105]);    MULADD(at[62], at[104]);    MULADD(at[63], at[103]); 
+   COMBA_STORE(C->dp[102]);
+   /* 103 */
+   COMBA_FORWARD;
+   MULADD(at[40], at[127]);    MULADD(at[41], at[126]);    MULADD(at[42], at[125]);    MULADD(at[43], at[124]);    MULADD(at[44], at[123]);    MULADD(at[45], at[122]);    MULADD(at[46], at[121]);    MULADD(at[47], at[120]);    MULADD(at[48], at[119]);    MULADD(at[49], at[118]);    MULADD(at[50], at[117]);    MULADD(at[51], at[116]);    MULADD(at[52], at[115]);    MULADD(at[53], at[114]);    MULADD(at[54], at[113]);    MULADD(at[55], at[112]);    MULADD(at[56], at[111]);    MULADD(at[57], at[110]);    MULADD(at[58], at[109]);    MULADD(at[59], at[108]);    MULADD(at[60], at[107]);    MULADD(at[61], at[106]);    MULADD(at[62], at[105]);    MULADD(at[63], at[104]); 
+   COMBA_STORE(C->dp[103]);
+   /* 104 */
+   COMBA_FORWARD;
+   MULADD(at[41], at[127]);    MULADD(at[42], at[126]);    MULADD(at[43], at[125]);    MULADD(at[44], at[124]);    MULADD(at[45], at[123]);    MULADD(at[46], at[122]);    MULADD(at[47], at[121]);    MULADD(at[48], at[120]);    MULADD(at[49], at[119]);    MULADD(at[50], at[118]);    MULADD(at[51], at[117]);    MULADD(at[52], at[116]);    MULADD(at[53], at[115]);    MULADD(at[54], at[114]);    MULADD(at[55], at[113]);    MULADD(at[56], at[112]);    MULADD(at[57], at[111]);    MULADD(at[58], at[110]);    MULADD(at[59], at[109]);    MULADD(at[60], at[108]);    MULADD(at[61], at[107]);    MULADD(at[62], at[106]);    MULADD(at[63], at[105]); 
+   COMBA_STORE(C->dp[104]);
+   /* 105 */
+   COMBA_FORWARD;
+   MULADD(at[42], at[127]);    MULADD(at[43], at[126]);    MULADD(at[44], at[125]);    MULADD(at[45], at[124]);    MULADD(at[46], at[123]);    MULADD(at[47], at[122]);    MULADD(at[48], at[121]);    MULADD(at[49], at[120]);    MULADD(at[50], at[119]);    MULADD(at[51], at[118]);    MULADD(at[52], at[117]);    MULADD(at[53], at[116]);    MULADD(at[54], at[115]);    MULADD(at[55], at[114]);    MULADD(at[56], at[113]);    MULADD(at[57], at[112]);    MULADD(at[58], at[111]);    MULADD(at[59], at[110]);    MULADD(at[60], at[109]);    MULADD(at[61], at[108]);    MULADD(at[62], at[107]);    MULADD(at[63], at[106]); 
+   COMBA_STORE(C->dp[105]);
+   /* 106 */
+   COMBA_FORWARD;
+   MULADD(at[43], at[127]);    MULADD(at[44], at[126]);    MULADD(at[45], at[125]);    MULADD(at[46], at[124]);    MULADD(at[47], at[123]);    MULADD(at[48], at[122]);    MULADD(at[49], at[121]);    MULADD(at[50], at[120]);    MULADD(at[51], at[119]);    MULADD(at[52], at[118]);    MULADD(at[53], at[117]);    MULADD(at[54], at[116]);    MULADD(at[55], at[115]);    MULADD(at[56], at[114]);    MULADD(at[57], at[113]);    MULADD(at[58], at[112]);    MULADD(at[59], at[111]);    MULADD(at[60], at[110]);    MULADD(at[61], at[109]);    MULADD(at[62], at[108]);    MULADD(at[63], at[107]); 
+   COMBA_STORE(C->dp[106]);
+   /* 107 */
+   COMBA_FORWARD;
+   MULADD(at[44], at[127]);    MULADD(at[45], at[126]);    MULADD(at[46], at[125]);    MULADD(at[47], at[124]);    MULADD(at[48], at[123]);    MULADD(at[49], at[122]);    MULADD(at[50], at[121]);    MULADD(at[51], at[120]);    MULADD(at[52], at[119]);    MULADD(at[53], at[118]);    MULADD(at[54], at[117]);    MULADD(at[55], at[116]);    MULADD(at[56], at[115]);    MULADD(at[57], at[114]);    MULADD(at[58], at[113]);    MULADD(at[59], at[112]);    MULADD(at[60], at[111]);    MULADD(at[61], at[110]);    MULADD(at[62], at[109]);    MULADD(at[63], at[108]); 
+   COMBA_STORE(C->dp[107]);
+   /* 108 */
+   COMBA_FORWARD;
+   MULADD(at[45], at[127]);    MULADD(at[46], at[126]);    MULADD(at[47], at[125]);    MULADD(at[48], at[124]);    MULADD(at[49], at[123]);    MULADD(at[50], at[122]);    MULADD(at[51], at[121]);    MULADD(at[52], at[120]);    MULADD(at[53], at[119]);    MULADD(at[54], at[118]);    MULADD(at[55], at[117]);    MULADD(at[56], at[116]);    MULADD(at[57], at[115]);    MULADD(at[58], at[114]);    MULADD(at[59], at[113]);    MULADD(at[60], at[112]);    MULADD(at[61], at[111]);    MULADD(at[62], at[110]);    MULADD(at[63], at[109]); 
+   COMBA_STORE(C->dp[108]);
+   /* 109 */
+   COMBA_FORWARD;
+   MULADD(at[46], at[127]);    MULADD(at[47], at[126]);    MULADD(at[48], at[125]);    MULADD(at[49], at[124]);    MULADD(at[50], at[123]);    MULADD(at[51], at[122]);    MULADD(at[52], at[121]);    MULADD(at[53], at[120]);    MULADD(at[54], at[119]);    MULADD(at[55], at[118]);    MULADD(at[56], at[117]);    MULADD(at[57], at[116]);    MULADD(at[58], at[115]);    MULADD(at[59], at[114]);    MULADD(at[60], at[113]);    MULADD(at[61], at[112]);    MULADD(at[62], at[111]);    MULADD(at[63], at[110]); 
+   COMBA_STORE(C->dp[109]);
+   /* 110 */
+   COMBA_FORWARD;
+   MULADD(at[47], at[127]);    MULADD(at[48], at[126]);    MULADD(at[49], at[125]);    MULADD(at[50], at[124]);    MULADD(at[51], at[123]);    MULADD(at[52], at[122]);    MULADD(at[53], at[121]);    MULADD(at[54], at[120]);    MULADD(at[55], at[119]);    MULADD(at[56], at[118]);    MULADD(at[57], at[117]);    MULADD(at[58], at[116]);    MULADD(at[59], at[115]);    MULADD(at[60], at[114]);    MULADD(at[61], at[113]);    MULADD(at[62], at[112]);    MULADD(at[63], at[111]); 
+   COMBA_STORE(C->dp[110]);
+   /* 111 */
+   COMBA_FORWARD;
+   MULADD(at[48], at[127]);    MULADD(at[49], at[126]);    MULADD(at[50], at[125]);    MULADD(at[51], at[124]);    MULADD(at[52], at[123]);    MULADD(at[53], at[122]);    MULADD(at[54], at[121]);    MULADD(at[55], at[120]);    MULADD(at[56], at[119]);    MULADD(at[57], at[118]);    MULADD(at[58], at[117]);    MULADD(at[59], at[116]);    MULADD(at[60], at[115]);    MULADD(at[61], at[114]);    MULADD(at[62], at[113]);    MULADD(at[63], at[112]); 
+   COMBA_STORE(C->dp[111]);
+   /* 112 */
+   COMBA_FORWARD;
+   MULADD(at[49], at[127]);    MULADD(at[50], at[126]);    MULADD(at[51], at[125]);    MULADD(at[52], at[124]);    MULADD(at[53], at[123]);    MULADD(at[54], at[122]);    MULADD(at[55], at[121]);    MULADD(at[56], at[120]);    MULADD(at[57], at[119]);    MULADD(at[58], at[118]);    MULADD(at[59], at[117]);    MULADD(at[60], at[116]);    MULADD(at[61], at[115]);    MULADD(at[62], at[114]);    MULADD(at[63], at[113]); 
+   COMBA_STORE(C->dp[112]);
+   /* 113 */
+   COMBA_FORWARD;
+   MULADD(at[50], at[127]);    MULADD(at[51], at[126]);    MULADD(at[52], at[125]);    MULADD(at[53], at[124]);    MULADD(at[54], at[123]);    MULADD(at[55], at[122]);    MULADD(at[56], at[121]);    MULADD(at[57], at[120]);    MULADD(at[58], at[119]);    MULADD(at[59], at[118]);    MULADD(at[60], at[117]);    MULADD(at[61], at[116]);    MULADD(at[62], at[115]);    MULADD(at[63], at[114]); 
+   COMBA_STORE(C->dp[113]);
+   /* 114 */
+   COMBA_FORWARD;
+   MULADD(at[51], at[127]);    MULADD(at[52], at[126]);    MULADD(at[53], at[125]);    MULADD(at[54], at[124]);    MULADD(at[55], at[123]);    MULADD(at[56], at[122]);    MULADD(at[57], at[121]);    MULADD(at[58], at[120]);    MULADD(at[59], at[119]);    MULADD(at[60], at[118]);    MULADD(at[61], at[117]);    MULADD(at[62], at[116]);    MULADD(at[63], at[115]); 
+   COMBA_STORE(C->dp[114]);
+   /* 115 */
+   COMBA_FORWARD;
+   MULADD(at[52], at[127]);    MULADD(at[53], at[126]);    MULADD(at[54], at[125]);    MULADD(at[55], at[124]);    MULADD(at[56], at[123]);    MULADD(at[57], at[122]);    MULADD(at[58], at[121]);    MULADD(at[59], at[120]);    MULADD(at[60], at[119]);    MULADD(at[61], at[118]);    MULADD(at[62], at[117]);    MULADD(at[63], at[116]); 
+   COMBA_STORE(C->dp[115]);
+   /* 116 */
+   COMBA_FORWARD;
+   MULADD(at[53], at[127]);    MULADD(at[54], at[126]);    MULADD(at[55], at[125]);    MULADD(at[56], at[124]);    MULADD(at[57], at[123]);    MULADD(at[58], at[122]);    MULADD(at[59], at[121]);    MULADD(at[60], at[120]);    MULADD(at[61], at[119]);    MULADD(at[62], at[118]);    MULADD(at[63], at[117]); 
+   COMBA_STORE(C->dp[116]);
+   /* 117 */
+   COMBA_FORWARD;
+   MULADD(at[54], at[127]);    MULADD(at[55], at[126]);    MULADD(at[56], at[125]);    MULADD(at[57], at[124]);    MULADD(at[58], at[123]);    MULADD(at[59], at[122]);    MULADD(at[60], at[121]);    MULADD(at[61], at[120]);    MULADD(at[62], at[119]);    MULADD(at[63], at[118]); 
+   COMBA_STORE(C->dp[117]);
+   /* 118 */
+   COMBA_FORWARD;
+   MULADD(at[55], at[127]);    MULADD(at[56], at[126]);    MULADD(at[57], at[125]);    MULADD(at[58], at[124]);    MULADD(at[59], at[123]);    MULADD(at[60], at[122]);    MULADD(at[61], at[121]);    MULADD(at[62], at[120]);    MULADD(at[63], at[119]); 
+   COMBA_STORE(C->dp[118]);
+   /* 119 */
+   COMBA_FORWARD;
+   MULADD(at[56], at[127]);    MULADD(at[57], at[126]);    MULADD(at[58], at[125]);    MULADD(at[59], at[124]);    MULADD(at[60], at[123]);    MULADD(at[61], at[122]);    MULADD(at[62], at[121]);    MULADD(at[63], at[120]); 
+   COMBA_STORE(C->dp[119]);
+   /* 120 */
+   COMBA_FORWARD;
+   MULADD(at[57], at[127]);    MULADD(at[58], at[126]);    MULADD(at[59], at[125]);    MULADD(at[60], at[124]);    MULADD(at[61], at[123]);    MULADD(at[62], at[122]);    MULADD(at[63], at[121]); 
+   COMBA_STORE(C->dp[120]);
+   /* 121 */
+   COMBA_FORWARD;
+   MULADD(at[58], at[127]);    MULADD(at[59], at[126]);    MULADD(at[60], at[125]);    MULADD(at[61], at[124]);    MULADD(at[62], at[123]);    MULADD(at[63], at[122]); 
+   COMBA_STORE(C->dp[121]);
+   /* 122 */
+   COMBA_FORWARD;
+   MULADD(at[59], at[127]);    MULADD(at[60], at[126]);    MULADD(at[61], at[125]);    MULADD(at[62], at[124]);    MULADD(at[63], at[123]); 
+   COMBA_STORE(C->dp[122]);
+   /* 123 */
+   COMBA_FORWARD;
+   MULADD(at[60], at[127]);    MULADD(at[61], at[126]);    MULADD(at[62], at[125]);    MULADD(at[63], at[124]); 
+   COMBA_STORE(C->dp[123]);
+   /* 124 */
+   COMBA_FORWARD;
+   MULADD(at[61], at[127]);    MULADD(at[62], at[126]);    MULADD(at[63], at[125]); 
+   COMBA_STORE(C->dp[124]);
+   /* 125 */
+   COMBA_FORWARD;
+   MULADD(at[62], at[127]);    MULADD(at[63], at[126]); 
+   COMBA_STORE(C->dp[125]);
+   /* 126 */
+   COMBA_FORWARD;
+   MULADD(at[63], at[127]); 
+   COMBA_STORE(C->dp[126]);
+   COMBA_STORE2(C->dp[127]);
+   C->used = 128;
+   C->sign = A->sign ^ B->sign;
+   fp_clamp(C);
+   COMBA_FINI;
+}
+
+void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
+{
+   fp_digit c0, c1, c2, at[96];
+
+   memcpy(at, A->dp, 48 * sizeof(fp_digit));
+   memcpy(at+48, B->dp, 48 * sizeof(fp_digit));
+   COMBA_START;
+
+   COMBA_CLEAR;
+   /* 0 */
+   MULADD(at[0], at[48]); 
+   COMBA_STORE(C->dp[0]);
+   /* 1 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[49]);    MULADD(at[1], at[48]); 
+   COMBA_STORE(C->dp[1]);
+   /* 2 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[50]);    MULADD(at[1], at[49]);    MULADD(at[2], at[48]); 
+   COMBA_STORE(C->dp[2]);
+   /* 3 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[51]);    MULADD(at[1], at[50]);    MULADD(at[2], at[49]);    MULADD(at[3], at[48]); 
+   COMBA_STORE(C->dp[3]);
+   /* 4 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[52]);    MULADD(at[1], at[51]);    MULADD(at[2], at[50]);    MULADD(at[3], at[49]);    MULADD(at[4], at[48]); 
+   COMBA_STORE(C->dp[4]);
+   /* 5 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[53]);    MULADD(at[1], at[52]);    MULADD(at[2], at[51]);    MULADD(at[3], at[50]);    MULADD(at[4], at[49]);    MULADD(at[5], at[48]); 
+   COMBA_STORE(C->dp[5]);
+   /* 6 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[54]);    MULADD(at[1], at[53]);    MULADD(at[2], at[52]);    MULADD(at[3], at[51]);    MULADD(at[4], at[50]);    MULADD(at[5], at[49]);    MULADD(at[6], at[48]); 
+   COMBA_STORE(C->dp[6]);
+   /* 7 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[55]);    MULADD(at[1], at[54]);    MULADD(at[2], at[53]);    MULADD(at[3], at[52]);    MULADD(at[4], at[51]);    MULADD(at[5], at[50]);    MULADD(at[6], at[49]);    MULADD(at[7], at[48]); 
+   COMBA_STORE(C->dp[7]);
+   /* 8 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[56]);    MULADD(at[1], at[55]);    MULADD(at[2], at[54]);    MULADD(at[3], at[53]);    MULADD(at[4], at[52]);    MULADD(at[5], at[51]);    MULADD(at[6], at[50]);    MULADD(at[7], at[49]);    MULADD(at[8], at[48]); 
+   COMBA_STORE(C->dp[8]);
+   /* 9 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[57]);    MULADD(at[1], at[56]);    MULADD(at[2], at[55]);    MULADD(at[3], at[54]);    MULADD(at[4], at[53]);    MULADD(at[5], at[52]);    MULADD(at[6], at[51]);    MULADD(at[7], at[50]);    MULADD(at[8], at[49]);    MULADD(at[9], at[48]); 
+   COMBA_STORE(C->dp[9]);
+   /* 10 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[58]);    MULADD(at[1], at[57]);    MULADD(at[2], at[56]);    MULADD(at[3], at[55]);    MULADD(at[4], at[54]);    MULADD(at[5], at[53]);    MULADD(at[6], at[52]);    MULADD(at[7], at[51]);    MULADD(at[8], at[50]);    MULADD(at[9], at[49]);    MULADD(at[10], at[48]); 
+   COMBA_STORE(C->dp[10]);
+   /* 11 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[59]);    MULADD(at[1], at[58]);    MULADD(at[2], at[57]);    MULADD(at[3], at[56]);    MULADD(at[4], at[55]);    MULADD(at[5], at[54]);    MULADD(at[6], at[53]);    MULADD(at[7], at[52]);    MULADD(at[8], at[51]);    MULADD(at[9], at[50]);    MULADD(at[10], at[49]);    MULADD(at[11], at[48]); 
+   COMBA_STORE(C->dp[11]);
+   /* 12 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[60]);    MULADD(at[1], at[59]);    MULADD(at[2], at[58]);    MULADD(at[3], at[57]);    MULADD(at[4], at[56]);    MULADD(at[5], at[55]);    MULADD(at[6], at[54]);    MULADD(at[7], at[53]);    MULADD(at[8], at[52]);    MULADD(at[9], at[51]);    MULADD(at[10], at[50]);    MULADD(at[11], at[49]);    MULADD(at[12], at[48]); 
+   COMBA_STORE(C->dp[12]);
+   /* 13 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[61]);    MULADD(at[1], at[60]);    MULADD(at[2], at[59]);    MULADD(at[3], at[58]);    MULADD(at[4], at[57]);    MULADD(at[5], at[56]);    MULADD(at[6], at[55]);    MULADD(at[7], at[54]);    MULADD(at[8], at[53]);    MULADD(at[9], at[52]);    MULADD(at[10], at[51]);    MULADD(at[11], at[50]);    MULADD(at[12], at[49]);    MULADD(at[13], at[48]); 
+   COMBA_STORE(C->dp[13]);
+   /* 14 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[62]);    MULADD(at[1], at[61]);    MULADD(at[2], at[60]);    MULADD(at[3], at[59]);    MULADD(at[4], at[58]);    MULADD(at[5], at[57]);    MULADD(at[6], at[56]);    MULADD(at[7], at[55]);    MULADD(at[8], at[54]);    MULADD(at[9], at[53]);    MULADD(at[10], at[52]);    MULADD(at[11], at[51]);    MULADD(at[12], at[50]);    MULADD(at[13], at[49]);    MULADD(at[14], at[48]); 
+   COMBA_STORE(C->dp[14]);
+   /* 15 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[63]);    MULADD(at[1], at[62]);    MULADD(at[2], at[61]);    MULADD(at[3], at[60]);    MULADD(at[4], at[59]);    MULADD(at[5], at[58]);    MULADD(at[6], at[57]);    MULADD(at[7], at[56]);    MULADD(at[8], at[55]);    MULADD(at[9], at[54]);    MULADD(at[10], at[53]);    MULADD(at[11], at[52]);    MULADD(at[12], at[51]);    MULADD(at[13], at[50]);    MULADD(at[14], at[49]);    MULADD(at[15], at[48]); 
+   COMBA_STORE(C->dp[15]);
+   /* 16 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[64]);    MULADD(at[1], at[63]);    MULADD(at[2], at[62]);    MULADD(at[3], at[61]);    MULADD(at[4], at[60]);    MULADD(at[5], at[59]);    MULADD(at[6], at[58]);    MULADD(at[7], at[57]);    MULADD(at[8], at[56]);    MULADD(at[9], at[55]);    MULADD(at[10], at[54]);    MULADD(at[11], at[53]);    MULADD(at[12], at[52]);    MULADD(at[13], at[51]);    MULADD(at[14], at[50]);    MULADD(at[15], at[49]);    MULADD(at[16], at[48]); 
+   COMBA_STORE(C->dp[16]);
+   /* 17 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[65]);    MULADD(at[1], at[64]);    MULADD(at[2], at[63]);    MULADD(at[3], at[62]);    MULADD(at[4], at[61]);    MULADD(at[5], at[60]);    MULADD(at[6], at[59]);    MULADD(at[7], at[58]);    MULADD(at[8], at[57]);    MULADD(at[9], at[56]);    MULADD(at[10], at[55]);    MULADD(at[11], at[54]);    MULADD(at[12], at[53]);    MULADD(at[13], at[52]);    MULADD(at[14], at[51]);    MULADD(at[15], at[50]);    MULADD(at[16], at[49]);    MULADD(at[17], at[48]); 
+   COMBA_STORE(C->dp[17]);
+   /* 18 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[66]);    MULADD(at[1], at[65]);    MULADD(at[2], at[64]);    MULADD(at[3], at[63]);    MULADD(at[4], at[62]);    MULADD(at[5], at[61]);    MULADD(at[6], at[60]);    MULADD(at[7], at[59]);    MULADD(at[8], at[58]);    MULADD(at[9], at[57]);    MULADD(at[10], at[56]);    MULADD(at[11], at[55]);    MULADD(at[12], at[54]);    MULADD(at[13], at[53]);    MULADD(at[14], at[52]);    MULADD(at[15], at[51]);    MULADD(at[16], at[50]);    MULADD(at[17], at[49]);    MULADD(at[18], at[48]); 
+   COMBA_STORE(C->dp[18]);
+   /* 19 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[67]);    MULADD(at[1], at[66]);    MULADD(at[2], at[65]);    MULADD(at[3], at[64]);    MULADD(at[4], at[63]);    MULADD(at[5], at[62]);    MULADD(at[6], at[61]);    MULADD(at[7], at[60]);    MULADD(at[8], at[59]);    MULADD(at[9], at[58]);    MULADD(at[10], at[57]);    MULADD(at[11], at[56]);    MULADD(at[12], at[55]);    MULADD(at[13], at[54]);    MULADD(at[14], at[53]);    MULADD(at[15], at[52]);    MULADD(at[16], at[51]);    MULADD(at[17], at[50]);    MULADD(at[18], at[49]);    MULADD(at[19], at[48]); 
+   COMBA_STORE(C->dp[19]);
+   /* 20 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[68]);    MULADD(at[1], at[67]);    MULADD(at[2], at[66]);    MULADD(at[3], at[65]);    MULADD(at[4], at[64]);    MULADD(at[5], at[63]);    MULADD(at[6], at[62]);    MULADD(at[7], at[61]);    MULADD(at[8], at[60]);    MULADD(at[9], at[59]);    MULADD(at[10], at[58]);    MULADD(at[11], at[57]);    MULADD(at[12], at[56]);    MULADD(at[13], at[55]);    MULADD(at[14], at[54]);    MULADD(at[15], at[53]);    MULADD(at[16], at[52]);    MULADD(at[17], at[51]);    MULADD(at[18], at[50]);    MULADD(at[19], at[49]);    MULADD(at[20], at[48]); 
+   COMBA_STORE(C->dp[20]);
+   /* 21 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[69]);    MULADD(at[1], at[68]);    MULADD(at[2], at[67]);    MULADD(at[3], at[66]);    MULADD(at[4], at[65]);    MULADD(at[5], at[64]);    MULADD(at[6], at[63]);    MULADD(at[7], at[62]);    MULADD(at[8], at[61]);    MULADD(at[9], at[60]);    MULADD(at[10], at[59]);    MULADD(at[11], at[58]);    MULADD(at[12], at[57]);    MULADD(at[13], at[56]);    MULADD(at[14], at[55]);    MULADD(at[15], at[54]);    MULADD(at[16], at[53]);    MULADD(at[17], at[52]);    MULADD(at[18], at[51]);    MULADD(at[19], at[50]);    MULADD(at[20], at[49]);    MULADD(at[21], at[48]); 
+   COMBA_STORE(C->dp[21]);
+   /* 22 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[70]);    MULADD(at[1], at[69]);    MULADD(at[2], at[68]);    MULADD(at[3], at[67]);    MULADD(at[4], at[66]);    MULADD(at[5], at[65]);    MULADD(at[6], at[64]);    MULADD(at[7], at[63]);    MULADD(at[8], at[62]);    MULADD(at[9], at[61]);    MULADD(at[10], at[60]);    MULADD(at[11], at[59]);    MULADD(at[12], at[58]);    MULADD(at[13], at[57]);    MULADD(at[14], at[56]);    MULADD(at[15], at[55]);    MULADD(at[16], at[54]);    MULADD(at[17], at[53]);    MULADD(at[18], at[52]);    MULADD(at[19], at[51]);    MULADD(at[20], at[50]);    MULADD(at[21], at[49]);    MULADD(at[22], at[48]); 
+   COMBA_STORE(C->dp[22]);
+   /* 23 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[71]);    MULADD(at[1], at[70]);    MULADD(at[2], at[69]);    MULADD(at[3], at[68]);    MULADD(at[4], at[67]);    MULADD(at[5], at[66]);    MULADD(at[6], at[65]);    MULADD(at[7], at[64]);    MULADD(at[8], at[63]);    MULADD(at[9], at[62]);    MULADD(at[10], at[61]);    MULADD(at[11], at[60]);    MULADD(at[12], at[59]);    MULADD(at[13], at[58]);    MULADD(at[14], at[57]);    MULADD(at[15], at[56]);    MULADD(at[16], at[55]);    MULADD(at[17], at[54]);    MULADD(at[18], at[53]);    MULADD(at[19], at[52]);    MULADD(at[20], at[51]);    MULADD(at[21], at[50]);    MULADD(at[22], at[49]);    MULADD(at[23], at[48]); 
+   COMBA_STORE(C->dp[23]);
+   /* 24 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[72]);    MULADD(at[1], at[71]);    MULADD(at[2], at[70]);    MULADD(at[3], at[69]);    MULADD(at[4], at[68]);    MULADD(at[5], at[67]);    MULADD(at[6], at[66]);    MULADD(at[7], at[65]);    MULADD(at[8], at[64]);    MULADD(at[9], at[63]);    MULADD(at[10], at[62]);    MULADD(at[11], at[61]);    MULADD(at[12], at[60]);    MULADD(at[13], at[59]);    MULADD(at[14], at[58]);    MULADD(at[15], at[57]);    MULADD(at[16], at[56]);    MULADD(at[17], at[55]);    MULADD(at[18], at[54]);    MULADD(at[19], at[53]);    MULADD(at[20], at[52]);    MULADD(at[21], at[51]);    MULADD(at[22], at[50]);    MULADD(at[23], at[49]);    MULADD(at[24], at[48]); 
+   COMBA_STORE(C->dp[24]);
+   /* 25 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[73]);    MULADD(at[1], at[72]);    MULADD(at[2], at[71]);    MULADD(at[3], at[70]);    MULADD(at[4], at[69]);    MULADD(at[5], at[68]);    MULADD(at[6], at[67]);    MULADD(at[7], at[66]);    MULADD(at[8], at[65]);    MULADD(at[9], at[64]);    MULADD(at[10], at[63]);    MULADD(at[11], at[62]);    MULADD(at[12], at[61]);    MULADD(at[13], at[60]);    MULADD(at[14], at[59]);    MULADD(at[15], at[58]);    MULADD(at[16], at[57]);    MULADD(at[17], at[56]);    MULADD(at[18], at[55]);    MULADD(at[19], at[54]);    MULADD(at[20], at[53]);    MULADD(at[21], at[52]);    MULADD(at[22], at[51]);    MULADD(at[23], at[50]);    MULADD(at[24], at[49]);    MULADD(at[25], at[48]); 
+   COMBA_STORE(C->dp[25]);
+   /* 26 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[74]);    MULADD(at[1], at[73]);    MULADD(at[2], at[72]);    MULADD(at[3], at[71]);    MULADD(at[4], at[70]);    MULADD(at[5], at[69]);    MULADD(at[6], at[68]);    MULADD(at[7], at[67]);    MULADD(at[8], at[66]);    MULADD(at[9], at[65]);    MULADD(at[10], at[64]);    MULADD(at[11], at[63]);    MULADD(at[12], at[62]);    MULADD(at[13], at[61]);    MULADD(at[14], at[60]);    MULADD(at[15], at[59]);    MULADD(at[16], at[58]);    MULADD(at[17], at[57]);    MULADD(at[18], at[56]);    MULADD(at[19], at[55]);    MULADD(at[20], at[54]);    MULADD(at[21], at[53]);    MULADD(at[22], at[52]);    MULADD(at[23], at[51]);    MULADD(at[24], at[50]);    MULADD(at[25], at[49]);    MULADD(at[26], at[48]); 
+   COMBA_STORE(C->dp[26]);
+   /* 27 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[75]);    MULADD(at[1], at[74]);    MULADD(at[2], at[73]);    MULADD(at[3], at[72]);    MULADD(at[4], at[71]);    MULADD(at[5], at[70]);    MULADD(at[6], at[69]);    MULADD(at[7], at[68]);    MULADD(at[8], at[67]);    MULADD(at[9], at[66]);    MULADD(at[10], at[65]);    MULADD(at[11], at[64]);    MULADD(at[12], at[63]);    MULADD(at[13], at[62]);    MULADD(at[14], at[61]);    MULADD(at[15], at[60]);    MULADD(at[16], at[59]);    MULADD(at[17], at[58]);    MULADD(at[18], at[57]);    MULADD(at[19], at[56]);    MULADD(at[20], at[55]);    MULADD(at[21], at[54]);    MULADD(at[22], at[53]);    MULADD(at[23], at[52]);    MULADD(at[24], at[51]);    MULADD(at[25], at[50]);    MULADD(at[26], at[49]);    MULADD(at[27], at[48]); 
+   COMBA_STORE(C->dp[27]);
+   /* 28 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[76]);    MULADD(at[1], at[75]);    MULADD(at[2], at[74]);    MULADD(at[3], at[73]);    MULADD(at[4], at[72]);    MULADD(at[5], at[71]);    MULADD(at[6], at[70]);    MULADD(at[7], at[69]);    MULADD(at[8], at[68]);    MULADD(at[9], at[67]);    MULADD(at[10], at[66]);    MULADD(at[11], at[65]);    MULADD(at[12], at[64]);    MULADD(at[13], at[63]);    MULADD(at[14], at[62]);    MULADD(at[15], at[61]);    MULADD(at[16], at[60]);    MULADD(at[17], at[59]);    MULADD(at[18], at[58]);    MULADD(at[19], at[57]);    MULADD(at[20], at[56]);    MULADD(at[21], at[55]);    MULADD(at[22], at[54]);    MULADD(at[23], at[53]);    MULADD(at[24], at[52]);    MULADD(at[25], at[51]);    MULADD(at[26], at[50]);    MULADD(at[27], at[49]);    MULADD(at[28], at[48]); 
+   COMBA_STORE(C->dp[28]);
+   /* 29 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[77]);    MULADD(at[1], at[76]);    MULADD(at[2], at[75]);    MULADD(at[3], at[74]);    MULADD(at[4], at[73]);    MULADD(at[5], at[72]);    MULADD(at[6], at[71]);    MULADD(at[7], at[70]);    MULADD(at[8], at[69]);    MULADD(at[9], at[68]);    MULADD(at[10], at[67]);    MULADD(at[11], at[66]);    MULADD(at[12], at[65]);    MULADD(at[13], at[64]);    MULADD(at[14], at[63]);    MULADD(at[15], at[62]);    MULADD(at[16], at[61]);    MULADD(at[17], at[60]);    MULADD(at[18], at[59]);    MULADD(at[19], at[58]);    MULADD(at[20], at[57]);    MULADD(at[21], at[56]);    MULADD(at[22], at[55]);    MULADD(at[23], at[54]);    MULADD(at[24], at[53]);    MULADD(at[25], at[52]);    MULADD(at[26], at[51]);    MULADD(at[27], at[50]);    MULADD(at[28], at[49]);    MULADD(at[29], at[48]); 
+   COMBA_STORE(C->dp[29]);
+   /* 30 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[78]);    MULADD(at[1], at[77]);    MULADD(at[2], at[76]);    MULADD(at[3], at[75]);    MULADD(at[4], at[74]);    MULADD(at[5], at[73]);    MULADD(at[6], at[72]);    MULADD(at[7], at[71]);    MULADD(at[8], at[70]);    MULADD(at[9], at[69]);    MULADD(at[10], at[68]);    MULADD(at[11], at[67]);    MULADD(at[12], at[66]);    MULADD(at[13], at[65]);    MULADD(at[14], at[64]);    MULADD(at[15], at[63]);    MULADD(at[16], at[62]);    MULADD(at[17], at[61]);    MULADD(at[18], at[60]);    MULADD(at[19], at[59]);    MULADD(at[20], at[58]);    MULADD(at[21], at[57]);    MULADD(at[22], at[56]);    MULADD(at[23], at[55]);    MULADD(at[24], at[54]);    MULADD(at[25], at[53]);    MULADD(at[26], at[52]);    MULADD(at[27], at[51]);    MULADD(at[28], at[50]);    MULADD(at[29], at[49]);    MULADD(at[30], at[48]); 
+   COMBA_STORE(C->dp[30]);
+   /* 31 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[79]);    MULADD(at[1], at[78]);    MULADD(at[2], at[77]);    MULADD(at[3], at[76]);    MULADD(at[4], at[75]);    MULADD(at[5], at[74]);    MULADD(at[6], at[73]);    MULADD(at[7], at[72]);    MULADD(at[8], at[71]);    MULADD(at[9], at[70]);    MULADD(at[10], at[69]);    MULADD(at[11], at[68]);    MULADD(at[12], at[67]);    MULADD(at[13], at[66]);    MULADD(at[14], at[65]);    MULADD(at[15], at[64]);    MULADD(at[16], at[63]);    MULADD(at[17], at[62]);    MULADD(at[18], at[61]);    MULADD(at[19], at[60]);    MULADD(at[20], at[59]);    MULADD(at[21], at[58]);    MULADD(at[22], at[57]);    MULADD(at[23], at[56]);    MULADD(at[24], at[55]);    MULADD(at[25], at[54]);    MULADD(at[26], at[53]);    MULADD(at[27], at[52]);    MULADD(at[28], at[51]);    MULADD(at[29], at[50]);    MULADD(at[30], at[49]);    MULADD(at[31], at[48]); 
+   COMBA_STORE(C->dp[31]);
+   /* 32 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[80]);    MULADD(at[1], at[79]);    MULADD(at[2], at[78]);    MULADD(at[3], at[77]);    MULADD(at[4], at[76]);    MULADD(at[5], at[75]);    MULADD(at[6], at[74]);    MULADD(at[7], at[73]);    MULADD(at[8], at[72]);    MULADD(at[9], at[71]);    MULADD(at[10], at[70]);    MULADD(at[11], at[69]);    MULADD(at[12], at[68]);    MULADD(at[13], at[67]);    MULADD(at[14], at[66]);    MULADD(at[15], at[65]);    MULADD(at[16], at[64]);    MULADD(at[17], at[63]);    MULADD(at[18], at[62]);    MULADD(at[19], at[61]);    MULADD(at[20], at[60]);    MULADD(at[21], at[59]);    MULADD(at[22], at[58]);    MULADD(at[23], at[57]);    MULADD(at[24], at[56]);    MULADD(at[25], at[55]);    MULADD(at[26], at[54]);    MULADD(at[27], at[53]);    MULADD(at[28], at[52]);    MULADD(at[29], at[51]);    MULADD(at[30], at[50]);    MULADD(at[31], at[49]);    MULADD(at[32], at[48]); 
+   COMBA_STORE(C->dp[32]);
+   /* 33 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[81]);    MULADD(at[1], at[80]);    MULADD(at[2], at[79]);    MULADD(at[3], at[78]);    MULADD(at[4], at[77]);    MULADD(at[5], at[76]);    MULADD(at[6], at[75]);    MULADD(at[7], at[74]);    MULADD(at[8], at[73]);    MULADD(at[9], at[72]);    MULADD(at[10], at[71]);    MULADD(at[11], at[70]);    MULADD(at[12], at[69]);    MULADD(at[13], at[68]);    MULADD(at[14], at[67]);    MULADD(at[15], at[66]);    MULADD(at[16], at[65]);    MULADD(at[17], at[64]);    MULADD(at[18], at[63]);    MULADD(at[19], at[62]);    MULADD(at[20], at[61]);    MULADD(at[21], at[60]);    MULADD(at[22], at[59]);    MULADD(at[23], at[58]);    MULADD(at[24], at[57]);    MULADD(at[25], at[56]);    MULADD(at[26], at[55]);    MULADD(at[27], at[54]);    MULADD(at[28], at[53]);    MULADD(at[29], at[52]);    MULADD(at[30], at[51]);    MULADD(at[31], at[50]);    MULADD(at[32], at[49]);    MULADD(at[33], at[48]); 
+   COMBA_STORE(C->dp[33]);
+   /* 34 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[82]);    MULADD(at[1], at[81]);    MULADD(at[2], at[80]);    MULADD(at[3], at[79]);    MULADD(at[4], at[78]);    MULADD(at[5], at[77]);    MULADD(at[6], at[76]);    MULADD(at[7], at[75]);    MULADD(at[8], at[74]);    MULADD(at[9], at[73]);    MULADD(at[10], at[72]);    MULADD(at[11], at[71]);    MULADD(at[12], at[70]);    MULADD(at[13], at[69]);    MULADD(at[14], at[68]);    MULADD(at[15], at[67]);    MULADD(at[16], at[66]);    MULADD(at[17], at[65]);    MULADD(at[18], at[64]);    MULADD(at[19], at[63]);    MULADD(at[20], at[62]);    MULADD(at[21], at[61]);    MULADD(at[22], at[60]);    MULADD(at[23], at[59]);    MULADD(at[24], at[58]);    MULADD(at[25], at[57]);    MULADD(at[26], at[56]);    MULADD(at[27], at[55]);    MULADD(at[28], at[54]);    MULADD(at[29], at[53]);    MULADD(at[30], at[52]);    MULADD(at[31], at[51]);    MULADD(at[32], at[50]);    MULADD(at[33], at[49]);    MULADD(at[34], at[48]); 
+   COMBA_STORE(C->dp[34]);
+   /* 35 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[83]);    MULADD(at[1], at[82]);    MULADD(at[2], at[81]);    MULADD(at[3], at[80]);    MULADD(at[4], at[79]);    MULADD(at[5], at[78]);    MULADD(at[6], at[77]);    MULADD(at[7], at[76]);    MULADD(at[8], at[75]);    MULADD(at[9], at[74]);    MULADD(at[10], at[73]);    MULADD(at[11], at[72]);    MULADD(at[12], at[71]);    MULADD(at[13], at[70]);    MULADD(at[14], at[69]);    MULADD(at[15], at[68]);    MULADD(at[16], at[67]);    MULADD(at[17], at[66]);    MULADD(at[18], at[65]);    MULADD(at[19], at[64]);    MULADD(at[20], at[63]);    MULADD(at[21], at[62]);    MULADD(at[22], at[61]);    MULADD(at[23], at[60]);    MULADD(at[24], at[59]);    MULADD(at[25], at[58]);    MULADD(at[26], at[57]);    MULADD(at[27], at[56]);    MULADD(at[28], at[55]);    MULADD(at[29], at[54]);    MULADD(at[30], at[53]);    MULADD(at[31], at[52]);    MULADD(at[32], at[51]);    MULADD(at[33], at[50]);    MULADD(at[34], at[49]);    MULADD(at[35], at[48]); 
+   COMBA_STORE(C->dp[35]);
+   /* 36 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[84]);    MULADD(at[1], at[83]);    MULADD(at[2], at[82]);    MULADD(at[3], at[81]);    MULADD(at[4], at[80]);    MULADD(at[5], at[79]);    MULADD(at[6], at[78]);    MULADD(at[7], at[77]);    MULADD(at[8], at[76]);    MULADD(at[9], at[75]);    MULADD(at[10], at[74]);    MULADD(at[11], at[73]);    MULADD(at[12], at[72]);    MULADD(at[13], at[71]);    MULADD(at[14], at[70]);    MULADD(at[15], at[69]);    MULADD(at[16], at[68]);    MULADD(at[17], at[67]);    MULADD(at[18], at[66]);    MULADD(at[19], at[65]);    MULADD(at[20], at[64]);    MULADD(at[21], at[63]);    MULADD(at[22], at[62]);    MULADD(at[23], at[61]);    MULADD(at[24], at[60]);    MULADD(at[25], at[59]);    MULADD(at[26], at[58]);    MULADD(at[27], at[57]);    MULADD(at[28], at[56]);    MULADD(at[29], at[55]);    MULADD(at[30], at[54]);    MULADD(at[31], at[53]);    MULADD(at[32], at[52]);    MULADD(at[33], at[51]);    MULADD(at[34], at[50]);    MULADD(at[35], at[49]);    MULADD(at[36], at[48]); 
+   COMBA_STORE(C->dp[36]);
+   /* 37 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[85]);    MULADD(at[1], at[84]);    MULADD(at[2], at[83]);    MULADD(at[3], at[82]);    MULADD(at[4], at[81]);    MULADD(at[5], at[80]);    MULADD(at[6], at[79]);    MULADD(at[7], at[78]);    MULADD(at[8], at[77]);    MULADD(at[9], at[76]);    MULADD(at[10], at[75]);    MULADD(at[11], at[74]);    MULADD(at[12], at[73]);    MULADD(at[13], at[72]);    MULADD(at[14], at[71]);    MULADD(at[15], at[70]);    MULADD(at[16], at[69]);    MULADD(at[17], at[68]);    MULADD(at[18], at[67]);    MULADD(at[19], at[66]);    MULADD(at[20], at[65]);    MULADD(at[21], at[64]);    MULADD(at[22], at[63]);    MULADD(at[23], at[62]);    MULADD(at[24], at[61]);    MULADD(at[25], at[60]);    MULADD(at[26], at[59]);    MULADD(at[27], at[58]);    MULADD(at[28], at[57]);    MULADD(at[29], at[56]);    MULADD(at[30], at[55]);    MULADD(at[31], at[54]);    MULADD(at[32], at[53]);    MULADD(at[33], at[52]);    MULADD(at[34], at[51]);    MULADD(at[35], at[50]);    MULADD(at[36], at[49]);    MULADD(at[37], at[48]); 
+   COMBA_STORE(C->dp[37]);
+   /* 38 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[86]);    MULADD(at[1], at[85]);    MULADD(at[2], at[84]);    MULADD(at[3], at[83]);    MULADD(at[4], at[82]);    MULADD(at[5], at[81]);    MULADD(at[6], at[80]);    MULADD(at[7], at[79]);    MULADD(at[8], at[78]);    MULADD(at[9], at[77]);    MULADD(at[10], at[76]);    MULADD(at[11], at[75]);    MULADD(at[12], at[74]);    MULADD(at[13], at[73]);    MULADD(at[14], at[72]);    MULADD(at[15], at[71]);    MULADD(at[16], at[70]);    MULADD(at[17], at[69]);    MULADD(at[18], at[68]);    MULADD(at[19], at[67]);    MULADD(at[20], at[66]);    MULADD(at[21], at[65]);    MULADD(at[22], at[64]);    MULADD(at[23], at[63]);    MULADD(at[24], at[62]);    MULADD(at[25], at[61]);    MULADD(at[26], at[60]);    MULADD(at[27], at[59]);    MULADD(at[28], at[58]);    MULADD(at[29], at[57]);    MULADD(at[30], at[56]);    MULADD(at[31], at[55]);    MULADD(at[32], at[54]);    MULADD(at[33], at[53]);    MULADD(at[34], at[52]);    MULADD(at[35], at[51]);    MULADD(at[36], at[50]);    MULADD(at[37], at[49]);    MULADD(at[38], at[48]); 
+   COMBA_STORE(C->dp[38]);
+   /* 39 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[87]);    MULADD(at[1], at[86]);    MULADD(at[2], at[85]);    MULADD(at[3], at[84]);    MULADD(at[4], at[83]);    MULADD(at[5], at[82]);    MULADD(at[6], at[81]);    MULADD(at[7], at[80]);    MULADD(at[8], at[79]);    MULADD(at[9], at[78]);    MULADD(at[10], at[77]);    MULADD(at[11], at[76]);    MULADD(at[12], at[75]);    MULADD(at[13], at[74]);    MULADD(at[14], at[73]);    MULADD(at[15], at[72]);    MULADD(at[16], at[71]);    MULADD(at[17], at[70]);    MULADD(at[18], at[69]);    MULADD(at[19], at[68]);    MULADD(at[20], at[67]);    MULADD(at[21], at[66]);    MULADD(at[22], at[65]);    MULADD(at[23], at[64]);    MULADD(at[24], at[63]);    MULADD(at[25], at[62]);    MULADD(at[26], at[61]);    MULADD(at[27], at[60]);    MULADD(at[28], at[59]);    MULADD(at[29], at[58]);    MULADD(at[30], at[57]);    MULADD(at[31], at[56]);    MULADD(at[32], at[55]);    MULADD(at[33], at[54]);    MULADD(at[34], at[53]);    MULADD(at[35], at[52]);    MULADD(at[36], at[51]);    MULADD(at[37], at[50]);    MULADD(at[38], at[49]);    MULADD(at[39], at[48]); 
+   COMBA_STORE(C->dp[39]);
+   /* 40 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[88]);    MULADD(at[1], at[87]);    MULADD(at[2], at[86]);    MULADD(at[3], at[85]);    MULADD(at[4], at[84]);    MULADD(at[5], at[83]);    MULADD(at[6], at[82]);    MULADD(at[7], at[81]);    MULADD(at[8], at[80]);    MULADD(at[9], at[79]);    MULADD(at[10], at[78]);    MULADD(at[11], at[77]);    MULADD(at[12], at[76]);    MULADD(at[13], at[75]);    MULADD(at[14], at[74]);    MULADD(at[15], at[73]);    MULADD(at[16], at[72]);    MULADD(at[17], at[71]);    MULADD(at[18], at[70]);    MULADD(at[19], at[69]);    MULADD(at[20], at[68]);    MULADD(at[21], at[67]);    MULADD(at[22], at[66]);    MULADD(at[23], at[65]);    MULADD(at[24], at[64]);    MULADD(at[25], at[63]);    MULADD(at[26], at[62]);    MULADD(at[27], at[61]);    MULADD(at[28], at[60]);    MULADD(at[29], at[59]);    MULADD(at[30], at[58]);    MULADD(at[31], at[57]);    MULADD(at[32], at[56]);    MULADD(at[33], at[55]);    MULADD(at[34], at[54]);    MULADD(at[35], at[53]);    MULADD(at[36], at[52]);    MULADD(at[37], at[51]);    MULADD(at[38], at[50]);    MULADD(at[39], at[49]);    MULADD(at[40], at[48]); 
+   COMBA_STORE(C->dp[40]);
+   /* 41 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[89]);    MULADD(at[1], at[88]);    MULADD(at[2], at[87]);    MULADD(at[3], at[86]);    MULADD(at[4], at[85]);    MULADD(at[5], at[84]);    MULADD(at[6], at[83]);    MULADD(at[7], at[82]);    MULADD(at[8], at[81]);    MULADD(at[9], at[80]);    MULADD(at[10], at[79]);    MULADD(at[11], at[78]);    MULADD(at[12], at[77]);    MULADD(at[13], at[76]);    MULADD(at[14], at[75]);    MULADD(at[15], at[74]);    MULADD(at[16], at[73]);    MULADD(at[17], at[72]);    MULADD(at[18], at[71]);    MULADD(at[19], at[70]);    MULADD(at[20], at[69]);    MULADD(at[21], at[68]);    MULADD(at[22], at[67]);    MULADD(at[23], at[66]);    MULADD(at[24], at[65]);    MULADD(at[25], at[64]);    MULADD(at[26], at[63]);    MULADD(at[27], at[62]);    MULADD(at[28], at[61]);    MULADD(at[29], at[60]);    MULADD(at[30], at[59]);    MULADD(at[31], at[58]);    MULADD(at[32], at[57]);    MULADD(at[33], at[56]);    MULADD(at[34], at[55]);    MULADD(at[35], at[54]);    MULADD(at[36], at[53]);    MULADD(at[37], at[52]);    MULADD(at[38], at[51]);    MULADD(at[39], at[50]);    MULADD(at[40], at[49]);    MULADD(at[41], at[48]); 
+   COMBA_STORE(C->dp[41]);
+   /* 42 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[90]);    MULADD(at[1], at[89]);    MULADD(at[2], at[88]);    MULADD(at[3], at[87]);    MULADD(at[4], at[86]);    MULADD(at[5], at[85]);    MULADD(at[6], at[84]);    MULADD(at[7], at[83]);    MULADD(at[8], at[82]);    MULADD(at[9], at[81]);    MULADD(at[10], at[80]);    MULADD(at[11], at[79]);    MULADD(at[12], at[78]);    MULADD(at[13], at[77]);    MULADD(at[14], at[76]);    MULADD(at[15], at[75]);    MULADD(at[16], at[74]);    MULADD(at[17], at[73]);    MULADD(at[18], at[72]);    MULADD(at[19], at[71]);    MULADD(at[20], at[70]);    MULADD(at[21], at[69]);    MULADD(at[22], at[68]);    MULADD(at[23], at[67]);    MULADD(at[24], at[66]);    MULADD(at[25], at[65]);    MULADD(at[26], at[64]);    MULADD(at[27], at[63]);    MULADD(at[28], at[62]);    MULADD(at[29], at[61]);    MULADD(at[30], at[60]);    MULADD(at[31], at[59]);    MULADD(at[32], at[58]);    MULADD(at[33], at[57]);    MULADD(at[34], at[56]);    MULADD(at[35], at[55]);    MULADD(at[36], at[54]);    MULADD(at[37], at[53]);    MULADD(at[38], at[52]);    MULADD(at[39], at[51]);    MULADD(at[40], at[50]);    MULADD(at[41], at[49]);    MULADD(at[42], at[48]); 
+   COMBA_STORE(C->dp[42]);
+   /* 43 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[91]);    MULADD(at[1], at[90]);    MULADD(at[2], at[89]);    MULADD(at[3], at[88]);    MULADD(at[4], at[87]);    MULADD(at[5], at[86]);    MULADD(at[6], at[85]);    MULADD(at[7], at[84]);    MULADD(at[8], at[83]);    MULADD(at[9], at[82]);    MULADD(at[10], at[81]);    MULADD(at[11], at[80]);    MULADD(at[12], at[79]);    MULADD(at[13], at[78]);    MULADD(at[14], at[77]);    MULADD(at[15], at[76]);    MULADD(at[16], at[75]);    MULADD(at[17], at[74]);    MULADD(at[18], at[73]);    MULADD(at[19], at[72]);    MULADD(at[20], at[71]);    MULADD(at[21], at[70]);    MULADD(at[22], at[69]);    MULADD(at[23], at[68]);    MULADD(at[24], at[67]);    MULADD(at[25], at[66]);    MULADD(at[26], at[65]);    MULADD(at[27], at[64]);    MULADD(at[28], at[63]);    MULADD(at[29], at[62]);    MULADD(at[30], at[61]);    MULADD(at[31], at[60]);    MULADD(at[32], at[59]);    MULADD(at[33], at[58]);    MULADD(at[34], at[57]);    MULADD(at[35], at[56]);    MULADD(at[36], at[55]);    MULADD(at[37], at[54]);    MULADD(at[38], at[53]);    MULADD(at[39], at[52]);    MULADD(at[40], at[51]);    MULADD(at[41], at[50]);    MULADD(at[42], at[49]);    MULADD(at[43], at[48]); 
+   COMBA_STORE(C->dp[43]);
+   /* 44 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[92]);    MULADD(at[1], at[91]);    MULADD(at[2], at[90]);    MULADD(at[3], at[89]);    MULADD(at[4], at[88]);    MULADD(at[5], at[87]);    MULADD(at[6], at[86]);    MULADD(at[7], at[85]);    MULADD(at[8], at[84]);    MULADD(at[9], at[83]);    MULADD(at[10], at[82]);    MULADD(at[11], at[81]);    MULADD(at[12], at[80]);    MULADD(at[13], at[79]);    MULADD(at[14], at[78]);    MULADD(at[15], at[77]);    MULADD(at[16], at[76]);    MULADD(at[17], at[75]);    MULADD(at[18], at[74]);    MULADD(at[19], at[73]);    MULADD(at[20], at[72]);    MULADD(at[21], at[71]);    MULADD(at[22], at[70]);    MULADD(at[23], at[69]);    MULADD(at[24], at[68]);    MULADD(at[25], at[67]);    MULADD(at[26], at[66]);    MULADD(at[27], at[65]);    MULADD(at[28], at[64]);    MULADD(at[29], at[63]);    MULADD(at[30], at[62]);    MULADD(at[31], at[61]);    MULADD(at[32], at[60]);    MULADD(at[33], at[59]);    MULADD(at[34], at[58]);    MULADD(at[35], at[57]);    MULADD(at[36], at[56]);    MULADD(at[37], at[55]);    MULADD(at[38], at[54]);    MULADD(at[39], at[53]);    MULADD(at[40], at[52]);    MULADD(at[41], at[51]);    MULADD(at[42], at[50]);    MULADD(at[43], at[49]);    MULADD(at[44], at[48]); 
+   COMBA_STORE(C->dp[44]);
+   /* 45 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[93]);    MULADD(at[1], at[92]);    MULADD(at[2], at[91]);    MULADD(at[3], at[90]);    MULADD(at[4], at[89]);    MULADD(at[5], at[88]);    MULADD(at[6], at[87]);    MULADD(at[7], at[86]);    MULADD(at[8], at[85]);    MULADD(at[9], at[84]);    MULADD(at[10], at[83]);    MULADD(at[11], at[82]);    MULADD(at[12], at[81]);    MULADD(at[13], at[80]);    MULADD(at[14], at[79]);    MULADD(at[15], at[78]);    MULADD(at[16], at[77]);    MULADD(at[17], at[76]);    MULADD(at[18], at[75]);    MULADD(at[19], at[74]);    MULADD(at[20], at[73]);    MULADD(at[21], at[72]);    MULADD(at[22], at[71]);    MULADD(at[23], at[70]);    MULADD(at[24], at[69]);    MULADD(at[25], at[68]);    MULADD(at[26], at[67]);    MULADD(at[27], at[66]);    MULADD(at[28], at[65]);    MULADD(at[29], at[64]);    MULADD(at[30], at[63]);    MULADD(at[31], at[62]);    MULADD(at[32], at[61]);    MULADD(at[33], at[60]);    MULADD(at[34], at[59]);    MULADD(at[35], at[58]);    MULADD(at[36], at[57]);    MULADD(at[37], at[56]);    MULADD(at[38], at[55]);    MULADD(at[39], at[54]);    MULADD(at[40], at[53]);    MULADD(at[41], at[52]);    MULADD(at[42], at[51]);    MULADD(at[43], at[50]);    MULADD(at[44], at[49]);    MULADD(at[45], at[48]); 
+   COMBA_STORE(C->dp[45]);
+   /* 46 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[94]);    MULADD(at[1], at[93]);    MULADD(at[2], at[92]);    MULADD(at[3], at[91]);    MULADD(at[4], at[90]);    MULADD(at[5], at[89]);    MULADD(at[6], at[88]);    MULADD(at[7], at[87]);    MULADD(at[8], at[86]);    MULADD(at[9], at[85]);    MULADD(at[10], at[84]);    MULADD(at[11], at[83]);    MULADD(at[12], at[82]);    MULADD(at[13], at[81]);    MULADD(at[14], at[80]);    MULADD(at[15], at[79]);    MULADD(at[16], at[78]);    MULADD(at[17], at[77]);    MULADD(at[18], at[76]);    MULADD(at[19], at[75]);    MULADD(at[20], at[74]);    MULADD(at[21], at[73]);    MULADD(at[22], at[72]);    MULADD(at[23], at[71]);    MULADD(at[24], at[70]);    MULADD(at[25], at[69]);    MULADD(at[26], at[68]);    MULADD(at[27], at[67]);    MULADD(at[28], at[66]);    MULADD(at[29], at[65]);    MULADD(at[30], at[64]);    MULADD(at[31], at[63]);    MULADD(at[32], at[62]);    MULADD(at[33], at[61]);    MULADD(at[34], at[60]);    MULADD(at[35], at[59]);    MULADD(at[36], at[58]);    MULADD(at[37], at[57]);    MULADD(at[38], at[56]);    MULADD(at[39], at[55]);    MULADD(at[40], at[54]);    MULADD(at[41], at[53]);    MULADD(at[42], at[52]);    MULADD(at[43], at[51]);    MULADD(at[44], at[50]);    MULADD(at[45], at[49]);    MULADD(at[46], at[48]); 
+   COMBA_STORE(C->dp[46]);
+   /* 47 */
+   COMBA_FORWARD;
+   MULADD(at[0], at[95]);    MULADD(at[1], at[94]);    MULADD(at[2], at[93]);    MULADD(at[3], at[92]);    MULADD(at[4], at[91]);    MULADD(at[5], at[90]);    MULADD(at[6], at[89]);    MULADD(at[7], at[88]);    MULADD(at[8], at[87]);    MULADD(at[9], at[86]);    MULADD(at[10], at[85]);    MULADD(at[11], at[84]);    MULADD(at[12], at[83]);    MULADD(at[13], at[82]);    MULADD(at[14], at[81]);    MULADD(at[15], at[80]);    MULADD(at[16], at[79]);    MULADD(at[17], at[78]);    MULADD(at[18], at[77]);    MULADD(at[19], at[76]);    MULADD(at[20], at[75]);    MULADD(at[21], at[74]);    MULADD(at[22], at[73]);    MULADD(at[23], at[72]);    MULADD(at[24], at[71]);    MULADD(at[25], at[70]);    MULADD(at[26], at[69]);    MULADD(at[27], at[68]);    MULADD(at[28], at[67]);    MULADD(at[29], at[66]);    MULADD(at[30], at[65]);    MULADD(at[31], at[64]);    MULADD(at[32], at[63]);    MULADD(at[33], at[62]);    MULADD(at[34], at[61]);    MULADD(at[35], at[60]);    MULADD(at[36], at[59]);    MULADD(at[37], at[58]);    MULADD(at[38], at[57]);    MULADD(at[39], at[56]);    MULADD(at[40], at[55]);    MULADD(at[41], at[54]);    MULADD(at[42], at[53]);    MULADD(at[43], at[52]);    MULADD(at[44], at[51]);    MULADD(at[45], at[50]);    MULADD(at[46], at[49]);    MULADD(at[47], at[48]); 
+   COMBA_STORE(C->dp[47]);
+   /* 48 */
+   COMBA_FORWARD;
+   MULADD(at[1], at[95]);    MULADD(at[2], at[94]);    MULADD(at[3], at[93]);    MULADD(at[4], at[92]);    MULADD(at[5], at[91]);    MULADD(at[6], at[90]);    MULADD(at[7], at[89]);    MULADD(at[8], at[88]);    MULADD(at[9], at[87]);    MULADD(at[10], at[86]);    MULADD(at[11], at[85]);    MULADD(at[12], at[84]);    MULADD(at[13], at[83]);    MULADD(at[14], at[82]);    MULADD(at[15], at[81]);    MULADD(at[16], at[80]);    MULADD(at[17], at[79]);    MULADD(at[18], at[78]);    MULADD(at[19], at[77]);    MULADD(at[20], at[76]);    MULADD(at[21], at[75]);    MULADD(at[22], at[74]);    MULADD(at[23], at[73]);    MULADD(at[24], at[72]);    MULADD(at[25], at[71]);    MULADD(at[26], at[70]);    MULADD(at[27], at[69]);    MULADD(at[28], at[68]);    MULADD(at[29], at[67]);    MULADD(at[30], at[66]);    MULADD(at[31], at[65]);    MULADD(at[32], at[64]);    MULADD(at[33], at[63]);    MULADD(at[34], at[62]);    MULADD(at[35], at[61]);    MULADD(at[36], at[60]);    MULADD(at[37], at[59]);    MULADD(at[38], at[58]);    MULADD(at[39], at[57]);    MULADD(at[40], at[56]);    MULADD(at[41], at[55]);    MULADD(at[42], at[54]);    MULADD(at[43], at[53]);    MULADD(at[44], at[52]);    MULADD(at[45], at[51]);    MULADD(at[46], at[50]);    MULADD(at[47], at[49]); 
+   COMBA_STORE(C->dp[48]);
+   /* 49 */
+   COMBA_FORWARD;
+   MULADD(at[2], at[95]);    MULADD(at[3], at[94]);    MULADD(at[4], at[93]);    MULADD(at[5], at[92]);    MULADD(at[6], at[91]);    MULADD(at[7], at[90]);    MULADD(at[8], at[89]);    MULADD(at[9], at[88]);    MULADD(at[10], at[87]);    MULADD(at[11], at[86]);    MULADD(at[12], at[85]);    MULADD(at[13], at[84]);    MULADD(at[14], at[83]);    MULADD(at[15], at[82]);    MULADD(at[16], at[81]);    MULADD(at[17], at[80]);    MULADD(at[18], at[79]);    MULADD(at[19], at[78]);    MULADD(at[20], at[77]);    MULADD(at[21], at[76]);    MULADD(at[22], at[75]);    MULADD(at[23], at[74]);    MULADD(at[24], at[73]);    MULADD(at[25], at[72]);    MULADD(at[26], at[71]);    MULADD(at[27], at[70]);    MULADD(at[28], at[69]);    MULADD(at[29], at[68]);    MULADD(at[30], at[67]);    MULADD(at[31], at[66]);    MULADD(at[32], at[65]);    MULADD(at[33], at[64]);    MULADD(at[34], at[63]);    MULADD(at[35], at[62]);    MULADD(at[36], at[61]);    MULADD(at[37], at[60]);    MULADD(at[38], at[59]);    MULADD(at[39], at[58]);    MULADD(at[40], at[57]);    MULADD(at[41], at[56]);    MULADD(at[42], at[55]);    MULADD(at[43], at[54]);    MULADD(at[44], at[53]);    MULADD(at[45], at[52]);    MULADD(at[46], at[51]);    MULADD(at[47], at[50]); 
+   COMBA_STORE(C->dp[49]);
+   /* 50 */
+   COMBA_FORWARD;
+   MULADD(at[3], at[95]);    MULADD(at[4], at[94]);    MULADD(at[5], at[93]);    MULADD(at[6], at[92]);    MULADD(at[7], at[91]);    MULADD(at[8], at[90]);    MULADD(at[9], at[89]);    MULADD(at[10], at[88]);    MULADD(at[11], at[87]);    MULADD(at[12], at[86]);    MULADD(at[13], at[85]);    MULADD(at[14], at[84]);    MULADD(at[15], at[83]);    MULADD(at[16], at[82]);    MULADD(at[17], at[81]);    MULADD(at[18], at[80]);    MULADD(at[19], at[79]);    MULADD(at[20], at[78]);    MULADD(at[21], at[77]);    MULADD(at[22], at[76]);    MULADD(at[23], at[75]);    MULADD(at[24], at[74]);    MULADD(at[25], at[73]);    MULADD(at[26], at[72]);    MULADD(at[27], at[71]);    MULADD(at[28], at[70]);    MULADD(at[29], at[69]);    MULADD(at[30], at[68]);    MULADD(at[31], at[67]);    MULADD(at[32], at[66]);    MULADD(at[33], at[65]);    MULADD(at[34], at[64]);    MULADD(at[35], at[63]);    MULADD(at[36], at[62]);    MULADD(at[37], at[61]);    MULADD(at[38], at[60]);    MULADD(at[39], at[59]);    MULADD(at[40], at[58]);    MULADD(at[41], at[57]);    MULADD(at[42], at[56]);    MULADD(at[43], at[55]);    MULADD(at[44], at[54]);    MULADD(at[45], at[53]);    MULADD(at[46], at[52]);    MULADD(at[47], at[51]); 
+   COMBA_STORE(C->dp[50]);
+   /* 51 */
+   COMBA_FORWARD;
+   MULADD(at[4], at[95]);    MULADD(at[5], at[94]);    MULADD(at[6], at[93]);    MULADD(at[7], at[92]);    MULADD(at[8], at[91]);    MULADD(at[9], at[90]);    MULADD(at[10], at[89]);    MULADD(at[11], at[88]);    MULADD(at[12], at[87]);    MULADD(at[13], at[86]);    MULADD(at[14], at[85]);    MULADD(at[15], at[84]);    MULADD(at[16], at[83]);    MULADD(at[17], at[82]);    MULADD(at[18], at[81]);    MULADD(at[19], at[80]);    MULADD(at[20], at[79]);    MULADD(at[21], at[78]);    MULADD(at[22], at[77]);    MULADD(at[23], at[76]);    MULADD(at[24], at[75]);    MULADD(at[25], at[74]);    MULADD(at[26], at[73]);    MULADD(at[27], at[72]);    MULADD(at[28], at[71]);    MULADD(at[29], at[70]);    MULADD(at[30], at[69]);    MULADD(at[31], at[68]);    MULADD(at[32], at[67]);    MULADD(at[33], at[66]);    MULADD(at[34], at[65]);    MULADD(at[35], at[64]);    MULADD(at[36], at[63]);    MULADD(at[37], at[62]);    MULADD(at[38], at[61]);    MULADD(at[39], at[60]);    MULADD(at[40], at[59]);    MULADD(at[41], at[58]);    MULADD(at[42], at[57]);    MULADD(at[43], at[56]);    MULADD(at[44], at[55]);    MULADD(at[45], at[54]);    MULADD(at[46], at[53]);    MULADD(at[47], at[52]); 
+   COMBA_STORE(C->dp[51]);
+   /* 52 */
+   COMBA_FORWARD;
+   MULADD(at[5], at[95]);    MULADD(at[6], at[94]);    MULADD(at[7], at[93]);    MULADD(at[8], at[92]);    MULADD(at[9], at[91]);    MULADD(at[10], at[90]);    MULADD(at[11], at[89]);    MULADD(at[12], at[88]);    MULADD(at[13], at[87]);    MULADD(at[14], at[86]);    MULADD(at[15], at[85]);    MULADD(at[16], at[84]);    MULADD(at[17], at[83]);    MULADD(at[18], at[82]);    MULADD(at[19], at[81]);    MULADD(at[20], at[80]);    MULADD(at[21], at[79]);    MULADD(at[22], at[78]);    MULADD(at[23], at[77]);    MULADD(at[24], at[76]);    MULADD(at[25], at[75]);    MULADD(at[26], at[74]);    MULADD(at[27], at[73]);    MULADD(at[28], at[72]);    MULADD(at[29], at[71]);    MULADD(at[30], at[70]);    MULADD(at[31], at[69]);    MULADD(at[32], at[68]);    MULADD(at[33], at[67]);    MULADD(at[34], at[66]);    MULADD(at[35], at[65]);    MULADD(at[36], at[64]);    MULADD(at[37], at[63]);    MULADD(at[38], at[62]);    MULADD(at[39], at[61]);    MULADD(at[40], at[60]);    MULADD(at[41], at[59]);    MULADD(at[42], at[58]);    MULADD(at[43], at[57]);    MULADD(at[44], at[56]);    MULADD(at[45], at[55]);    MULADD(at[46], at[54]);    MULADD(at[47], at[53]); 
+   COMBA_STORE(C->dp[52]);
+   /* 53 */
+   COMBA_FORWARD;
+   MULADD(at[6], at[95]);    MULADD(at[7], at[94]);    MULADD(at[8], at[93]);    MULADD(at[9], at[92]);    MULADD(at[10], at[91]);    MULADD(at[11], at[90]);    MULADD(at[12], at[89]);    MULADD(at[13], at[88]);    MULADD(at[14], at[87]);    MULADD(at[15], at[86]);    MULADD(at[16], at[85]);    MULADD(at[17], at[84]);    MULADD(at[18], at[83]);    MULADD(at[19], at[82]);    MULADD(at[20], at[81]);    MULADD(at[21], at[80]);    MULADD(at[22], at[79]);    MULADD(at[23], at[78]);    MULADD(at[24], at[77]);    MULADD(at[25], at[76]);    MULADD(at[26], at[75]);    MULADD(at[27], at[74]);    MULADD(at[28], at[73]);    MULADD(at[29], at[72]);    MULADD(at[30], at[71]);    MULADD(at[31], at[70]);    MULADD(at[32], at[69]);    MULADD(at[33], at[68]);    MULADD(at[34], at[67]);    MULADD(at[35], at[66]);    MULADD(at[36], at[65]);    MULADD(at[37], at[64]);    MULADD(at[38], at[63]);    MULADD(at[39], at[62]);    MULADD(at[40], at[61]);    MULADD(at[41], at[60]);    MULADD(at[42], at[59]);    MULADD(at[43], at[58]);    MULADD(at[44], at[57]);    MULADD(at[45], at[56]);    MULADD(at[46], at[55]);    MULADD(at[47], at[54]); 
+   COMBA_STORE(C->dp[53]);
+   /* 54 */
+   COMBA_FORWARD;
+   MULADD(at[7], at[95]);    MULADD(at[8], at[94]);    MULADD(at[9], at[93]);    MULADD(at[10], at[92]);    MULADD(at[11], at[91]);    MULADD(at[12], at[90]);    MULADD(at[13], at[89]);    MULADD(at[14], at[88]);    MULADD(at[15], at[87]);    MULADD(at[16], at[86]);    MULADD(at[17], at[85]);    MULADD(at[18], at[84]);    MULADD(at[19], at[83]);    MULADD(at[20], at[82]);    MULADD(at[21], at[81]);    MULADD(at[22], at[80]);    MULADD(at[23], at[79]);    MULADD(at[24], at[78]);    MULADD(at[25], at[77]);    MULADD(at[26], at[76]);    MULADD(at[27], at[75]);    MULADD(at[28], at[74]);    MULADD(at[29], at[73]);    MULADD(at[30], at[72]);    MULADD(at[31], at[71]);    MULADD(at[32], at[70]);    MULADD(at[33], at[69]);    MULADD(at[34], at[68]);    MULADD(at[35], at[67]);    MULADD(at[36], at[66]);    MULADD(at[37], at[65]);    MULADD(at[38], at[64]);    MULADD(at[39], at[63]);    MULADD(at[40], at[62]);    MULADD(at[41], at[61]);    MULADD(at[42], at[60]);    MULADD(at[43], at[59]);    MULADD(at[44], at[58]);    MULADD(at[45], at[57]);    MULADD(at[46], at[56]);    MULADD(at[47], at[55]); 
+   COMBA_STORE(C->dp[54]);
+   /* 55 */
+   COMBA_FORWARD;
+   MULADD(at[8], at[95]);    MULADD(at[9], at[94]);    MULADD(at[10], at[93]);    MULADD(at[11], at[92]);    MULADD(at[12], at[91]);    MULADD(at[13], at[90]);    MULADD(at[14], at[89]);    MULADD(at[15], at[88]);    MULADD(at[16], at[87]);    MULADD(at[17], at[86]);    MULADD(at[18], at[85]);    MULADD(at[19], at[84]);    MULADD(at[20], at[83]);    MULADD(at[21], at[82]);    MULADD(at[22], at[81]);    MULADD(at[23], at[80]);    MULADD(at[24], at[79]);    MULADD(at[25], at[78]);    MULADD(at[26], at[77]);    MULADD(at[27], at[76]);    MULADD(at[28], at[75]);    MULADD(at[29], at[74]);    MULADD(at[30], at[73]);    MULADD(at[31], at[72]);    MULADD(at[32], at[71]);    MULADD(at[33], at[70]);    MULADD(at[34], at[69]);    MULADD(at[35], at[68]);    MULADD(at[36], at[67]);    MULADD(at[37], at[66]);    MULADD(at[38], at[65]);    MULADD(at[39], at[64]);    MULADD(at[40], at[63]);    MULADD(at[41], at[62]);    MULADD(at[42], at[61]);    MULADD(at[43], at[60]);    MULADD(at[44], at[59]);    MULADD(at[45], at[58]);    MULADD(at[46], at[57]);    MULADD(at[47], at[56]); 
+   COMBA_STORE(C->dp[55]);
+   /* 56 */
+   COMBA_FORWARD;
+   MULADD(at[9], at[95]);    MULADD(at[10], at[94]);    MULADD(at[11], at[93]);    MULADD(at[12], at[92]);    MULADD(at[13], at[91]);    MULADD(at[14], at[90]);    MULADD(at[15], at[89]);    MULADD(at[16], at[88]);    MULADD(at[17], at[87]);    MULADD(at[18], at[86]);    MULADD(at[19], at[85]);    MULADD(at[20], at[84]);    MULADD(at[21], at[83]);    MULADD(at[22], at[82]);    MULADD(at[23], at[81]);    MULADD(at[24], at[80]);    MULADD(at[25], at[79]);    MULADD(at[26], at[78]);    MULADD(at[27], at[77]);    MULADD(at[28], at[76]);    MULADD(at[29], at[75]);    MULADD(at[30], at[74]);    MULADD(at[31], at[73]);    MULADD(at[32], at[72]);    MULADD(at[33], at[71]);    MULADD(at[34], at[70]);    MULADD(at[35], at[69]);    MULADD(at[36], at[68]);    MULADD(at[37], at[67]);    MULADD(at[38], at[66]);    MULADD(at[39], at[65]);    MULADD(at[40], at[64]);    MULADD(at[41], at[63]);    MULADD(at[42], at[62]);    MULADD(at[43], at[61]);    MULADD(at[44], at[60]);    MULADD(at[45], at[59]);    MULADD(at[46], at[58]);    MULADD(at[47], at[57]); 
+   COMBA_STORE(C->dp[56]);
+   /* 57 */
+   COMBA_FORWARD;
+   MULADD(at[10], at[95]);    MULADD(at[11], at[94]);    MULADD(at[12], at[93]);    MULADD(at[13], at[92]);    MULADD(at[14], at[91]);    MULADD(at[15], at[90]);    MULADD(at[16], at[89]);    MULADD(at[17], at[88]);    MULADD(at[18], at[87]);    MULADD(at[19], at[86]);    MULADD(at[20], at[85]);    MULADD(at[21], at[84]);    MULADD(at[22], at[83]);    MULADD(at[23], at[82]);    MULADD(at[24], at[81]);    MULADD(at[25], at[80]);    MULADD(at[26], at[79]);    MULADD(at[27], at[78]);    MULADD(at[28], at[77]);    MULADD(at[29], at[76]);    MULADD(at[30], at[75]);    MULADD(at[31], at[74]);    MULADD(at[32], at[73]);    MULADD(at[33], at[72]);    MULADD(at[34], at[71]);    MULADD(at[35], at[70]);    MULADD(at[36], at[69]);    MULADD(at[37], at[68]);    MULADD(at[38], at[67]);    MULADD(at[39], at[66]);    MULADD(at[40], at[65]);    MULADD(at[41], at[64]);    MULADD(at[42], at[63]);    MULADD(at[43], at[62]);    MULADD(at[44], at[61]);    MULADD(at[45], at[60]);    MULADD(at[46], at[59]);    MULADD(at[47], at[58]); 
+   COMBA_STORE(C->dp[57]);
+   /* 58 */
+   COMBA_FORWARD;
+   MULADD(at[11], at[95]);    MULADD(at[12], at[94]);    MULADD(at[13], at[93]);    MULADD(at[14], at[92]);    MULADD(at[15], at[91]);    MULADD(at[16], at[90]);    MULADD(at[17], at[89]);    MULADD(at[18], at[88]);    MULADD(at[19], at[87]);    MULADD(at[20], at[86]);    MULADD(at[21], at[85]);    MULADD(at[22], at[84]);    MULADD(at[23], at[83]);    MULADD(at[24], at[82]);    MULADD(at[25], at[81]);    MULADD(at[26], at[80]);    MULADD(at[27], at[79]);    MULADD(at[28], at[78]);    MULADD(at[29], at[77]);    MULADD(at[30], at[76]);    MULADD(at[31], at[75]);    MULADD(at[32], at[74]);    MULADD(at[33], at[73]);    MULADD(at[34], at[72]);    MULADD(at[35], at[71]);    MULADD(at[36], at[70]);    MULADD(at[37], at[69]);    MULADD(at[38], at[68]);    MULADD(at[39], at[67]);    MULADD(at[40], at[66]);    MULADD(at[41], at[65]);    MULADD(at[42], at[64]);    MULADD(at[43], at[63]);    MULADD(at[44], at[62]);    MULADD(at[45], at[61]);    MULADD(at[46], at[60]);    MULADD(at[47], at[59]); 
+   COMBA_STORE(C->dp[58]);
+   /* 59 */
+   COMBA_FORWARD;
+   MULADD(at[12], at[95]);    MULADD(at[13], at[94]);    MULADD(at[14], at[93]);    MULADD(at[15], at[92]);    MULADD(at[16], at[91]);    MULADD(at[17], at[90]);    MULADD(at[18], at[89]);    MULADD(at[19], at[88]);    MULADD(at[20], at[87]);    MULADD(at[21], at[86]);    MULADD(at[22], at[85]);    MULADD(at[23], at[84]);    MULADD(at[24], at[83]);    MULADD(at[25], at[82]);    MULADD(at[26], at[81]);    MULADD(at[27], at[80]);    MULADD(at[28], at[79]);    MULADD(at[29], at[78]);    MULADD(at[30], at[77]);    MULADD(at[31], at[76]);    MULADD(at[32], at[75]);    MULADD(at[33], at[74]);    MULADD(at[34], at[73]);    MULADD(at[35], at[72]);    MULADD(at[36], at[71]);    MULADD(at[37], at[70]);    MULADD(at[38], at[69]);    MULADD(at[39], at[68]);    MULADD(at[40], at[67]);    MULADD(at[41], at[66]);    MULADD(at[42], at[65]);    MULADD(at[43], at[64]);    MULADD(at[44], at[63]);    MULADD(at[45], at[62]);    MULADD(at[46], at[61]);    MULADD(at[47], at[60]); 
+   COMBA_STORE(C->dp[59]);
+   /* 60 */
+   COMBA_FORWARD;
+   MULADD(at[13], at[95]);    MULADD(at[14], at[94]);    MULADD(at[15], at[93]);    MULADD(at[16], at[92]);    MULADD(at[17], at[91]);    MULADD(at[18], at[90]);    MULADD(at[19], at[89]);    MULADD(at[20], at[88]);    MULADD(at[21], at[87]);    MULADD(at[22], at[86]);    MULADD(at[23], at[85]);    MULADD(at[24], at[84]);    MULADD(at[25], at[83]);    MULADD(at[26], at[82]);    MULADD(at[27], at[81]);    MULADD(at[28], at[80]);    MULADD(at[29], at[79]);    MULADD(at[30], at[78]);    MULADD(at[31], at[77]);    MULADD(at[32], at[76]);    MULADD(at[33], at[75]);    MULADD(at[34], at[74]);    MULADD(at[35], at[73]);    MULADD(at[36], at[72]);    MULADD(at[37], at[71]);    MULADD(at[38], at[70]);    MULADD(at[39], at[69]);    MULADD(at[40], at[68]);    MULADD(at[41], at[67]);    MULADD(at[42], at[66]);    MULADD(at[43], at[65]);    MULADD(at[44], at[64]);    MULADD(at[45], at[63]);    MULADD(at[46], at[62]);    MULADD(at[47], at[61]); 
+   COMBA_STORE(C->dp[60]);
+   /* 61 */
+   COMBA_FORWARD;
+   MULADD(at[14], at[95]);    MULADD(at[15], at[94]);    MULADD(at[16], at[93]);    MULADD(at[17], at[92]);    MULADD(at[18], at[91]);    MULADD(at[19], at[90]);    MULADD(at[20], at[89]);    MULADD(at[21], at[88]);    MULADD(at[22], at[87]);    MULADD(at[23], at[86]);    MULADD(at[24], at[85]);    MULADD(at[25], at[84]);    MULADD(at[26], at[83]);    MULADD(at[27], at[82]);    MULADD(at[28], at[81]);    MULADD(at[29], at[80]);    MULADD(at[30], at[79]);    MULADD(at[31], at[78]);    MULADD(at[32], at[77]);    MULADD(at[33], at[76]);    MULADD(at[34], at[75]);    MULADD(at[35], at[74]);    MULADD(at[36], at[73]);    MULADD(at[37], at[72]);    MULADD(at[38], at[71]);    MULADD(at[39], at[70]);    MULADD(at[40], at[69]);    MULADD(at[41], at[68]);    MULADD(at[42], at[67]);    MULADD(at[43], at[66]);    MULADD(at[44], at[65]);    MULADD(at[45], at[64]);    MULADD(at[46], at[63]);    MULADD(at[47], at[62]); 
+   COMBA_STORE(C->dp[61]);
+   /* 62 */
+   COMBA_FORWARD;
+   MULADD(at[15], at[95]);    MULADD(at[16], at[94]);    MULADD(at[17], at[93]);    MULADD(at[18], at[92]);    MULADD(at[19], at[91]);    MULADD(at[20], at[90]);    MULADD(at[21], at[89]);    MULADD(at[22], at[88]);    MULADD(at[23], at[87]);    MULADD(at[24], at[86]);    MULADD(at[25], at[85]);    MULADD(at[26], at[84]);    MULADD(at[27], at[83]);    MULADD(at[28], at[82]);    MULADD(at[29], at[81]);    MULADD(at[30], at[80]);    MULADD(at[31], at[79]);    MULADD(at[32], at[78]);    MULADD(at[33], at[77]);    MULADD(at[34], at[76]);    MULADD(at[35], at[75]);    MULADD(at[36], at[74]);    MULADD(at[37], at[73]);    MULADD(at[38], at[72]);    MULADD(at[39], at[71]);    MULADD(at[40], at[70]);    MULADD(at[41], at[69]);    MULADD(at[42], at[68]);    MULADD(at[43], at[67]);    MULADD(at[44], at[66]);    MULADD(at[45], at[65]);    MULADD(at[46], at[64]);    MULADD(at[47], at[63]); 
+   COMBA_STORE(C->dp[62]);
+   /* 63 */
+   COMBA_FORWARD;
+   MULADD(at[16], at[95]);    MULADD(at[17], at[94]);    MULADD(at[18], at[93]);    MULADD(at[19], at[92]);    MULADD(at[20], at[91]);    MULADD(at[21], at[90]);    MULADD(at[22], at[89]);    MULADD(at[23], at[88]);    MULADD(at[24], at[87]);    MULADD(at[25], at[86]);    MULADD(at[26], at[85]);    MULADD(at[27], at[84]);    MULADD(at[28], at[83]);    MULADD(at[29], at[82]);    MULADD(at[30], at[81]);    MULADD(at[31], at[80]);    MULADD(at[32], at[79]);    MULADD(at[33], at[78]);    MULADD(at[34], at[77]);    MULADD(at[35], at[76]);    MULADD(at[36], at[75]);    MULADD(at[37], at[74]);    MULADD(at[38], at[73]);    MULADD(at[39], at[72]);    MULADD(at[40], at[71]);    MULADD(at[41], at[70]);    MULADD(at[42], at[69]);    MULADD(at[43], at[68]);    MULADD(at[44], at[67]);    MULADD(at[45], at[66]);    MULADD(at[46], at[65]);    MULADD(at[47], at[64]); 
+   COMBA_STORE(C->dp[63]);
+   /* 64 */
+   COMBA_FORWARD;
+   MULADD(at[17], at[95]);    MULADD(at[18], at[94]);    MULADD(at[19], at[93]);    MULADD(at[20], at[92]);    MULADD(at[21], at[91]);    MULADD(at[22], at[90]);    MULADD(at[23], at[89]);    MULADD(at[24], at[88]);    MULADD(at[25], at[87]);    MULADD(at[26], at[86]);    MULADD(at[27], at[85]);    MULADD(at[28], at[84]);    MULADD(at[29], at[83]);    MULADD(at[30], at[82]);    MULADD(at[31], at[81]);    MULADD(at[32], at[80]);    MULADD(at[33], at[79]);    MULADD(at[34], at[78]);    MULADD(at[35], at[77]);    MULADD(at[36], at[76]);    MULADD(at[37], at[75]);    MULADD(at[38], at[74]);    MULADD(at[39], at[73]);    MULADD(at[40], at[72]);    MULADD(at[41], at[71]);    MULADD(at[42], at[70]);    MULADD(at[43], at[69]);    MULADD(at[44], at[68]);    MULADD(at[45], at[67]);    MULADD(at[46], at[66]);    MULADD(at[47], at[65]); 
+   COMBA_STORE(C->dp[64]);
+   /* 65 */
+   COMBA_FORWARD;
+   MULADD(at[18], at[95]);    MULADD(at[19], at[94]);    MULADD(at[20], at[93]);    MULADD(at[21], at[92]);    MULADD(at[22], at[91]);    MULADD(at[23], at[90]);    MULADD(at[24], at[89]);    MULADD(at[25], at[88]);    MULADD(at[26], at[87]);    MULADD(at[27], at[86]);    MULADD(at[28], at[85]);    MULADD(at[29], at[84]);    MULADD(at[30], at[83]);    MULADD(at[31], at[82]);    MULADD(at[32], at[81]);    MULADD(at[33], at[80]);    MULADD(at[34], at[79]);    MULADD(at[35], at[78]);    MULADD(at[36], at[77]);    MULADD(at[37], at[76]);    MULADD(at[38], at[75]);    MULADD(at[39], at[74]);    MULADD(at[40], at[73]);    MULADD(at[41], at[72]);    MULADD(at[42], at[71]);    MULADD(at[43], at[70]);    MULADD(at[44], at[69]);    MULADD(at[45], at[68]);    MULADD(at[46], at[67]);    MULADD(at[47], at[66]); 
+   COMBA_STORE(C->dp[65]);
+   /* 66 */
+   COMBA_FORWARD;
+   MULADD(at[19], at[95]);    MULADD(at[20], at[94]);    MULADD(at[21], at[93]);    MULADD(at[22], at[92]);    MULADD(at[23], at[91]);    MULADD(at[24], at[90]);    MULADD(at[25], at[89]);    MULADD(at[26], at[88]);    MULADD(at[27], at[87]);    MULADD(at[28], at[86]);    MULADD(at[29], at[85]);    MULADD(at[30], at[84]);    MULADD(at[31], at[83]);    MULADD(at[32], at[82]);    MULADD(at[33], at[81]);    MULADD(at[34], at[80]);    MULADD(at[35], at[79]);    MULADD(at[36], at[78]);    MULADD(at[37], at[77]);    MULADD(at[38], at[76]);    MULADD(at[39], at[75]);    MULADD(at[40], at[74]);    MULADD(at[41], at[73]);    MULADD(at[42], at[72]);    MULADD(at[43], at[71]);    MULADD(at[44], at[70]);    MULADD(at[45], at[69]);    MULADD(at[46], at[68]);    MULADD(at[47], at[67]); 
+   COMBA_STORE(C->dp[66]);
+   /* 67 */
+   COMBA_FORWARD;
+   MULADD(at[20], at[95]);    MULADD(at[21], at[94]);    MULADD(at[22], at[93]);    MULADD(at[23], at[92]);    MULADD(at[24], at[91]);    MULADD(at[25], at[90]);    MULADD(at[26], at[89]);    MULADD(at[27], at[88]);    MULADD(at[28], at[87]);    MULADD(at[29], at[86]);    MULADD(at[30], at[85]);    MULADD(at[31], at[84]);    MULADD(at[32], at[83]);    MULADD(at[33], at[82]);    MULADD(at[34], at[81]);    MULADD(at[35], at[80]);    MULADD(at[36], at[79]);    MULADD(at[37], at[78]);    MULADD(at[38], at[77]);    MULADD(at[39], at[76]);    MULADD(at[40], at[75]);    MULADD(at[41], at[74]);    MULADD(at[42], at[73]);    MULADD(at[43], at[72]);    MULADD(at[44], at[71]);    MULADD(at[45], at[70]);    MULADD(at[46], at[69]);    MULADD(at[47], at[68]); 
+   COMBA_STORE(C->dp[67]);
+   /* 68 */
+   COMBA_FORWARD;
+   MULADD(at[21], at[95]);    MULADD(at[22], at[94]);    MULADD(at[23], at[93]);    MULADD(at[24], at[92]);    MULADD(at[25], at[91]);    MULADD(at[26], at[90]);    MULADD(at[27], at[89]);    MULADD(at[28], at[88]);    MULADD(at[29], at[87]);    MULADD(at[30], at[86]);    MULADD(at[31], at[85]);    MULADD(at[32], at[84]);    MULADD(at[33], at[83]);    MULADD(at[34], at[82]);    MULADD(at[35], at[81]);    MULADD(at[36], at[80]);    MULADD(at[37], at[79]);    MULADD(at[38], at[78]);    MULADD(at[39], at[77]);    MULADD(at[40], at[76]);    MULADD(at[41], at[75]);    MULADD(at[42], at[74]);    MULADD(at[43], at[73]);    MULADD(at[44], at[72]);    MULADD(at[45], at[71]);    MULADD(at[46], at[70]);    MULADD(at[47], at[69]); 
+   COMBA_STORE(C->dp[68]);
+   /* 69 */
+   COMBA_FORWARD;
+   MULADD(at[22], at[95]);    MULADD(at[23], at[94]);    MULADD(at[24], at[93]);    MULADD(at[25], at[92]);    MULADD(at[26], at[91]);    MULADD(at[27], at[90]);    MULADD(at[28], at[89]);    MULADD(at[29], at[88]);    MULADD(at[30], at[87]);    MULADD(at[31], at[86]);    MULADD(at[32], at[85]);    MULADD(at[33], at[84]);    MULADD(at[34], at[83]);    MULADD(at[35], at[82]);    MULADD(at[36], at[81]);    MULADD(at[37], at[80]);    MULADD(at[38], at[79]);    MULADD(at[39], at[78]);    MULADD(at[40], at[77]);    MULADD(at[41], at[76]);    MULADD(at[42], at[75]);    MULADD(at[43], at[74]);    MULADD(at[44], at[73]);    MULADD(at[45], at[72]);    MULADD(at[46], at[71]);    MULADD(at[47], at[70]); 
+   COMBA_STORE(C->dp[69]);
+   /* 70 */
+   COMBA_FORWARD;
+   MULADD(at[23], at[95]);    MULADD(at[24], at[94]);    MULADD(at[25], at[93]);    MULADD(at[26], at[92]);    MULADD(at[27], at[91]);    MULADD(at[28], at[90]);    MULADD(at[29], at[89]);    MULADD(at[30], at[88]);    MULADD(at[31], at[87]);    MULADD(at[32], at[86]);    MULADD(at[33], at[85]);    MULADD(at[34], at[84]);    MULADD(at[35], at[83]);    MULADD(at[36], at[82]);    MULADD(at[37], at[81]);    MULADD(at[38], at[80]);    MULADD(at[39], at[79]);    MULADD(at[40], at[78]);    MULADD(at[41], at[77]);    MULADD(at[42], at[76]);    MULADD(at[43], at[75]);    MULADD(at[44], at[74]);    MULADD(at[45], at[73]);    MULADD(at[46], at[72]);    MULADD(at[47], at[71]); 
+   COMBA_STORE(C->dp[70]);
+   /* 71 */
+   COMBA_FORWARD;
+   MULADD(at[24], at[95]);    MULADD(at[25], at[94]);    MULADD(at[26], at[93]);    MULADD(at[27], at[92]);    MULADD(at[28], at[91]);    MULADD(at[29], at[90]);    MULADD(at[30], at[89]);    MULADD(at[31], at[88]);    MULADD(at[32], at[87]);    MULADD(at[33], at[86]);    MULADD(at[34], at[85]);    MULADD(at[35], at[84]);    MULADD(at[36], at[83]);    MULADD(at[37], at[82]);    MULADD(at[38], at[81]);    MULADD(at[39], at[80]);    MULADD(at[40], at[79]);    MULADD(at[41], at[78]);    MULADD(at[42], at[77]);    MULADD(at[43], at[76]);    MULADD(at[44], at[75]);    MULADD(at[45], at[74]);    MULADD(at[46], at[73]);    MULADD(at[47], at[72]); 
+   COMBA_STORE(C->dp[71]);
+   /* 72 */
+   COMBA_FORWARD;
+   MULADD(at[25], at[95]);    MULADD(at[26], at[94]);    MULADD(at[27], at[93]);    MULADD(at[28], at[92]);    MULADD(at[29], at[91]);    MULADD(at[30], at[90]);    MULADD(at[31], at[89]);    MULADD(at[32], at[88]);    MULADD(at[33], at[87]);    MULADD(at[34], at[86]);    MULADD(at[35], at[85]);    MULADD(at[36], at[84]);    MULADD(at[37], at[83]);    MULADD(at[38], at[82]);    MULADD(at[39], at[81]);    MULADD(at[40], at[80]);    MULADD(at[41], at[79]);    MULADD(at[42], at[78]);    MULADD(at[43], at[77]);    MULADD(at[44], at[76]);    MULADD(at[45], at[75]);    MULADD(at[46], at[74]);    MULADD(at[47], at[73]); 
+   COMBA_STORE(C->dp[72]);
+   /* 73 */
+   COMBA_FORWARD;
+   MULADD(at[26], at[95]);    MULADD(at[27], at[94]);    MULADD(at[28], at[93]);    MULADD(at[29], at[92]);    MULADD(at[30], at[91]);    MULADD(at[31], at[90]);    MULADD(at[32], at[89]);    MULADD(at[33], at[88]);    MULADD(at[34], at[87]);    MULADD(at[35], at[86]);    MULADD(at[36], at[85]);    MULADD(at[37], at[84]);    MULADD(at[38], at[83]);    MULADD(at[39], at[82]);    MULADD(at[40], at[81]);    MULADD(at[41], at[80]);    MULADD(at[42], at[79]);    MULADD(at[43], at[78]);    MULADD(at[44], at[77]);    MULADD(at[45], at[76]);    MULADD(at[46], at[75]);    MULADD(at[47], at[74]); 
+   COMBA_STORE(C->dp[73]);
+   /* 74 */
+   COMBA_FORWARD;
+   MULADD(at[27], at[95]);    MULADD(at[28], at[94]);    MULADD(at[29], at[93]);    MULADD(at[30], at[92]);    MULADD(at[31], at[91]);    MULADD(at[32], at[90]);    MULADD(at[33], at[89]);    MULADD(at[34], at[88]);    MULADD(at[35], at[87]);    MULADD(at[36], at[86]);    MULADD(at[37], at[85]);    MULADD(at[38], at[84]);    MULADD(at[39], at[83]);    MULADD(at[40], at[82]);    MULADD(at[41], at[81]);    MULADD(at[42], at[80]);    MULADD(at[43], at[79]);    MULADD(at[44], at[78]);    MULADD(at[45], at[77]);    MULADD(at[46], at[76]);    MULADD(at[47], at[75]); 
+   COMBA_STORE(C->dp[74]);
+   /* 75 */
+   COMBA_FORWARD;
+   MULADD(at[28], at[95]);    MULADD(at[29], at[94]);    MULADD(at[30], at[93]);    MULADD(at[31], at[92]);    MULADD(at[32], at[91]);    MULADD(at[33], at[90]);    MULADD(at[34], at[89]);    MULADD(at[35], at[88]);    MULADD(at[36], at[87]);    MULADD(at[37], at[86]);    MULADD(at[38], at[85]);    MULADD(at[39], at[84]);    MULADD(at[40], at[83]);    MULADD(at[41], at[82]);    MULADD(at[42], at[81]);    MULADD(at[43], at[80]);    MULADD(at[44], at[79]);    MULADD(at[45], at[78]);    MULADD(at[46], at[77]);    MULADD(at[47], at[76]); 
+   COMBA_STORE(C->dp[75]);
+   /* 76 */
+   COMBA_FORWARD;
+   MULADD(at[29], at[95]);    MULADD(at[30], at[94]);    MULADD(at[31], at[93]);    MULADD(at[32], at[92]);    MULADD(at[33], at[91]);    MULADD(at[34], at[90]);    MULADD(at[35], at[89]);    MULADD(at[36], at[88]);    MULADD(at[37], at[87]);    MULADD(at[38], at[86]);    MULADD(at[39], at[85]);    MULADD(at[40], at[84]);    MULADD(at[41], at[83]);    MULADD(at[42], at[82]);    MULADD(at[43], at[81]);    MULADD(at[44], at[80]);    MULADD(at[45], at[79]);    MULADD(at[46], at[78]);    MULADD(at[47], at[77]); 
+   COMBA_STORE(C->dp[76]);
+   /* 77 */
+   COMBA_FORWARD;
+   MULADD(at[30], at[95]);    MULADD(at[31], at[94]);    MULADD(at[32], at[93]);    MULADD(at[33], at[92]);    MULADD(at[34], at[91]);    MULADD(at[35], at[90]);    MULADD(at[36], at[89]);    MULADD(at[37], at[88]);    MULADD(at[38], at[87]);    MULADD(at[39], at[86]);    MULADD(at[40], at[85]);    MULADD(at[41], at[84]);    MULADD(at[42], at[83]);    MULADD(at[43], at[82]);    MULADD(at[44], at[81]);    MULADD(at[45], at[80]);    MULADD(at[46], at[79]);    MULADD(at[47], at[78]); 
+   COMBA_STORE(C->dp[77]);
+   /* 78 */
+   COMBA_FORWARD;
+   MULADD(at[31], at[95]);    MULADD(at[32], at[94]);    MULADD(at[33], at[93]);    MULADD(at[34], at[92]);    MULADD(at[35], at[91]);    MULADD(at[36], at[90]);    MULADD(at[37], at[89]);    MULADD(at[38], at[88]);    MULADD(at[39], at[87]);    MULADD(at[40], at[86]);    MULADD(at[41], at[85]);    MULADD(at[42], at[84]);    MULADD(at[43], at[83]);    MULADD(at[44], at[82]);    MULADD(at[45], at[81]);    MULADD(at[46], at[80]);    MULADD(at[47], at[79]); 
+   COMBA_STORE(C->dp[78]);
+   /* 79 */
+   COMBA_FORWARD;
+   MULADD(at[32], at[95]);    MULADD(at[33], at[94]);    MULADD(at[34], at[93]);    MULADD(at[35], at[92]);    MULADD(at[36], at[91]);    MULADD(at[37], at[90]);    MULADD(at[38], at[89]);    MULADD(at[39], at[88]);    MULADD(at[40], at[87]);    MULADD(at[41], at[86]);    MULADD(at[42], at[85]);    MULADD(at[43], at[84]);    MULADD(at[44], at[83]);    MULADD(at[45], at[82]);    MULADD(at[46], at[81]);    MULADD(at[47], at[80]); 
+   COMBA_STORE(C->dp[79]);
+   /* 80 */
+   COMBA_FORWARD;
+   MULADD(at[33], at[95]);    MULADD(at[34], at[94]);    MULADD(at[35], at[93]);    MULADD(at[36], at[92]);    MULADD(at[37], at[91]);    MULADD(at[38], at[90]);    MULADD(at[39], at[89]);    MULADD(at[40], at[88]);    MULADD(at[41], at[87]);    MULADD(at[42], at[86]);    MULADD(at[43], at[85]);    MULADD(at[44], at[84]);    MULADD(at[45], at[83]);    MULADD(at[46], at[82]);    MULADD(at[47], at[81]); 
+   COMBA_STORE(C->dp[80]);
+   /* 81 */
+   COMBA_FORWARD;
+   MULADD(at[34], at[95]);    MULADD(at[35], at[94]);    MULADD(at[36], at[93]);    MULADD(at[37], at[92]);    MULADD(at[38], at[91]);    MULADD(at[39], at[90]);    MULADD(at[40], at[89]);    MULADD(at[41], at[88]);    MULADD(at[42], at[87]);    MULADD(at[43], at[86]);    MULADD(at[44], at[85]);    MULADD(at[45], at[84]);    MULADD(at[46], at[83]);    MULADD(at[47], at[82]); 
+   COMBA_STORE(C->dp[81]);
+   /* 82 */
+   COMBA_FORWARD;
+   MULADD(at[35], at[95]);    MULADD(at[36], at[94]);    MULADD(at[37], at[93]);    MULADD(at[38], at[92]);    MULADD(at[39], at[91]);    MULADD(at[40], at[90]);    MULADD(at[41], at[89]);    MULADD(at[42], at[88]);    MULADD(at[43], at[87]);    MULADD(at[44], at[86]);    MULADD(at[45], at[85]);    MULADD(at[46], at[84]);    MULADD(at[47], at[83]); 
+   COMBA_STORE(C->dp[82]);
+   /* 83 */
+   COMBA_FORWARD;
+   MULADD(at[36], at[95]);    MULADD(at[37], at[94]);    MULADD(at[38], at[93]);    MULADD(at[39], at[92]);    MULADD(at[40], at[91]);    MULADD(at[41], at[90]);    MULADD(at[42], at[89]);    MULADD(at[43], at[88]);    MULADD(at[44], at[87]);    MULADD(at[45], at[86]);    MULADD(at[46], at[85]);    MULADD(at[47], at[84]); 
+   COMBA_STORE(C->dp[83]);
+   /* 84 */
+   COMBA_FORWARD;
+   MULADD(at[37], at[95]);    MULADD(at[38], at[94]);    MULADD(at[39], at[93]);    MULADD(at[40], at[92]);    MULADD(at[41], at[91]);    MULADD(at[42], at[90]);    MULADD(at[43], at[89]);    MULADD(at[44], at[88]);    MULADD(at[45], at[87]);    MULADD(at[46], at[86]);    MULADD(at[47], at[85]); 
+   COMBA_STORE(C->dp[84]);
+   /* 85 */
+   COMBA_FORWARD;
+   MULADD(at[38], at[95]);    MULADD(at[39], at[94]);    MULADD(at[40], at[93]);    MULADD(at[41], at[92]);    MULADD(at[42], at[91]);    MULADD(at[43], at[90]);    MULADD(at[44], at[89]);    MULADD(at[45], at[88]);    MULADD(at[46], at[87]);    MULADD(at[47], at[86]); 
+   COMBA_STORE(C->dp[85]);
+   /* 86 */
+   COMBA_FORWARD;
+   MULADD(at[39], at[95]);    MULADD(at[40], at[94]);    MULADD(at[41], at[93]);    MULADD(at[42], at[92]);    MULADD(at[43], at[91]);    MULADD(at[44], at[90]);    MULADD(at[45], at[89]);    MULADD(at[46], at[88]);    MULADD(at[47], at[87]); 
+   COMBA_STORE(C->dp[86]);
+   /* 87 */
+   COMBA_FORWARD;
+   MULADD(at[40], at[95]);    MULADD(at[41], at[94]);    MULADD(at[42], at[93]);    MULADD(at[43], at[92]);    MULADD(at[44], at[91]);    MULADD(at[45], at[90]);    MULADD(at[46], at[89]);    MULADD(at[47], at[88]); 
+   COMBA_STORE(C->dp[87]);
+   /* 88 */
+   COMBA_FORWARD;
+   MULADD(at[41], at[95]);    MULADD(at[42], at[94]);    MULADD(at[43], at[93]);    MULADD(at[44], at[92]);    MULADD(at[45], at[91]);    MULADD(at[46], at[90]);    MULADD(at[47], at[89]); 
+   COMBA_STORE(C->dp[88]);
+   /* 89 */
+   COMBA_FORWARD;
+   MULADD(at[42], at[95]);    MULADD(at[43], at[94]);    MULADD(at[44], at[93]);    MULADD(at[45], at[92]);    MULADD(at[46], at[91]);    MULADD(at[47], at[90]); 
+   COMBA_STORE(C->dp[89]);
+   /* 90 */
+   COMBA_FORWARD;
+   MULADD(at[43], at[95]);    MULADD(at[44], at[94]);    MULADD(at[45], at[93]);    MULADD(at[46], at[92]);    MULADD(at[47], at[91]); 
+   COMBA_STORE(C->dp[90]);
+   /* 91 */
+   COMBA_FORWARD;
+   MULADD(at[44], at[95]);    MULADD(at[45], at[94]);    MULADD(at[46], at[93]);    MULADD(at[47], at[92]); 
+   COMBA_STORE(C->dp[91]);
+   /* 92 */
+   COMBA_FORWARD;
+   MULADD(at[45], at[95]);    MULADD(at[46], at[94]);    MULADD(at[47], at[93]); 
+   COMBA_STORE(C->dp[92]);
+   /* 93 */
+   COMBA_FORWARD;
+   MULADD(at[46], at[95]);    MULADD(at[47], at[94]); 
+   COMBA_STORE(C->dp[93]);
+   /* 94 */
+   COMBA_FORWARD;
+   MULADD(at[47], at[95]); 
+   COMBA_STORE(C->dp[94]);
+   COMBA_STORE2(C->dp[95]);
+   C->used = 96;
+   C->sign = A->sign ^ B->sign;
+   fp_clamp(C);
+   COMBA_FINI;
+}
+
+
 #endif
+
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: fp_mul_comba.c */
 
@@ -2742,7 +4925,7 @@ void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -2772,6 +4955,10 @@ void fp_mul_d(fp_int *a, fp_digit b, fp_int *c)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_mul_d.c */
 
 /* Start: fp_mulmod.c */
@@ -2782,7 +4969,7 @@ void fp_mul_d(fp_int *a, fp_digit b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 /* d = a * b (mod c) */
@@ -2794,6 +4981,10 @@ int fp_mulmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
   return fp_mod(&tmp, c, d);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_mulmod.c */
 
 /* Start: fp_prime_miller_rabin.c */
@@ -2804,7 +4995,7 @@ int fp_mulmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -2871,6 +5062,10 @@ void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result)
   *result = FP_YES;
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_prime_miller_rabin.c */
 
 /* Start: fp_prime_random_ex.c */
@@ -2881,7 +5076,7 @@ void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -2972,6 +5167,10 @@ error:
    return err;
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_prime_random_ex.c */
 
 /* Start: fp_radix_size.c */
@@ -2982,7 +5181,7 @@ error:
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3025,6 +5224,10 @@ int fp_radix_size(fp_int *a, int radix, int *size)
 
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_radix_size.c */
 
 /* Start: fp_read_radix.c */
@@ -3035,7 +5238,7 @@ int fp_radix_size(fp_int *a, int radix, int *size)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3095,6 +5298,10 @@ int fp_read_radix(fp_int *a, char *str, int radix)
   return FP_OKAY;
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_read_radix.c */
 
 /* Start: fp_read_signed_bin.c */
@@ -3105,7 +5312,7 @@ int fp_read_radix(fp_int *a, char *str, int radix)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3122,6 +5329,10 @@ void fp_read_signed_bin(fp_int *a, unsigned char *b, int c)
   }
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_read_signed_bin.c */
 
 /* Start: fp_read_unsigned_bin.c */
@@ -3132,7 +5343,7 @@ void fp_read_signed_bin(fp_int *a, unsigned char *b, int c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3150,6 +5361,10 @@ void fp_read_unsigned_bin(fp_int *a, unsigned char *b, int c)
   fp_clamp (a);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_read_unsigned_bin.c */
 
 /* Start: fp_reverse.c */
@@ -3160,7 +5375,7 @@ void fp_read_unsigned_bin(fp_int *a, unsigned char *b, int c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3181,6 +5396,10 @@ void bn_reverse (unsigned char *s, int len)
   }
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_reverse.c */
 
 /* Start: fp_rshd.c */
@@ -3191,7 +5410,7 @@ void bn_reverse (unsigned char *s, int len)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3221,6 +5440,10 @@ void fp_rshd(fp_int *a, int x)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_rshd.c */
 
 /* Start: fp_s_rmap.c */
@@ -3231,12 +5454,16 @@ void fp_rshd(fp_int *a, int x)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
 /* chars used in radix conversions */
 const char *fp_s_rmap = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/";
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: fp_s_rmap.c */
 
@@ -3248,7 +5475,7 @@ const char *fp_s_rmap = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrs
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3258,6 +5485,10 @@ void fp_set(fp_int *a, fp_digit b)
    a->dp[0] = b;
    a->used  = b ? 1 : 0;
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: fp_set.c */
 
@@ -3269,7 +5500,7 @@ void fp_set(fp_int *a, fp_digit b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3277,6 +5508,10 @@ int fp_signed_bin_size(fp_int *a)
 {
   return 1 + fp_unsigned_bin_size (a);
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: fp_signed_bin_size.c */
 
@@ -3288,7 +5523,7 @@ int fp_signed_bin_size(fp_int *a)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -3300,21 +5535,26 @@ void fp_sqr(fp_int *A, fp_int *B)
 
     y = A->used;
     if (y <= 64) { 
-        if (y <= 4) {
-           fp_sqr_comba4(A,B);
-        } else if (y <= 8) {
-           fp_sqr_comba8(A,B);
-#if defined(TFM_LARGE)
-        } else if (y <= 16 && y >= 12) {
-           fp_sqr_comba16(A,B);
+
+#if defined(TFM_SMALL_SET)
+        if (y <= 16) {
+           fp_sqr_comba_small(A,B);
+#elif defined(TFM_HUGE)
+        if (0) { 1; 
 #endif
 #if defined(TFM_HUGE)
-        } else if (y <= 32 && y >= 20) {
+        } else if (y <= 32) {
            fp_sqr_comba32(A,B);
-        } else if (y <= 64 && y >= 48) {
+        } else if (y <= 48) {
+           fp_sqr_comba48(A,B);
+        } else if (y <= 64) {
            fp_sqr_comba64(A,B);
 #endif
+#if !defined(TFM_SMALL_SET) && !defined(TFM_HUGE)
+        {
+#else
         } else {
+#endif
            fp_sqr_comba(A, B);
         }
        
@@ -3393,6 +5633,10 @@ Obvious points of optimization
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_sqr.c */
 
 /* Start: fp_sqr_comba.c */
@@ -3403,12 +5647,15 @@ Obvious points of optimization
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
-/* About this file...
-*/
+#if defined(TFM_PRESCOTT) && defined(TFM_SSE2)
+   #undef TFM_SSE2
+   #define TFM_X86
+#endif
+
 
 #if defined(TFM_X86)
 
@@ -3471,13 +5718,13 @@ asm (                                                     \
 
 #define SQRADDDB                                          \
 asm (                                                     \
-     "addl %3,%0         \n\t"                            \
-     "adcl %4,%1         \n\t"                            \
-     "adcl %5,%2         \n\t"                            \
-     "addl %3,%0         \n\t"                            \
-     "adcl %4,%1         \n\t"                            \
-     "adcl %5,%2         \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2), "=g"(sc0), "=g"(sc1), "=g"(sc2) : "0"(c0), "1"(c1), "2"(c2), "3"(sc0), "4"(sc1), "5"(sc2) : "%cc");
+     "addl %6,%0         \n\t"                            \
+     "adcl %7,%1         \n\t"                            \
+     "adcl %8,%2         \n\t"                            \
+     "addl %6,%0         \n\t"                            \
+     "adcl %7,%1         \n\t"                            \
+     "adcl %8,%2         \n\t"                            \
+     :"=r"(c0), "=r"(c1), "=r"(c2) : "0"(c0), "1"(c1), "2"(c2), "r"(sc0), "r"(sc1), "r"(sc2) : "%cc");
 
 #elif defined(TFM_X86_64)
 /* x86-64 optimized */
@@ -3537,15 +5784,15 @@ asm (                                                     \
      "adcq  $0,%2        \n\t"                            \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","%cc");
 
-#define SQRADDDB                                                               \
+#define SQRADDDB                                          \
 asm (                                                     \
-     "addq %3,%0         \n\t"                            \
-     "adcq %4,%1         \n\t"                            \
-     "adcq %5,%2         \n\t"                            \
-     "addq %3,%0         \n\t"                            \
-     "adcq %4,%1         \n\t"                            \
-     "adcq %5,%2         \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2), "=r"(sc0), "=r"(sc1), "=r"(sc2) : "0"(c0), "1"(c1), "2"(c2), "3"(sc0), "4"(sc1), "5"(sc2) : "%cc");
+     "addq %6,%0         \n\t"                            \
+     "adcq %7,%1         \n\t"                            \
+     "adcq %8,%2         \n\t"                            \
+     "addq %6,%0         \n\t"                            \
+     "adcq %7,%1         \n\t"                            \
+     "adcq %8,%2         \n\t"                            \
+     :"=r"(c0), "=r"(c1), "=r"(c2) : "0"(c0), "1"(c1), "2"(c2), "r"(sc0), "r"(sc1), "r"(sc2) : "%cc");
 
 #elif defined(TFM_SSE2)
 
@@ -3598,14 +5845,13 @@ asm volatile (                                            \
 #define SQRADDSC(i, j)                                                         \
 asm volatile (                                            \
      "movd  %6,%%mm0     \n\t"                            \
-     "pmuludq %%mm0,%%mm0\n\t"                            \
-     "movd  %%mm0,%%eax  \n\t"                            \
+     "movd  %7,%%mm1     \n\t"                            \
+     "pmuludq %%mm1,%%mm0\n\t"                            \
+     "movd  %%mm0,%0     \n\t"                            \
      "psrlq $32,%%mm0    \n\t"                            \
-     "movl  %%eax,%0     \n\t"                            \
-     "movd  %%mm0,%%eax  \n\t"                            \
-     "movl  %%eax,%1     \n\t"                            \
+     "movd  %%mm0,%1     \n\t"                            \
      "xorl  %2,%2        \n\t"                            \
-     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "m"(i) :"%eax","%cc");
+     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "m"(i), "m"(j));
 
 #define SQRADDAC(i, j)                                                         \
 asm volatile (                                            \
@@ -3618,20 +5864,17 @@ asm volatile (                                            \
      "addl  %%eax,%0     \n\t"                            \
      "adcl  %%edx,%1     \n\t"                            \
      "adcl  $0,%2        \n\t"                            \
-     "addl  %%eax,%0     \n\t"                            \
-     "adcl  %%edx,%1     \n\t"                            \
-     "adcl  $0,%2        \n\t"                            \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "m"(i), "m"(j)  :"%eax","%edx","%cc");
 
-#define SQRADDDB                                                               \
+#define SQRADDDB                                          \
 asm (                                                     \
-     "addl %3,%0         \n\t"                            \
-     "adcl %4,%1         \n\t"                            \
-     "adcl %5,%2         \n\t"                            \
-     "addl %3,%0         \n\t"                            \
-     "adcl %4,%1         \n\t"                            \
-     "adcl %5,%2         \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2), "=g"(sc0), "=g"(sc1), "=g"(sc2) : "0"(c0), "1"(c1), "2"(c2), "3"(sc0), "4"(sc1), "5"(sc2) : "%cc");
+     "addl %6,%0         \n\t"                            \
+     "adcl %7,%1         \n\t"                            \
+     "adcl %8,%2         \n\t"                            \
+     "addl %6,%0         \n\t"                            \
+     "adcl %7,%1         \n\t"                            \
+     "adcl %8,%2         \n\t"                            \
+     :"=r"(c0), "=r"(c1), "=r"(c2) : "0"(c0), "1"(c1), "2"(c2), "r"(sc0), "r"(sc1), "r"(sc2) : "%cc");
 
 #elif defined(TFM_ARM)
 
@@ -3690,13 +5933,82 @@ asm(                                                             \
 
 #define SQRADDDB                                                 \
 asm(                                                             \
-"  ADDS  %3,%0                     \n\t"                         \
-"  ADCS  %4,%1                     \n\t"                         \
-"  ADC   %5,%2                     \n\t"                         \
-"  ADDS  %3,%0                     \n\t"                         \
-"  ADCS  %4,%1                     \n\t"                         \
-"  ADC   %5,%2                     \n\t"                         \
-:"=r"(sc0), "=r"(sc1), "=r"(sc2), "=r"(c0), "=r"(c1), "=r"(c2) : "0"(sc0), "1"(sc1), "2"(sc2), "3"(c0), "4"(c1), "5"(c2) : "%cc");
+"  ADDS  %0,%0,%3                     \n\t"                      \
+"  ADCS  %1,%1,%4                     \n\t"                      \
+"  ADC   %2,%2,%5                     \n\t"                      \
+"  ADDS  %0,%0,%3                     \n\t"                      \
+"  ADCS  %1,%1,%4                     \n\t"                      \
+"  ADC   %2,%2,%5                     \n\t"                      \
+:"=r"(c0), "=r"(c1), "=r"(c2) : "r"(sc0), "r"(sc1), "r"(sc2), "0"(c0), "1"(c1), "2"(c2) : "%cc");
+
+#elif defined(TFM_PPC32)
+
+/* PPC32 */
+
+#define COMBA_START \
+
+#define CLEAR_CARRY \
+   c0 = c1 = c2 = 0;
+
+#define COMBA_STORE(x) \
+   x = c0;
+
+#define COMBA_STORE2(x) \
+   x = c1;
+
+#define CARRY_FORWARD \
+   do { c0 = c1; c1 = c2; c2 = 0; } while (0);
+
+#define COMBA_FINI \
+
+/* multiplies point i and j, updates carry "c1" and digit c2 */
+#define SQRADD(i, j)              \
+asm(                              \
+   " mullw  r16,%6,%6       \n\t" \
+   " addc   %0,%0,r16       \n\t" \
+   " mulhwu r16,%6,%6       \n\t" \
+   " adde   %1,%1,r16       \n\t" \
+   " addze  %2,%2           \n\t" \
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i):"r16","%cc");
+
+/* for squaring some of the terms are doubled... */
+#define SQRADD2(i, j)             \
+asm(                              \
+   " mullw  r16,%6,%7       \n\t" \
+   " mulhwu r17,%6,%7       \n\t" \
+   " addc   %0,%0,r16       \n\t" \
+   " adde   %1,%1,r17       \n\t" \
+   " addze  %2,%2           \n\t" \
+   " addc   %0,%0,r16       \n\t" \
+   " adde   %1,%1,r17       \n\t" \
+   " addze  %2,%2           \n\t" \
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"r16", "r17","%cc");
+
+#define SQRADDSC(i, j)            \
+asm(                              \
+   " mullw  %0,%6,%7        \n\t" \
+   " mulhwu %1,%6,%7        \n\t" \
+   " xor    %2,%2,%2        \n\t" \
+:"=r"(sc0), "=r"(sc1), "=r"(sc2):"0"(sc0), "1"(sc1), "2"(sc2), "r"(i),"r"(j) : "%cc");
+
+#define SQRADDAC(i, j)            \
+asm(                              \
+   " mullw  r16,%6,%7       \n\t" \
+   " addc   %0,%0,r16       \n\t" \
+   " mulhwu r16,%6,%7       \n\t" \
+   " adde   %1,%1,r16       \n\t" \
+   " addze  %2,%2           \n\t" \
+:"=r"(sc0), "=r"(sc1), "=r"(sc2):"0"(sc0), "1"(sc1), "2"(sc2), "r"(i), "r"(j):"r16", "%cc");
+
+#define SQRADDDB                  \
+asm(                              \
+   " addc   %0,%0,%3        \n\t" \
+   " adde   %1,%1,%4        \n\t" \
+   " adde   %2,%2,%5        \n\t" \
+   " addc   %0,%0,%3        \n\t" \
+   " adde   %1,%1,%4        \n\t" \
+   " adde   %2,%2,%5        \n\t" \
+:"=r"(c0), "=r"(c1), "=r"(c2) : "r"(sc0), "r"(sc1), "r"(sc2), "0"(c0), "1"(c1), "2"(c2) : "%cc");
 
 #else
 
@@ -3760,327 +6072,1521 @@ asm(                                                             \
 #endif
 
 #include "fp_sqr_comba_generic.c"
-void fp_sqr_comba4(fp_int *A, fp_int *B)
-{
-   fp_digit *a, b[8], c0, c1, c2, sc0, sc1, sc2;
 
-   a = A->dp;
-   COMBA_START; 
-
-   /* clear carries */
-   CLEAR_CARRY;
-
-   /* output 0 */
-   SQRADD(a[0],a[0]);
-   COMBA_STORE(b[0]);
-
-   /* output 1 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[1]); 
-   COMBA_STORE(b[1]);
-
-   /* output 2 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[2]); SQRADD(a[1], a[1]); 
-   COMBA_STORE(b[2]);
-
-   /* output 3 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[3]); SQRADD2(a[1], a[2]); 
-   COMBA_STORE(b[3]);
-
-   /* output 4 */
-   CARRY_FORWARD;
-   SQRADD2(a[1], a[3]); SQRADD(a[2], a[2]); 
-   COMBA_STORE(b[4]);
-
-   /* output 5 */
-   CARRY_FORWARD;
-   SQRADD2(a[2], a[3]); 
-   COMBA_STORE(b[5]);
-
-   /* output 6 */
-   CARRY_FORWARD;
-   SQRADD(a[3], a[3]); 
-   COMBA_STORE(b[6]);
-   COMBA_STORE2(b[7]);
-   COMBA_FINI;
-
-   B->used = 8;
-   B->sign = FP_ZPOS;
-   memcpy(B->dp, b, 8 * sizeof(fp_digit));
-   fp_clamp(B);
-}
-
-
-void fp_sqr_comba8(fp_int *A, fp_int *B)
-{
-   fp_digit *a, b[16], c0, c1, c2, sc0, sc1, sc2;
-
-   a = A->dp;
-   COMBA_START; 
-
-   /* clear carries */
-   CLEAR_CARRY;
-
-   /* output 0 */
-   SQRADD(a[0],a[0]);
-   COMBA_STORE(b[0]);
-
-   /* output 1 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[1]); 
-   COMBA_STORE(b[1]);
-
-   /* output 2 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[2]); SQRADD(a[1], a[1]); 
-   COMBA_STORE(b[2]);
-
-   /* output 3 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[3]); SQRADD2(a[1], a[2]); 
-   COMBA_STORE(b[3]);
-
-   /* output 4 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[4]); SQRADD2(a[1], a[3]); SQRADD(a[2], a[2]); 
-   COMBA_STORE(b[4]);
-
-   /* output 5 */
-   CARRY_FORWARD;
-   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
-   COMBA_STORE(b[5]);
-
-   /* output 6 */
-   CARRY_FORWARD;
-   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
-   COMBA_STORE(b[6]);
-
-   /* output 7 */
-   CARRY_FORWARD;
-   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
-   COMBA_STORE(b[7]);
-
-   /* output 8 */
-   CARRY_FORWARD;
-   SQRADDSC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
-   COMBA_STORE(b[8]);
-
-   /* output 9 */
-   CARRY_FORWARD;
-   SQRADDSC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
-   COMBA_STORE(b[9]);
-
-   /* output 10 */
-   CARRY_FORWARD;
-   SQRADD2(a[3], a[7]); SQRADD2(a[4], a[6]); SQRADD(a[5], a[5]); 
-   COMBA_STORE(b[10]);
-
-   /* output 11 */
-   CARRY_FORWARD;
-   SQRADD2(a[4], a[7]); SQRADD2(a[5], a[6]); 
-   COMBA_STORE(b[11]);
-
-   /* output 12 */
-   CARRY_FORWARD;
-   SQRADD2(a[5], a[7]); SQRADD(a[6], a[6]); 
-   COMBA_STORE(b[12]);
-
-   /* output 13 */
-   CARRY_FORWARD;
-   SQRADD2(a[6], a[7]); 
-   COMBA_STORE(b[13]);
-
-   /* output 14 */
-   CARRY_FORWARD;
-   SQRADD(a[7], a[7]); 
-   COMBA_STORE(b[14]);
-   COMBA_STORE2(b[15]);
-   COMBA_FINI;
-
-   B->used = 16;
-   B->sign = FP_ZPOS;
-   memcpy(B->dp, b, 16 * sizeof(fp_digit));
-   fp_clamp(B);
-}
-
-
-#ifdef TFM_LARGE
-void fp_sqr_comba16(fp_int *A, fp_int *B)
+#if defined(TFM_SMALL_SET)
+void fp_sqr_comba_small(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[32], c0, c1, c2, sc0, sc1, sc2;
+   switch (A->used) { 
+   case 1:
+      a = A->dp;
+      COMBA_START; 
 
-   a = A->dp;
-   COMBA_START; 
+      /* clear carries */
+      CLEAR_CARRY;
 
-   /* clear carries */
-   CLEAR_CARRY;
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+      COMBA_STORE2(b[1]);
+      COMBA_FINI;
 
-   /* output 0 */
-   SQRADD(a[0],a[0]);
-   COMBA_STORE(b[0]);
+      B->used = 2;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 2 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
 
-   /* output 1 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[1]); 
-   COMBA_STORE(b[1]);
+   case 2:
+      a = A->dp;
+      COMBA_START; 
 
-   /* output 2 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[2]); SQRADD(a[1], a[1]); 
-   COMBA_STORE(b[2]);
+      /* clear carries */
+      CLEAR_CARRY;
 
-   /* output 3 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[3]); SQRADD2(a[1], a[2]); 
-   COMBA_STORE(b[3]);
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
 
-   /* output 4 */
-   CARRY_FORWARD;
-   SQRADD2(a[0], a[4]); SQRADD2(a[1], a[3]); SQRADD(a[2], a[2]); 
-   COMBA_STORE(b[4]);
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
 
-   /* output 5 */
-   CARRY_FORWARD;
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+      COMBA_STORE2(b[3]);
+      COMBA_FINI;
+
+      B->used = 4;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 4 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 3:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+      COMBA_STORE2(b[5]);
+      COMBA_FINI;
+
+      B->used = 6;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 6 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 4:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+      SQRADD2(a[2], a[3]); 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+      SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+      COMBA_STORE2(b[7]);
+      COMBA_FINI;
+
+      B->used = 8;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 8 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 5:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+      SQRADD2(a[1], a[4]);    SQRADD2(a[2], a[3]); 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+      SQRADD2(a[2], a[4]);    SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+      SQRADD2(a[3], a[4]); 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+      SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+      COMBA_STORE2(b[9]);
+      COMBA_FINI;
+
+      B->used = 10;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 10 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 6:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
-   COMBA_STORE(b[5]);
+      COMBA_STORE(b[5]);
 
-   /* output 6 */
-   CARRY_FORWARD;
+      /* output 6 */
+      CARRY_FORWARD;
+      SQRADD2(a[1], a[5]);    SQRADD2(a[2], a[4]);    SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+      SQRADD2(a[2], a[5]);    SQRADD2(a[3], a[4]); 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+      SQRADD2(a[3], a[5]);    SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+      SQRADD2(a[4], a[5]); 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+      SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+      COMBA_STORE2(b[11]);
+      COMBA_FINI;
+
+      B->used = 12;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 12 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 7:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
-   COMBA_STORE(b[6]);
+      COMBA_STORE(b[6]);
 
-   /* output 7 */
-   CARRY_FORWARD;
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+      SQRADD2(a[2], a[6]);    SQRADD2(a[3], a[5]);    SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+      SQRADD2(a[3], a[6]);    SQRADD2(a[4], a[5]); 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+      SQRADD2(a[4], a[6]);    SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
+      SQRADD2(a[5], a[6]); 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
+      SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+      COMBA_STORE2(b[13]);
+      COMBA_FINI;
+
+      B->used = 14;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 14 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 8:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
-   COMBA_STORE(b[7]);
+      COMBA_STORE(b[7]);
 
-   /* output 8 */
-   CARRY_FORWARD;
+      /* output 8 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+   SQRADDSC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+      SQRADD2(a[3], a[7]);    SQRADD2(a[4], a[6]);    SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
+      SQRADD2(a[4], a[7]);    SQRADD2(a[5], a[6]); 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
+      SQRADD2(a[5], a[7]);    SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+
+      /* output 13 */
+      CARRY_FORWARD;
+      SQRADD2(a[6], a[7]); 
+      COMBA_STORE(b[13]);
+
+      /* output 14 */
+      CARRY_FORWARD;
+      SQRADD(a[7], a[7]); 
+      COMBA_STORE(b[14]);
+      COMBA_STORE2(b[15]);
+      COMBA_FINI;
+
+      B->used = 16;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 16 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 9:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
-   COMBA_STORE(b[8]);
+      COMBA_STORE(b[8]);
 
-   /* output 9 */
-   CARRY_FORWARD;
+      /* output 9 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+   SQRADDSC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
+   SQRADDSC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
+      SQRADD2(a[4], a[8]);    SQRADD2(a[5], a[7]);    SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+
+      /* output 13 */
+      CARRY_FORWARD;
+      SQRADD2(a[5], a[8]);    SQRADD2(a[6], a[7]); 
+      COMBA_STORE(b[13]);
+
+      /* output 14 */
+      CARRY_FORWARD;
+      SQRADD2(a[6], a[8]);    SQRADD(a[7], a[7]); 
+      COMBA_STORE(b[14]);
+
+      /* output 15 */
+      CARRY_FORWARD;
+      SQRADD2(a[7], a[8]); 
+      COMBA_STORE(b[15]);
+
+      /* output 16 */
+      CARRY_FORWARD;
+      SQRADD(a[8], a[8]); 
+      COMBA_STORE(b[16]);
+      COMBA_STORE2(b[17]);
+      COMBA_FINI;
+
+      B->used = 18;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 18 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 10:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[9]); SQRADDAC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
-   COMBA_STORE(b[9]);
+      COMBA_STORE(b[9]);
 
-   /* output 10 */
-   CARRY_FORWARD;
+      /* output 10 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[9]); SQRADDAC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
+   SQRADDSC(a[2], a[9]); SQRADDAC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
+   SQRADDSC(a[3], a[9]); SQRADDAC(a[4], a[8]); SQRADDAC(a[5], a[7]); SQRADDDB; SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+
+      /* output 13 */
+      CARRY_FORWARD;
+   SQRADDSC(a[4], a[9]); SQRADDAC(a[5], a[8]); SQRADDAC(a[6], a[7]); SQRADDDB; 
+      COMBA_STORE(b[13]);
+
+      /* output 14 */
+      CARRY_FORWARD;
+      SQRADD2(a[5], a[9]);    SQRADD2(a[6], a[8]);    SQRADD(a[7], a[7]); 
+      COMBA_STORE(b[14]);
+
+      /* output 15 */
+      CARRY_FORWARD;
+      SQRADD2(a[6], a[9]);    SQRADD2(a[7], a[8]); 
+      COMBA_STORE(b[15]);
+
+      /* output 16 */
+      CARRY_FORWARD;
+      SQRADD2(a[7], a[9]);    SQRADD(a[8], a[8]); 
+      COMBA_STORE(b[16]);
+
+      /* output 17 */
+      CARRY_FORWARD;
+      SQRADD2(a[8], a[9]); 
+      COMBA_STORE(b[17]);
+
+      /* output 18 */
+      CARRY_FORWARD;
+      SQRADD(a[9], a[9]); 
+      COMBA_STORE(b[18]);
+      COMBA_STORE2(b[19]);
+      COMBA_FINI;
+
+      B->used = 20;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 20 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 11:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[9]); SQRADDAC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[10]); SQRADDAC(a[1], a[9]); SQRADDAC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
-   COMBA_STORE(b[10]);
+      COMBA_STORE(b[10]);
 
-   /* output 11 */
-   CARRY_FORWARD;
+      /* output 11 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[10]); SQRADDAC(a[2], a[9]); SQRADDAC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
+   SQRADDSC(a[2], a[10]); SQRADDAC(a[3], a[9]); SQRADDAC(a[4], a[8]); SQRADDAC(a[5], a[7]); SQRADDDB; SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+
+      /* output 13 */
+      CARRY_FORWARD;
+   SQRADDSC(a[3], a[10]); SQRADDAC(a[4], a[9]); SQRADDAC(a[5], a[8]); SQRADDAC(a[6], a[7]); SQRADDDB; 
+      COMBA_STORE(b[13]);
+
+      /* output 14 */
+      CARRY_FORWARD;
+   SQRADDSC(a[4], a[10]); SQRADDAC(a[5], a[9]); SQRADDAC(a[6], a[8]); SQRADDDB; SQRADD(a[7], a[7]); 
+      COMBA_STORE(b[14]);
+
+      /* output 15 */
+      CARRY_FORWARD;
+   SQRADDSC(a[5], a[10]); SQRADDAC(a[6], a[9]); SQRADDAC(a[7], a[8]); SQRADDDB; 
+      COMBA_STORE(b[15]);
+
+      /* output 16 */
+      CARRY_FORWARD;
+      SQRADD2(a[6], a[10]);    SQRADD2(a[7], a[9]);    SQRADD(a[8], a[8]); 
+      COMBA_STORE(b[16]);
+
+      /* output 17 */
+      CARRY_FORWARD;
+      SQRADD2(a[7], a[10]);    SQRADD2(a[8], a[9]); 
+      COMBA_STORE(b[17]);
+
+      /* output 18 */
+      CARRY_FORWARD;
+      SQRADD2(a[8], a[10]);    SQRADD(a[9], a[9]); 
+      COMBA_STORE(b[18]);
+
+      /* output 19 */
+      CARRY_FORWARD;
+      SQRADD2(a[9], a[10]); 
+      COMBA_STORE(b[19]);
+
+      /* output 20 */
+      CARRY_FORWARD;
+      SQRADD(a[10], a[10]); 
+      COMBA_STORE(b[20]);
+      COMBA_STORE2(b[21]);
+      COMBA_FINI;
+
+      B->used = 22;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 22 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 12:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[9]); SQRADDAC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[10]); SQRADDAC(a[1], a[9]); SQRADDAC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[11]); SQRADDAC(a[1], a[10]); SQRADDAC(a[2], a[9]); SQRADDAC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
-   COMBA_STORE(b[11]);
+      COMBA_STORE(b[11]);
 
-   /* output 12 */
-   CARRY_FORWARD;
+      /* output 12 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[11]); SQRADDAC(a[2], a[10]); SQRADDAC(a[3], a[9]); SQRADDAC(a[4], a[8]); SQRADDAC(a[5], a[7]); SQRADDDB; SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+
+      /* output 13 */
+      CARRY_FORWARD;
+   SQRADDSC(a[2], a[11]); SQRADDAC(a[3], a[10]); SQRADDAC(a[4], a[9]); SQRADDAC(a[5], a[8]); SQRADDAC(a[6], a[7]); SQRADDDB; 
+      COMBA_STORE(b[13]);
+
+      /* output 14 */
+      CARRY_FORWARD;
+   SQRADDSC(a[3], a[11]); SQRADDAC(a[4], a[10]); SQRADDAC(a[5], a[9]); SQRADDAC(a[6], a[8]); SQRADDDB; SQRADD(a[7], a[7]); 
+      COMBA_STORE(b[14]);
+
+      /* output 15 */
+      CARRY_FORWARD;
+   SQRADDSC(a[4], a[11]); SQRADDAC(a[5], a[10]); SQRADDAC(a[6], a[9]); SQRADDAC(a[7], a[8]); SQRADDDB; 
+      COMBA_STORE(b[15]);
+
+      /* output 16 */
+      CARRY_FORWARD;
+   SQRADDSC(a[5], a[11]); SQRADDAC(a[6], a[10]); SQRADDAC(a[7], a[9]); SQRADDDB; SQRADD(a[8], a[8]); 
+      COMBA_STORE(b[16]);
+
+      /* output 17 */
+      CARRY_FORWARD;
+   SQRADDSC(a[6], a[11]); SQRADDAC(a[7], a[10]); SQRADDAC(a[8], a[9]); SQRADDDB; 
+      COMBA_STORE(b[17]);
+
+      /* output 18 */
+      CARRY_FORWARD;
+      SQRADD2(a[7], a[11]);    SQRADD2(a[8], a[10]);    SQRADD(a[9], a[9]); 
+      COMBA_STORE(b[18]);
+
+      /* output 19 */
+      CARRY_FORWARD;
+      SQRADD2(a[8], a[11]);    SQRADD2(a[9], a[10]); 
+      COMBA_STORE(b[19]);
+
+      /* output 20 */
+      CARRY_FORWARD;
+      SQRADD2(a[9], a[11]);    SQRADD(a[10], a[10]); 
+      COMBA_STORE(b[20]);
+
+      /* output 21 */
+      CARRY_FORWARD;
+      SQRADD2(a[10], a[11]); 
+      COMBA_STORE(b[21]);
+
+      /* output 22 */
+      CARRY_FORWARD;
+      SQRADD(a[11], a[11]); 
+      COMBA_STORE(b[22]);
+      COMBA_STORE2(b[23]);
+      COMBA_FINI;
+
+      B->used = 24;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 24 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 13:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[9]); SQRADDAC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[10]); SQRADDAC(a[1], a[9]); SQRADDAC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[11]); SQRADDAC(a[1], a[10]); SQRADDAC(a[2], a[9]); SQRADDAC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[12]); SQRADDAC(a[1], a[11]); SQRADDAC(a[2], a[10]); SQRADDAC(a[3], a[9]); SQRADDAC(a[4], a[8]); SQRADDAC(a[5], a[7]); SQRADDDB; SQRADD(a[6], a[6]); 
-   COMBA_STORE(b[12]);
+      COMBA_STORE(b[12]);
 
-   /* output 13 */
-   CARRY_FORWARD;
+      /* output 13 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[12]); SQRADDAC(a[2], a[11]); SQRADDAC(a[3], a[10]); SQRADDAC(a[4], a[9]); SQRADDAC(a[5], a[8]); SQRADDAC(a[6], a[7]); SQRADDDB; 
+      COMBA_STORE(b[13]);
+
+      /* output 14 */
+      CARRY_FORWARD;
+   SQRADDSC(a[2], a[12]); SQRADDAC(a[3], a[11]); SQRADDAC(a[4], a[10]); SQRADDAC(a[5], a[9]); SQRADDAC(a[6], a[8]); SQRADDDB; SQRADD(a[7], a[7]); 
+      COMBA_STORE(b[14]);
+
+      /* output 15 */
+      CARRY_FORWARD;
+   SQRADDSC(a[3], a[12]); SQRADDAC(a[4], a[11]); SQRADDAC(a[5], a[10]); SQRADDAC(a[6], a[9]); SQRADDAC(a[7], a[8]); SQRADDDB; 
+      COMBA_STORE(b[15]);
+
+      /* output 16 */
+      CARRY_FORWARD;
+   SQRADDSC(a[4], a[12]); SQRADDAC(a[5], a[11]); SQRADDAC(a[6], a[10]); SQRADDAC(a[7], a[9]); SQRADDDB; SQRADD(a[8], a[8]); 
+      COMBA_STORE(b[16]);
+
+      /* output 17 */
+      CARRY_FORWARD;
+   SQRADDSC(a[5], a[12]); SQRADDAC(a[6], a[11]); SQRADDAC(a[7], a[10]); SQRADDAC(a[8], a[9]); SQRADDDB; 
+      COMBA_STORE(b[17]);
+
+      /* output 18 */
+      CARRY_FORWARD;
+   SQRADDSC(a[6], a[12]); SQRADDAC(a[7], a[11]); SQRADDAC(a[8], a[10]); SQRADDDB; SQRADD(a[9], a[9]); 
+      COMBA_STORE(b[18]);
+
+      /* output 19 */
+      CARRY_FORWARD;
+   SQRADDSC(a[7], a[12]); SQRADDAC(a[8], a[11]); SQRADDAC(a[9], a[10]); SQRADDDB; 
+      COMBA_STORE(b[19]);
+
+      /* output 20 */
+      CARRY_FORWARD;
+      SQRADD2(a[8], a[12]);    SQRADD2(a[9], a[11]);    SQRADD(a[10], a[10]); 
+      COMBA_STORE(b[20]);
+
+      /* output 21 */
+      CARRY_FORWARD;
+      SQRADD2(a[9], a[12]);    SQRADD2(a[10], a[11]); 
+      COMBA_STORE(b[21]);
+
+      /* output 22 */
+      CARRY_FORWARD;
+      SQRADD2(a[10], a[12]);    SQRADD(a[11], a[11]); 
+      COMBA_STORE(b[22]);
+
+      /* output 23 */
+      CARRY_FORWARD;
+      SQRADD2(a[11], a[12]); 
+      COMBA_STORE(b[23]);
+
+      /* output 24 */
+      CARRY_FORWARD;
+      SQRADD(a[12], a[12]); 
+      COMBA_STORE(b[24]);
+      COMBA_STORE2(b[25]);
+      COMBA_FINI;
+
+      B->used = 26;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 26 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 14:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[9]); SQRADDAC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[10]); SQRADDAC(a[1], a[9]); SQRADDAC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[11]); SQRADDAC(a[1], a[10]); SQRADDAC(a[2], a[9]); SQRADDAC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[12]); SQRADDAC(a[1], a[11]); SQRADDAC(a[2], a[10]); SQRADDAC(a[3], a[9]); SQRADDAC(a[4], a[8]); SQRADDAC(a[5], a[7]); SQRADDDB; SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+
+      /* output 13 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[13]); SQRADDAC(a[1], a[12]); SQRADDAC(a[2], a[11]); SQRADDAC(a[3], a[10]); SQRADDAC(a[4], a[9]); SQRADDAC(a[5], a[8]); SQRADDAC(a[6], a[7]); SQRADDDB; 
-   COMBA_STORE(b[13]);
+      COMBA_STORE(b[13]);
 
-   /* output 14 */
-   CARRY_FORWARD;
+      /* output 14 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[13]); SQRADDAC(a[2], a[12]); SQRADDAC(a[3], a[11]); SQRADDAC(a[4], a[10]); SQRADDAC(a[5], a[9]); SQRADDAC(a[6], a[8]); SQRADDDB; SQRADD(a[7], a[7]); 
+      COMBA_STORE(b[14]);
+
+      /* output 15 */
+      CARRY_FORWARD;
+   SQRADDSC(a[2], a[13]); SQRADDAC(a[3], a[12]); SQRADDAC(a[4], a[11]); SQRADDAC(a[5], a[10]); SQRADDAC(a[6], a[9]); SQRADDAC(a[7], a[8]); SQRADDDB; 
+      COMBA_STORE(b[15]);
+
+      /* output 16 */
+      CARRY_FORWARD;
+   SQRADDSC(a[3], a[13]); SQRADDAC(a[4], a[12]); SQRADDAC(a[5], a[11]); SQRADDAC(a[6], a[10]); SQRADDAC(a[7], a[9]); SQRADDDB; SQRADD(a[8], a[8]); 
+      COMBA_STORE(b[16]);
+
+      /* output 17 */
+      CARRY_FORWARD;
+   SQRADDSC(a[4], a[13]); SQRADDAC(a[5], a[12]); SQRADDAC(a[6], a[11]); SQRADDAC(a[7], a[10]); SQRADDAC(a[8], a[9]); SQRADDDB; 
+      COMBA_STORE(b[17]);
+
+      /* output 18 */
+      CARRY_FORWARD;
+   SQRADDSC(a[5], a[13]); SQRADDAC(a[6], a[12]); SQRADDAC(a[7], a[11]); SQRADDAC(a[8], a[10]); SQRADDDB; SQRADD(a[9], a[9]); 
+      COMBA_STORE(b[18]);
+
+      /* output 19 */
+      CARRY_FORWARD;
+   SQRADDSC(a[6], a[13]); SQRADDAC(a[7], a[12]); SQRADDAC(a[8], a[11]); SQRADDAC(a[9], a[10]); SQRADDDB; 
+      COMBA_STORE(b[19]);
+
+      /* output 20 */
+      CARRY_FORWARD;
+   SQRADDSC(a[7], a[13]); SQRADDAC(a[8], a[12]); SQRADDAC(a[9], a[11]); SQRADDDB; SQRADD(a[10], a[10]); 
+      COMBA_STORE(b[20]);
+
+      /* output 21 */
+      CARRY_FORWARD;
+   SQRADDSC(a[8], a[13]); SQRADDAC(a[9], a[12]); SQRADDAC(a[10], a[11]); SQRADDDB; 
+      COMBA_STORE(b[21]);
+
+      /* output 22 */
+      CARRY_FORWARD;
+      SQRADD2(a[9], a[13]);    SQRADD2(a[10], a[12]);    SQRADD(a[11], a[11]); 
+      COMBA_STORE(b[22]);
+
+      /* output 23 */
+      CARRY_FORWARD;
+      SQRADD2(a[10], a[13]);    SQRADD2(a[11], a[12]); 
+      COMBA_STORE(b[23]);
+
+      /* output 24 */
+      CARRY_FORWARD;
+      SQRADD2(a[11], a[13]);    SQRADD(a[12], a[12]); 
+      COMBA_STORE(b[24]);
+
+      /* output 25 */
+      CARRY_FORWARD;
+      SQRADD2(a[12], a[13]); 
+      COMBA_STORE(b[25]);
+
+      /* output 26 */
+      CARRY_FORWARD;
+      SQRADD(a[13], a[13]); 
+      COMBA_STORE(b[26]);
+      COMBA_STORE2(b[27]);
+      COMBA_FINI;
+
+      B->used = 28;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 28 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 15:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[9]); SQRADDAC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[10]); SQRADDAC(a[1], a[9]); SQRADDAC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[11]); SQRADDAC(a[1], a[10]); SQRADDAC(a[2], a[9]); SQRADDAC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[12]); SQRADDAC(a[1], a[11]); SQRADDAC(a[2], a[10]); SQRADDAC(a[3], a[9]); SQRADDAC(a[4], a[8]); SQRADDAC(a[5], a[7]); SQRADDDB; SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+
+      /* output 13 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[13]); SQRADDAC(a[1], a[12]); SQRADDAC(a[2], a[11]); SQRADDAC(a[3], a[10]); SQRADDAC(a[4], a[9]); SQRADDAC(a[5], a[8]); SQRADDAC(a[6], a[7]); SQRADDDB; 
+      COMBA_STORE(b[13]);
+
+      /* output 14 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[14]); SQRADDAC(a[1], a[13]); SQRADDAC(a[2], a[12]); SQRADDAC(a[3], a[11]); SQRADDAC(a[4], a[10]); SQRADDAC(a[5], a[9]); SQRADDAC(a[6], a[8]); SQRADDDB; SQRADD(a[7], a[7]); 
-   COMBA_STORE(b[14]);
+      COMBA_STORE(b[14]);
 
-   /* output 15 */
-   CARRY_FORWARD;
+      /* output 15 */
+      CARRY_FORWARD;
+   SQRADDSC(a[1], a[14]); SQRADDAC(a[2], a[13]); SQRADDAC(a[3], a[12]); SQRADDAC(a[4], a[11]); SQRADDAC(a[5], a[10]); SQRADDAC(a[6], a[9]); SQRADDAC(a[7], a[8]); SQRADDDB; 
+      COMBA_STORE(b[15]);
+
+      /* output 16 */
+      CARRY_FORWARD;
+   SQRADDSC(a[2], a[14]); SQRADDAC(a[3], a[13]); SQRADDAC(a[4], a[12]); SQRADDAC(a[5], a[11]); SQRADDAC(a[6], a[10]); SQRADDAC(a[7], a[9]); SQRADDDB; SQRADD(a[8], a[8]); 
+      COMBA_STORE(b[16]);
+
+      /* output 17 */
+      CARRY_FORWARD;
+   SQRADDSC(a[3], a[14]); SQRADDAC(a[4], a[13]); SQRADDAC(a[5], a[12]); SQRADDAC(a[6], a[11]); SQRADDAC(a[7], a[10]); SQRADDAC(a[8], a[9]); SQRADDDB; 
+      COMBA_STORE(b[17]);
+
+      /* output 18 */
+      CARRY_FORWARD;
+   SQRADDSC(a[4], a[14]); SQRADDAC(a[5], a[13]); SQRADDAC(a[6], a[12]); SQRADDAC(a[7], a[11]); SQRADDAC(a[8], a[10]); SQRADDDB; SQRADD(a[9], a[9]); 
+      COMBA_STORE(b[18]);
+
+      /* output 19 */
+      CARRY_FORWARD;
+   SQRADDSC(a[5], a[14]); SQRADDAC(a[6], a[13]); SQRADDAC(a[7], a[12]); SQRADDAC(a[8], a[11]); SQRADDAC(a[9], a[10]); SQRADDDB; 
+      COMBA_STORE(b[19]);
+
+      /* output 20 */
+      CARRY_FORWARD;
+   SQRADDSC(a[6], a[14]); SQRADDAC(a[7], a[13]); SQRADDAC(a[8], a[12]); SQRADDAC(a[9], a[11]); SQRADDDB; SQRADD(a[10], a[10]); 
+      COMBA_STORE(b[20]);
+
+      /* output 21 */
+      CARRY_FORWARD;
+   SQRADDSC(a[7], a[14]); SQRADDAC(a[8], a[13]); SQRADDAC(a[9], a[12]); SQRADDAC(a[10], a[11]); SQRADDDB; 
+      COMBA_STORE(b[21]);
+
+      /* output 22 */
+      CARRY_FORWARD;
+   SQRADDSC(a[8], a[14]); SQRADDAC(a[9], a[13]); SQRADDAC(a[10], a[12]); SQRADDDB; SQRADD(a[11], a[11]); 
+      COMBA_STORE(b[22]);
+
+      /* output 23 */
+      CARRY_FORWARD;
+   SQRADDSC(a[9], a[14]); SQRADDAC(a[10], a[13]); SQRADDAC(a[11], a[12]); SQRADDDB; 
+      COMBA_STORE(b[23]);
+
+      /* output 24 */
+      CARRY_FORWARD;
+      SQRADD2(a[10], a[14]);    SQRADD2(a[11], a[13]);    SQRADD(a[12], a[12]); 
+      COMBA_STORE(b[24]);
+
+      /* output 25 */
+      CARRY_FORWARD;
+      SQRADD2(a[11], a[14]);    SQRADD2(a[12], a[13]); 
+      COMBA_STORE(b[25]);
+
+      /* output 26 */
+      CARRY_FORWARD;
+      SQRADD2(a[12], a[14]);    SQRADD(a[13], a[13]); 
+      COMBA_STORE(b[26]);
+
+      /* output 27 */
+      CARRY_FORWARD;
+      SQRADD2(a[13], a[14]); 
+      COMBA_STORE(b[27]);
+
+      /* output 28 */
+      CARRY_FORWARD;
+      SQRADD(a[14], a[14]); 
+      COMBA_STORE(b[28]);
+      COMBA_STORE2(b[29]);
+      COMBA_FINI;
+
+      B->used = 30;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 30 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+
+   case 16:
+      a = A->dp;
+      COMBA_START; 
+
+      /* clear carries */
+      CLEAR_CARRY;
+
+      /* output 0 */
+      SQRADD(a[0],a[0]);
+      COMBA_STORE(b[0]);
+
+      /* output 1 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[1]); 
+      COMBA_STORE(b[1]);
+
+      /* output 2 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[2]);    SQRADD(a[1], a[1]); 
+      COMBA_STORE(b[2]);
+
+      /* output 3 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[3]);    SQRADD2(a[1], a[2]); 
+      COMBA_STORE(b[3]);
+
+      /* output 4 */
+      CARRY_FORWARD;
+      SQRADD2(a[0], a[4]);    SQRADD2(a[1], a[3]);    SQRADD(a[2], a[2]); 
+      COMBA_STORE(b[4]);
+
+      /* output 5 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+      COMBA_STORE(b[5]);
+
+      /* output 6 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+      COMBA_STORE(b[6]);
+
+      /* output 7 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+      COMBA_STORE(b[7]);
+
+      /* output 8 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+      COMBA_STORE(b[8]);
+
+      /* output 9 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[9]); SQRADDAC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+      COMBA_STORE(b[9]);
+
+      /* output 10 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[10]); SQRADDAC(a[1], a[9]); SQRADDAC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
+      COMBA_STORE(b[10]);
+
+      /* output 11 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[11]); SQRADDAC(a[1], a[10]); SQRADDAC(a[2], a[9]); SQRADDAC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
+      COMBA_STORE(b[11]);
+
+      /* output 12 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[12]); SQRADDAC(a[1], a[11]); SQRADDAC(a[2], a[10]); SQRADDAC(a[3], a[9]); SQRADDAC(a[4], a[8]); SQRADDAC(a[5], a[7]); SQRADDDB; SQRADD(a[6], a[6]); 
+      COMBA_STORE(b[12]);
+
+      /* output 13 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[13]); SQRADDAC(a[1], a[12]); SQRADDAC(a[2], a[11]); SQRADDAC(a[3], a[10]); SQRADDAC(a[4], a[9]); SQRADDAC(a[5], a[8]); SQRADDAC(a[6], a[7]); SQRADDDB; 
+      COMBA_STORE(b[13]);
+
+      /* output 14 */
+      CARRY_FORWARD;
+   SQRADDSC(a[0], a[14]); SQRADDAC(a[1], a[13]); SQRADDAC(a[2], a[12]); SQRADDAC(a[3], a[11]); SQRADDAC(a[4], a[10]); SQRADDAC(a[5], a[9]); SQRADDAC(a[6], a[8]); SQRADDDB; SQRADD(a[7], a[7]); 
+      COMBA_STORE(b[14]);
+
+      /* output 15 */
+      CARRY_FORWARD;
    SQRADDSC(a[0], a[15]); SQRADDAC(a[1], a[14]); SQRADDAC(a[2], a[13]); SQRADDAC(a[3], a[12]); SQRADDAC(a[4], a[11]); SQRADDAC(a[5], a[10]); SQRADDAC(a[6], a[9]); SQRADDAC(a[7], a[8]); SQRADDDB; 
-   COMBA_STORE(b[15]);
+      COMBA_STORE(b[15]);
 
-   /* output 16 */
-   CARRY_FORWARD;
+      /* output 16 */
+      CARRY_FORWARD;
    SQRADDSC(a[1], a[15]); SQRADDAC(a[2], a[14]); SQRADDAC(a[3], a[13]); SQRADDAC(a[4], a[12]); SQRADDAC(a[5], a[11]); SQRADDAC(a[6], a[10]); SQRADDAC(a[7], a[9]); SQRADDDB; SQRADD(a[8], a[8]); 
-   COMBA_STORE(b[16]);
+      COMBA_STORE(b[16]);
 
-   /* output 17 */
-   CARRY_FORWARD;
+      /* output 17 */
+      CARRY_FORWARD;
    SQRADDSC(a[2], a[15]); SQRADDAC(a[3], a[14]); SQRADDAC(a[4], a[13]); SQRADDAC(a[5], a[12]); SQRADDAC(a[6], a[11]); SQRADDAC(a[7], a[10]); SQRADDAC(a[8], a[9]); SQRADDDB; 
-   COMBA_STORE(b[17]);
+      COMBA_STORE(b[17]);
 
-   /* output 18 */
-   CARRY_FORWARD;
+      /* output 18 */
+      CARRY_FORWARD;
    SQRADDSC(a[3], a[15]); SQRADDAC(a[4], a[14]); SQRADDAC(a[5], a[13]); SQRADDAC(a[6], a[12]); SQRADDAC(a[7], a[11]); SQRADDAC(a[8], a[10]); SQRADDDB; SQRADD(a[9], a[9]); 
-   COMBA_STORE(b[18]);
+      COMBA_STORE(b[18]);
 
-   /* output 19 */
-   CARRY_FORWARD;
+      /* output 19 */
+      CARRY_FORWARD;
    SQRADDSC(a[4], a[15]); SQRADDAC(a[5], a[14]); SQRADDAC(a[6], a[13]); SQRADDAC(a[7], a[12]); SQRADDAC(a[8], a[11]); SQRADDAC(a[9], a[10]); SQRADDDB; 
-   COMBA_STORE(b[19]);
+      COMBA_STORE(b[19]);
 
-   /* output 20 */
-   CARRY_FORWARD;
+      /* output 20 */
+      CARRY_FORWARD;
    SQRADDSC(a[5], a[15]); SQRADDAC(a[6], a[14]); SQRADDAC(a[7], a[13]); SQRADDAC(a[8], a[12]); SQRADDAC(a[9], a[11]); SQRADDDB; SQRADD(a[10], a[10]); 
-   COMBA_STORE(b[20]);
+      COMBA_STORE(b[20]);
 
-   /* output 21 */
-   CARRY_FORWARD;
+      /* output 21 */
+      CARRY_FORWARD;
    SQRADDSC(a[6], a[15]); SQRADDAC(a[7], a[14]); SQRADDAC(a[8], a[13]); SQRADDAC(a[9], a[12]); SQRADDAC(a[10], a[11]); SQRADDDB; 
-   COMBA_STORE(b[21]);
+      COMBA_STORE(b[21]);
 
-   /* output 22 */
-   CARRY_FORWARD;
+      /* output 22 */
+      CARRY_FORWARD;
    SQRADDSC(a[7], a[15]); SQRADDAC(a[8], a[14]); SQRADDAC(a[9], a[13]); SQRADDAC(a[10], a[12]); SQRADDDB; SQRADD(a[11], a[11]); 
-   COMBA_STORE(b[22]);
+      COMBA_STORE(b[22]);
 
-   /* output 23 */
-   CARRY_FORWARD;
+      /* output 23 */
+      CARRY_FORWARD;
    SQRADDSC(a[8], a[15]); SQRADDAC(a[9], a[14]); SQRADDAC(a[10], a[13]); SQRADDAC(a[11], a[12]); SQRADDDB; 
-   COMBA_STORE(b[23]);
+      COMBA_STORE(b[23]);
 
-   /* output 24 */
-   CARRY_FORWARD;
+      /* output 24 */
+      CARRY_FORWARD;
    SQRADDSC(a[9], a[15]); SQRADDAC(a[10], a[14]); SQRADDAC(a[11], a[13]); SQRADDDB; SQRADD(a[12], a[12]); 
-   COMBA_STORE(b[24]);
+      COMBA_STORE(b[24]);
 
-   /* output 25 */
-   CARRY_FORWARD;
+      /* output 25 */
+      CARRY_FORWARD;
    SQRADDSC(a[10], a[15]); SQRADDAC(a[11], a[14]); SQRADDAC(a[12], a[13]); SQRADDDB; 
-   COMBA_STORE(b[25]);
+      COMBA_STORE(b[25]);
 
-   /* output 26 */
-   CARRY_FORWARD;
-   SQRADD2(a[11], a[15]); SQRADD2(a[12], a[14]); SQRADD(a[13], a[13]); 
-   COMBA_STORE(b[26]);
+      /* output 26 */
+      CARRY_FORWARD;
+      SQRADD2(a[11], a[15]);    SQRADD2(a[12], a[14]);    SQRADD(a[13], a[13]); 
+      COMBA_STORE(b[26]);
 
-   /* output 27 */
-   CARRY_FORWARD;
-   SQRADD2(a[12], a[15]); SQRADD2(a[13], a[14]); 
-   COMBA_STORE(b[27]);
+      /* output 27 */
+      CARRY_FORWARD;
+      SQRADD2(a[12], a[15]);    SQRADD2(a[13], a[14]); 
+      COMBA_STORE(b[27]);
 
-   /* output 28 */
-   CARRY_FORWARD;
-   SQRADD2(a[13], a[15]); SQRADD(a[14], a[14]); 
-   COMBA_STORE(b[28]);
+      /* output 28 */
+      CARRY_FORWARD;
+      SQRADD2(a[13], a[15]);    SQRADD(a[14], a[14]); 
+      COMBA_STORE(b[28]);
 
-   /* output 29 */
-   CARRY_FORWARD;
-   SQRADD2(a[14], a[15]); 
-   COMBA_STORE(b[29]);
+      /* output 29 */
+      CARRY_FORWARD;
+      SQRADD2(a[14], a[15]); 
+      COMBA_STORE(b[29]);
 
-   /* output 30 */
-   CARRY_FORWARD;
-   SQRADD(a[15], a[15]); 
-   COMBA_STORE(b[30]);
-   COMBA_STORE2(b[31]);
-   COMBA_FINI;
+      /* output 30 */
+      CARRY_FORWARD;
+      SQRADD(a[15], a[15]); 
+      COMBA_STORE(b[30]);
+      COMBA_STORE2(b[31]);
+      COMBA_FINI;
 
-   B->used = 32;
-   B->sign = FP_ZPOS;
-   memcpy(B->dp, b, 32 * sizeof(fp_digit));
-   fp_clamp(B);
+      B->used = 32;
+      B->sign = FP_ZPOS;
+      memcpy(B->dp, b, 32 * sizeof(fp_digit));
+      fp_clamp(B);
+      break;
+}
 }
 
+#endif /* TFM_SMALL_SET */
 
-#endif
+
 #ifdef TFM_HUGE
 void fp_sqr_comba32(fp_int *A, fp_int *B)
 {
@@ -5070,12 +8576,519 @@ void fp_sqr_comba64(fp_int *A, fp_int *B)
    fp_clamp(B);
 }
 
+void fp_sqr_comba48(fp_int *A, fp_int *B)
+{
+   fp_digit *a, b[96], c0, c1, c2, sc0, sc1, sc2;
+
+   a = A->dp;
+   COMBA_START; 
+
+   /* clear carries */
+   CLEAR_CARRY;
+
+   /* output 0 */
+   SQRADD(a[0],a[0]);
+   COMBA_STORE(b[0]);
+
+   /* output 1 */
+   CARRY_FORWARD;
+   SQRADD2(a[0], a[1]); 
+   COMBA_STORE(b[1]);
+
+   /* output 2 */
+   CARRY_FORWARD;
+   SQRADD2(a[0], a[2]); SQRADD(a[1], a[1]); 
+   COMBA_STORE(b[2]);
+
+   /* output 3 */
+   CARRY_FORWARD;
+   SQRADD2(a[0], a[3]); SQRADD2(a[1], a[2]); 
+   COMBA_STORE(b[3]);
+
+   /* output 4 */
+   CARRY_FORWARD;
+   SQRADD2(a[0], a[4]); SQRADD2(a[1], a[3]); SQRADD(a[2], a[2]); 
+   COMBA_STORE(b[4]);
+
+   /* output 5 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[5]); SQRADDAC(a[1], a[4]); SQRADDAC(a[2], a[3]); SQRADDDB; 
+   COMBA_STORE(b[5]);
+
+   /* output 6 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[6]); SQRADDAC(a[1], a[5]); SQRADDAC(a[2], a[4]); SQRADDDB; SQRADD(a[3], a[3]); 
+   COMBA_STORE(b[6]);
+
+   /* output 7 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[7]); SQRADDAC(a[1], a[6]); SQRADDAC(a[2], a[5]); SQRADDAC(a[3], a[4]); SQRADDDB; 
+   COMBA_STORE(b[7]);
+
+   /* output 8 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+   COMBA_STORE(b[8]);
+
+   /* output 9 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[9]); SQRADDAC(a[1], a[8]); SQRADDAC(a[2], a[7]); SQRADDAC(a[3], a[6]); SQRADDAC(a[4], a[5]); SQRADDDB; 
+   COMBA_STORE(b[9]);
+
+   /* output 10 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[10]); SQRADDAC(a[1], a[9]); SQRADDAC(a[2], a[8]); SQRADDAC(a[3], a[7]); SQRADDAC(a[4], a[6]); SQRADDDB; SQRADD(a[5], a[5]); 
+   COMBA_STORE(b[10]);
+
+   /* output 11 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[11]); SQRADDAC(a[1], a[10]); SQRADDAC(a[2], a[9]); SQRADDAC(a[3], a[8]); SQRADDAC(a[4], a[7]); SQRADDAC(a[5], a[6]); SQRADDDB; 
+   COMBA_STORE(b[11]);
+
+   /* output 12 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[12]); SQRADDAC(a[1], a[11]); SQRADDAC(a[2], a[10]); SQRADDAC(a[3], a[9]); SQRADDAC(a[4], a[8]); SQRADDAC(a[5], a[7]); SQRADDDB; SQRADD(a[6], a[6]); 
+   COMBA_STORE(b[12]);
+
+   /* output 13 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[13]); SQRADDAC(a[1], a[12]); SQRADDAC(a[2], a[11]); SQRADDAC(a[3], a[10]); SQRADDAC(a[4], a[9]); SQRADDAC(a[5], a[8]); SQRADDAC(a[6], a[7]); SQRADDDB; 
+   COMBA_STORE(b[13]);
+
+   /* output 14 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[14]); SQRADDAC(a[1], a[13]); SQRADDAC(a[2], a[12]); SQRADDAC(a[3], a[11]); SQRADDAC(a[4], a[10]); SQRADDAC(a[5], a[9]); SQRADDAC(a[6], a[8]); SQRADDDB; SQRADD(a[7], a[7]); 
+   COMBA_STORE(b[14]);
+
+   /* output 15 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[15]); SQRADDAC(a[1], a[14]); SQRADDAC(a[2], a[13]); SQRADDAC(a[3], a[12]); SQRADDAC(a[4], a[11]); SQRADDAC(a[5], a[10]); SQRADDAC(a[6], a[9]); SQRADDAC(a[7], a[8]); SQRADDDB; 
+   COMBA_STORE(b[15]);
+
+   /* output 16 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[16]); SQRADDAC(a[1], a[15]); SQRADDAC(a[2], a[14]); SQRADDAC(a[3], a[13]); SQRADDAC(a[4], a[12]); SQRADDAC(a[5], a[11]); SQRADDAC(a[6], a[10]); SQRADDAC(a[7], a[9]); SQRADDDB; SQRADD(a[8], a[8]); 
+   COMBA_STORE(b[16]);
+
+   /* output 17 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[17]); SQRADDAC(a[1], a[16]); SQRADDAC(a[2], a[15]); SQRADDAC(a[3], a[14]); SQRADDAC(a[4], a[13]); SQRADDAC(a[5], a[12]); SQRADDAC(a[6], a[11]); SQRADDAC(a[7], a[10]); SQRADDAC(a[8], a[9]); SQRADDDB; 
+   COMBA_STORE(b[17]);
+
+   /* output 18 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[18]); SQRADDAC(a[1], a[17]); SQRADDAC(a[2], a[16]); SQRADDAC(a[3], a[15]); SQRADDAC(a[4], a[14]); SQRADDAC(a[5], a[13]); SQRADDAC(a[6], a[12]); SQRADDAC(a[7], a[11]); SQRADDAC(a[8], a[10]); SQRADDDB; SQRADD(a[9], a[9]); 
+   COMBA_STORE(b[18]);
+
+   /* output 19 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[19]); SQRADDAC(a[1], a[18]); SQRADDAC(a[2], a[17]); SQRADDAC(a[3], a[16]); SQRADDAC(a[4], a[15]); SQRADDAC(a[5], a[14]); SQRADDAC(a[6], a[13]); SQRADDAC(a[7], a[12]); SQRADDAC(a[8], a[11]); SQRADDAC(a[9], a[10]); SQRADDDB; 
+   COMBA_STORE(b[19]);
+
+   /* output 20 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[20]); SQRADDAC(a[1], a[19]); SQRADDAC(a[2], a[18]); SQRADDAC(a[3], a[17]); SQRADDAC(a[4], a[16]); SQRADDAC(a[5], a[15]); SQRADDAC(a[6], a[14]); SQRADDAC(a[7], a[13]); SQRADDAC(a[8], a[12]); SQRADDAC(a[9], a[11]); SQRADDDB; SQRADD(a[10], a[10]); 
+   COMBA_STORE(b[20]);
+
+   /* output 21 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[21]); SQRADDAC(a[1], a[20]); SQRADDAC(a[2], a[19]); SQRADDAC(a[3], a[18]); SQRADDAC(a[4], a[17]); SQRADDAC(a[5], a[16]); SQRADDAC(a[6], a[15]); SQRADDAC(a[7], a[14]); SQRADDAC(a[8], a[13]); SQRADDAC(a[9], a[12]); SQRADDAC(a[10], a[11]); SQRADDDB; 
+   COMBA_STORE(b[21]);
+
+   /* output 22 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[22]); SQRADDAC(a[1], a[21]); SQRADDAC(a[2], a[20]); SQRADDAC(a[3], a[19]); SQRADDAC(a[4], a[18]); SQRADDAC(a[5], a[17]); SQRADDAC(a[6], a[16]); SQRADDAC(a[7], a[15]); SQRADDAC(a[8], a[14]); SQRADDAC(a[9], a[13]); SQRADDAC(a[10], a[12]); SQRADDDB; SQRADD(a[11], a[11]); 
+   COMBA_STORE(b[22]);
+
+   /* output 23 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[23]); SQRADDAC(a[1], a[22]); SQRADDAC(a[2], a[21]); SQRADDAC(a[3], a[20]); SQRADDAC(a[4], a[19]); SQRADDAC(a[5], a[18]); SQRADDAC(a[6], a[17]); SQRADDAC(a[7], a[16]); SQRADDAC(a[8], a[15]); SQRADDAC(a[9], a[14]); SQRADDAC(a[10], a[13]); SQRADDAC(a[11], a[12]); SQRADDDB; 
+   COMBA_STORE(b[23]);
+
+   /* output 24 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[24]); SQRADDAC(a[1], a[23]); SQRADDAC(a[2], a[22]); SQRADDAC(a[3], a[21]); SQRADDAC(a[4], a[20]); SQRADDAC(a[5], a[19]); SQRADDAC(a[6], a[18]); SQRADDAC(a[7], a[17]); SQRADDAC(a[8], a[16]); SQRADDAC(a[9], a[15]); SQRADDAC(a[10], a[14]); SQRADDAC(a[11], a[13]); SQRADDDB; SQRADD(a[12], a[12]); 
+   COMBA_STORE(b[24]);
+
+   /* output 25 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[25]); SQRADDAC(a[1], a[24]); SQRADDAC(a[2], a[23]); SQRADDAC(a[3], a[22]); SQRADDAC(a[4], a[21]); SQRADDAC(a[5], a[20]); SQRADDAC(a[6], a[19]); SQRADDAC(a[7], a[18]); SQRADDAC(a[8], a[17]); SQRADDAC(a[9], a[16]); SQRADDAC(a[10], a[15]); SQRADDAC(a[11], a[14]); SQRADDAC(a[12], a[13]); SQRADDDB; 
+   COMBA_STORE(b[25]);
+
+   /* output 26 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[26]); SQRADDAC(a[1], a[25]); SQRADDAC(a[2], a[24]); SQRADDAC(a[3], a[23]); SQRADDAC(a[4], a[22]); SQRADDAC(a[5], a[21]); SQRADDAC(a[6], a[20]); SQRADDAC(a[7], a[19]); SQRADDAC(a[8], a[18]); SQRADDAC(a[9], a[17]); SQRADDAC(a[10], a[16]); SQRADDAC(a[11], a[15]); SQRADDAC(a[12], a[14]); SQRADDDB; SQRADD(a[13], a[13]); 
+   COMBA_STORE(b[26]);
+
+   /* output 27 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[27]); SQRADDAC(a[1], a[26]); SQRADDAC(a[2], a[25]); SQRADDAC(a[3], a[24]); SQRADDAC(a[4], a[23]); SQRADDAC(a[5], a[22]); SQRADDAC(a[6], a[21]); SQRADDAC(a[7], a[20]); SQRADDAC(a[8], a[19]); SQRADDAC(a[9], a[18]); SQRADDAC(a[10], a[17]); SQRADDAC(a[11], a[16]); SQRADDAC(a[12], a[15]); SQRADDAC(a[13], a[14]); SQRADDDB; 
+   COMBA_STORE(b[27]);
+
+   /* output 28 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[28]); SQRADDAC(a[1], a[27]); SQRADDAC(a[2], a[26]); SQRADDAC(a[3], a[25]); SQRADDAC(a[4], a[24]); SQRADDAC(a[5], a[23]); SQRADDAC(a[6], a[22]); SQRADDAC(a[7], a[21]); SQRADDAC(a[8], a[20]); SQRADDAC(a[9], a[19]); SQRADDAC(a[10], a[18]); SQRADDAC(a[11], a[17]); SQRADDAC(a[12], a[16]); SQRADDAC(a[13], a[15]); SQRADDDB; SQRADD(a[14], a[14]); 
+   COMBA_STORE(b[28]);
+
+   /* output 29 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[29]); SQRADDAC(a[1], a[28]); SQRADDAC(a[2], a[27]); SQRADDAC(a[3], a[26]); SQRADDAC(a[4], a[25]); SQRADDAC(a[5], a[24]); SQRADDAC(a[6], a[23]); SQRADDAC(a[7], a[22]); SQRADDAC(a[8], a[21]); SQRADDAC(a[9], a[20]); SQRADDAC(a[10], a[19]); SQRADDAC(a[11], a[18]); SQRADDAC(a[12], a[17]); SQRADDAC(a[13], a[16]); SQRADDAC(a[14], a[15]); SQRADDDB; 
+   COMBA_STORE(b[29]);
+
+   /* output 30 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[30]); SQRADDAC(a[1], a[29]); SQRADDAC(a[2], a[28]); SQRADDAC(a[3], a[27]); SQRADDAC(a[4], a[26]); SQRADDAC(a[5], a[25]); SQRADDAC(a[6], a[24]); SQRADDAC(a[7], a[23]); SQRADDAC(a[8], a[22]); SQRADDAC(a[9], a[21]); SQRADDAC(a[10], a[20]); SQRADDAC(a[11], a[19]); SQRADDAC(a[12], a[18]); SQRADDAC(a[13], a[17]); SQRADDAC(a[14], a[16]); SQRADDDB; SQRADD(a[15], a[15]); 
+   COMBA_STORE(b[30]);
+
+   /* output 31 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[31]); SQRADDAC(a[1], a[30]); SQRADDAC(a[2], a[29]); SQRADDAC(a[3], a[28]); SQRADDAC(a[4], a[27]); SQRADDAC(a[5], a[26]); SQRADDAC(a[6], a[25]); SQRADDAC(a[7], a[24]); SQRADDAC(a[8], a[23]); SQRADDAC(a[9], a[22]); SQRADDAC(a[10], a[21]); SQRADDAC(a[11], a[20]); SQRADDAC(a[12], a[19]); SQRADDAC(a[13], a[18]); SQRADDAC(a[14], a[17]); SQRADDAC(a[15], a[16]); SQRADDDB; 
+   COMBA_STORE(b[31]);
+
+   /* output 32 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[32]); SQRADDAC(a[1], a[31]); SQRADDAC(a[2], a[30]); SQRADDAC(a[3], a[29]); SQRADDAC(a[4], a[28]); SQRADDAC(a[5], a[27]); SQRADDAC(a[6], a[26]); SQRADDAC(a[7], a[25]); SQRADDAC(a[8], a[24]); SQRADDAC(a[9], a[23]); SQRADDAC(a[10], a[22]); SQRADDAC(a[11], a[21]); SQRADDAC(a[12], a[20]); SQRADDAC(a[13], a[19]); SQRADDAC(a[14], a[18]); SQRADDAC(a[15], a[17]); SQRADDDB; SQRADD(a[16], a[16]); 
+   COMBA_STORE(b[32]);
+
+   /* output 33 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[33]); SQRADDAC(a[1], a[32]); SQRADDAC(a[2], a[31]); SQRADDAC(a[3], a[30]); SQRADDAC(a[4], a[29]); SQRADDAC(a[5], a[28]); SQRADDAC(a[6], a[27]); SQRADDAC(a[7], a[26]); SQRADDAC(a[8], a[25]); SQRADDAC(a[9], a[24]); SQRADDAC(a[10], a[23]); SQRADDAC(a[11], a[22]); SQRADDAC(a[12], a[21]); SQRADDAC(a[13], a[20]); SQRADDAC(a[14], a[19]); SQRADDAC(a[15], a[18]); SQRADDAC(a[16], a[17]); SQRADDDB; 
+   COMBA_STORE(b[33]);
+
+   /* output 34 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[34]); SQRADDAC(a[1], a[33]); SQRADDAC(a[2], a[32]); SQRADDAC(a[3], a[31]); SQRADDAC(a[4], a[30]); SQRADDAC(a[5], a[29]); SQRADDAC(a[6], a[28]); SQRADDAC(a[7], a[27]); SQRADDAC(a[8], a[26]); SQRADDAC(a[9], a[25]); SQRADDAC(a[10], a[24]); SQRADDAC(a[11], a[23]); SQRADDAC(a[12], a[22]); SQRADDAC(a[13], a[21]); SQRADDAC(a[14], a[20]); SQRADDAC(a[15], a[19]); SQRADDAC(a[16], a[18]); SQRADDDB; SQRADD(a[17], a[17]); 
+   COMBA_STORE(b[34]);
+
+   /* output 35 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[35]); SQRADDAC(a[1], a[34]); SQRADDAC(a[2], a[33]); SQRADDAC(a[3], a[32]); SQRADDAC(a[4], a[31]); SQRADDAC(a[5], a[30]); SQRADDAC(a[6], a[29]); SQRADDAC(a[7], a[28]); SQRADDAC(a[8], a[27]); SQRADDAC(a[9], a[26]); SQRADDAC(a[10], a[25]); SQRADDAC(a[11], a[24]); SQRADDAC(a[12], a[23]); SQRADDAC(a[13], a[22]); SQRADDAC(a[14], a[21]); SQRADDAC(a[15], a[20]); SQRADDAC(a[16], a[19]); SQRADDAC(a[17], a[18]); SQRADDDB; 
+   COMBA_STORE(b[35]);
+
+   /* output 36 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[36]); SQRADDAC(a[1], a[35]); SQRADDAC(a[2], a[34]); SQRADDAC(a[3], a[33]); SQRADDAC(a[4], a[32]); SQRADDAC(a[5], a[31]); SQRADDAC(a[6], a[30]); SQRADDAC(a[7], a[29]); SQRADDAC(a[8], a[28]); SQRADDAC(a[9], a[27]); SQRADDAC(a[10], a[26]); SQRADDAC(a[11], a[25]); SQRADDAC(a[12], a[24]); SQRADDAC(a[13], a[23]); SQRADDAC(a[14], a[22]); SQRADDAC(a[15], a[21]); SQRADDAC(a[16], a[20]); SQRADDAC(a[17], a[19]); SQRADDDB; SQRADD(a[18], a[18]); 
+   COMBA_STORE(b[36]);
+
+   /* output 37 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[37]); SQRADDAC(a[1], a[36]); SQRADDAC(a[2], a[35]); SQRADDAC(a[3], a[34]); SQRADDAC(a[4], a[33]); SQRADDAC(a[5], a[32]); SQRADDAC(a[6], a[31]); SQRADDAC(a[7], a[30]); SQRADDAC(a[8], a[29]); SQRADDAC(a[9], a[28]); SQRADDAC(a[10], a[27]); SQRADDAC(a[11], a[26]); SQRADDAC(a[12], a[25]); SQRADDAC(a[13], a[24]); SQRADDAC(a[14], a[23]); SQRADDAC(a[15], a[22]); SQRADDAC(a[16], a[21]); SQRADDAC(a[17], a[20]); SQRADDAC(a[18], a[19]); SQRADDDB; 
+   COMBA_STORE(b[37]);
+
+   /* output 38 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[38]); SQRADDAC(a[1], a[37]); SQRADDAC(a[2], a[36]); SQRADDAC(a[3], a[35]); SQRADDAC(a[4], a[34]); SQRADDAC(a[5], a[33]); SQRADDAC(a[6], a[32]); SQRADDAC(a[7], a[31]); SQRADDAC(a[8], a[30]); SQRADDAC(a[9], a[29]); SQRADDAC(a[10], a[28]); SQRADDAC(a[11], a[27]); SQRADDAC(a[12], a[26]); SQRADDAC(a[13], a[25]); SQRADDAC(a[14], a[24]); SQRADDAC(a[15], a[23]); SQRADDAC(a[16], a[22]); SQRADDAC(a[17], a[21]); SQRADDAC(a[18], a[20]); SQRADDDB; SQRADD(a[19], a[19]); 
+   COMBA_STORE(b[38]);
+
+   /* output 39 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[39]); SQRADDAC(a[1], a[38]); SQRADDAC(a[2], a[37]); SQRADDAC(a[3], a[36]); SQRADDAC(a[4], a[35]); SQRADDAC(a[5], a[34]); SQRADDAC(a[6], a[33]); SQRADDAC(a[7], a[32]); SQRADDAC(a[8], a[31]); SQRADDAC(a[9], a[30]); SQRADDAC(a[10], a[29]); SQRADDAC(a[11], a[28]); SQRADDAC(a[12], a[27]); SQRADDAC(a[13], a[26]); SQRADDAC(a[14], a[25]); SQRADDAC(a[15], a[24]); SQRADDAC(a[16], a[23]); SQRADDAC(a[17], a[22]); SQRADDAC(a[18], a[21]); SQRADDAC(a[19], a[20]); SQRADDDB; 
+   COMBA_STORE(b[39]);
+
+   /* output 40 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[40]); SQRADDAC(a[1], a[39]); SQRADDAC(a[2], a[38]); SQRADDAC(a[3], a[37]); SQRADDAC(a[4], a[36]); SQRADDAC(a[5], a[35]); SQRADDAC(a[6], a[34]); SQRADDAC(a[7], a[33]); SQRADDAC(a[8], a[32]); SQRADDAC(a[9], a[31]); SQRADDAC(a[10], a[30]); SQRADDAC(a[11], a[29]); SQRADDAC(a[12], a[28]); SQRADDAC(a[13], a[27]); SQRADDAC(a[14], a[26]); SQRADDAC(a[15], a[25]); SQRADDAC(a[16], a[24]); SQRADDAC(a[17], a[23]); SQRADDAC(a[18], a[22]); SQRADDAC(a[19], a[21]); SQRADDDB; SQRADD(a[20], a[20]); 
+   COMBA_STORE(b[40]);
+
+   /* output 41 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[41]); SQRADDAC(a[1], a[40]); SQRADDAC(a[2], a[39]); SQRADDAC(a[3], a[38]); SQRADDAC(a[4], a[37]); SQRADDAC(a[5], a[36]); SQRADDAC(a[6], a[35]); SQRADDAC(a[7], a[34]); SQRADDAC(a[8], a[33]); SQRADDAC(a[9], a[32]); SQRADDAC(a[10], a[31]); SQRADDAC(a[11], a[30]); SQRADDAC(a[12], a[29]); SQRADDAC(a[13], a[28]); SQRADDAC(a[14], a[27]); SQRADDAC(a[15], a[26]); SQRADDAC(a[16], a[25]); SQRADDAC(a[17], a[24]); SQRADDAC(a[18], a[23]); SQRADDAC(a[19], a[22]); SQRADDAC(a[20], a[21]); SQRADDDB; 
+   COMBA_STORE(b[41]);
+
+   /* output 42 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[42]); SQRADDAC(a[1], a[41]); SQRADDAC(a[2], a[40]); SQRADDAC(a[3], a[39]); SQRADDAC(a[4], a[38]); SQRADDAC(a[5], a[37]); SQRADDAC(a[6], a[36]); SQRADDAC(a[7], a[35]); SQRADDAC(a[8], a[34]); SQRADDAC(a[9], a[33]); SQRADDAC(a[10], a[32]); SQRADDAC(a[11], a[31]); SQRADDAC(a[12], a[30]); SQRADDAC(a[13], a[29]); SQRADDAC(a[14], a[28]); SQRADDAC(a[15], a[27]); SQRADDAC(a[16], a[26]); SQRADDAC(a[17], a[25]); SQRADDAC(a[18], a[24]); SQRADDAC(a[19], a[23]); SQRADDAC(a[20], a[22]); SQRADDDB; SQRADD(a[21], a[21]); 
+   COMBA_STORE(b[42]);
+
+   /* output 43 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[43]); SQRADDAC(a[1], a[42]); SQRADDAC(a[2], a[41]); SQRADDAC(a[3], a[40]); SQRADDAC(a[4], a[39]); SQRADDAC(a[5], a[38]); SQRADDAC(a[6], a[37]); SQRADDAC(a[7], a[36]); SQRADDAC(a[8], a[35]); SQRADDAC(a[9], a[34]); SQRADDAC(a[10], a[33]); SQRADDAC(a[11], a[32]); SQRADDAC(a[12], a[31]); SQRADDAC(a[13], a[30]); SQRADDAC(a[14], a[29]); SQRADDAC(a[15], a[28]); SQRADDAC(a[16], a[27]); SQRADDAC(a[17], a[26]); SQRADDAC(a[18], a[25]); SQRADDAC(a[19], a[24]); SQRADDAC(a[20], a[23]); SQRADDAC(a[21], a[22]); SQRADDDB; 
+   COMBA_STORE(b[43]);
+
+   /* output 44 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[44]); SQRADDAC(a[1], a[43]); SQRADDAC(a[2], a[42]); SQRADDAC(a[3], a[41]); SQRADDAC(a[4], a[40]); SQRADDAC(a[5], a[39]); SQRADDAC(a[6], a[38]); SQRADDAC(a[7], a[37]); SQRADDAC(a[8], a[36]); SQRADDAC(a[9], a[35]); SQRADDAC(a[10], a[34]); SQRADDAC(a[11], a[33]); SQRADDAC(a[12], a[32]); SQRADDAC(a[13], a[31]); SQRADDAC(a[14], a[30]); SQRADDAC(a[15], a[29]); SQRADDAC(a[16], a[28]); SQRADDAC(a[17], a[27]); SQRADDAC(a[18], a[26]); SQRADDAC(a[19], a[25]); SQRADDAC(a[20], a[24]); SQRADDAC(a[21], a[23]); SQRADDDB; SQRADD(a[22], a[22]); 
+   COMBA_STORE(b[44]);
+
+   /* output 45 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[45]); SQRADDAC(a[1], a[44]); SQRADDAC(a[2], a[43]); SQRADDAC(a[3], a[42]); SQRADDAC(a[4], a[41]); SQRADDAC(a[5], a[40]); SQRADDAC(a[6], a[39]); SQRADDAC(a[7], a[38]); SQRADDAC(a[8], a[37]); SQRADDAC(a[9], a[36]); SQRADDAC(a[10], a[35]); SQRADDAC(a[11], a[34]); SQRADDAC(a[12], a[33]); SQRADDAC(a[13], a[32]); SQRADDAC(a[14], a[31]); SQRADDAC(a[15], a[30]); SQRADDAC(a[16], a[29]); SQRADDAC(a[17], a[28]); SQRADDAC(a[18], a[27]); SQRADDAC(a[19], a[26]); SQRADDAC(a[20], a[25]); SQRADDAC(a[21], a[24]); SQRADDAC(a[22], a[23]); SQRADDDB; 
+   COMBA_STORE(b[45]);
+
+   /* output 46 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[46]); SQRADDAC(a[1], a[45]); SQRADDAC(a[2], a[44]); SQRADDAC(a[3], a[43]); SQRADDAC(a[4], a[42]); SQRADDAC(a[5], a[41]); SQRADDAC(a[6], a[40]); SQRADDAC(a[7], a[39]); SQRADDAC(a[8], a[38]); SQRADDAC(a[9], a[37]); SQRADDAC(a[10], a[36]); SQRADDAC(a[11], a[35]); SQRADDAC(a[12], a[34]); SQRADDAC(a[13], a[33]); SQRADDAC(a[14], a[32]); SQRADDAC(a[15], a[31]); SQRADDAC(a[16], a[30]); SQRADDAC(a[17], a[29]); SQRADDAC(a[18], a[28]); SQRADDAC(a[19], a[27]); SQRADDAC(a[20], a[26]); SQRADDAC(a[21], a[25]); SQRADDAC(a[22], a[24]); SQRADDDB; SQRADD(a[23], a[23]); 
+   COMBA_STORE(b[46]);
+
+   /* output 47 */
+   CARRY_FORWARD;
+   SQRADDSC(a[0], a[47]); SQRADDAC(a[1], a[46]); SQRADDAC(a[2], a[45]); SQRADDAC(a[3], a[44]); SQRADDAC(a[4], a[43]); SQRADDAC(a[5], a[42]); SQRADDAC(a[6], a[41]); SQRADDAC(a[7], a[40]); SQRADDAC(a[8], a[39]); SQRADDAC(a[9], a[38]); SQRADDAC(a[10], a[37]); SQRADDAC(a[11], a[36]); SQRADDAC(a[12], a[35]); SQRADDAC(a[13], a[34]); SQRADDAC(a[14], a[33]); SQRADDAC(a[15], a[32]); SQRADDAC(a[16], a[31]); SQRADDAC(a[17], a[30]); SQRADDAC(a[18], a[29]); SQRADDAC(a[19], a[28]); SQRADDAC(a[20], a[27]); SQRADDAC(a[21], a[26]); SQRADDAC(a[22], a[25]); SQRADDAC(a[23], a[24]); SQRADDDB; 
+   COMBA_STORE(b[47]);
+
+   /* output 48 */
+   CARRY_FORWARD;
+   SQRADDSC(a[1], a[47]); SQRADDAC(a[2], a[46]); SQRADDAC(a[3], a[45]); SQRADDAC(a[4], a[44]); SQRADDAC(a[5], a[43]); SQRADDAC(a[6], a[42]); SQRADDAC(a[7], a[41]); SQRADDAC(a[8], a[40]); SQRADDAC(a[9], a[39]); SQRADDAC(a[10], a[38]); SQRADDAC(a[11], a[37]); SQRADDAC(a[12], a[36]); SQRADDAC(a[13], a[35]); SQRADDAC(a[14], a[34]); SQRADDAC(a[15], a[33]); SQRADDAC(a[16], a[32]); SQRADDAC(a[17], a[31]); SQRADDAC(a[18], a[30]); SQRADDAC(a[19], a[29]); SQRADDAC(a[20], a[28]); SQRADDAC(a[21], a[27]); SQRADDAC(a[22], a[26]); SQRADDAC(a[23], a[25]); SQRADDDB; SQRADD(a[24], a[24]); 
+   COMBA_STORE(b[48]);
+
+   /* output 49 */
+   CARRY_FORWARD;
+   SQRADDSC(a[2], a[47]); SQRADDAC(a[3], a[46]); SQRADDAC(a[4], a[45]); SQRADDAC(a[5], a[44]); SQRADDAC(a[6], a[43]); SQRADDAC(a[7], a[42]); SQRADDAC(a[8], a[41]); SQRADDAC(a[9], a[40]); SQRADDAC(a[10], a[39]); SQRADDAC(a[11], a[38]); SQRADDAC(a[12], a[37]); SQRADDAC(a[13], a[36]); SQRADDAC(a[14], a[35]); SQRADDAC(a[15], a[34]); SQRADDAC(a[16], a[33]); SQRADDAC(a[17], a[32]); SQRADDAC(a[18], a[31]); SQRADDAC(a[19], a[30]); SQRADDAC(a[20], a[29]); SQRADDAC(a[21], a[28]); SQRADDAC(a[22], a[27]); SQRADDAC(a[23], a[26]); SQRADDAC(a[24], a[25]); SQRADDDB; 
+   COMBA_STORE(b[49]);
+
+   /* output 50 */
+   CARRY_FORWARD;
+   SQRADDSC(a[3], a[47]); SQRADDAC(a[4], a[46]); SQRADDAC(a[5], a[45]); SQRADDAC(a[6], a[44]); SQRADDAC(a[7], a[43]); SQRADDAC(a[8], a[42]); SQRADDAC(a[9], a[41]); SQRADDAC(a[10], a[40]); SQRADDAC(a[11], a[39]); SQRADDAC(a[12], a[38]); SQRADDAC(a[13], a[37]); SQRADDAC(a[14], a[36]); SQRADDAC(a[15], a[35]); SQRADDAC(a[16], a[34]); SQRADDAC(a[17], a[33]); SQRADDAC(a[18], a[32]); SQRADDAC(a[19], a[31]); SQRADDAC(a[20], a[30]); SQRADDAC(a[21], a[29]); SQRADDAC(a[22], a[28]); SQRADDAC(a[23], a[27]); SQRADDAC(a[24], a[26]); SQRADDDB; SQRADD(a[25], a[25]); 
+   COMBA_STORE(b[50]);
+
+   /* output 51 */
+   CARRY_FORWARD;
+   SQRADDSC(a[4], a[47]); SQRADDAC(a[5], a[46]); SQRADDAC(a[6], a[45]); SQRADDAC(a[7], a[44]); SQRADDAC(a[8], a[43]); SQRADDAC(a[9], a[42]); SQRADDAC(a[10], a[41]); SQRADDAC(a[11], a[40]); SQRADDAC(a[12], a[39]); SQRADDAC(a[13], a[38]); SQRADDAC(a[14], a[37]); SQRADDAC(a[15], a[36]); SQRADDAC(a[16], a[35]); SQRADDAC(a[17], a[34]); SQRADDAC(a[18], a[33]); SQRADDAC(a[19], a[32]); SQRADDAC(a[20], a[31]); SQRADDAC(a[21], a[30]); SQRADDAC(a[22], a[29]); SQRADDAC(a[23], a[28]); SQRADDAC(a[24], a[27]); SQRADDAC(a[25], a[26]); SQRADDDB; 
+   COMBA_STORE(b[51]);
+
+   /* output 52 */
+   CARRY_FORWARD;
+   SQRADDSC(a[5], a[47]); SQRADDAC(a[6], a[46]); SQRADDAC(a[7], a[45]); SQRADDAC(a[8], a[44]); SQRADDAC(a[9], a[43]); SQRADDAC(a[10], a[42]); SQRADDAC(a[11], a[41]); SQRADDAC(a[12], a[40]); SQRADDAC(a[13], a[39]); SQRADDAC(a[14], a[38]); SQRADDAC(a[15], a[37]); SQRADDAC(a[16], a[36]); SQRADDAC(a[17], a[35]); SQRADDAC(a[18], a[34]); SQRADDAC(a[19], a[33]); SQRADDAC(a[20], a[32]); SQRADDAC(a[21], a[31]); SQRADDAC(a[22], a[30]); SQRADDAC(a[23], a[29]); SQRADDAC(a[24], a[28]); SQRADDAC(a[25], a[27]); SQRADDDB; SQRADD(a[26], a[26]); 
+   COMBA_STORE(b[52]);
+
+   /* output 53 */
+   CARRY_FORWARD;
+   SQRADDSC(a[6], a[47]); SQRADDAC(a[7], a[46]); SQRADDAC(a[8], a[45]); SQRADDAC(a[9], a[44]); SQRADDAC(a[10], a[43]); SQRADDAC(a[11], a[42]); SQRADDAC(a[12], a[41]); SQRADDAC(a[13], a[40]); SQRADDAC(a[14], a[39]); SQRADDAC(a[15], a[38]); SQRADDAC(a[16], a[37]); SQRADDAC(a[17], a[36]); SQRADDAC(a[18], a[35]); SQRADDAC(a[19], a[34]); SQRADDAC(a[20], a[33]); SQRADDAC(a[21], a[32]); SQRADDAC(a[22], a[31]); SQRADDAC(a[23], a[30]); SQRADDAC(a[24], a[29]); SQRADDAC(a[25], a[28]); SQRADDAC(a[26], a[27]); SQRADDDB; 
+   COMBA_STORE(b[53]);
+
+   /* output 54 */
+   CARRY_FORWARD;
+   SQRADDSC(a[7], a[47]); SQRADDAC(a[8], a[46]); SQRADDAC(a[9], a[45]); SQRADDAC(a[10], a[44]); SQRADDAC(a[11], a[43]); SQRADDAC(a[12], a[42]); SQRADDAC(a[13], a[41]); SQRADDAC(a[14], a[40]); SQRADDAC(a[15], a[39]); SQRADDAC(a[16], a[38]); SQRADDAC(a[17], a[37]); SQRADDAC(a[18], a[36]); SQRADDAC(a[19], a[35]); SQRADDAC(a[20], a[34]); SQRADDAC(a[21], a[33]); SQRADDAC(a[22], a[32]); SQRADDAC(a[23], a[31]); SQRADDAC(a[24], a[30]); SQRADDAC(a[25], a[29]); SQRADDAC(a[26], a[28]); SQRADDDB; SQRADD(a[27], a[27]); 
+   COMBA_STORE(b[54]);
+
+   /* output 55 */
+   CARRY_FORWARD;
+   SQRADDSC(a[8], a[47]); SQRADDAC(a[9], a[46]); SQRADDAC(a[10], a[45]); SQRADDAC(a[11], a[44]); SQRADDAC(a[12], a[43]); SQRADDAC(a[13], a[42]); SQRADDAC(a[14], a[41]); SQRADDAC(a[15], a[40]); SQRADDAC(a[16], a[39]); SQRADDAC(a[17], a[38]); SQRADDAC(a[18], a[37]); SQRADDAC(a[19], a[36]); SQRADDAC(a[20], a[35]); SQRADDAC(a[21], a[34]); SQRADDAC(a[22], a[33]); SQRADDAC(a[23], a[32]); SQRADDAC(a[24], a[31]); SQRADDAC(a[25], a[30]); SQRADDAC(a[26], a[29]); SQRADDAC(a[27], a[28]); SQRADDDB; 
+   COMBA_STORE(b[55]);
+
+   /* output 56 */
+   CARRY_FORWARD;
+   SQRADDSC(a[9], a[47]); SQRADDAC(a[10], a[46]); SQRADDAC(a[11], a[45]); SQRADDAC(a[12], a[44]); SQRADDAC(a[13], a[43]); SQRADDAC(a[14], a[42]); SQRADDAC(a[15], a[41]); SQRADDAC(a[16], a[40]); SQRADDAC(a[17], a[39]); SQRADDAC(a[18], a[38]); SQRADDAC(a[19], a[37]); SQRADDAC(a[20], a[36]); SQRADDAC(a[21], a[35]); SQRADDAC(a[22], a[34]); SQRADDAC(a[23], a[33]); SQRADDAC(a[24], a[32]); SQRADDAC(a[25], a[31]); SQRADDAC(a[26], a[30]); SQRADDAC(a[27], a[29]); SQRADDDB; SQRADD(a[28], a[28]); 
+   COMBA_STORE(b[56]);
+
+   /* output 57 */
+   CARRY_FORWARD;
+   SQRADDSC(a[10], a[47]); SQRADDAC(a[11], a[46]); SQRADDAC(a[12], a[45]); SQRADDAC(a[13], a[44]); SQRADDAC(a[14], a[43]); SQRADDAC(a[15], a[42]); SQRADDAC(a[16], a[41]); SQRADDAC(a[17], a[40]); SQRADDAC(a[18], a[39]); SQRADDAC(a[19], a[38]); SQRADDAC(a[20], a[37]); SQRADDAC(a[21], a[36]); SQRADDAC(a[22], a[35]); SQRADDAC(a[23], a[34]); SQRADDAC(a[24], a[33]); SQRADDAC(a[25], a[32]); SQRADDAC(a[26], a[31]); SQRADDAC(a[27], a[30]); SQRADDAC(a[28], a[29]); SQRADDDB; 
+   COMBA_STORE(b[57]);
+
+   /* output 58 */
+   CARRY_FORWARD;
+   SQRADDSC(a[11], a[47]); SQRADDAC(a[12], a[46]); SQRADDAC(a[13], a[45]); SQRADDAC(a[14], a[44]); SQRADDAC(a[15], a[43]); SQRADDAC(a[16], a[42]); SQRADDAC(a[17], a[41]); SQRADDAC(a[18], a[40]); SQRADDAC(a[19], a[39]); SQRADDAC(a[20], a[38]); SQRADDAC(a[21], a[37]); SQRADDAC(a[22], a[36]); SQRADDAC(a[23], a[35]); SQRADDAC(a[24], a[34]); SQRADDAC(a[25], a[33]); SQRADDAC(a[26], a[32]); SQRADDAC(a[27], a[31]); SQRADDAC(a[28], a[30]); SQRADDDB; SQRADD(a[29], a[29]); 
+   COMBA_STORE(b[58]);
+
+   /* output 59 */
+   CARRY_FORWARD;
+   SQRADDSC(a[12], a[47]); SQRADDAC(a[13], a[46]); SQRADDAC(a[14], a[45]); SQRADDAC(a[15], a[44]); SQRADDAC(a[16], a[43]); SQRADDAC(a[17], a[42]); SQRADDAC(a[18], a[41]); SQRADDAC(a[19], a[40]); SQRADDAC(a[20], a[39]); SQRADDAC(a[21], a[38]); SQRADDAC(a[22], a[37]); SQRADDAC(a[23], a[36]); SQRADDAC(a[24], a[35]); SQRADDAC(a[25], a[34]); SQRADDAC(a[26], a[33]); SQRADDAC(a[27], a[32]); SQRADDAC(a[28], a[31]); SQRADDAC(a[29], a[30]); SQRADDDB; 
+   COMBA_STORE(b[59]);
+
+   /* output 60 */
+   CARRY_FORWARD;
+   SQRADDSC(a[13], a[47]); SQRADDAC(a[14], a[46]); SQRADDAC(a[15], a[45]); SQRADDAC(a[16], a[44]); SQRADDAC(a[17], a[43]); SQRADDAC(a[18], a[42]); SQRADDAC(a[19], a[41]); SQRADDAC(a[20], a[40]); SQRADDAC(a[21], a[39]); SQRADDAC(a[22], a[38]); SQRADDAC(a[23], a[37]); SQRADDAC(a[24], a[36]); SQRADDAC(a[25], a[35]); SQRADDAC(a[26], a[34]); SQRADDAC(a[27], a[33]); SQRADDAC(a[28], a[32]); SQRADDAC(a[29], a[31]); SQRADDDB; SQRADD(a[30], a[30]); 
+   COMBA_STORE(b[60]);
+
+   /* output 61 */
+   CARRY_FORWARD;
+   SQRADDSC(a[14], a[47]); SQRADDAC(a[15], a[46]); SQRADDAC(a[16], a[45]); SQRADDAC(a[17], a[44]); SQRADDAC(a[18], a[43]); SQRADDAC(a[19], a[42]); SQRADDAC(a[20], a[41]); SQRADDAC(a[21], a[40]); SQRADDAC(a[22], a[39]); SQRADDAC(a[23], a[38]); SQRADDAC(a[24], a[37]); SQRADDAC(a[25], a[36]); SQRADDAC(a[26], a[35]); SQRADDAC(a[27], a[34]); SQRADDAC(a[28], a[33]); SQRADDAC(a[29], a[32]); SQRADDAC(a[30], a[31]); SQRADDDB; 
+   COMBA_STORE(b[61]);
+
+   /* output 62 */
+   CARRY_FORWARD;
+   SQRADDSC(a[15], a[47]); SQRADDAC(a[16], a[46]); SQRADDAC(a[17], a[45]); SQRADDAC(a[18], a[44]); SQRADDAC(a[19], a[43]); SQRADDAC(a[20], a[42]); SQRADDAC(a[21], a[41]); SQRADDAC(a[22], a[40]); SQRADDAC(a[23], a[39]); SQRADDAC(a[24], a[38]); SQRADDAC(a[25], a[37]); SQRADDAC(a[26], a[36]); SQRADDAC(a[27], a[35]); SQRADDAC(a[28], a[34]); SQRADDAC(a[29], a[33]); SQRADDAC(a[30], a[32]); SQRADDDB; SQRADD(a[31], a[31]); 
+   COMBA_STORE(b[62]);
+
+   /* output 63 */
+   CARRY_FORWARD;
+   SQRADDSC(a[16], a[47]); SQRADDAC(a[17], a[46]); SQRADDAC(a[18], a[45]); SQRADDAC(a[19], a[44]); SQRADDAC(a[20], a[43]); SQRADDAC(a[21], a[42]); SQRADDAC(a[22], a[41]); SQRADDAC(a[23], a[40]); SQRADDAC(a[24], a[39]); SQRADDAC(a[25], a[38]); SQRADDAC(a[26], a[37]); SQRADDAC(a[27], a[36]); SQRADDAC(a[28], a[35]); SQRADDAC(a[29], a[34]); SQRADDAC(a[30], a[33]); SQRADDAC(a[31], a[32]); SQRADDDB; 
+   COMBA_STORE(b[63]);
+
+   /* output 64 */
+   CARRY_FORWARD;
+   SQRADDSC(a[17], a[47]); SQRADDAC(a[18], a[46]); SQRADDAC(a[19], a[45]); SQRADDAC(a[20], a[44]); SQRADDAC(a[21], a[43]); SQRADDAC(a[22], a[42]); SQRADDAC(a[23], a[41]); SQRADDAC(a[24], a[40]); SQRADDAC(a[25], a[39]); SQRADDAC(a[26], a[38]); SQRADDAC(a[27], a[37]); SQRADDAC(a[28], a[36]); SQRADDAC(a[29], a[35]); SQRADDAC(a[30], a[34]); SQRADDAC(a[31], a[33]); SQRADDDB; SQRADD(a[32], a[32]); 
+   COMBA_STORE(b[64]);
+
+   /* output 65 */
+   CARRY_FORWARD;
+   SQRADDSC(a[18], a[47]); SQRADDAC(a[19], a[46]); SQRADDAC(a[20], a[45]); SQRADDAC(a[21], a[44]); SQRADDAC(a[22], a[43]); SQRADDAC(a[23], a[42]); SQRADDAC(a[24], a[41]); SQRADDAC(a[25], a[40]); SQRADDAC(a[26], a[39]); SQRADDAC(a[27], a[38]); SQRADDAC(a[28], a[37]); SQRADDAC(a[29], a[36]); SQRADDAC(a[30], a[35]); SQRADDAC(a[31], a[34]); SQRADDAC(a[32], a[33]); SQRADDDB; 
+   COMBA_STORE(b[65]);
+
+   /* output 66 */
+   CARRY_FORWARD;
+   SQRADDSC(a[19], a[47]); SQRADDAC(a[20], a[46]); SQRADDAC(a[21], a[45]); SQRADDAC(a[22], a[44]); SQRADDAC(a[23], a[43]); SQRADDAC(a[24], a[42]); SQRADDAC(a[25], a[41]); SQRADDAC(a[26], a[40]); SQRADDAC(a[27], a[39]); SQRADDAC(a[28], a[38]); SQRADDAC(a[29], a[37]); SQRADDAC(a[30], a[36]); SQRADDAC(a[31], a[35]); SQRADDAC(a[32], a[34]); SQRADDDB; SQRADD(a[33], a[33]); 
+   COMBA_STORE(b[66]);
+
+   /* output 67 */
+   CARRY_FORWARD;
+   SQRADDSC(a[20], a[47]); SQRADDAC(a[21], a[46]); SQRADDAC(a[22], a[45]); SQRADDAC(a[23], a[44]); SQRADDAC(a[24], a[43]); SQRADDAC(a[25], a[42]); SQRADDAC(a[26], a[41]); SQRADDAC(a[27], a[40]); SQRADDAC(a[28], a[39]); SQRADDAC(a[29], a[38]); SQRADDAC(a[30], a[37]); SQRADDAC(a[31], a[36]); SQRADDAC(a[32], a[35]); SQRADDAC(a[33], a[34]); SQRADDDB; 
+   COMBA_STORE(b[67]);
+
+   /* output 68 */
+   CARRY_FORWARD;
+   SQRADDSC(a[21], a[47]); SQRADDAC(a[22], a[46]); SQRADDAC(a[23], a[45]); SQRADDAC(a[24], a[44]); SQRADDAC(a[25], a[43]); SQRADDAC(a[26], a[42]); SQRADDAC(a[27], a[41]); SQRADDAC(a[28], a[40]); SQRADDAC(a[29], a[39]); SQRADDAC(a[30], a[38]); SQRADDAC(a[31], a[37]); SQRADDAC(a[32], a[36]); SQRADDAC(a[33], a[35]); SQRADDDB; SQRADD(a[34], a[34]); 
+   COMBA_STORE(b[68]);
+
+   /* output 69 */
+   CARRY_FORWARD;
+   SQRADDSC(a[22], a[47]); SQRADDAC(a[23], a[46]); SQRADDAC(a[24], a[45]); SQRADDAC(a[25], a[44]); SQRADDAC(a[26], a[43]); SQRADDAC(a[27], a[42]); SQRADDAC(a[28], a[41]); SQRADDAC(a[29], a[40]); SQRADDAC(a[30], a[39]); SQRADDAC(a[31], a[38]); SQRADDAC(a[32], a[37]); SQRADDAC(a[33], a[36]); SQRADDAC(a[34], a[35]); SQRADDDB; 
+   COMBA_STORE(b[69]);
+
+   /* output 70 */
+   CARRY_FORWARD;
+   SQRADDSC(a[23], a[47]); SQRADDAC(a[24], a[46]); SQRADDAC(a[25], a[45]); SQRADDAC(a[26], a[44]); SQRADDAC(a[27], a[43]); SQRADDAC(a[28], a[42]); SQRADDAC(a[29], a[41]); SQRADDAC(a[30], a[40]); SQRADDAC(a[31], a[39]); SQRADDAC(a[32], a[38]); SQRADDAC(a[33], a[37]); SQRADDAC(a[34], a[36]); SQRADDDB; SQRADD(a[35], a[35]); 
+   COMBA_STORE(b[70]);
+
+   /* output 71 */
+   CARRY_FORWARD;
+   SQRADDSC(a[24], a[47]); SQRADDAC(a[25], a[46]); SQRADDAC(a[26], a[45]); SQRADDAC(a[27], a[44]); SQRADDAC(a[28], a[43]); SQRADDAC(a[29], a[42]); SQRADDAC(a[30], a[41]); SQRADDAC(a[31], a[40]); SQRADDAC(a[32], a[39]); SQRADDAC(a[33], a[38]); SQRADDAC(a[34], a[37]); SQRADDAC(a[35], a[36]); SQRADDDB; 
+   COMBA_STORE(b[71]);
+
+   /* output 72 */
+   CARRY_FORWARD;
+   SQRADDSC(a[25], a[47]); SQRADDAC(a[26], a[46]); SQRADDAC(a[27], a[45]); SQRADDAC(a[28], a[44]); SQRADDAC(a[29], a[43]); SQRADDAC(a[30], a[42]); SQRADDAC(a[31], a[41]); SQRADDAC(a[32], a[40]); SQRADDAC(a[33], a[39]); SQRADDAC(a[34], a[38]); SQRADDAC(a[35], a[37]); SQRADDDB; SQRADD(a[36], a[36]); 
+   COMBA_STORE(b[72]);
+
+   /* output 73 */
+   CARRY_FORWARD;
+   SQRADDSC(a[26], a[47]); SQRADDAC(a[27], a[46]); SQRADDAC(a[28], a[45]); SQRADDAC(a[29], a[44]); SQRADDAC(a[30], a[43]); SQRADDAC(a[31], a[42]); SQRADDAC(a[32], a[41]); SQRADDAC(a[33], a[40]); SQRADDAC(a[34], a[39]); SQRADDAC(a[35], a[38]); SQRADDAC(a[36], a[37]); SQRADDDB; 
+   COMBA_STORE(b[73]);
+
+   /* output 74 */
+   CARRY_FORWARD;
+   SQRADDSC(a[27], a[47]); SQRADDAC(a[28], a[46]); SQRADDAC(a[29], a[45]); SQRADDAC(a[30], a[44]); SQRADDAC(a[31], a[43]); SQRADDAC(a[32], a[42]); SQRADDAC(a[33], a[41]); SQRADDAC(a[34], a[40]); SQRADDAC(a[35], a[39]); SQRADDAC(a[36], a[38]); SQRADDDB; SQRADD(a[37], a[37]); 
+   COMBA_STORE(b[74]);
+
+   /* output 75 */
+   CARRY_FORWARD;
+   SQRADDSC(a[28], a[47]); SQRADDAC(a[29], a[46]); SQRADDAC(a[30], a[45]); SQRADDAC(a[31], a[44]); SQRADDAC(a[32], a[43]); SQRADDAC(a[33], a[42]); SQRADDAC(a[34], a[41]); SQRADDAC(a[35], a[40]); SQRADDAC(a[36], a[39]); SQRADDAC(a[37], a[38]); SQRADDDB; 
+   COMBA_STORE(b[75]);
+
+   /* output 76 */
+   CARRY_FORWARD;
+   SQRADDSC(a[29], a[47]); SQRADDAC(a[30], a[46]); SQRADDAC(a[31], a[45]); SQRADDAC(a[32], a[44]); SQRADDAC(a[33], a[43]); SQRADDAC(a[34], a[42]); SQRADDAC(a[35], a[41]); SQRADDAC(a[36], a[40]); SQRADDAC(a[37], a[39]); SQRADDDB; SQRADD(a[38], a[38]); 
+   COMBA_STORE(b[76]);
+
+   /* output 77 */
+   CARRY_FORWARD;
+   SQRADDSC(a[30], a[47]); SQRADDAC(a[31], a[46]); SQRADDAC(a[32], a[45]); SQRADDAC(a[33], a[44]); SQRADDAC(a[34], a[43]); SQRADDAC(a[35], a[42]); SQRADDAC(a[36], a[41]); SQRADDAC(a[37], a[40]); SQRADDAC(a[38], a[39]); SQRADDDB; 
+   COMBA_STORE(b[77]);
+
+   /* output 78 */
+   CARRY_FORWARD;
+   SQRADDSC(a[31], a[47]); SQRADDAC(a[32], a[46]); SQRADDAC(a[33], a[45]); SQRADDAC(a[34], a[44]); SQRADDAC(a[35], a[43]); SQRADDAC(a[36], a[42]); SQRADDAC(a[37], a[41]); SQRADDAC(a[38], a[40]); SQRADDDB; SQRADD(a[39], a[39]); 
+   COMBA_STORE(b[78]);
+
+   /* output 79 */
+   CARRY_FORWARD;
+   SQRADDSC(a[32], a[47]); SQRADDAC(a[33], a[46]); SQRADDAC(a[34], a[45]); SQRADDAC(a[35], a[44]); SQRADDAC(a[36], a[43]); SQRADDAC(a[37], a[42]); SQRADDAC(a[38], a[41]); SQRADDAC(a[39], a[40]); SQRADDDB; 
+   COMBA_STORE(b[79]);
+
+   /* output 80 */
+   CARRY_FORWARD;
+   SQRADDSC(a[33], a[47]); SQRADDAC(a[34], a[46]); SQRADDAC(a[35], a[45]); SQRADDAC(a[36], a[44]); SQRADDAC(a[37], a[43]); SQRADDAC(a[38], a[42]); SQRADDAC(a[39], a[41]); SQRADDDB; SQRADD(a[40], a[40]); 
+   COMBA_STORE(b[80]);
+
+   /* output 81 */
+   CARRY_FORWARD;
+   SQRADDSC(a[34], a[47]); SQRADDAC(a[35], a[46]); SQRADDAC(a[36], a[45]); SQRADDAC(a[37], a[44]); SQRADDAC(a[38], a[43]); SQRADDAC(a[39], a[42]); SQRADDAC(a[40], a[41]); SQRADDDB; 
+   COMBA_STORE(b[81]);
+
+   /* output 82 */
+   CARRY_FORWARD;
+   SQRADDSC(a[35], a[47]); SQRADDAC(a[36], a[46]); SQRADDAC(a[37], a[45]); SQRADDAC(a[38], a[44]); SQRADDAC(a[39], a[43]); SQRADDAC(a[40], a[42]); SQRADDDB; SQRADD(a[41], a[41]); 
+   COMBA_STORE(b[82]);
+
+   /* output 83 */
+   CARRY_FORWARD;
+   SQRADDSC(a[36], a[47]); SQRADDAC(a[37], a[46]); SQRADDAC(a[38], a[45]); SQRADDAC(a[39], a[44]); SQRADDAC(a[40], a[43]); SQRADDAC(a[41], a[42]); SQRADDDB; 
+   COMBA_STORE(b[83]);
+
+   /* output 84 */
+   CARRY_FORWARD;
+   SQRADDSC(a[37], a[47]); SQRADDAC(a[38], a[46]); SQRADDAC(a[39], a[45]); SQRADDAC(a[40], a[44]); SQRADDAC(a[41], a[43]); SQRADDDB; SQRADD(a[42], a[42]); 
+   COMBA_STORE(b[84]);
+
+   /* output 85 */
+   CARRY_FORWARD;
+   SQRADDSC(a[38], a[47]); SQRADDAC(a[39], a[46]); SQRADDAC(a[40], a[45]); SQRADDAC(a[41], a[44]); SQRADDAC(a[42], a[43]); SQRADDDB; 
+   COMBA_STORE(b[85]);
+
+   /* output 86 */
+   CARRY_FORWARD;
+   SQRADDSC(a[39], a[47]); SQRADDAC(a[40], a[46]); SQRADDAC(a[41], a[45]); SQRADDAC(a[42], a[44]); SQRADDDB; SQRADD(a[43], a[43]); 
+   COMBA_STORE(b[86]);
+
+   /* output 87 */
+   CARRY_FORWARD;
+   SQRADDSC(a[40], a[47]); SQRADDAC(a[41], a[46]); SQRADDAC(a[42], a[45]); SQRADDAC(a[43], a[44]); SQRADDDB; 
+   COMBA_STORE(b[87]);
+
+   /* output 88 */
+   CARRY_FORWARD;
+   SQRADDSC(a[41], a[47]); SQRADDAC(a[42], a[46]); SQRADDAC(a[43], a[45]); SQRADDDB; SQRADD(a[44], a[44]); 
+   COMBA_STORE(b[88]);
+
+   /* output 89 */
+   CARRY_FORWARD;
+   SQRADDSC(a[42], a[47]); SQRADDAC(a[43], a[46]); SQRADDAC(a[44], a[45]); SQRADDDB; 
+   COMBA_STORE(b[89]);
+
+   /* output 90 */
+   CARRY_FORWARD;
+   SQRADD2(a[43], a[47]); SQRADD2(a[44], a[46]); SQRADD(a[45], a[45]); 
+   COMBA_STORE(b[90]);
+
+   /* output 91 */
+   CARRY_FORWARD;
+   SQRADD2(a[44], a[47]); SQRADD2(a[45], a[46]); 
+   COMBA_STORE(b[91]);
+
+   /* output 92 */
+   CARRY_FORWARD;
+   SQRADD2(a[45], a[47]); SQRADD(a[46], a[46]); 
+   COMBA_STORE(b[92]);
+
+   /* output 93 */
+   CARRY_FORWARD;
+   SQRADD2(a[46], a[47]); 
+   COMBA_STORE(b[93]);
+
+   /* output 94 */
+   CARRY_FORWARD;
+   SQRADD(a[47], a[47]); 
+   COMBA_STORE(b[94]);
+   COMBA_STORE2(b[95]);
+   COMBA_FINI;
+
+   B->used = 96;
+   B->sign = FP_ZPOS;
+   memcpy(B->dp, b, 96 * sizeof(fp_digit));
+   fp_clamp(B);
+}
+
 
 #endif
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 
 /* End: fp_sqr_comba.c */
 
 /* Start: fp_sqr_comba_generic.c */
+/* TomsFastMath, a fast ISO C bignum library.
+ * 
+ * This project is meant to fill in where LibTomMath
+ * falls short.  That is speed ;-)
+ *
+ * This project is public domain and free for all purposes.
+ * 
+ * Tom St Denis, tomstdenis@gmail.com
+ */
+
 /* generic comba squarer */
 void fp_sqr_comba(fp_int *A, fp_int *B)
 {
@@ -5152,6 +9165,10 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
   }
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_sqr_comba_generic.c */
 
 /* Start: fp_sqrmod.c */
@@ -5162,7 +9179,7 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5175,6 +9192,10 @@ int fp_sqrmod(fp_int *a, fp_int *b, fp_int *c)
   return fp_mod(&tmp, b, c);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_sqrmod.c */
 
 /* Start: fp_sub.c */
@@ -5185,7 +9206,7 @@ int fp_sqrmod(fp_int *a, fp_int *b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5225,6 +9246,10 @@ void fp_sub(fp_int *a, fp_int *b, fp_int *c)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_sub.c */
 
 /* Start: fp_sub_d.c */
@@ -5235,7 +9260,7 @@ void fp_sub(fp_int *a, fp_int *b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5247,6 +9272,10 @@ void fp_sub_d(fp_int *a, fp_digit b, fp_int *c)
    fp_sub(a, &tmp, c);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_sub_d.c */
 
 /* Start: fp_submod.c */
@@ -5257,7 +9286,7 @@ void fp_sub_d(fp_int *a, fp_digit b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5271,6 +9300,10 @@ int fp_submod(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
 }
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_submod.c */
 
 /* Start: fp_to_signed_bin.c */
@@ -5281,7 +9314,7 @@ int fp_submod(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5290,6 +9323,10 @@ void fp_to_signed_bin(fp_int *a, unsigned char *b)
   fp_to_unsigned_bin (a, b + 1);
   b[0] = (unsigned char) ((a->sign == FP_ZPOS) ? 0 : 1);
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: fp_to_signed_bin.c */
 
@@ -5301,7 +9338,7 @@ void fp_to_signed_bin(fp_int *a, unsigned char *b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5320,6 +9357,10 @@ void fp_to_unsigned_bin(fp_int *a, unsigned char *b)
   bn_reverse (b, x);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_to_unsigned_bin.c */
 
 /* Start: fp_toradix.c */
@@ -5330,7 +9371,7 @@ void fp_to_unsigned_bin(fp_int *a, unsigned char *b)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5379,6 +9420,10 @@ int fp_toradix(fp_int *a, char *str, int radix)
   return FP_OKAY;
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: fp_toradix.c */
 
 /* Start: fp_unsigned_bin_size.c */
@@ -5389,7 +9434,7 @@ int fp_toradix(fp_int *a, char *str, int radix)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5398,6 +9443,10 @@ int fp_unsigned_bin_size(fp_int *a)
   int     size = fp_count_bits (a);
   return (size / 8 + ((size & 7) != 0 ? 1 : 0));
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: fp_unsigned_bin_size.c */
 
@@ -5409,7 +9458,7 @@ int fp_unsigned_bin_size(fp_int *a)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5440,6 +9489,10 @@ void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
   fp_clamp(c);
 }
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
+
 /* End: s_fp_add.c */
 
 /* Start: s_fp_sub.c */
@@ -5450,7 +9503,7 @@ void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -5474,6 +9527,10 @@ void s_fp_sub(fp_int *a, fp_int *b, fp_int *c)
   }
   fp_clamp(c);
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
 
 /* End: s_fp_sub.c */
 

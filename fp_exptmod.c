@@ -5,7 +5,7 @@
  *
  * This project is public domain and free for all purposes.
  * 
- * Tom St Denis, tomstdenis@iahu.ca
+ * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
@@ -174,6 +174,13 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
    fp_int tmp;
    int    err;
    
+#ifdef TFM_CHECK
+   /* prevent overflows */
+   if (P->used > (FP_SIZE/2)) {
+      return FP_VAL;
+   }
+#endif
+
    /* is X negative?  */
    if (X->sign == FP_NEG) {
       /* yes, copy G and invmod it */
@@ -183,10 +190,16 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
       }
       X->sign = FP_ZPOS;
       err =  _fp_exptmod(&tmp, X, P, Y);
-      X->sign = FP_NEG;
+      if (X != Y) {
+         X->sign = FP_NEG;
+      }
       return err;
    } else {
       /* Positive exponent so just exptmod */
       return _fp_exptmod(G, X, P, Y);
    }
 }
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
