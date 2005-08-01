@@ -1,3 +1,10 @@
+August 1st, 2005
+0.05 -- Quick fix to the fp_invmod.c code to let it handle even moduli [required for LTC]
+     -- Added makefile.shared to make shared objects [required for LTC]
+     -- Improved makefiles to make them way more configurable
+     -- Added timing resistant fp_exptmod() enabled with TFM_TIMING_RESISTANT
+
+July 23rd, 2005
 0.04 -- Fixed bugs in the SSE2 squaring code
      -- Rewrote the multipliers to be optimized for small inputs 
      -- Nelson Bolyard of the NSS crew submitted [among other things] new faster Montgomery reduction

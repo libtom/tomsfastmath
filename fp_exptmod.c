@@ -9,6 +9,75 @@
  */
 #include <tfm.h>
 
+#ifdef TFM_TIMING_RESISTANT
+
+/* timing resistant montgomery ladder based exptmod 
+
+   Based on work by Marc Joye, Sung-Ming Yen, "The Montgomery Powering Ladder", Cryptographic Hardware and Embedded Systems, CHES 2002
+*/
+static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+{
+  fp_int   R[2];
+  fp_digit buf, mp;
+  int      err, bitcnt, digidx, y;
+
+  /* now setup montgomery  */
+  if ((err = fp_montgomery_setup (P, &mp)) != FP_OKAY) {
+     return err;
+  }
+
+  fp_init(&R[0]);   
+  fp_init(&R[1]);   
+   
+  /* now we need R mod m */
+  fp_montgomery_calc_normalization (&R[0], P);
+
+  /* now set R[0][1] to G * R mod m */
+  if (fp_cmp_mag(P, G) != FP_GT) {
+     /* G > P so we reduce it first */
+     fp_mod(G, P, &R[1]);
+  } else {
+     fp_copy(G, &R[1]);
+  }
+  fp_mulmod (&R[1], &R[0], P, &R[1]);
+
+  /* for j = t-1 downto 0 do
+        r_!k = R0*R1; r_k = r_k^2
+  */
+  
+  /* set initial mode and bit cnt */
+  bitcnt = 1;
+  buf    = 0;
+  digidx = X->used - 1;
+
+  for (;;) {
+    /* grab next digit as required */
+    if (--bitcnt == 0) {
+      /* if digidx == -1 we are out of digits so break */
+      if (digidx == -1) {
+        break;
+      }
+      /* read next digit and reset bitcnt */
+      buf    = X->dp[digidx--];
+      bitcnt = (int)DIGIT_BIT;
+    }
+
+    /* grab the next msb from the exponent */
+    y     = (fp_digit)(buf >> (DIGIT_BIT - 1)) & 1;
+    buf <<= (fp_digit)1;
+
+    /* do ops */
+    fp_mul(&R[0], &R[1], &R[y^1]); fp_montgomery_reduce(&R[y^1], P, mp);
+    fp_sqr(&R[y], &R[y]);          fp_montgomery_reduce(&R[y], P, mp);
+  }
+
+   fp_montgomery_reduce(&R[0], P, mp);
+   fp_copy(&R[0], Y);
+   return FP_OKAY;
+}   
+
+#else
+
 /* y = g**x (mod b) 
  * Some restrictions... x must be positive and < b
  */
@@ -167,6 +236,8 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
   fp_copy (&res, Y);
   return FP_OKAY;
 }
+
+#endif
 
 
 int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)

@@ -47,7 +47,7 @@
 
 /* this should multiply i and j  */
 #define MULADD(i, j)                                      \
-asm (                                                     \
+asm(                                                     \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -118,7 +118,7 @@ asm  (                                                    \
 
 /* this should multiply i and j  */
    #define MULADD(i, j)                                      \
-   asm volatile (                                            \
+   asm(                                            \
         "movd  %6,%%mm0     \n\t"                            \
         "movd  %7,%%mm1     \n\t"                            \
         "pmuludq %%mm1,%%mm0\n\t"                            \

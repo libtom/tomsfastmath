@@ -36,7 +36,7 @@
 #define COMBA_FINI
 
 #define SQRADD(i, j)                                      \
-asm volatile (                                            \
+asm(                                            \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %%eax        \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -45,7 +45,7 @@ asm volatile (                                            \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%eax","%edx","%cc");
 
 #define SQRADD2(i, j)                                     \
-asm volatile (                                            \
+asm(                                            \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -57,7 +57,7 @@ asm volatile (                                            \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i), "m"(j)  :"%eax","%edx","%cc");
 
 #define SQRADDSC(i, j)                                    \
-asm (                                                     \
+asm(                                                     \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "movl  %%eax,%0     \n\t"                            \
@@ -66,7 +66,7 @@ asm (                                                     \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%eax","%edx","%cc");
 
 #define SQRADDAC(i, j)                                    \
-asm (                                                     \
+asm(                                                     \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -75,7 +75,7 @@ asm (                                                     \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%eax","%edx","%cc");
 
 #define SQRADDDB                                          \
-asm (                                                     \
+asm(                                                     \
      "addl %6,%0         \n\t"                            \
      "adcl %7,%1         \n\t"                            \
      "adcl %8,%2         \n\t"                            \
@@ -104,7 +104,7 @@ asm (                                                     \
 #define COMBA_FINI
 
 #define SQRADD(i, j)                                      \
-asm (                                                     \
+asm(                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %%rax        \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
@@ -113,7 +113,7 @@ asm (                                                     \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i) :"%rax","%rdx","%cc");
 
 #define SQRADD2(i, j)                                     \
-asm (                                                     \
+asm(                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
@@ -125,7 +125,7 @@ asm (                                                     \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","%cc");
 
 #define SQRADDSC(i, j)                                    \
-asm (                                                     \
+asm(                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "movq  %%rax,%0     \n\t"                            \
@@ -134,7 +134,7 @@ asm (                                                     \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","%cc");
 
 #define SQRADDAC(i, j)                                                         \
-asm (                                                     \
+asm(                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
@@ -143,7 +143,7 @@ asm (                                                     \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","%cc");
 
 #define SQRADDDB                                          \
-asm (                                                     \
+asm(                                                     \
      "addq %6,%0         \n\t"                            \
      "adcq %7,%1         \n\t"                            \
      "adcq %8,%2         \n\t"                            \
@@ -173,7 +173,7 @@ asm (                                                     \
    asm("emms");
 
 #define SQRADD(i, j)                                      \
-asm volatile (                                            \
+asm(                                            \
      "movd  %6,%%mm0     \n\t"                            \
      "pmuludq %%mm0,%%mm0\n\t"                            \
      "movd  %%mm0,%%eax  \n\t"                            \
@@ -185,7 +185,7 @@ asm volatile (                                            \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%eax","%cc");
 
 #define SQRADD2(i, j)                                     \
-asm volatile (                                            \
+asm(                                            \
      "movd  %6,%%mm0     \n\t"                            \
      "movd  %7,%%mm1     \n\t"                            \
      "pmuludq %%mm1,%%mm0\n\t"                            \
@@ -201,7 +201,7 @@ asm volatile (                                            \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i), "m"(j)  :"%eax","%edx","%cc");
 
 #define SQRADDSC(i, j)                                                         \
-asm volatile (                                            \
+asm(                                            \
      "movd  %6,%%mm0     \n\t"                            \
      "movd  %7,%%mm1     \n\t"                            \
      "pmuludq %%mm1,%%mm0\n\t"                            \
@@ -212,7 +212,7 @@ asm volatile (                                            \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "m"(i), "m"(j));
 
 #define SQRADDAC(i, j)                                                         \
-asm volatile (                                            \
+asm(                                            \
      "movd  %6,%%mm0     \n\t"                            \
      "movd  %7,%%mm1     \n\t"                            \
      "pmuludq %%mm1,%%mm0\n\t"                            \
@@ -225,7 +225,7 @@ asm volatile (                                            \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "m"(i), "m"(j)  :"%eax","%edx","%cc");
 
 #define SQRADDDB                                          \
-asm (                                                     \
+asm(                                                     \
      "addl %6,%0         \n\t"                            \
      "adcl %7,%1         \n\t"                            \
      "adcl %8,%2         \n\t"                            \

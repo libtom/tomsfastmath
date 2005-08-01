@@ -48,6 +48,11 @@
  */
 /* #define TFM_PRESCOTT */
 
+/* Do we want timing resistant fp_exptmod() ?
+ * This makes it slower but also timing invariant with respect to the exponent 
+ */
+/* #define TFM_TIMING_RESISTANT */
+
 #endif
 
 /* Max size of any number in bits.  Basically the largest size you will be multiplying
@@ -355,15 +360,25 @@ int fp_toradix_n(fp_int * a, char *str, int radix, int maxlen);
 void s_fp_add(fp_int *a, fp_int *b, fp_int *c);
 void s_fp_sub(fp_int *a, fp_int *b, fp_int *c);
 void bn_reverse(unsigned char *s, int len);
+
 void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C);
+
+#ifdef TFM_SMALL_SET
+void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C);
+#endif
+
 #ifdef TFM_HUGE
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C);
 void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C);
 void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C);
 #endif
-void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C);
 
+void fp_sqr_comba(fp_int *A, fp_int *B);
+
+#ifdef TFM_SMALL_SET
 void fp_sqr_comba_small(fp_int *A, fp_int *B);
+#endif
+
 #ifdef TFM_HUGE
 void fp_sqr_comba32(fp_int *A, fp_int *B);
 void fp_sqr_comba48(fp_int *A, fp_int *B);

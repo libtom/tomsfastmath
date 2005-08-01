@@ -49,8 +49,8 @@
 \begin{document}
 \frontmatter
 \pagestyle{empty}
-\title{TomsFastMath User Manual \\ v0.04}
-\author{Tom St Denis \\ tomstdenis@iahu.ca}
+\title{TomsFastMath User Manual \\ v0.05}
+\author{Tom St Denis \\ tomstdenis@gmail.com}
 \maketitle
 This text and library are all hereby placed in the public domain.  This book has been formatted for B5 
 [176x250] paper using the \LaTeX{} {\em book} macro package.
@@ -101,14 +101,26 @@ fast multiplication and squaring and has the side effect of speeding up ECC oper
 TomsFastMath is public domain.
 
 \section{Building}
-Currently only a GCC makefile has been provided.  To build the library simply type
-``make''.  The library is a bit too new to put into production so no install
-scripts exist yet.  You can build the test program with ``make test''.
+To build the library simply type ``make''.  Or to install in typical *unix like directories use
+``make install''.  Similarly a shared library can be built with ``make -f makefile.shared install''.
 
-To perform simple static testing (useful to test out new assembly ports) use the stest
-program.  Type ``make stest'' and run it on your target.  The program will perform three
-multiplications, squarings and montgomery reductions.  Likely if your assembly 
-code is invalid this code will exhibit the bug.
+You can build the test program with ``make test''.  To perform simple static testing (useful to 
+test out new assembly ports) use the stest program.  Type ``make stest'' and run it on your 
+target.  The program will perform three multiplications, squarings and montgomery reductions.  
+Likely if your assembly code is invalid this code will exhibit the bug.
+
+\subsection{Intel CC}
+In theory you should be able to build the library with
+
+\begin{verbatim}
+CFLAGS="-O3 -ip" CC=icc make IGNORE_SPEED=1
+\end{verbatim}
+
+However, Intels inline assembler is way less advanced than GCCs.  As a result it doesn't compile.  
+Fortunately it doesn't really matter.
+
+\subsection{MSVC}
+The library doesn't build with MSVC.  Imagine that.
 
 \subsection{Build Limitations}
 TomsFastMath has the following build requirements which are non--portable but under most 

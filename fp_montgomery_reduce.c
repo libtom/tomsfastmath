@@ -299,8 +299,6 @@ asm(                                 \
 
 
 #define LO  0
-#define HI  1
-#define CY  2
 
 /* computes x/R == x (mod N) via Montgomery Reduction */
 void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
@@ -347,7 +345,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
        }
        LOOP_END;
        while (cy) {
-           PROPCARRY; //  cy = cy > (*_c += cy);
+           PROPCARRY;
            ++_c;
        }
   }         
@@ -374,7 +372,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
   }
 }
 
+
 /* $Source$ */
 /* $Revision$ */
 /* $Date$ */
-

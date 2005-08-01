@@ -1,7 +1,13 @@
 #makefile for TomsFastMath
 #
 #
-CFLAGS += -Wall -W -Wshadow -I./ -O3 -funroll-all-loops
+VERSION=0.05
+
+CFLAGS += -Wall -W -Wshadow -I./ 
+
+ifndef IGNORE_SPEED
+
+CFLAGS += -O3 -funroll-all-loops
 
 #profiling
 #PROF=-pg -g
@@ -10,9 +16,7 @@ CFLAGS += -Wall -W -Wshadow -I./ -O3 -funroll-all-loops
 #speed
 CFLAGS += -fomit-frame-pointer
 
-VERSION=0.04
-
-default: libtfm.a
+endif
 
 OBJECTS = \
 fp_set.o \
@@ -52,23 +56,29 @@ ifndef INCPATH
    INCPATH=/usr/include
 endif
 
-ifndef TFM_GROUP
+ifndef INSTALL_GROUP
    GROUP=wheel
+else
+   GROUP=$(INSTALL_GROUP)
 endif
 
-ifndef TFM_USER
+ifndef INSTALL_USER
    USER=root
+else
+   USER=$(INSTALL_USER)
 endif
 
 ifndef LIBNAME
 	LIBNAME=libtfm.a
 endif
 
-$(LIBNAME): $(OBJECTS)
-	$(AR) $(ARFLAGS) $(LIBNAME) $(OBJECTS)
-	ranlib $(LIBNAME)
+default: $(LIBNAME)
 
-install: libtfm.a
+$(LIBNAME): $(OBJECTS)
+	$(AR) $(ARFLAGS) $@ $(OBJECTS)
+	ranlib $@
+
+install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
 	install -g $(GROUP) -o $(USER) $(LIBNAME) $(DESTDIR)$(LIBPATH)
@@ -77,17 +87,17 @@ install: libtfm.a
 mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
 
-test: libtfm.a demo/test.o mtest/mtest
-	$(CC) $(CFLAGS) demo/test.o libtfm.a $(PROF) -o test
+test: $(LIBNAME) demo/test.o mtest/mtest
+	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
 
-timing: libtfm.a demo/test.o
-	$(CC) $(CFLAGS) demo/test.o libtfm.a $(PROF) -o test
+timing: $(LIBNAME) demo/test.o
+	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
 	
-stest: libtfm.a demo/stest.o 
-	$(CC) $(CFLAGS) demo/stest.o libtfm.a -o stest
+stest: $(LIBNAME) demo/stest.o 
+	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME) -o stest
 
-rsatest: libtfm.a demo/rsa.o
-	$(CC) $(CFLAGS) demo/rsa.o libtfm.a -o rsatest
+rsatest: $(LIBNAME) demo/rsa.o
+	$(CC) $(CFLAGS) demo/rsa.o $(LIBNAME) -o rsatest
 
 docdvi: tfm.tex
 	touch tfm.ind
@@ -101,8 +111,23 @@ docs: docdvi
 	dvipdf tfm
 	mv -f tfm.pdf doc
 
+#This rule cleans the source tree of all compiled code, not including the pdf
+#documentation.
 clean:
-	rm -f $(OBJECTS) *.a demo/*.o test tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc stest *~ rsatest *.gcda *.gcno demo/*.gcda demo/*.gcno mtest/*.gcno mtest/*.gcda
+	rm -f `find . -type f | grep "[.]o" | xargs`
+	rm -f `find . -type f | grep "[.]lo"  | xargs`
+	rm -f `find . -type f | grep "[.]a" | xargs`
+	rm -f `find . -type f | grep "[.]la"  | xargs`
+	rm -f `find . -type f | grep "[.]obj" | xargs`
+	rm -f `find . -type f | grep "[.]lib" | xargs`
+	rm -f `find . -type f | grep "[.]exe" | xargs`
+	rm -f `find . -type f | grep "[.]gcda" | xargs`
+	rm -f `find . -type f | grep "[.]gcno" | xargs`
+	rm -f `find . -type f | grep "[.]il" | xargs`
+	rm -f `find . -type f | grep "[.]dyn" | xargs`
+	rm -f `find . -type f | grep "[.]dpi" | xargs`
+	rm -rf `find . -type d | grep "[.]libs" | xargs`
+	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc 
 	cd mtest ; make clean
 
 no_oops: clean
@@ -116,3 +141,7 @@ zipup: no_oops docs clean
 	cp -R ./tomsfastmath/* ./tomsfastmath-$(VERSION)/ ; \
 	tar -c tomsfastmath-$(VERSION)/* | bzip2 -9vvc > tfm-$(VERSION).tar.bz2 ; \
 	zip -9r tfm-$(VERSION).zip tomsfastmath-$(VERSION)/*
+
+# $Source: /cvs/libtom/tomsfastmath/makefile,v $ 
+# $Revision: 1.17 $ 
+# $Date: 2005/07/30 04:23:55 $ 

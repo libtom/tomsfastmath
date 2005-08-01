@@ -757,6 +757,75 @@ int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
  */
 #include <tfm.h>
 
+#ifdef TFM_TIMING_RESISTANT
+
+/* timing resistant montgomery ladder based exptmod 
+
+   Based on work by Marc Joye, Sung-Ming Yen, "The Montgomery Powering Ladder", Cryptographic Hardware and Embedded Systems, CHES 2002
+*/
+static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+{
+  fp_int   R[2];
+  fp_digit buf, mp;
+  int      err, bitcnt, digidx, y;
+
+  /* now setup montgomery  */
+  if ((err = fp_montgomery_setup (P, &mp)) != FP_OKAY) {
+     return err;
+  }
+
+  fp_init(&R[0]);   
+  fp_init(&R[1]);   
+   
+  /* now we need R mod m */
+  fp_montgomery_calc_normalization (&R[0], P);
+
+  /* now set R[0][1] to G * R mod m */
+  if (fp_cmp_mag(P, G) != FP_GT) {
+     /* G > P so we reduce it first */
+     fp_mod(G, P, &R[1]);
+  } else {
+     fp_copy(G, &R[1]);
+  }
+  fp_mulmod (&R[1], &R[0], P, &R[1]);
+
+  /* for j = t-1 downto 0 do
+        r_!k = R0*R1; r_k = r_k^2
+  */
+  
+  /* set initial mode and bit cnt */
+  bitcnt = 1;
+  buf    = 0;
+  digidx = X->used - 1;
+
+  for (;;) {
+    /* grab next digit as required */
+    if (--bitcnt == 0) {
+      /* if digidx == -1 we are out of digits so break */
+      if (digidx == -1) {
+        break;
+      }
+      /* read next digit and reset bitcnt */
+      buf    = X->dp[digidx--];
+      bitcnt = (int)DIGIT_BIT;
+    }
+
+    /* grab the next msb from the exponent */
+    y     = (fp_digit)(buf >> (DIGIT_BIT - 1)) & 1;
+    buf <<= (fp_digit)1;
+
+    /* do ops */
+    fp_mul(&R[0], &R[1], &R[y^1]); fp_montgomery_reduce(&R[y^1], P, mp);
+    fp_sqr(&R[y], &R[y]);          fp_montgomery_reduce(&R[y], P, mp);
+  }
+
+   fp_montgomery_reduce(&R[0], P, mp);
+   fp_copy(&R[0], Y);
+   return FP_OKAY;
+}   
+
+#else
+
 /* y = g**x (mod b) 
  * Some restrictions... x must be positive and < b
  */
@@ -915,6 +984,8 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
   fp_copy (&res, Y);
   return FP_OKAY;
 }
+
+#endif
 
 
 int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
@@ -1105,6 +1176,111 @@ int main(void)
  */
 #include <tfm.h>
 
+static int fp_invmod_slow (fp_int * a, fp_int * b, fp_int * c)
+{
+  fp_int  x, y, u, v, A, B, C, D;
+  int     res;
+
+  /* b cannot be negative */
+  if (b->sign == FP_NEG || fp_iszero(b) == 1) {
+    return FP_VAL;
+  }
+
+  /* init temps */
+  fp_init(&x);    fp_init(&y);
+  fp_init(&u);    fp_init(&v);
+  fp_init(&A);    fp_init(&B);
+  fp_init(&C);    fp_init(&D);
+
+  /* x = a, y = b */
+  if ((res = fp_mod(a, b, &x)) != FP_OKAY) {
+      return res;
+  }
+  fp_copy(b, &y);
+
+  /* 2. [modified] if x,y are both even then return an error! */
+  if (fp_iseven (&x) == 1 && fp_iseven (&y) == 1) {
+    return FP_VAL;
+  }
+
+  /* 3. u=x, v=y, A=1, B=0, C=0,D=1 */
+  fp_copy (&x, &u);
+  fp_copy (&y, &v);
+  fp_set (&A, 1);
+  fp_set (&D, 1);
+
+top:
+  /* 4.  while u is even do */
+  while (fp_iseven (&u) == 1) {
+    /* 4.1 u = u/2 */
+    fp_div_2 (&u, &u);
+
+    /* 4.2 if A or B is odd then */
+    if (fp_isodd (&A) == 1 || fp_isodd (&B) == 1) {
+      /* A = (A+y)/2, B = (B-x)/2 */
+      fp_add (&A, &y, &A);
+      fp_sub (&B, &x, &B);
+    }
+    /* A = A/2, B = B/2 */
+    fp_div_2 (&A, &A);
+    fp_div_2 (&B, &B);
+  }
+
+  /* 5.  while v is even do */
+  while (fp_iseven (&v) == 1) {
+    /* 5.1 v = v/2 */
+    fp_div_2 (&v, &v);
+
+    /* 5.2 if C or D is odd then */
+    if (fp_isodd (&C) == 1 || fp_isodd (&D) == 1) {
+      /* C = (C+y)/2, D = (D-x)/2 */
+      fp_add (&C, &y, &C);
+      fp_sub (&D, &x, &D);
+    }
+    /* C = C/2, D = D/2 */
+    fp_div_2 (&C, &C);
+    fp_div_2 (&D, &D);
+  }
+
+  /* 6.  if u >= v then */
+  if (fp_cmp (&u, &v) != FP_LT) {
+    /* u = u - v, A = A - C, B = B - D */
+    fp_sub (&u, &v, &u);
+    fp_sub (&A, &C, &A);
+    fp_sub (&B, &D, &B);
+  } else {
+    /* v - v - u, C = C - A, D = D - B */
+    fp_sub (&v, &u, &v);
+    fp_sub (&C, &A, &C);
+    fp_sub (&D, &B, &D);
+  }
+
+  /* if not zero goto step 4 */
+  if (fp_iszero (&u) == 0)
+    goto top;
+
+  /* now a = C, b = D, gcd == g*v */
+
+  /* if v != 1 then there is no inverse */
+  if (fp_cmp_d (&v, 1) != FP_EQ) {
+    return FP_VAL;
+  }
+
+  /* if its too low */
+  while (fp_cmp_d(&C, 0) == FP_LT) {
+      fp_add(&C, b, &C);
+  }
+  
+  /* too big */
+  while (fp_cmp_mag(&C, b) != FP_LT) {
+      fp_sub(&C, b, &C);
+  }
+  
+  /* C is now the inverse */
+  fp_copy(&C, c);
+  return FP_OKAY;
+}
+
 /* c = 1/a (mod b) for odd b only */
 int fp_invmod(fp_int *a, fp_int *b, fp_int *c)
 {
@@ -1113,7 +1289,7 @@ int fp_invmod(fp_int *a, fp_int *b, fp_int *c)
 
   /* 2. [modified] b must be odd   */
   if (fp_iseven (b) == FP_YES) {
-    return FP_VAL;
+    return fp_invmod_slow(a,b,c);
   }
 
   /* init all our temps */
@@ -1814,8 +1990,6 @@ asm(                                 \
 
 
 #define LO  0
-#define HI  1
-#define CY  2
 
 /* computes x/R == x (mod N) via Montgomery Reduction */
 void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
@@ -1862,7 +2036,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
        }
        LOOP_END;
        while (cy) {
-           PROPCARRY; //  cy = cy > (*_c += cy);
+           PROPCARRY;
            ++_c;
        }
   }         
@@ -1889,10 +2063,10 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
   }
 }
 
+
 /* $Source$ */
 /* $Revision$ */
 /* $Date$ */
-
 
 /* End: fp_montgomery_reduce.c */
 
@@ -2270,7 +2444,7 @@ void fp_mul_2d(fp_int *a, int b, fp_int *c)
 
 /* this should multiply i and j  */
 #define MULADD(i, j)                                      \
-asm (                                                     \
+asm(                                                     \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -2341,7 +2515,7 @@ asm  (                                                    \
 
 /* this should multiply i and j  */
    #define MULADD(i, j)                                      \
-   asm volatile (                                            \
+   asm(                                            \
         "movd  %6,%%mm0     \n\t"                            \
         "movd  %7,%%mm1     \n\t"                            \
         "pmuludq %%mm1,%%mm0\n\t"                            \
@@ -5678,7 +5852,7 @@ Obvious points of optimization
 #define COMBA_FINI
 
 #define SQRADD(i, j)                                      \
-asm volatile (                                            \
+asm(                                            \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %%eax        \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -5687,7 +5861,7 @@ asm volatile (                                            \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%eax","%edx","%cc");
 
 #define SQRADD2(i, j)                                     \
-asm volatile (                                            \
+asm(                                            \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -5699,7 +5873,7 @@ asm volatile (                                            \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i), "m"(j)  :"%eax","%edx","%cc");
 
 #define SQRADDSC(i, j)                                    \
-asm (                                                     \
+asm(                                                     \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "movl  %%eax,%0     \n\t"                            \
@@ -5708,7 +5882,7 @@ asm (                                                     \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%eax","%edx","%cc");
 
 #define SQRADDAC(i, j)                                    \
-asm (                                                     \
+asm(                                                     \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -5717,7 +5891,7 @@ asm (                                                     \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%eax","%edx","%cc");
 
 #define SQRADDDB                                          \
-asm (                                                     \
+asm(                                                     \
      "addl %6,%0         \n\t"                            \
      "adcl %7,%1         \n\t"                            \
      "adcl %8,%2         \n\t"                            \
@@ -5746,7 +5920,7 @@ asm (                                                     \
 #define COMBA_FINI
 
 #define SQRADD(i, j)                                      \
-asm (                                                     \
+asm(                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %%rax        \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
@@ -5755,7 +5929,7 @@ asm (                                                     \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i) :"%rax","%rdx","%cc");
 
 #define SQRADD2(i, j)                                     \
-asm (                                                     \
+asm(                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
@@ -5767,7 +5941,7 @@ asm (                                                     \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","%cc");
 
 #define SQRADDSC(i, j)                                    \
-asm (                                                     \
+asm(                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "movq  %%rax,%0     \n\t"                            \
@@ -5776,7 +5950,7 @@ asm (                                                     \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","%cc");
 
 #define SQRADDAC(i, j)                                                         \
-asm (                                                     \
+asm(                                                     \
      "movq  %6,%%rax     \n\t"                            \
      "mulq  %7           \n\t"                            \
      "addq  %%rax,%0     \n\t"                            \
@@ -5785,7 +5959,7 @@ asm (                                                     \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","%cc");
 
 #define SQRADDDB                                          \
-asm (                                                     \
+asm(                                                     \
      "addq %6,%0         \n\t"                            \
      "adcq %7,%1         \n\t"                            \
      "adcq %8,%2         \n\t"                            \
@@ -5815,7 +5989,7 @@ asm (                                                     \
    asm("emms");
 
 #define SQRADD(i, j)                                      \
-asm volatile (                                            \
+asm(                                            \
      "movd  %6,%%mm0     \n\t"                            \
      "pmuludq %%mm0,%%mm0\n\t"                            \
      "movd  %%mm0,%%eax  \n\t"                            \
@@ -5827,7 +6001,7 @@ asm volatile (                                            \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i) :"%eax","%cc");
 
 #define SQRADD2(i, j)                                     \
-asm volatile (                                            \
+asm(                                            \
      "movd  %6,%%mm0     \n\t"                            \
      "movd  %7,%%mm1     \n\t"                            \
      "pmuludq %%mm1,%%mm0\n\t"                            \
@@ -5843,7 +6017,7 @@ asm volatile (                                            \
      :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "m"(i), "m"(j)  :"%eax","%edx","%cc");
 
 #define SQRADDSC(i, j)                                                         \
-asm volatile (                                            \
+asm(                                            \
      "movd  %6,%%mm0     \n\t"                            \
      "movd  %7,%%mm1     \n\t"                            \
      "pmuludq %%mm1,%%mm0\n\t"                            \
@@ -5854,7 +6028,7 @@ asm volatile (                                            \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "m"(i), "m"(j));
 
 #define SQRADDAC(i, j)                                                         \
-asm volatile (                                            \
+asm(                                            \
      "movd  %6,%%mm0     \n\t"                            \
      "movd  %7,%%mm1     \n\t"                            \
      "pmuludq %%mm1,%%mm0\n\t"                            \
@@ -5867,7 +6041,7 @@ asm volatile (                                            \
      :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "m"(i), "m"(j)  :"%eax","%edx","%cc");
 
 #define SQRADDDB                                          \
-asm (                                                     \
+asm(                                                     \
      "addl %6,%0         \n\t"                            \
      "adcl %7,%1         \n\t"                            \
      "adcl %8,%2         \n\t"                            \
