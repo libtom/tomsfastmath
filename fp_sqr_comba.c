@@ -1945,7 +1945,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
 #endif /* TFM_SMALL_SET */
 
 
-#ifdef TFM_HUGE
+#ifdef TFM_SQR32
 void fp_sqr_comba32(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[64], c0, c1, c2, sc0, sc1, sc2;
@@ -2272,16 +2272,14 @@ void fp_sqr_comba32(fp_int *A, fp_int *B)
    COMBA_STORE2(b[63]);
    COMBA_FINI;
 
+   memcpy(B->dp, b, 64 * sizeof(fp_digit));
    B->used = 64;
    B->sign = FP_ZPOS;
-   memcpy(B->dp, b, 64 * sizeof(fp_digit));
    fp_clamp(B);
 }
-
-
 #endif
 
-#ifdef TFM_HUGE
+#ifdef TFM_SQR64
 void fp_sqr_comba64(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[128], c0, c1, c2, sc0, sc1, sc2;
@@ -2933,7 +2931,9 @@ void fp_sqr_comba64(fp_int *A, fp_int *B)
    memcpy(B->dp, b, 128 * sizeof(fp_digit));
    fp_clamp(B);
 }
+#endif
 
+#ifdef TFM_SQR48
 void fp_sqr_comba48(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[96], c0, c1, c2, sc0, sc1, sc2;
@@ -2985,7 +2985,7 @@ void fp_sqr_comba48(fp_int *A, fp_int *B)
 
    /* output 8 */
    CARRY_FORWARD;
-   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+         SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
    COMBA_STORE(b[8]);
 
    /* output 9 */
@@ -3420,9 +3420,9 @@ void fp_sqr_comba48(fp_int *A, fp_int *B)
    COMBA_STORE2(b[95]);
    COMBA_FINI;
 
+   memcpy(B->dp, b, 96 * sizeof(fp_digit));
    B->used = 96;
    B->sign = FP_ZPOS;
-   memcpy(B->dp, b, 96 * sizeof(fp_digit));
    fp_clamp(B);
 }
 

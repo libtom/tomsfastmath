@@ -25,11 +25,11 @@ void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
       c->dp[x]   = (fp_digit)t;
       t        >>= DIGIT_BIT;
   }
-  if (t != 0 && x != FP_SIZE) {
+  if (t != 0 && x < FP_SIZE) {
      c->dp[c->used++] = (fp_digit)t;
      ++x;
   }
-  
+  c->used = x;
   for (; x < oldused; x++) {
      c->dp[x] = 0;
   }

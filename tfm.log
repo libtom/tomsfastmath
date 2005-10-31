@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2005.4.10)  1 AUG 2005 13:34
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2005.9.20)  31 OCT 2005 11:30
 entering extended mode
 **tfm
 (./tfm.tex
@@ -329,4 +329,4 @@ Here is how much of TeX's memory you used:
  580 hyphenation exceptions out of 1000
  25i,9n,25p,195b,321s stack positions out of 1500i,500n,1500p,200000b,5000s
 
-Output written on tfm.dvi (25 pages, 51612 bytes).
+Output written on tfm.dvi (25 pages, 51616 bytes).

@@ -15,6 +15,12 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
     int    r, y, yy, s;
     fp_int ac, bd, comp, amb, cmd, t1, t2;
 
+    /* call generic if we're out of range */
+    if (A->used + B->used > FP_SIZE) {
+       fp_mul_comba(A, B, C);
+       return ;
+    }
+
      y  = MAX(A->used, B->used);
      yy = MIN(A->used, B->used);
      if (yy <= 8 || y <= 64) {
@@ -31,11 +37,15 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
 #elif defined(TFM_HUGE)
         if (0) { 1;
 #endif
-#if defined(TFM_HUGE)
+#if defined(TFM_MUL32)
         } else if (y <= 32) {
            fp_mul_comba32(A,B,C);
+#endif
+#if defined(TFM_MUL48)
         } else if (y <= 48) {
            fp_mul_comba48(A,B,C);
+#endif
+#if defined(TFM_MUL64)
         } else if (y <= 64) {
            fp_mul_comba64(A,B,C);
 #endif

@@ -283,7 +283,8 @@ sqrtime:
 //#else
 monttime:
   printf("Montgomery:\n");
-  for (t = 2; t <= (FP_SIZE/2)-2; t += 2) {
+  for (t = 2; t <= (FP_SIZE/2)-4; t += 2) {
+//      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
       fp_zero(&a);
       for (ix = 0; ix < t; ix++) {
           a.dp[ix] = ix | 1;
@@ -342,6 +343,9 @@ expttime:
 
 return;
 testing:
+
+  fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f); fp_zero(&a);
+
 
    div2_n = mul2_n = inv_n = expt_n = lcm_n = gcd_n = add_n =
    sub_n = mul_n = div_n = sqr_n = mul2d_n = div2d_n = cnt = add_d_n = sub_d_n= mul_d_n = 0;

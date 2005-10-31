@@ -38,6 +38,8 @@ mulmod
 #include <stdlib.h>
 #include <time.h>
 #include <tommath.h>
+#define CRYPT
+#include "../tfm.h"
 
 FILE *rng;
 
@@ -47,7 +49,7 @@ void rand_num(mp_int *a)
    int n, size;
    unsigned char buf[2048];
 
-   size = 1 + ((fgetc(rng)<<8) + fgetc(rng)) % 256;
+   size = 1 + ((fgetc(rng)<<8) + fgetc(rng)) % (FP_MAX_SIZE/16 - DIGIT_BIT/2);
    buf[0] = (fgetc(rng)&1)?1:0;
    fread(buf+1, 1, size, rng);
    while (buf[1] == 0) buf[1] = fgetc(rng);
@@ -60,7 +62,7 @@ void rand_num2(mp_int *a)
    int n, size;
    unsigned char buf[2048];
 
-   size = 1 + ((fgetc(rng)<<8) + fgetc(rng)) % 256;
+   size = 1 + ((fgetc(rng)<<8) + fgetc(rng)) % (FP_MAX_SIZE/16 - DIGIT_BIT/2);
    buf[0] = (fgetc(rng)&1)?1:0;
    fread(buf+1, 1, size, rng);
    while (buf[1] == 0) buf[1] = fgetc(rng);
@@ -118,7 +120,6 @@ int main(void)
       }
 #endif
        n = fgetc(rng) % 16;
-
    if (n == 0) {
        /* add tests */
        rand_num(&a);

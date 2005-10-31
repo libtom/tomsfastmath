@@ -64,6 +64,8 @@ asm(                                                      \
 :"0"(_c[LO]), "1"(cy), "r"(mu), "r"(*tmpm++)              \
 : "%rax", "%rdx", "%cc")
 
+#ifdef TFM_HUGE
+
 #define INNERMUL8 \
  asm(                  \
  "movq 0(%5),%%rax    \n\t"  \
@@ -156,6 +158,8 @@ asm(                                                      \
 :"=r"(_c), "=r"(cy)                    \
 : "0"(_c),  "1"(cy), "g"(mu), "r"(tmpm)\
 : "%rax", "%rdx", "%r10", "%r11", "%cc")
+
+#endif
 
 
 #define PROPCARRY                           \
@@ -306,6 +310,11 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
    fp_digit c[FP_SIZE], *_c, *tmpm, mu;
    int      oldused, x, y, pa;
 
+   /* bail if too large */
+   if (m->used > (FP_SIZE/2)) {
+      return;
+   }
+
 #if defined(USE_MEMSET)
    /* now zero the buff */
    memset(c, 0, sizeof c);
@@ -331,7 +340,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
        _c   = c + x;
        tmpm = m->dp;
        y = 0;
-       #if defined(TFM_X86_64)
+       #if defined(TFM_X86_64) && defined(TFM_HUGE)
            for (; y < (pa & ~7); y += 8) {
               INNERMUL8;
               _c   += 8;

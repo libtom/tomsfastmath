@@ -18,6 +18,7 @@ void fp_montgomery_calc_normalization(fp_int *a, fp_int *b)
 
   /* how many bits of last digit does b use */
   bits = fp_count_bits (b) % DIGIT_BIT;
+  if (!bits) bits = DIGIT_BIT;
 
   /* compute A = B^(n-1) * 2^(bits-1) */
   if (b->used > 1) {

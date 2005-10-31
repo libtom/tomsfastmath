@@ -37,7 +37,12 @@
    Enable these if you are doing 32, 48 or 64 digit multiplications (useful for RSA)
    Less important on 64-bit machines as 32 digits == 2048 bits
  */
-#define TFM_HUGE
+#define TFM_MUL32
+#define TFM_MUL48
+#define TFM_MUL64
+#define TFM_SQR32
+#define TFM_SQR48
+#define TFM_SQR64
 
 /* do we want some overflow checks
    Not required if you make sure your numbers are within range (e.g. by default a modulus for fp_exptmod() can only be upto 2048 bits long)
@@ -61,7 +66,7 @@
  * You can externally define this or it defaults to 4096-bits [allowing multiplications upto 2048x2048 bits ]
  */
 #ifndef FP_MAX_SIZE
-   #define FP_MAX_SIZE           (4096+(4*DIGIT_BIT))
+   #define FP_MAX_SIZE           (4096+(8*DIGIT_BIT))
 #endif
 
 /* will this lib work? */

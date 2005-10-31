@@ -47,7 +47,7 @@
 
 /* this should multiply i and j  */
 #define MULADD(i, j)                                      \
-asm(                                                     \
+asm(                                                      \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -266,8 +266,8 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
   COMBA_FINI;
 
   dst->used = pa;
+  dst->sign = A->sign ^ B->sign;
   fp_clamp(dst);
-  dst->sign = dst->used ? A->sign ^ B->sign : FP_ZPOS;
   fp_copy(dst, C);
 }
 
@@ -1497,8 +1497,7 @@ void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C)
 
 #endif
 
-#ifdef TFM_HUGE
-
+#ifdef TFM_MUL32
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[64];
@@ -1765,7 +1764,9 @@ void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
    fp_clamp(C);
    COMBA_FINI;
 }
+#endif
 
+#ifdef TFM_MUL64
 void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[128];
@@ -2288,7 +2289,9 @@ void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C)
    fp_clamp(C);
    COMBA_FINI;
 }
+#endif
 
+#ifdef TFM_MUL48
 void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[96];
@@ -2683,8 +2686,6 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    fp_clamp(C);
    COMBA_FINI;
 }
-
-
 #endif
 
 

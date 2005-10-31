@@ -1663,6 +1663,7 @@ void fp_montgomery_calc_normalization(fp_int *a, fp_int *b)
 
   /* how many bits of last digit does b use */
   bits = fp_count_bits (b) % DIGIT_BIT;
+  if (!bits) bits = DIGIT_BIT;
 
   /* compute A = B^(n-1) * 2^(bits-1) */
   if (b->used > 1) {
@@ -1754,6 +1755,8 @@ asm(                                                      \
 :"=g"(_c[LO]), "=r"(cy)                                   \
 :"0"(_c[LO]), "1"(cy), "r"(mu), "r"(*tmpm++)              \
 : "%rax", "%rdx", "%cc")
+
+#ifdef TFM_HUGE
 
 #define INNERMUL8 \
  asm(                  \
@@ -1847,6 +1850,8 @@ asm(                                                      \
 :"=r"(_c), "=r"(cy)                    \
 : "0"(_c),  "1"(cy), "g"(mu), "r"(tmpm)\
 : "%rax", "%rdx", "%r10", "%r11", "%cc")
+
+#endif
 
 
 #define PROPCARRY                           \
@@ -1997,6 +2002,11 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
    fp_digit c[FP_SIZE], *_c, *tmpm, mu;
    int      oldused, x, y, pa;
 
+   /* bail if too large */
+   if (m->used > (FP_SIZE/2)) {
+      return;
+   }
+
 #if defined(USE_MEMSET)
    /* now zero the buff */
    memset(c, 0, sizeof c);
@@ -2022,7 +2032,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
        _c   = c + x;
        tmpm = m->dp;
        y = 0;
-       #if defined(TFM_X86_64)
+       #if defined(TFM_X86_64) && defined(TFM_HUGE)
            for (; y < (pa & ~7); y += 8) {
               INNERMUL8;
               _c   += 8;
@@ -2140,6 +2150,12 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
     int    r, y, yy, s;
     fp_int ac, bd, comp, amb, cmd, t1, t2;
 
+    /* call generic if we're out of range */
+    if (A->used + B->used > FP_SIZE) {
+       fp_mul_comba(A, B, C);
+       return ;
+    }
+
      y  = MAX(A->used, B->used);
      yy = MIN(A->used, B->used);
      if (yy <= 8 || y <= 64) {
@@ -2156,11 +2172,15 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
 #elif defined(TFM_HUGE)
         if (0) { 1;
 #endif
-#if defined(TFM_HUGE)
+#if defined(TFM_MUL32)
         } else if (y <= 32) {
            fp_mul_comba32(A,B,C);
+#endif
+#if defined(TFM_MUL48)
         } else if (y <= 48) {
            fp_mul_comba48(A,B,C);
+#endif
+#if defined(TFM_MUL64)
         } else if (y <= 64) {
            fp_mul_comba64(A,B,C);
 #endif
@@ -2444,7 +2464,7 @@ void fp_mul_2d(fp_int *a, int b, fp_int *c)
 
 /* this should multiply i and j  */
 #define MULADD(i, j)                                      \
-asm(                                                     \
+asm(                                                      \
      "movl  %6,%%eax     \n\t"                            \
      "mull  %7           \n\t"                            \
      "addl  %%eax,%0     \n\t"                            \
@@ -2663,8 +2683,8 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
   COMBA_FINI;
 
   dst->used = pa;
+  dst->sign = A->sign ^ B->sign;
   fp_clamp(dst);
-  dst->sign = dst->used ? A->sign ^ B->sign : FP_ZPOS;
   fp_copy(dst, C);
 }
 
@@ -3894,8 +3914,7 @@ void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C)
 
 #endif
 
-#ifdef TFM_HUGE
-
+#ifdef TFM_MUL32
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[64];
@@ -4162,7 +4181,9 @@ void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
    fp_clamp(C);
    COMBA_FINI;
 }
+#endif
 
+#ifdef TFM_MUL64
 void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[128];
@@ -4685,7 +4706,9 @@ void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C)
    fp_clamp(C);
    COMBA_FINI;
 }
+#endif
 
+#ifdef TFM_MUL48
 void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[96];
@@ -5080,8 +5103,6 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    fp_clamp(C);
    COMBA_FINI;
 }
-
-
 #endif
 
 
@@ -5657,7 +5678,7 @@ void fp_set(fp_int *a, fp_digit b)
 {
    fp_zero(a);
    a->dp[0] = b;
-   a->used  = b ? 1 : 0;
+   a->used  = a->dp[0] ? 1 : 0;
 }
 
 /* $Source$ */
@@ -5707,6 +5728,12 @@ void fp_sqr(fp_int *A, fp_int *B)
     int    r, y, s;
     fp_int aa, bb, comp, amb, t1;
 
+    /* call generic if we're out of range */
+    if (A->used + A->used > FP_SIZE) {
+       fp_sqr_comba(A, B);
+       return ;
+    }
+
     y = A->used;
     if (y <= 64) { 
 
@@ -5716,11 +5743,15 @@ void fp_sqr(fp_int *A, fp_int *B)
 #elif defined(TFM_HUGE)
         if (0) { 1; 
 #endif
-#if defined(TFM_HUGE)
+#if defined(TFM_SQR32)
         } else if (y <= 32) {
            fp_sqr_comba32(A,B);
+#endif
+#if defined(TFM_SQR48)
         } else if (y <= 48) {
            fp_sqr_comba48(A,B);
+#endif
+#if defined(TFM_SQR64)
         } else if (y <= 64) {
            fp_sqr_comba64(A,B);
 #endif
@@ -7761,7 +7792,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
 #endif /* TFM_SMALL_SET */
 
 
-#ifdef TFM_HUGE
+#ifdef TFM_SQR32
 void fp_sqr_comba32(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[64], c0, c1, c2, sc0, sc1, sc2;
@@ -8088,16 +8119,14 @@ void fp_sqr_comba32(fp_int *A, fp_int *B)
    COMBA_STORE2(b[63]);
    COMBA_FINI;
 
+   memcpy(B->dp, b, 64 * sizeof(fp_digit));
    B->used = 64;
    B->sign = FP_ZPOS;
-   memcpy(B->dp, b, 64 * sizeof(fp_digit));
    fp_clamp(B);
 }
-
-
 #endif
 
-#ifdef TFM_HUGE
+#ifdef TFM_SQR64
 void fp_sqr_comba64(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[128], c0, c1, c2, sc0, sc1, sc2;
@@ -8749,7 +8778,9 @@ void fp_sqr_comba64(fp_int *A, fp_int *B)
    memcpy(B->dp, b, 128 * sizeof(fp_digit));
    fp_clamp(B);
 }
+#endif
 
+#ifdef TFM_SQR48
 void fp_sqr_comba48(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[96], c0, c1, c2, sc0, sc1, sc2;
@@ -8801,7 +8832,7 @@ void fp_sqr_comba48(fp_int *A, fp_int *B)
 
    /* output 8 */
    CARRY_FORWARD;
-   SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
+         SQRADDSC(a[0], a[8]); SQRADDAC(a[1], a[7]); SQRADDAC(a[2], a[6]); SQRADDAC(a[3], a[5]); SQRADDDB; SQRADD(a[4], a[4]); 
    COMBA_STORE(b[8]);
 
    /* output 9 */
@@ -9236,9 +9267,9 @@ void fp_sqr_comba48(fp_int *A, fp_int *B)
    COMBA_STORE2(b[95]);
    COMBA_FINI;
 
+   memcpy(B->dp, b, 96 * sizeof(fp_digit));
    B->used = 96;
    B->sign = FP_ZPOS;
-   memcpy(B->dp, b, 96 * sizeof(fp_digit));
    fp_clamp(B);
 }
 
@@ -9652,11 +9683,11 @@ void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
       c->dp[x]   = (fp_digit)t;
       t        >>= DIGIT_BIT;
   }
-  if (t != 0 && x != FP_SIZE) {
+  if (t != 0 && x < FP_SIZE) {
      c->dp[c->used++] = (fp_digit)t;
      ++x;
   }
-  
+  c->used = x;
   for (; x < oldused; x++) {
      c->dp[x] = 0;
   }
@@ -9684,18 +9715,23 @@ void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
 /* unsigned subtraction ||a|| >= ||b|| ALWAYS! */
 void s_fp_sub(fp_int *a, fp_int *b, fp_int *c)
 {
-  int      x, oldused;
+  int      x, oldbused, oldused;
   fp_word  t;
 
-  oldused = c->used;
-  c->used = a->used;
+  oldused  = c->used;
+  oldbused = b->used;
+  c->used  = a->used;
   t       = 0;
-  for (x = 0; x < a->used; x++) {
-      t         = ((fp_word)a->dp[x]) - (((fp_word)b->dp[x]) + t);
-      c->dp[x]  = (fp_digit)t;
-      t         = (t >> DIGIT_BIT) & 1;
+  for (x = 0; x < oldbused; x++) {
+     t         = ((fp_word)a->dp[x]) - (((fp_word)b->dp[x]) + t);
+     c->dp[x]  = (fp_digit)t;
+     t         = (t >> DIGIT_BIT)&1;
   }
-  
+  for (; x < a->used; x++) {
+     t         = ((fp_word)a->dp[x]) - t;
+     c->dp[x]  = (fp_digit)t;
+     t         = (t >> DIGIT_BIT);
+   }
   for (; x < oldused; x++) {
      c->dp[x] = 0;
   }

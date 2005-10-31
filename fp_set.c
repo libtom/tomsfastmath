@@ -13,7 +13,7 @@ void fp_set(fp_int *a, fp_digit b)
 {
    fp_zero(a);
    a->dp[0] = b;
-   a->used  = b ? 1 : 0;
+   a->used  = a->dp[0] ? 1 : 0;
 }
 
 /* $Source$ */

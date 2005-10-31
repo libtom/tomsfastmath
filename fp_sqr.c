@@ -15,6 +15,12 @@ void fp_sqr(fp_int *A, fp_int *B)
     int    r, y, s;
     fp_int aa, bb, comp, amb, t1;
 
+    /* call generic if we're out of range */
+    if (A->used + A->used > FP_SIZE) {
+       fp_sqr_comba(A, B);
+       return ;
+    }
+
     y = A->used;
     if (y <= 64) { 
 
@@ -24,11 +30,15 @@ void fp_sqr(fp_int *A, fp_int *B)
 #elif defined(TFM_HUGE)
         if (0) { 1; 
 #endif
-#if defined(TFM_HUGE)
+#if defined(TFM_SQR32)
         } else if (y <= 32) {
            fp_sqr_comba32(A,B);
+#endif
+#if defined(TFM_SQR48)
         } else if (y <= 48) {
            fp_sqr_comba48(A,B);
+#endif
+#if defined(TFM_SQR64)
         } else if (y <= 64) {
            fp_sqr_comba64(A,B);
 #endif

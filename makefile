@@ -1,7 +1,7 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0.05
+VERSION=0.06
 
 CFLAGS += -Wall -W -Wshadow -I./ 
 
@@ -85,7 +85,7 @@ install: $(LIBNAME)
 	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
 
 mtest/mtest: mtest/mtest.c
-	cd mtest ; make mtest
+	cd mtest ; CFLAGS="$(CFLAGS) -I../" make mtest
 
 test: $(LIBNAME) demo/test.o mtest/mtest
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
@@ -143,5 +143,5 @@ zipup: no_oops docs clean
 	zip -9r tfm-$(VERSION).zip tomsfastmath-$(VERSION)/*
 
 # $Source: /cvs/libtom/tomsfastmath/makefile,v $ 
-# $Revision: 1.17 $ 
-# $Date: 2005/07/30 04:23:55 $ 
+# $Revision: 1.19 $ 
+# $Date: 2005/08/25 23:53:40 $ 

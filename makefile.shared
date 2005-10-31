@@ -1,6 +1,7 @@
 #makefile for TomsFastMath
 #
 #
+VERSION=0:6
 
 CC=libtool --mode=compile gcc
 
@@ -19,7 +20,6 @@ CFLAGS += -fomit-frame-pointer
 
 endif
 
-VERSION=0:5
 
 OBJECTS = \
 fp_set.o \
@@ -81,12 +81,12 @@ endif
 
 default: $(LIBNAME)
 
+objs: $(OBJECTS)
+
 $(LIBNAME): $(OBJECTS)
+	libtool --silent --mode=link gcc $(CFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION)
 
 install: $(LIBNAME)
-	libtool --silent --mode=link gcc $(CFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION)
-	libtool --silent --mode=link gcc $(CFLAGS) `find . -type f | grep "[.]o" | xargs` -o $(LIBNAME_S)
-	ranlib $(LIBNAME_S)
 	libtool --silent --mode=install install -c $(LIBNAME) $(LIBPATH)/$(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
 	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
@@ -104,6 +104,6 @@ stest: $(LIBNAME) demo/stest.o
 	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME_S) -o stest
 
 # $Source: /cvs/libtom/tomsfastmath/makefile.shared,v $ 
-# $Revision: 1.4 $ 
-# $Date: 2005/07/28 03:08:35 $ 
+# $Revision: 1.7 $ 
+# $Date: 2005/10/06 23:31:17 $ 
 

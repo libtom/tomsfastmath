@@ -1,3 +1,9 @@
+October 31st, 2005
+0.06 -- fixed fp_mul() and fp_sqr() to trim digits when overflows would occur.  Produces numerically inprecise results
+        (e.g. the lower FP_SIZE digits) but shouldn't segfault at least ;-)
+     -- Updated the combas so you can turn on and off specific unrolled loops at build time 
+     -- Michael Heyman reported a bug in s_fp_sub() that was pretty substantial and a bug in fp_montgomery_calc_normalization().  Fixed.
+
 August 1st, 2005
 0.05 -- Quick fix to the fp_invmod.c code to let it handle even moduli [required for LTC]
      -- Added makefile.shared to make shared objects [required for LTC]
