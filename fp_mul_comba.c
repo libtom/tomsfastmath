@@ -179,12 +179,12 @@ asm(                                                          \
 /* untested: will mulhwu change the flags?  Docs say no */
 #define MULADD(i, j)              \
 asm(                              \
-   " mullw  r16,%6,%7       \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " mulhwu r16,%6,%7       \n\t" \
-   " adde   %1,%1,r16       \n\t" \
+   " mullw  16,%6,%7       \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " mulhwu 16,%6,%7       \n\t" \
+   " adde   %1,%1,16       \n\t" \
    " addze  %2,%2           \n\t" \
-:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"r16");
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"16");
 
 #else
 /* ISO C code */

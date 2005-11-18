@@ -34,28 +34,28 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
 #ifdef TFM_SMALL_SET
         if (y <= 16) {
            fp_mul_comba_small(A,B,C);
-#elif defined(TFM_HUGE)
-        if (0) { 1;
-#endif
+           return;
+        }
+#endif        
 #if defined(TFM_MUL32)
-        } else if (y <= 32) {
+        if (yy >= 24 && y <= 32) {
            fp_mul_comba32(A,B,C);
+           return;
+        }
 #endif
 #if defined(TFM_MUL48)
-        } else if (y <= 48) {
+        if (yy >= 40 && y <= 48) {
            fp_mul_comba48(A,B,C);
-#endif
-#if defined(TFM_MUL64)
-        } else if (y <= 64) {
-           fp_mul_comba64(A,B,C);
-#endif
-#if !defined(TFM_HUGE) && !defined(TFM_SMALL_SET)
-        {
-#else
-        } else {
-#endif
-           fp_mul_comba(A,B,C);
+           return;
         }
+#endif        
+#if defined(TFM_MUL64)
+        if (yy >= 56 && y <= 64) {
+           fp_mul_comba64(A,B,C);
+           return;
+        }
+#endif
+        fp_mul_comba(A,B,C);
     } else {
         /* do the karatsuba action 
 

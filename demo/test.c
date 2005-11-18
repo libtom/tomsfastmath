@@ -23,7 +23,7 @@ static ulong64 TIMFUNC (void)
    {
    #if defined __GNUC__
       #if defined(INTEL_CC)
-			ulong64 a;
+	 ulong64 a;
          asm ("rdtsc":"=A"(a));
          return a;
       #elif defined(__i386__) || defined(__x86_64__)
@@ -31,9 +31,9 @@ static ulong64 TIMFUNC (void)
          __asm__ __volatile__ ("rdtsc\nmovl %%eax,%0\nmovl %%edx,4+%0\n"::"m"(a):"%eax","%edx");
          return a;
       #elif defined(TFM_PPC32) 
-         unsigned long a;
-         __asm__ __volatile__ ("mftb %0":"=r"(a));
-         return a;
+         unsigned long a, b;
+         __asm__ __volatile__ ("mftbu %1 \nmftb %0\n":"=r"(a), "=r"(b));
+         return (((ulong64)b) << 32ULL) | ((ulong64)a);
       #else /* gcc-IA64 version */
          unsigned long result;
          __asm__ __volatile__("mov %0=ar.itc" : "=r"(result) :: "memory");

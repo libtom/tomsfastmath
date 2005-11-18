@@ -1951,24 +1951,24 @@ asm(                               \
 
 #define INNERMUL                     \
 asm(                                 \
-   " mullw    r16,%3,%4       \n\t"  \
-   " mulhwu   r17,%3,%4       \n\t"  \
-   " addc     r16,r16,%0      \n\t"  \
-   " addze    r17,r17         \n\t"  \
-   " lwz      r18,%1          \n\t"  \
-   " addc     r16,r16,r18     \n\t"  \
-   " addze    %0,r17          \n\t"  \
-   " stw      r16,%1          \n\t"  \
-:"=r"(cy),"=m"(_c[0]):"0"(cy),"r"(mu),"r"(*tmpm++),"1"(_c[0]):"r16", "r17", "r18","%cc");
+   " mullw    16,%3,%4       \n\t"   \
+   " mulhwu   17,%3,%4       \n\t"   \
+   " addc     16,16,%0       \n\t"   \
+   " addze    17,17          \n\t"   \
+   " lwz      18,%1          \n\t"   \
+   " addc     16,16,18       \n\t"   \
+   " addze    %0,17          \n\t"   \
+   " stw      16,%1          \n\t"   \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"r"(mu),"r"(tmpm[0]),"1"(_c[0]):"16", "17", "18","%cc"); ++tmpm;
 
 #define PROPCARRY                    \
 asm(                                 \
-   " lwz      r16,%1          \n\t"  \
-   " addc     r16,r16,%0      \n\t"  \
-   " stw      r16,%1          \n\t"  \
-   " xor      %0,%0,%0        \n\t"  \
-   " addze    %0,%0           \n\t"  \
-:"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"r16","%cc");
+   " lwz      16,%1         \n\t"    \
+   " addc     16,16,%0      \n\t"    \
+   " stw      16,%1         \n\t"    \
+   " xor      %0,%0,%0      \n\t"    \
+   " addze    %0,%0         \n\t"    \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"16","%cc");
 
 /******************************************************************/
 #else
@@ -2169,28 +2169,28 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
 #ifdef TFM_SMALL_SET
         if (y <= 16) {
            fp_mul_comba_small(A,B,C);
-#elif defined(TFM_HUGE)
-        if (0) { 1;
-#endif
+           return;
+        }
+#endif        
 #if defined(TFM_MUL32)
-        } else if (y <= 32) {
+        if (yy >= 24 && y <= 32) {
            fp_mul_comba32(A,B,C);
+           return;
+        }
 #endif
 #if defined(TFM_MUL48)
-        } else if (y <= 48) {
+        if (yy >= 40 && y <= 48) {
            fp_mul_comba48(A,B,C);
-#endif
-#if defined(TFM_MUL64)
-        } else if (y <= 64) {
-           fp_mul_comba64(A,B,C);
-#endif
-#if !defined(TFM_HUGE) && !defined(TFM_SMALL_SET)
-        {
-#else
-        } else {
-#endif
-           fp_mul_comba(A,B,C);
+           return;
         }
+#endif        
+#if defined(TFM_MUL64)
+        if (yy >= 56 && y <= 64) {
+           fp_mul_comba64(A,B,C);
+           return;
+        }
+#endif
+        fp_mul_comba(A,B,C);
     } else {
         /* do the karatsuba action 
 
@@ -2596,12 +2596,12 @@ asm(                                                          \
 /* untested: will mulhwu change the flags?  Docs say no */
 #define MULADD(i, j)              \
 asm(                              \
-   " mullw  r16,%6,%7       \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " mulhwu r16,%6,%7       \n\t" \
-   " adde   %1,%1,r16       \n\t" \
+   " mullw  16,%6,%7       \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " mulhwu 16,%6,%7       \n\t" \
+   " adde   %1,%1,16       \n\t" \
    " addze  %2,%2           \n\t" \
-:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"r16");
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"16");
 
 #else
 /* ISO C code */
@@ -5740,29 +5740,28 @@ void fp_sqr(fp_int *A, fp_int *B)
 #if defined(TFM_SMALL_SET)
         if (y <= 16) {
            fp_sqr_comba_small(A,B);
-#elif defined(TFM_HUGE)
-        if (0) { 1; 
+           return;
+        }
 #endif
 #if defined(TFM_SQR32)
-        } else if (y <= 32) {
+        if (y <= 32) {
            fp_sqr_comba32(A,B);
+           return;
+        }
 #endif
 #if defined(TFM_SQR48)
-        } else if (y <= 48) {
+        if (y <= 48) {
            fp_sqr_comba48(A,B);
+           return;
+        }
 #endif
 #if defined(TFM_SQR64)
-        } else if (y <= 64) {
+        if (y <= 64) {
            fp_sqr_comba64(A,B);
-#endif
-#if !defined(TFM_SMALL_SET) && !defined(TFM_HUGE)
-        {
-#else
-        } else {
-#endif
-           fp_sqr_comba(A, B);
+           return;
         }
-       
+#endif
+       fp_sqr_comba(A, B);
     } else {
         /* do the karatsuba action 
 
@@ -6150,7 +6149,7 @@ asm(                                                             \
 
 /* PPC32 */
 
-#define COMBA_START \
+#define COMBA_START
 
 #define CLEAR_CARRY \
    c0 = c1 = c2 = 0;
@@ -6164,30 +6163,30 @@ asm(                                                             \
 #define CARRY_FORWARD \
    do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
-#define COMBA_FINI \
+#define COMBA_FINI
 
 /* multiplies point i and j, updates carry "c1" and digit c2 */
-#define SQRADD(i, j)              \
-asm(                              \
-   " mullw  r16,%6,%6       \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " mulhwu r16,%6,%6       \n\t" \
-   " adde   %1,%1,r16       \n\t" \
-   " addze  %2,%2           \n\t" \
-:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i):"r16","%cc");
+#define SQRADD(i, j)             \
+asm(                             \
+   " mullw  16,%6,%6       \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " mulhwu 16,%6,%6       \n\t" \
+   " adde   %1,%1,16       \n\t" \
+   " addze  %2,%2          \n\t" \
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i):"16","%cc");
 
 /* for squaring some of the terms are doubled... */
-#define SQRADD2(i, j)             \
-asm(                              \
-   " mullw  r16,%6,%7       \n\t" \
-   " mulhwu r17,%6,%7       \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " adde   %1,%1,r17       \n\t" \
-   " addze  %2,%2           \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " adde   %1,%1,r17       \n\t" \
-   " addze  %2,%2           \n\t" \
-:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"r16", "r17","%cc");
+#define SQRADD2(i, j)            \
+asm(                             \
+   " mullw  16,%6,%7       \n\t" \
+   " mulhwu 17,%6,%7       \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " adde   %1,%1,17       \n\t" \
+   " addze  %2,%2          \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " adde   %1,%1,17       \n\t" \
+   " addze  %2,%2          \n\t" \
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"16", "17","%cc");
 
 #define SQRADDSC(i, j)            \
 asm(                              \
@@ -6196,14 +6195,14 @@ asm(                              \
    " xor    %2,%2,%2        \n\t" \
 :"=r"(sc0), "=r"(sc1), "=r"(sc2):"0"(sc0), "1"(sc1), "2"(sc2), "r"(i),"r"(j) : "%cc");
 
-#define SQRADDAC(i, j)            \
-asm(                              \
-   " mullw  r16,%6,%7       \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " mulhwu r16,%6,%7       \n\t" \
-   " adde   %1,%1,r16       \n\t" \
-   " addze  %2,%2           \n\t" \
-:"=r"(sc0), "=r"(sc1), "=r"(sc2):"0"(sc0), "1"(sc1), "2"(sc2), "r"(i), "r"(j):"r16", "%cc");
+#define SQRADDAC(i, j)           \
+asm(                             \
+   " mullw  16,%6,%7       \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " mulhwu 16,%6,%7       \n\t" \
+   " adde   %1,%1,16       \n\t" \
+   " addze  %2,%2          \n\t" \
+:"=r"(sc0), "=r"(sc1), "=r"(sc2):"0"(sc0), "1"(sc1), "2"(sc2), "r"(i), "r"(j):"16", "%cc");
 
 #define SQRADDDB                  \
 asm(                              \

@@ -372,9 +372,13 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C);
 void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C);
 #endif
 
-#ifdef TFM_HUGE
+#ifdef TFM_MUL32
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL48
 void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL64
 void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C);
 #endif
 
@@ -384,9 +388,13 @@ void fp_sqr_comba(fp_int *A, fp_int *B);
 void fp_sqr_comba_small(fp_int *A, fp_int *B);
 #endif
 
-#ifdef TFM_HUGE
+#ifdef TFM_SQR32
 void fp_sqr_comba32(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR48
 void fp_sqr_comba48(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR64
 void fp_sqr_comba64(fp_int *A, fp_int *B);
 #endif
 extern const char *fp_s_rmap;

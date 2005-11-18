@@ -303,7 +303,7 @@ asm(                                                             \
 
 /* PPC32 */
 
-#define COMBA_START \
+#define COMBA_START
 
 #define CLEAR_CARRY \
    c0 = c1 = c2 = 0;
@@ -317,30 +317,30 @@ asm(                                                             \
 #define CARRY_FORWARD \
    do { c0 = c1; c1 = c2; c2 = 0; } while (0);
 
-#define COMBA_FINI \
+#define COMBA_FINI
 
 /* multiplies point i and j, updates carry "c1" and digit c2 */
-#define SQRADD(i, j)              \
-asm(                              \
-   " mullw  r16,%6,%6       \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " mulhwu r16,%6,%6       \n\t" \
-   " adde   %1,%1,r16       \n\t" \
-   " addze  %2,%2           \n\t" \
-:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i):"r16","%cc");
+#define SQRADD(i, j)             \
+asm(                             \
+   " mullw  16,%6,%6       \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " mulhwu 16,%6,%6       \n\t" \
+   " adde   %1,%1,16       \n\t" \
+   " addze  %2,%2          \n\t" \
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i):"16","%cc");
 
 /* for squaring some of the terms are doubled... */
-#define SQRADD2(i, j)             \
-asm(                              \
-   " mullw  r16,%6,%7       \n\t" \
-   " mulhwu r17,%6,%7       \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " adde   %1,%1,r17       \n\t" \
-   " addze  %2,%2           \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " adde   %1,%1,r17       \n\t" \
-   " addze  %2,%2           \n\t" \
-:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"r16", "r17","%cc");
+#define SQRADD2(i, j)            \
+asm(                             \
+   " mullw  16,%6,%7       \n\t" \
+   " mulhwu 17,%6,%7       \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " adde   %1,%1,17       \n\t" \
+   " addze  %2,%2          \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " adde   %1,%1,17       \n\t" \
+   " addze  %2,%2          \n\t" \
+:"=r"(c0), "=r"(c1), "=r"(c2):"0"(c0), "1"(c1), "2"(c2), "r"(i), "r"(j):"16", "17","%cc");
 
 #define SQRADDSC(i, j)            \
 asm(                              \
@@ -349,14 +349,14 @@ asm(                              \
    " xor    %2,%2,%2        \n\t" \
 :"=r"(sc0), "=r"(sc1), "=r"(sc2):"0"(sc0), "1"(sc1), "2"(sc2), "r"(i),"r"(j) : "%cc");
 
-#define SQRADDAC(i, j)            \
-asm(                              \
-   " mullw  r16,%6,%7       \n\t" \
-   " addc   %0,%0,r16       \n\t" \
-   " mulhwu r16,%6,%7       \n\t" \
-   " adde   %1,%1,r16       \n\t" \
-   " addze  %2,%2           \n\t" \
-:"=r"(sc0), "=r"(sc1), "=r"(sc2):"0"(sc0), "1"(sc1), "2"(sc2), "r"(i), "r"(j):"r16", "%cc");
+#define SQRADDAC(i, j)           \
+asm(                             \
+   " mullw  16,%6,%7       \n\t" \
+   " addc   %0,%0,16       \n\t" \
+   " mulhwu 16,%6,%7       \n\t" \
+   " adde   %1,%1,16       \n\t" \
+   " addze  %2,%2          \n\t" \
+:"=r"(sc0), "=r"(sc1), "=r"(sc2):"0"(sc0), "1"(sc1), "2"(sc2), "r"(i), "r"(j):"16", "%cc");
 
 #define SQRADDDB                  \
 asm(                              \

@@ -259,24 +259,24 @@ asm(                               \
 
 #define INNERMUL                     \
 asm(                                 \
-   " mullw    r16,%3,%4       \n\t"  \
-   " mulhwu   r17,%3,%4       \n\t"  \
-   " addc     r16,r16,%0      \n\t"  \
-   " addze    r17,r17         \n\t"  \
-   " lwz      r18,%1          \n\t"  \
-   " addc     r16,r16,r18     \n\t"  \
-   " addze    %0,r17          \n\t"  \
-   " stw      r16,%1          \n\t"  \
-:"=r"(cy),"=m"(_c[0]):"0"(cy),"r"(mu),"r"(*tmpm++),"1"(_c[0]):"r16", "r17", "r18","%cc");
+   " mullw    16,%3,%4       \n\t"   \
+   " mulhwu   17,%3,%4       \n\t"   \
+   " addc     16,16,%0       \n\t"   \
+   " addze    17,17          \n\t"   \
+   " lwz      18,%1          \n\t"   \
+   " addc     16,16,18       \n\t"   \
+   " addze    %0,17          \n\t"   \
+   " stw      16,%1          \n\t"   \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"r"(mu),"r"(tmpm[0]),"1"(_c[0]):"16", "17", "18","%cc"); ++tmpm;
 
 #define PROPCARRY                    \
 asm(                                 \
-   " lwz      r16,%1          \n\t"  \
-   " addc     r16,r16,%0      \n\t"  \
-   " stw      r16,%1          \n\t"  \
-   " xor      %0,%0,%0        \n\t"  \
-   " addze    %0,%0           \n\t"  \
-:"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"r16","%cc");
+   " lwz      16,%1         \n\t"    \
+   " addc     16,16,%0      \n\t"    \
+   " stw      16,%1         \n\t"    \
+   " xor      %0,%0,%0      \n\t"    \
+   " addze    %0,%0         \n\t"    \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"16","%cc");
 
 /******************************************************************/
 #else

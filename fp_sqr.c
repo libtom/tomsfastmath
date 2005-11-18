@@ -27,29 +27,28 @@ void fp_sqr(fp_int *A, fp_int *B)
 #if defined(TFM_SMALL_SET)
         if (y <= 16) {
            fp_sqr_comba_small(A,B);
-#elif defined(TFM_HUGE)
-        if (0) { 1; 
+           return;
+        }
 #endif
 #if defined(TFM_SQR32)
-        } else if (y <= 32) {
+        if (y <= 32) {
            fp_sqr_comba32(A,B);
+           return;
+        }
 #endif
 #if defined(TFM_SQR48)
-        } else if (y <= 48) {
+        if (y <= 48) {
            fp_sqr_comba48(A,B);
+           return;
+        }
 #endif
 #if defined(TFM_SQR64)
-        } else if (y <= 64) {
+        if (y <= 64) {
            fp_sqr_comba64(A,B);
-#endif
-#if !defined(TFM_SMALL_SET) && !defined(TFM_HUGE)
-        {
-#else
-        } else {
-#endif
-           fp_sqr_comba(A, B);
+           return;
         }
-       
+#endif
+       fp_sqr_comba(A, B);
     } else {
         /* do the karatsuba action 
 

@@ -1,3 +1,8 @@
+November 18th, 2005
+0.07 -- Fixes to fp_mul and fp_sqr to clean up the handling of the defines, fix to tfm.h to also clear up the prototypes.
+     -- Updates to build and run on a IBM PPC 405 [using GCC 3.4.4]
+     -- Made the "make" command renamable in the build system
+
 October 31st, 2005
 0.06 -- fixed fp_mul() and fp_sqr() to trim digits when overflows would occur.  Produces numerically inprecise results
         (e.g. the lower FP_SIZE digits) but shouldn't segfault at least ;-)

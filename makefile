@@ -1,9 +1,13 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0.06
+VERSION=0.07
 
 CFLAGS += -Wall -W -Wshadow -I./ 
+
+ifndef MAKE
+   MAKE=make
+endif
 
 ifndef IGNORE_SPEED
 
@@ -85,7 +89,7 @@ install: $(LIBNAME)
 	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
 
 mtest/mtest: mtest/mtest.c
-	cd mtest ; CFLAGS="$(CFLAGS) -I../" make mtest
+	cd mtest ; CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
 
 test: $(LIBNAME) demo/test.o mtest/mtest
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
@@ -128,7 +132,7 @@ clean:
 	rm -f `find . -type f | grep "[.]dpi" | xargs`
 	rm -rf `find . -type d | grep "[.]libs" | xargs`
 	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc 
-	cd mtest ; make clean
+	cd mtest ; MAKE=${MAKE} ${MAKE} clean
 
 no_oops: clean
 	cd .. ; cvs commit
@@ -140,8 +144,9 @@ zipup: no_oops docs clean
 	cd .. ; rm -rf tfm* tomsfastmath-$(VERSION) ; mkdir tomsfastmath-$(VERSION) ; \
 	cp -R ./tomsfastmath/* ./tomsfastmath-$(VERSION)/ ; \
 	tar -c tomsfastmath-$(VERSION)/* | bzip2 -9vvc > tfm-$(VERSION).tar.bz2 ; \
-	zip -9r tfm-$(VERSION).zip tomsfastmath-$(VERSION)/*
+	zip -9r tfm-$(VERSION).zip tomsfastmath-$(VERSION)/* ; \
+	mv -f tfm* ~ ; rm -rf tomsfastmath-$(VERSION)
 
 # $Source: /cvs/libtom/tomsfastmath/makefile,v $ 
-# $Revision: 1.19 $ 
-# $Date: 2005/08/25 23:53:40 $ 
+# $Revision: 1.23 $ 
+# $Date: 2005/11/18 06:13:57 $ 
