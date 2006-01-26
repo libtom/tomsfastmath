@@ -261,8 +261,6 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
       /* store term */
       COMBA_STORE(dst->dp[ix]);
   }
-  /* store final carry */
-  COMBA_STORE2(dst->dp[ix]);
   COMBA_FINI;
 
   dst->used = pa;

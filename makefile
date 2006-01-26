@@ -1,7 +1,7 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0.07
+VERSION=0.08
 
 CFLAGS += -Wall -W -Wshadow -I./ 
 
@@ -148,5 +148,5 @@ zipup: no_oops docs clean
 	mv -f tfm* ~ ; rm -rf tomsfastmath-$(VERSION)
 
 # $Source: /cvs/libtom/tomsfastmath/makefile,v $ 
-# $Revision: 1.23 $ 
-# $Date: 2005/11/18 06:13:57 $ 
+# $Revision: 1.24 $ 
+# $Date: 2005/11/18 06:58:52 $ 

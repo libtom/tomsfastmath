@@ -1,7 +1,7 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0:7
+VERSION=0:8
 
 CC=libtool --mode=compile gcc
 
@@ -104,6 +104,6 @@ stest: $(LIBNAME) demo/stest.o
 	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME_S) -o stest
 
 # $Source: /cvs/libtom/tomsfastmath/makefile.shared,v $ 
-# $Revision: 1.8 $ 
-# $Date: 2005/10/31 17:26:00 $ 
+# $Revision: 1.9 $ 
+# $Date: 2005/11/18 06:58:52 $ 
 

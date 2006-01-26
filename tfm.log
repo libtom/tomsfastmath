@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2005.11.6)  18 NOV 2005 06:14
+This is pdfeTeX, Version 3.141592-1.30.5-2.2 (Web2C 7.5.5) (format=latex 2006.1.14)  25 JAN 2006 23:05
 entering extended mode
 **tfm
 (./tfm.tex
@@ -321,12 +321,12 @@ IT);                                     \[]
 
 ]) (./tfm.aux) ) 
 Here is how much of TeX's memory you used:
- 2712 strings out of 49501
- 35892 string characters out of 426789
+ 2712 strings out of 94433
+ 35893 string characters out of 1175589
  81342 words of memory out of 1100000
- 5856 multiletter control sequences out of 10000+15000
- 15453 words of font info for 59 fonts, out of 400000 for 2000
+ 5897 multiletter control sequences out of 10000+50000
+ 15453 words of font info for 59 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 25i,9n,25p,195b,321s stack positions out of 1500i,500n,1500p,200000b,5000s
+ 25i,9n,25p,195b,321s stack positions out of 1500i,500n,5000p,200000b,5000s
 
-Output written on tfm.dvi (25 pages, 51624 bytes).
+Output written on tfm.dvi (25 pages, 51616 bytes).

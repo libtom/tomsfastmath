@@ -72,7 +72,6 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
       /* store it */
       COMBA_STORE(dst->dp[ix]);
   }
-  COMBA_STORE2(dst->dp[ix]);
 
   COMBA_FINI;
 
