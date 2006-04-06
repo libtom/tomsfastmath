@@ -1,7 +1,7 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0.08
+VERSION=0.09
 
 CFLAGS += -Wall -W -Wshadow -I./ 
 
@@ -11,7 +11,7 @@ endif
 
 ifndef IGNORE_SPEED
 
-CFLAGS += -O3 -funroll-all-loops
+CFLAGS += -O3 -funroll-loops
 
 #profiling
 #PROF=-pg -g
@@ -88,7 +88,7 @@ install: $(LIBNAME)
 	install -g $(GROUP) -o $(USER) $(LIBNAME) $(DESTDIR)$(LIBPATH)
 	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
 
-mtest/mtest: mtest/mtest.c
+mtest/mtest: mtest/mtest.o
 	cd mtest ; CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
 
 test: $(LIBNAME) demo/test.o mtest/mtest
@@ -148,5 +148,5 @@ zipup: no_oops docs clean
 	mv -f tfm* ~ ; rm -rf tomsfastmath-$(VERSION)
 
 # $Source: /cvs/libtom/tomsfastmath/makefile,v $ 
-# $Revision: 1.24 $ 
-# $Date: 2005/11/18 06:58:52 $ 
+# $Revision: 1.27 $ 
+# $Date: 2006/04/05 02:58:05 $ 

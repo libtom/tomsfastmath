@@ -1,3 +1,13 @@
+April 4th, 2006
+0.09 -- Bruce Guenter suggested I use --tag=CC for libtool builds where the compiler may think it's C++.
+     -- Added support for k=1 in exptmod for RSA exponents.  Makes it more competitive with other libraries
+     -- added cutoffs to the comba32 sqr/mul code to better handle 640, 786 and 896 bit operands (e.g. for RSA-1280, RSA-1536 and RSA-1792), really no effect
+        for 64-bit boxes as these represent 1280, 1536 and 1792 bit operands (not likely to be invoked).
+     -- Removed karatsuba from the mul/sqr since they're not useful and slow.
+     -- added 20, 24 and 28 digit multipliers for oddsized RSA support.  You can easily disable them by uncommenting the TFM_SQRXX and TFM_MULXX lines in 
+        tfm.h to save space.  Now GMP and TFM are roughly the same speed on the Pentium-M for RSA with LTC.
+     -- unrolled SSE2 code and optimize for platforms with load/store pipes (e.g. can store and load in a cycle).  Got 4% or so boost on my Dothan laptop (marginal improvement on a P4 Prescott)
+
 Jan 26th, 2006
 0.08 -- Fixed a bug in the generic mult/sqr where we overflowed by one digit
 

@@ -34,12 +34,19 @@
 #define TFM_SMALL_SET
 
 /* do we want huge code 
-   Enable these if you are doing 32, 48 or 64 digit multiplications (useful for RSA)
+   Enable these if you are doing 20, 24, 28, 32, 48, 64 digit multiplications (useful for RSA)
    Less important on 64-bit machines as 32 digits == 2048 bits
  */
+#define TFM_MUL20
+#define TFM_MUL24
+#define TFM_MUL28
 #define TFM_MUL32
 #define TFM_MUL48
 #define TFM_MUL64
+
+#define TFM_SQR20
+#define TFM_SQR24
+#define TFM_SQR28
 #define TFM_SQR32
 #define TFM_SQR48
 #define TFM_SQR64
@@ -372,6 +379,15 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C);
 void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C);
 #endif
 
+#ifdef TFM_MUL20
+void fp_mul_comba20(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL24
+void fp_mul_comba24(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL28
+void fp_mul_comba28(fp_int *A, fp_int *B, fp_int *C);
+#endif
 #ifdef TFM_MUL32
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C);
 #endif
@@ -388,6 +404,15 @@ void fp_sqr_comba(fp_int *A, fp_int *B);
 void fp_sqr_comba_small(fp_int *A, fp_int *B);
 #endif
 
+#ifdef TFM_SQR20
+void fp_sqr_comba20(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR24
+void fp_sqr_comba24(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR28
+void fp_sqr_comba28(fp_int *A, fp_int *B);
+#endif
 #ifdef TFM_SQR32
 void fp_sqr_comba32(fp_int *A, fp_int *B);
 #endif

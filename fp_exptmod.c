@@ -89,8 +89,8 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 
   /* find window size */
   x = fp_count_bits (X);
-  if (x <= 7) {
-    winsize = 2;
+  if (x <= 21) {
+    winsize = 1;
   } else if (x <= 36) {
     winsize = 3;
   } else if (x <= 140) {

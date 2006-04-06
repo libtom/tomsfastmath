@@ -1,9 +1,9 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0:8
+VERSION=0:9
 
-CC=libtool --mode=compile gcc
+CC=libtool --mode=compile --tag=CC gcc
 
 CFLAGS += -Wall -W -Wshadow -I./ 
 
@@ -87,7 +87,8 @@ $(LIBNAME): $(OBJECTS)
 	libtool --silent --mode=link gcc $(CFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION)
 
 install: $(LIBNAME)
-	libtool --silent --mode=install install -c $(LIBNAME) $(LIBPATH)/$(LIBNAME)
+	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
+	libtool --silent --mode=install install -c $(LIBNAME) $(DESTDIR)$(LIBPATH)/$(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
 	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
 
@@ -104,6 +105,6 @@ stest: $(LIBNAME) demo/stest.o
 	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME_S) -o stest
 
 # $Source: /cvs/libtom/tomsfastmath/makefile.shared,v $ 
-# $Revision: 1.9 $ 
-# $Date: 2005/11/18 06:58:52 $ 
+# $Revision: 1.13 $ 
+# $Date: 2006/03/04 21:33:57 $ 
 

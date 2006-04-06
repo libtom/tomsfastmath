@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.30.5-2.2 (Web2C 7.5.5) (format=latex 2006.1.14)  25 JAN 2006 23:05
+This is pdfeTeX, Version 3.141592-1.30.5-2.2 (Web2C 7.5.5) (format=latex 2006.3.23)  4 APR 2006 22:58
 entering extended mode
 **tfm
 (./tfm.tex
@@ -51,9 +51,9 @@ Package hyperref Info: Backreferencing OFF on input line 1900.
 
 Implicit mode ON; LaTeX internals redefined
 Package hyperref Info: Bookmarks ON on input line 2004.
-(/usr/share/texmf/tex/latex/html/url.sty
-Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
- names
+(/usr/share/texmf/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2004/03/15  ver 3.1  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 2143.
 \Fld@menulength=\count90
@@ -321,12 +321,12 @@ IT);                                     \[]
 
 ]) (./tfm.aux) ) 
 Here is how much of TeX's memory you used:
- 2712 strings out of 94433
- 35893 string characters out of 1175589
- 81342 words of memory out of 1100000
- 5897 multiletter control sequences out of 10000+50000
+ 2739 strings out of 94433
+ 36227 string characters out of 1175589
+ 81615 words of memory out of 1000000
+ 5924 multiletter control sequences out of 10000+50000
  15453 words of font info for 59 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
  25i,9n,25p,195b,321s stack positions out of 1500i,500n,5000p,200000b,5000s
 
-Output written on tfm.dvi (25 pages, 51616 bytes).
+Output written on tfm.dvi (25 pages, 51612 bytes).

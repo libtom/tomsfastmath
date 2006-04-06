@@ -213,7 +213,7 @@ t1 = TIMFUNC();
 sleep(1);
 printf("Ticks per second: %llu\n", TIMFUNC() - t1);
 
-goto multtime;
+goto monttime;
  /* do some timings... */
   printf("Addition:\n");
   for (t = 2; t <= FP_SIZE/2; t += 2) {

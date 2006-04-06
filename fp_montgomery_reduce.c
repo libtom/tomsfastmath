@@ -10,7 +10,7 @@
 #include <tfm.h>
 
 /******************************************************************/
-#if defined(TFM_X86) 
+#if defined(TFM_X86) && !defined(TFM_SSE2) 
 /* x86-32 code */
 
 #define MONT_START 
@@ -63,8 +63,6 @@ asm(                                                      \
 :"=g"(_c[LO]), "=r"(cy)                                   \
 :"0"(_c[LO]), "1"(cy), "r"(mu), "r"(*tmpm++)              \
 : "%rax", "%rdx", "%cc")
-
-#ifdef TFM_HUGE
 
 #define INNERMUL8 \
  asm(                  \
@@ -159,8 +157,6 @@ asm(                                                      \
 : "0"(_c),  "1"(cy), "g"(mu), "r"(tmpm)\
 : "%rax", "%rdx", "%r10", "%r11", "%cc")
 
-#endif
-
 
 #define PROPCARRY                           \
 asm(                                        \
@@ -206,6 +202,73 @@ asm(                           \
    "movd %%mm3,%0        \n\t" \
    "psrlq $32, %%mm3     \n\t" \
 :"=g"(_c[LO]) : "0"(_c[LO]), "g"(*tmpm++) );
+
+#define INNERMUL8 \
+asm(                           \
+   "movd 0(%1),%%mm4     \n\t" \
+   "movd 0(%2),%%mm0     \n\t" \
+   "paddq %%mm4,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm0  \n\t" \
+   "movd 4(%2),%%mm5     \n\t" \
+   "paddq %%mm0,%%mm3    \n\t" \
+   "movd 4(%1),%%mm6     \n\t" \
+   "movd %%mm3,0(%0)     \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+\
+   "paddq %%mm6,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm5  \n\t" \
+   "movd 8(%2),%%mm6     \n\t" \
+   "paddq %%mm5,%%mm3    \n\t" \
+   "movd 8(%1),%%mm7     \n\t" \
+   "movd %%mm3,4(%0)     \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+\
+   "paddq %%mm7,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm6  \n\t" \
+   "movd 12(%2),%%mm7    \n\t" \
+   "paddq %%mm6,%%mm3    \n\t" \
+   "movd 12(%1),%%mm5     \n\t" \
+   "movd %%mm3,8(%0)     \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+\
+   "paddq %%mm5,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm7  \n\t" \
+   "movd 16(%2),%%mm5    \n\t" \
+   "paddq %%mm7,%%mm3    \n\t" \
+   "movd 16(%1),%%mm6    \n\t" \
+   "movd %%mm3,12(%0)    \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+\
+   "paddq %%mm6,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm5  \n\t" \
+   "movd 20(%2),%%mm6    \n\t" \
+   "paddq %%mm5,%%mm3    \n\t" \
+   "movd 20(%1),%%mm7    \n\t" \
+   "movd %%mm3,16(%0)    \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+\
+   "paddq %%mm7,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm6  \n\t" \
+   "movd 24(%2),%%mm7    \n\t" \
+   "paddq %%mm6,%%mm3    \n\t" \
+   "movd 24(%1),%%mm5     \n\t" \
+   "movd %%mm3,20(%0)    \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+\
+   "paddq %%mm5,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm7  \n\t" \
+   "movd 28(%2),%%mm5    \n\t" \
+   "paddq %%mm7,%%mm3    \n\t" \
+   "movd 28(%1),%%mm6    \n\t" \
+   "movd %%mm3,24(%0)    \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+\
+   "paddq %%mm6,%%mm3    \n\t" \
+   "pmuludq %%mm1,%%mm5  \n\t" \
+   "paddq %%mm5,%%mm3    \n\t" \
+   "movd %%mm3,28(%0)    \n\t" \
+   "psrlq $32, %%mm3     \n\t" \
+:"=r"(_c) : "0"(_c), "g"(tmpm) );
 
 #define LOOP_END \
 asm( "movd %%mm3,%0  \n" :"=r"(cy))
@@ -340,8 +403,8 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
        _c   = c + x;
        tmpm = m->dp;
        y = 0;
-       #if defined(TFM_X86_64) && defined(TFM_HUGE)
-           for (; y < (pa & ~7); y += 8) {
+       #if (defined(TFM_SSE2) || defined(TFM_X86_64))
+        for (; y < (pa & ~7); y += 8) {
               INNERMUL8;
               _c   += 8;
               tmpm += 8;
