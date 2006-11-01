@@ -5,7 +5,7 @@ int main(void)
    int x, y, z;
 
 printf(
-#if 0
+#if 1
 "#ifdef TFM_SMALL_SET\n"
 "/* computes x/R == x (mod N) via Montgomery Reduction */\n"
 "void fp_montgomery_reduce_small(fp_int *a, fp_int *m, fp_digit mp)\n"
@@ -34,7 +34,7 @@ printf(
 "\n"
 "   switch (pa) {\n");
 
-for (x = 1; x <= 64; x++) {
+for (x = 1; x <= 16; x++) {
 if (x > 16 && (x != 32 && x != 48 && x != 64)) continue;
 if (x > 16) printf("#ifdef TFM_HUGE\n");
 
@@ -99,7 +99,7 @@ if (x > 16) printf("#endif /* TFM_HUGE */\n");
 
 }
 
-#if 0
+#if 1
 
 printf(
 "  }\n"

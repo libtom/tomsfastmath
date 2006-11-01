@@ -1,3 +1,12 @@
+November 1st, 2006
+0.10 -- Unrolled Montgomery for 1..16 digits with TFM_SMALL_MONT_SET between 10% and 25% speedup depending on size.
+     -- fixed fp_sqr_comba.c so it builds in ISO C mode [Andreas Lange]
+     -- cisc@broadpark.no pointed out fp_radix_size() had a few typos that affected correctness.  Fixed.
+     -- Added support for ECC performance, e.g. define "-DTFM_ALREADY_SET -DTFM_ECC192" and it will disable
+        all of the unrolled code EXCEPT what is required for ECC P-192.  It autodetects 32/64-bit platforms too.  It's super neato.
+        Support for 192, 224, 256, 384 and 521 bit curves through the defines [see tfm.h]
+     -- AVR32 support added, define TFM_AVR32 to enable
+
 April 4th, 2006
 0.09 -- Bruce Guenter suggested I use --tag=CC for libtool builds where the compiler may think it's C++.
      -- Added support for k=1 in exptmod for RSA exponents.  Makes it more competitive with other libraries

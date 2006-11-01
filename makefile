@@ -1,7 +1,7 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0.09
+VERSION=0.10
 
 CFLAGS += -Wall -W -Wshadow -I./ 
 
@@ -131,7 +131,7 @@ clean:
 	rm -f `find . -type f | grep "[.]dyn" | xargs`
 	rm -f `find . -type f | grep "[.]dpi" | xargs`
 	rm -rf `find . -type d | grep "[.]libs" | xargs`
-	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc 
+	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc test mtest/mtest
 	cd mtest ; MAKE=${MAKE} ${MAKE} clean
 
 no_oops: clean
@@ -148,5 +148,5 @@ zipup: no_oops docs clean
 	mv -f tfm* ~ ; rm -rf tomsfastmath-$(VERSION)
 
 # $Source: /cvs/libtom/tomsfastmath/makefile,v $ 
-# $Revision: 1.27 $ 
-# $Date: 2006/04/05 02:58:05 $ 
+# $Revision: 1.29 $ 
+# $Date: 2006/10/22 13:27:10 $ 

@@ -37,6 +37,16 @@
    Enable these if you are doing 20, 24, 28, 32, 48, 64 digit multiplications (useful for RSA)
    Less important on 64-bit machines as 32 digits == 2048 bits
  */
+#if 0
+#define TFM_MUL3
+#define TFM_MUL4
+#define TFM_MUL6
+#define TFM_MUL7
+#define TFM_MUL8
+#define TFM_MUL9
+#define TFM_MUL12
+#define TFM_MUL17
+#endif
 #define TFM_MUL20
 #define TFM_MUL24
 #define TFM_MUL28
@@ -44,6 +54,16 @@
 #define TFM_MUL48
 #define TFM_MUL64
 
+#if 0
+#define TFM_SQR3
+#define TFM_SQR4
+#define TFM_SQR6
+#define TFM_SQR7
+#define TFM_SQR8
+#define TFM_SQR9
+#define TFM_SQR12
+#define TFM_SQR17
+#endif
 #define TFM_SQR20
 #define TFM_SQR24
 #define TFM_SQR28
@@ -143,6 +163,18 @@
    #endif
    #define TFM_ASM
 #endif
+#ifdef TFM_PPC64
+   #ifdef TFM_ASM
+      #error TFM_ASM already defined!
+   #endif
+   #define TFM_ASM
+#endif
+#ifdef TFM_AVR32
+   #ifdef TFM_ASM
+      #error TFM_ASM already defined!
+   #endif
+   #define TFM_ASM
+#endif
 
 /* we want no asm? */
 #ifdef TFM_NO_ASM
@@ -151,8 +183,62 @@
    #undef TFM_SSE2
    #undef TFM_ARM
    #undef TFM_PPC32
+   #undef TFM_PPC64
+   #undef TFM_AVR32
    #undef TFM_ASM   
 #endif
+
+/* ECC helpers */
+#ifdef TFM_ECC192
+   #ifdef FP_64BIT
+       #define TFM_MUL3
+       #define TFM_SQR3
+   #else
+       #define TFM_MUL6
+       #define TFM_SQR6
+   #endif
+#endif
+
+#ifdef TFM_ECC224
+   #ifdef FP_64BIT
+       #define TFM_MUL4
+       #define TFM_SQR4
+   #else
+       #define TFM_MUL7
+       #define TFM_SQR7
+   #endif
+#endif
+
+#ifdef TFM_ECC256
+   #ifdef FP_64BIT
+       #define TFM_MUL4
+       #define TFM_SQR4
+   #else
+       #define TFM_MUL8
+       #define TFM_SQR8
+   #endif
+#endif
+
+#ifdef TFM_ECC384
+   #ifdef FP_64BIT
+       #define TFM_MUL6
+       #define TFM_SQR6
+   #else
+       #define TFM_MUL12
+       #define TFM_SQR12
+   #endif
+#endif
+
+#ifdef TFM_ECC521
+   #ifdef FP_64BIT
+       #define TFM_MUL9
+       #define TFM_SQR9
+   #else
+       #define TFM_MUL17
+       #define TFM_SQR17
+   #endif
+#endif
+
 
 /* some default configurations.
  */
@@ -379,6 +465,31 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C);
 void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C);
 #endif
 
+#ifdef TFM_MUL3
+void fp_mul_comba3(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL4
+void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL6
+void fp_mul_comba6(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL7
+void fp_mul_comba7(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL8
+void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL9
+void fp_mul_comba9(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL12
+void fp_mul_comba12(fp_int *A, fp_int *B, fp_int *C);
+#endif
+#ifdef TFM_MUL17
+void fp_mul_comba17(fp_int *A, fp_int *B, fp_int *C);
+#endif
+
 #ifdef TFM_MUL20
 void fp_mul_comba20(fp_int *A, fp_int *B, fp_int *C);
 #endif
@@ -402,6 +513,31 @@ void fp_sqr_comba(fp_int *A, fp_int *B);
 
 #ifdef TFM_SMALL_SET
 void fp_sqr_comba_small(fp_int *A, fp_int *B);
+#endif
+
+#ifdef TFM_SQR3
+void fp_sqr_comba3(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR4
+void fp_sqr_comba4(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR6
+void fp_sqr_comba6(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR7
+void fp_sqr_comba7(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR8
+void fp_sqr_comba8(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR9
+void fp_sqr_comba9(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR12
+void fp_sqr_comba12(fp_int *A, fp_int *B);
+#endif
+#ifdef TFM_SQR17
+void fp_sqr_comba17(fp_int *A, fp_int *B);
 #endif
 
 #ifdef TFM_SQR20

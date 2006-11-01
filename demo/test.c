@@ -34,6 +34,13 @@ static ulong64 TIMFUNC (void)
          unsigned long a, b;
          __asm__ __volatile__ ("mftbu %1 \nmftb %0\n":"=r"(a), "=r"(b));
          return (((ulong64)b) << 32ULL) | ((ulong64)a);
+      #elif defined(TFM_AVR32) 
+	 FILE *in;
+         char buf[20];
+	 in = fopen("/sys/devices/system/cpu/cpu0/pccycles", "r");
+	 fgets(buf, 20, in);
+	 fclose(in);
+	 return strtoul(buf, NULL, 10);
       #else /* gcc-IA64 version */
          unsigned long result;
          __asm__ __volatile__("mov %0=ar.itc" : "=r"(result) :: "memory");
@@ -213,7 +220,7 @@ t1 = TIMFUNC();
 sleep(1);
 printf("Ticks per second: %llu\n", TIMFUNC() - t1);
 
-goto monttime;
+goto multtime;
  /* do some timings... */
   printf("Addition:\n");
   for (t = 2; t <= FP_SIZE/2; t += 2) {
@@ -240,7 +247,7 @@ goto monttime;
   }
 multtime:
   printf("Multiplication:\n");
-  for (t = 2; t <= FP_SIZE/2; t += 2) {
+  for (t = 2; t < FP_SIZE/2; t += 2) {
       fp_zero(&a);
       fp_zero(&b);
       fp_zero(&c);
@@ -251,11 +258,73 @@ multtime:
       a.used = t;
       b.used = t;
       t2 = -1;
-      for (ix = 0; ix < 10000; ++ix) {
+      for (ix = 0; ix < 100; ++ix) {
           t1 = TIMFUNC();
           fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
           fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          t2 = (TIMFUNC() - t1)>>2;
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
+          t2 = (TIMFUNC() - t1)>>7;
           if (t1<t2) { --ix; t2 = t1; }
       }
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
@@ -263,7 +332,7 @@ multtime:
 //#else
 sqrtime:
   printf("Squaring:\n");
-  for (t = 2; t <= FP_SIZE/2; t += 2) {
+  for (t = 2; t < FP_SIZE/2; t += 2) {
       fp_zero(&a);
       fp_zero(&b);
       for (ix = 0; ix < t; ix++) {
@@ -271,11 +340,73 @@ sqrtime:
       }
       a.used = t;
       t2 = -1;
-      for (ix = 0; ix < 10000; ++ix) {
+      for (ix = 0; ix < 100; ++ix) {
           t1 = TIMFUNC();
           fp_sqr(&a, &b); fp_sqr(&a, &b);
           fp_sqr(&a, &b); fp_sqr(&a, &b);
-          t2 = (TIMFUNC() - t1)>>2;
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          fp_sqr(&a, &b); fp_sqr(&a, &b);
+          t2 = (TIMFUNC() - t1)>>7;
           if (t1<t2) { --ix; t2 = t1; }
       }
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
@@ -298,11 +429,73 @@ monttime:
      fp_copy(&b, &d);      
 
      t2 = -1;
-     for (ix = 0; ix < 10000; ++ix) {
+     for (ix = 0; ix < 100; ++ix) {
           t1 = TIMFUNC();
           fp_montgomery_reduce(&c, &a, &fp);
           fp_montgomery_reduce(&d, &a, &fp);
-          t2 = (TIMFUNC() - t1)>>1;
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, &fp);
+          fp_montgomery_reduce(&d, &a, &fp);
+          t2 = (TIMFUNC() - t1)>>6;
           fp_copy(&b, &c);      
           fp_copy(&b, &d);      
           if (t1<t2) { --ix; t2 = t1; }

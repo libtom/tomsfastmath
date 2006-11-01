@@ -32,18 +32,18 @@ int fp_radix_size(fp_int *a, int radix, int *size)
 
   /* if it is negative output a - */
   if (t.sign == FP_NEG) {
-    *size++;
+    (*size)++;
     t.sign = FP_ZPOS;
   }
 
   digs = 0;
   while (fp_iszero (&t) == FP_NO) {
     fp_div_d (&t, (fp_digit) radix, &t, &d);
-    *size++;
+    (*size)++;
   }
 
   /* append a NULL so the string is properly terminated */
-  *size++;
+  (*size)++;
   return FP_OKAY;
 
 }

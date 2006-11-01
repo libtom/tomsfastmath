@@ -13,7 +13,7 @@
 void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
 {
   int      x, y, oldused;
-  fp_word  t;
+  register fp_word  t;
 
   y       = MAX(a->used, b->used);
   oldused = c->used;
@@ -29,6 +29,7 @@ void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
      c->dp[c->used++] = (fp_digit)t;
      ++x;
   }
+
   c->used = x;
   for (; x < oldused; x++) {
      c->dp[x] = 0;

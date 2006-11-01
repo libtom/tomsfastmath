@@ -26,7 +26,7 @@ printf(
 "   memcpy(at+%d, B->dp, %d * sizeof(fp_digit));\n"
 "   COMBA_START;\n"
 "\n"
-"   COMBA_CLEAR;\n", N, N+N, N, N, N, N);
+"   COMBA_CLEAR;\n", N, N+N, N, N, N);
 
    /* now do the rows */
    for (x = 0; x < (N+N-1); x++) {
@@ -53,7 +53,7 @@ printf(
 "   C->sign = A->sign ^ B->sign;\n"
 "   fp_clamp(C);\n"
 "   COMBA_FINI;\n"
-"}\n\n\n", N+N-1, N+N, N+N);
+"}\n\n\n", N+N-1, N+N);
 
   return 0;
 }

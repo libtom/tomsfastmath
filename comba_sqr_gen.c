@@ -8,7 +8,6 @@
  * Tom St Denis, tomstdenis@gmail.com
  */
 
-/* Generates squaring comba code... it learns it knows our secrets! */
 #include <stdio.h>
 
 int main(int argc, char **argv)
@@ -16,10 +15,8 @@ int main(int argc, char **argv)
    int x, y, z, N, f;
    N = atoi(argv[1]);
 
-if (N >= 16 && N < 32) printf("#ifdef TFM_LARGE\n");
-if (N >= 32) printf("#ifdef TFM_HUGE\n");
-
 printf(
+"#ifdef TFM_SQR%d\n"
 "void fp_sqr_comba%d(fp_int *A, fp_int *B)\n"
 "{\n"
 "   fp_digit *a, b[%d], c0, c1, c2, sc0, sc1, sc2;\n"
@@ -32,7 +29,7 @@ printf(
 "\n"
 "   /* output 0 */\n"
 "   SQRADD(a[0],a[0]);\n"
-"   COMBA_STORE(b[0]);\n", N, N+N);
+"   COMBA_STORE(b[0]);\n", N, N, N+N);
 
    for (x = 1; x < N+N-1; x++) {
 printf(
@@ -94,9 +91,7 @@ printf(
 "   B->sign = FP_ZPOS;\n"
 "   memcpy(B->dp, b, %d * sizeof(fp_digit));\n"
 "   fp_clamp(B);\n"
-"}\n\n\n", N+N, N+N);
-
-if (N >= 16) printf("#endif\n");
+"}\n#endif\n\n\n", N+N, N+N);
 
   return 0;
 }

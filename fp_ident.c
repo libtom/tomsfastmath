@@ -42,6 +42,25 @@ const char *fp_ident(void)
 #ifdef TFM_ARM
 " TFM_ARM "
 #endif
+#ifdef TFM_PPC32
+" TFM_PPC32 "
+#endif
+#ifdef TFM_AVR32
+" TFM_AVR32 "
+#endif
+#ifdef TFM_ECC192
+" TFM_ECC192 "
+#endif
+#ifdef TFM_ECC224
+" TFM_ECC224 "
+#endif
+#ifdef TFM_ECC384
+" TFM_ECC384 "
+#endif
+#ifdef TFM_ECC521
+" TFM_ECC521 "
+#endif
+
 #ifdef TFM_NO_ASM
 " TFM_NO_ASM "
 #endif

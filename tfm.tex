@@ -49,7 +49,7 @@
 \begin{document}
 \frontmatter
 \pagestyle{empty}
-\title{TomsFastMath User Manual \\ v0.09}
+\title{TomsFastMath User Manual \\ v0.10}
 \author{Tom St Denis \\ tomstdenis@gmail.com}
 \maketitle
 This text and library are all hereby placed in the public domain.  This book has been formatted for B5 
@@ -174,6 +174,10 @@ fp\_word is 64--bits.
 use altivec or other extensions so it should work on all compliant implementations of PPC.  It requires GCC and works
 with 32--bit digits.  In this mode fp\_digit is 32--bits and fp\_word is 64--bits.
 
+\subsubsection{PPC64} The ``PPC64'' mode is defined by ``TFM\_PPC64'' and requires a 64--bit PPC processor.  
+
+\subsubsection{AVR32} The ``AVR32'' mode is defined by ``TFM\_AVR32'' and requires an Atmel AVR32 processor.  
+
 \subsubsection{Future Releases}  Future releases will support additional platform optimizations.
 Developers of MIPS and SPARC platforms are encouraged to submit GCC asm inline patches 
 (see chapter \ref{chap:asmops} for more information).
@@ -189,6 +193,8 @@ Developers of MIPS and SPARC platforms are encouraged to submit GCC asm inline p
 \hline Athlon64                   & TFM\_X86\_64 \\
 \hline ARMv4 or higher with M     & TFM\_ARM \\
 \hline G3/G4 (32-bit PPC)         & TFM\_PPC32 \\
+\hline G5 (64-bit PPC)            & TFM\_PPC64 \\
+\hline Atmel AVR32                & TFM\_AVR32 \\
 \hline &\\
 \hline x86--32 or x86--64 (with GCC) & Leave blank and let autodetect work \\
 \hline
@@ -197,6 +203,19 @@ Developers of MIPS and SPARC platforms are encouraged to submit GCC asm inline p
 \end{center}
 \end{small}
 \end{figure}
+
+\subsection{Build Configurations}
+TomsFastMath is configurable in terms of which unrolled code (if any) is included.  By default, the majority of the code is included which
+results in large binaries.  The first flag to try out is TFM\_ALREADY\_SET which tells TFM to turn off \textbf{all} unrolled code.  This will
+result in a smaller library but also a much slower library.
+
+From this clean state, you can start enabling unrolled code for given cryptographic tasks at hand.  A series of TFM\_MULXYZ and TFM\_SQRXYZ macros
+exist to enable specific unrolled code.  For instance, TFM\_MUL32 will enable a 32 digit unrolled multiplier.  For a complete list see the tfm.h header
+file.  Keep in mind this is for digits not bits.  For example, you should enable TFM\_MUL16 if you are doing 1024-bit exptmods on a 64--bit platform, enable
+TFM\_MUL32 on 32--bit platforms.
+
+To help developers use ECC there are a set of defines for the five NIST curve sizes.  They are named TFM\_ECCXYZ where XYZ is one of 192, 224, 256, 384, or 521.  These
+enable the multipliers and squaring code for a given curve, autodetecting 64--bit platforms as well.  
 
 \subsection{Precision Configuration}
 The precision of all integers in this library are fixed to a limited precision.  Essentially

@@ -341,7 +341,67 @@ asm(                                 \
    " addze    %0,%0         \n\t"    \
 :"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"16","%cc");
 
+#elif defined(TFM_PPC64)
+
+/* PPC64 */
+#define MONT_START 
+#define MONT_FINI
+#define LOOP_END
+#define LOOP_START \
+   mu = c[x] * mp
+
+#define INNERMUL                     \
+asm(                                 \
+   " mulld    16,%3,%4       \n\t"   \
+   " mulhdu   17,%3,%4       \n\t"   \
+   " addc     16,16,%0       \n\t"   \
+   " addze    17,17          \n\t"   \
+   " ldx      18,0,%1        \n\t"   \
+   " addc     16,16,18       \n\t"   \
+   " addze    %0,17          \n\t"   \
+   " sdx      16,0,%1        \n\t"   \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"r"(mu),"r"(tmpm[0]),"1"(_c[0]):"16", "17", "18","%cc"); ++tmpm;
+
+#define PROPCARRY                    \
+asm(                                 \
+   " ldx      16,0,%1       \n\t"    \
+   " addc     16,16,%0      \n\t"    \
+   " sdx      16,0,%1       \n\t"    \
+   " xor      %0,%0,%0      \n\t"    \
+   " addze    %0,%0         \n\t"    \
+:"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"16","%cc");
+
 /******************************************************************/
+
+#elif defined(TFM_AVR32)
+
+/* AVR32 */
+#define MONT_START 
+#define MONT_FINI
+#define LOOP_END
+#define LOOP_START \
+   mu = c[x] * mp
+
+#define INNERMUL                    \
+asm(                                \
+    " ld.w   r2,%1            \n\t" \
+    " add    r2,%0            \n\t" \
+    " eor    r3,r3            \n\t" \
+    " acr    r3               \n\t" \
+    " macu.d r2,%3,%4         \n\t" \
+    " st.w   %1,r2            \n\t" \
+    " mov    %0,r3            \n\t" \
+:"=r"(cy),"=r"(_c):"0"(cy),"r"(mu),"r"(*tmpm++),"1"(_c):"r2","r3");
+
+#define PROPCARRY                    \
+asm(                                 \
+   " ld.w     r2,%1         \n\t"    \
+   " add      r2,%0         \n\t"    \
+   " st.w     %1,r2         \n\t"    \
+   " eor      %0,%0         \n\t"    \
+   " acr      %0            \n\t"    \
+:"=r"(cy),"=r"(&_c[0]):"0"(cy),"1"(&_c[0]):"r2","%cc");
+
 #else
 
 /* ISO C code */
@@ -367,6 +427,10 @@ asm(                                 \
 
 #define LO  0
 
+#ifdef TFM_SMALL_MONT_SET
+#include "fp_mont_small.c"
+#endif
+
 /* computes x/R == x (mod N) via Montgomery Reduction */
 void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
 {
@@ -377,6 +441,13 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
    if (m->used > (FP_SIZE/2)) {
       return;
    }
+
+#ifdef TFM_SMALL_MONT_SET
+   if (m->used <= 16) {
+      fp_montgomery_reduce_small(a, m, mp);
+      return;
+   }
+#endif
 
 #if defined(USE_MEMSET)
    /* now zero the buff */
@@ -390,7 +461,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
        c[x] = a->dp[x];
    }
 #if !defined(USE_MEMSET)
-   for (; x < 2*pa+3; x++) {
+   for (; x < 2*pa+1; x++) {
        c[x] = 0;
    }
 #endif

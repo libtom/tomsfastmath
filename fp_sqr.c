@@ -21,6 +21,54 @@ void fp_sqr(fp_int *A, fp_int *B)
     }
 
     y = A->used;
+#if defined(TFM_SQR3)
+        if (y <= 3) {
+           fp_sqr_comba3(A,B);
+           return;
+        }
+#endif
+#if defined(TFM_SQR4)
+        if (y == 4) {
+           fp_sqr_comba4(A,B);
+           return;
+        }
+#endif
+#if defined(TFM_SQR6)
+        if (y <= 6) {
+           fp_sqr_comba6(A,B);
+           return;
+        }
+#endif
+#if defined(TFM_SQR7)
+        if (y == 7) {
+           fp_sqr_comba7(A,B);
+           return;
+        }
+#endif
+#if defined(TFM_SQR8)
+        if (y == 8) {
+           fp_sqr_comba8(A,B);
+           return;
+        }
+#endif
+#if defined(TFM_SQR9)
+        if (y == 9) {
+           fp_sqr_comba9(A,B);
+           return;
+        }
+#endif
+#if defined(TFM_SQR12)
+        if (y <= 12) {
+           fp_sqr_comba12(A,B);
+           return;
+        }
+#endif
+#if defined(TFM_SQR17)
+        if (y <= 17) {
+           fp_sqr_comba17(A,B);
+           return;
+        }
+#endif
 #if defined(TFM_SMALL_SET)
         if (y <= 16) {
            fp_sqr_comba_small(A,B);
