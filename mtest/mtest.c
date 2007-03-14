@@ -39,7 +39,7 @@ mulmod
 #include <time.h>
 #include <tommath.h>
 #define CRYPT
-#include "../tfm.h"
+#include "../src/headers/tfm.h"
 
 FILE *rng;
 

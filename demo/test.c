@@ -411,6 +411,93 @@ sqrtime:
       }
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
+invmodtime:
+  printf("Invmod:\n");
+  for (t = 2; t < FP_SIZE/2; t += 2) {
+     fp_zero(&a);
+     for (ix = 0; ix < t; ix++) {
+         a.dp[ix] = ix | 1;
+     }
+     a.used = t;
+     fp_zero(&b);
+     for (ix = 0; ix < t; ix++) {
+         b.dp[ix] = rand();
+     }
+     b.used = t;
+     fp_clamp(&b);
+     fp_zero(&c);
+     t2 = -1;
+     for (ix = 0; ix < 100; ++ix) {
+          t1 = TIMFUNC();
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          fp_invmod(&b, &a, &c);
+          t2 = (TIMFUNC() - t1)>>6;
+          if (t1<t2) { --ix; t2 = t1; }
+      }
+      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
+  }
 //#else
 monttime:
   printf("Montgomery:\n");
@@ -531,10 +618,10 @@ expttime:
      }
      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
   }
-  return;
+  return 0;
 #endif
 
-return;
+return 0;
 testing:
 
   fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f); fp_zero(&a);

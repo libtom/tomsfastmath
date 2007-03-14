@@ -1,3 +1,14 @@
+March 14th, 2007
+0.12 -- Christophe Devine contributed MIPS asm w00t
+     ++ quick release to get the MIPS code out there
+
+March 10th, 2007
+0.11 -- re-org'ed the source tree, it's cooler now
+     -- cleaned up mul/sqr so there is only one file per unit, should help building with older compilers and/or on slower boxes
+     -- [CRI] optimized fp_read_unsigned_bin
+     -- fixed -0 ... again ... I now have less hair on my head.
+     -- [CRI] renamed bn_reverse() -> fp_reverse()
+
 November 1st, 2006
 0.10 -- Unrolled Montgomery for 1..16 digits with TFM_SMALL_MONT_SET between 10% and 25% speedup depending on size.
      -- fixed fp_sqr_comba.c so it builds in ISO C mode [Andreas Lange]
