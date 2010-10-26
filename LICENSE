@@ -1,7 +1,20 @@
-TomsFastMath is public domain.
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
+
+ Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+  0. You just DO WHAT THE FUCK YOU WANT TO.
+
+-- Mark Karpelès & Steffen Jaeckel
 
 Note some ideas were borrowed from LibTomMath and OpenSSL.  All of the code is original or ported
-from LibTomMath [no code was ported from OpenSSL].  As such the origins and status of this code
-are both public domain.
+from LibTomMath [no code was ported from OpenSSL].
 
 -- Tom St Denis
