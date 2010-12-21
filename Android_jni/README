@@ -1,0 +1,32 @@
+This project provides a build framework for TomsFastMath on Android.
+
+Notes / TODO:
+
+To use the faster ARM inline assembly, TFM_ARM must be defined at compile time. Unfortunately, is
+incompatible with the armeabi build target because some of the instructions are not supported. The
+Android SDK defines a few variables which may help with detection:
+
+when compiled for armeabi-v7a:
+  __thumb2__
+  __ARM_ARCH_7A__
+when compiled for armeabi:
+  __SOFTFP__
+
+For now, the armeabi target will use the unoptimized C code.  TFM_ARM is conditionally defined
+for the armeabi-v7a target.
+
+Build instructions:
+
+(1) Clone this git repository to your project's JNI directory, naming the directory "tfm".
+(2) Modify your JNI root's Android.mk and Application.mk using the files in this directory as a model.
+(3) Run ndk-build (available from the Android NDK); see Gingerbread's NDK docs for more.
+
+Known bugs / issues:
+
+* armeabi builds are known to produce binary code that is over three times larger than armeabi-v7a.
+  This is probably due to either a bug in the Android NDK or limitations of the Thumb16 instruction set.
+
+* NEON support can't really be turned on, because not all armeabi-v7a boards support it.
+  After some trials, it appears that gcc can auto-vectorize some loops when NEON support is enabled
+  and this leads to a performance increase.  But doing so will cause the code to crash on phones
+  where NEON isn't supported...
