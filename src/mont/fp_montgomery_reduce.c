@@ -352,6 +352,16 @@ asm(                               \
 #define LOOP_START \
    mu = c[x] * mp
 
+/*
+These will need a complete rewrite for armeabi:
+  * ADDS is not supported in Thumb16 mode
+  * Thumb does not support conditional execution (MOVCS/MOVCC)
+  * armv5te+xscale does not support UMLAL
+ADDS - add and set condition flags (bottom of page 16, arm_inst.pdf)
+MOVCS / MOVCC - move if carry bit is set / clear
+UMLAL RdLo, RdHi, Rn, Rm - unsigned multiply Rn and Rm, then
+                           add resulting 64-bit value to (RdHi,RdLo)
+*/
 #define INNERMUL                    \
 asm(                                \
     " LDR    r0,%1            \n\t" \
