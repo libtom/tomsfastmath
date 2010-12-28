@@ -337,6 +337,7 @@ asm(                               \
     " LDR   r0,%1            \n\t" \
     " ADDS  r0,r0,%0         \n\t" \
     " STR   r0,%1            \n\t" \
+    " ITE   CS               \n\t" \
     " MOVCS %0,#1            \n\t" \
     " MOVCC %0,#0            \n\t" \
 :"=r"(cy),"=g"(_c[0]):"0"(cy),"1"(_c[0]):"r0","%cc");
