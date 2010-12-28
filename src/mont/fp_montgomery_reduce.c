@@ -296,9 +296,6 @@ asm(                                        \
 asm(                                \
     " LDR    r0,%1            \n\t" \
     " ADDS   r0,r0,%0         \n\t" \
-    #if defined(__thumb2__)         \
-    " ITE    CS               \n\t" \
-    #endif                          \
     " MOVCS  %0,#1            \n\t" \
     " MOVCC  %0,#0            \n\t" \
     " UMLAL  r0,%0,%3,%4      \n\t" \
@@ -310,9 +307,65 @@ asm(                               \
     " LDR   r0,%1            \n\t" \
     " ADDS  r0,r0,%0         \n\t" \
     " STR   r0,%1            \n\t" \
-    #if defined(__thumb2__)        \
-    " ITE   CS               \n\t" \
-    #endif                         \
+    " MOVCS %0,#1            \n\t" \
+    " MOVCC %0,#0            \n\t" \
+:"=r"(cy),"=g"(_c[0]):"0"(cy),"1"(_c[0]):"r0","%cc");
+
+/******************************************************************/
+#elif defined(TFM_ARM_V7A)
+   /* Android: armeabi-v7a target */
+
+#define MONT_START
+#define MONT_FINI
+#define LOOP_END
+#define LOOP_START \
+   mu = c[x] * mp
+
+#define INNERMUL                    \
+asm(                                \
+    " LDR    r0,%1            \n\t" \
+    " ADDS   r0,r0,%0         \n\t" \
+    " ITE   CS                \n\t" \
+    " MOVCS  %0,#1            \n\t" \
+    " MOVCC  %0,#0            \n\t" \
+    " UMLAL  r0,%0,%3,%4      \n\t" \
+    " STR    r0,%1            \n\t" \
+:"=r"(cy),"=g"(_c[0]):"0"(cy),"r"(mu),"r"(*tmpm++),"1"(_c[0]):"r0","%cc");
+
+#define PROPCARRY                  \
+asm(                               \
+    " LDR   r0,%1            \n\t" \
+    " ADDS  r0,r0,%0         \n\t" \
+    " STR   r0,%1            \n\t" \
+    " MOVCS %0,#1            \n\t" \
+    " MOVCC %0,#0            \n\t" \
+:"=r"(cy),"=g"(_c[0]):"0"(cy),"1"(_c[0]):"r0","%cc");
+
+/******************************************************************/
+#elif defined(TFM_ARM_V5TE)
+   /* Android: armeabi target */
+
+#define MONT_START
+#define MONT_FINI
+#define LOOP_END
+#define LOOP_START \
+   mu = c[x] * mp
+
+#define INNERMUL                    \
+asm(                                \
+    " LDR    r0,%1            \n\t" \
+    " ADDS   r0,r0,%0         \n\t" \
+    " MOVCS  %0,#1            \n\t" \
+    " MOVCC  %0,#0            \n\t" \
+    " UMLAL  r0,%0,%3,%4      \n\t" \
+    " STR    r0,%1            \n\t" \
+:"=r"(cy),"=g"(_c[0]):"0"(cy),"r"(mu),"r"(*tmpm++),"1"(_c[0]):"r0","%cc");
+
+#define PROPCARRY                  \
+asm(                               \
+    " LDR   r0,%1            \n\t" \
+    " ADDS  r0,r0,%0         \n\t" \
+    " STR   r0,%1            \n\t" \
     " MOVCS %0,#1            \n\t" \
     " MOVCC %0,#0            \n\t" \
 :"=r"(cy),"=g"(_c[0]):"0"(cy),"1"(_c[0]):"r0","%cc");
