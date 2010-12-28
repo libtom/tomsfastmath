@@ -100,7 +100,7 @@ ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
 #  -ftree-vectorizer-verbose=2: verbose output during compile
 # Note: not all V7a targets support NEON!
 #  LOCAL_ARM_NEON := true
-LOCAL_CFLAGS += -DTFM_ARM -mimplicit-it=thumb
+LOCAL_CFLAGS += -DTFM_ARM
 endif
 
 include $(BUILD_STATIC_LIBRARY)

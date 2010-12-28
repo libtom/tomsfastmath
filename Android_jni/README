@@ -15,6 +15,10 @@ when compiled for armeabi:
 For now, the armeabi target will use the unoptimized C code.  TFM_ARM is conditionally defined
 for the armeabi-v7a target.
 
+Don't forget to change FP_MAX_SIZE in src/headers/tfm.h to suit your needs, e.g.
+
+  #define FP_MAX_SIZE           (16384+(8*DIGIT_BIT))
+
 Build instructions:
 
 (1) Clone this git repository to your project's JNI directory, naming the directory "tfm".
