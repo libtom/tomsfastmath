@@ -283,10 +283,10 @@ asm(                                        \
 : "%eax", "%cc")
 
 /******************************************************************/
-#elif defined(TFM_ARM)
-   /* ARMv4 code */
+#elif defined(TFM_ARM_V4M)
+   /* generic ARMv4 or higher with M */
 
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -325,7 +325,7 @@ asm(                               \
 asm(                                \
     " LDR    r0,%1            \n\t" \
     " ADDS   r0,r0,%0         \n\t" \
-    " ITE   CS                \n\t" \
+    " ITE    CS               \n\t" \
     " MOVCS  %0,#1            \n\t" \
     " MOVCC  %0,#0            \n\t" \
     " UMLAL  r0,%0,%3,%4      \n\t" \

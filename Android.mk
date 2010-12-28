@@ -94,17 +94,19 @@ LOCAL_SRC_FILES := \
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/headers
 
+LOCAL_CFLAGS += -DTFM_ARM
+
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
 # Possible optimizations:
 #  -ftree-vectorize: have GCC attempt to automatically vectorize loops
 #  -ftree-vectorizer-verbose=2: verbose output during compile
-# Note: not all V7a targets support NEON!
-#  LOCAL_ARM_NEON := true
-LOCAL_CFLAGS += -DTFM_ARM_V7A
+# Note: not all V7-a targets support NEON!
+LOCAL_ARM_NEON := true
+LOCAL_CFLAGS += -DTFM_ARM_V7A -ftree-vectorize
 else ifeq ($(TARGET_ARCH_ABI),armeabi)
 LOCAL_CFLAGS += -DTFM_ARM_V5TE
 else
-LOCAL_CFLAGS += -DTFM_ARM
+LOCAL_CFLAGS += -DTFM_ARM_V4M
 endif
 
 include $(BUILD_STATIC_LIBRARY)
