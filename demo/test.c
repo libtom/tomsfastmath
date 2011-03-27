@@ -134,6 +134,10 @@ int main(void)
   printf("cmp returns: %d, ", fp_cmp(&a, &b)); fp_sub(&a, &b, &a); draw(&a);
   printf("cmp returns: %d, ", fp_cmp(&a, &b)); fp_sub(&a, &b, &a); draw(&a);
   printf("cmp returns: %d, ", fp_cmp(&a, &b)); fp_sub(&a, &b, &a); draw(&a);
+  fp_read_radix(&a, "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000001", 16); draw(&a);
+  fp_sub_d(&a, 3, &b); draw(&b);
+  fp_read_radix(&a, "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFE", 16);
+  printf("cmp returns: %d, ", fp_cmp(&a, &b)); fp_sub(&a, &b, &a); draw(&a);
 
   /* test mul_d */
   printf("Testing mul_d and div_d\n");
