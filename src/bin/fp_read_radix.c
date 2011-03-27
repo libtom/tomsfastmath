@@ -38,7 +38,7 @@ int fp_read_radix(fp_int *a, char *str, int radix)
      * this allows numbers like 1AB and 1ab to represent the same  value
      * [e.g. in hex]
      */
-    ch = (char) ((radix < 36) ? toupper (*str) : *str);
+    ch = (char) ((radix < 36) ? toupper ((int)*str) : *str);
     for (y = 0; y < 64; y++) {
       if (ch == fp_s_rmap[y]) {
          break;
