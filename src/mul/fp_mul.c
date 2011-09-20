@@ -28,92 +28,92 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
        if say y=17 then we would do (32-17)^2 = 225 unneeded multiplications 
     */
 
-#ifdef TFM_MUL3
+#ifdef TFM_MUL3 && FP_SIZE >= 6
         if (y <= 3) {
            fp_mul_comba3(A,B,C);
            return;
         }
 #endif
-#ifdef TFM_MUL4
+#ifdef TFM_MUL4  && FP_SIZE >= 8
         if (y == 4) {
            fp_mul_comba4(A,B,C);
            return;
         }
 #endif
-#ifdef TFM_MUL6
+#ifdef TFM_MUL6 && FP_SIZE >= 12
         if (y <= 6) {
            fp_mul_comba6(A,B,C);
            return;
         }
 #endif
-#ifdef TFM_MUL7
+#ifdef TFM_MUL7 && FP_SIZE >= 14
         if (y == 7) {
            fp_mul_comba7(A,B,C);
            return;
         }
 #endif
-#ifdef TFM_MUL8
+#ifdef TFM_MUL8 && FP_SIZE >= 16
         if (y == 8) {
            fp_mul_comba8(A,B,C);
            return;
         }
 #endif
-#ifdef TFM_MUL9
+#ifdef TFM_MUL9 && FP_SIZE >= 18
         if (y == 9) {
            fp_mul_comba9(A,B,C);
            return;
         }
 #endif
-#ifdef TFM_MUL12
+#ifdef TFM_MUL12 && FP_SIZE >= 24
         if (y <= 12) {
            fp_mul_comba12(A,B,C);
            return;
         }
 #endif
-#ifdef TFM_MUL17
+#ifdef TFM_MUL17 && FP_SIZE >= 34
         if (y <= 17) {
            fp_mul_comba17(A,B,C);
            return;
         }
 #endif
 
-#ifdef TFM_SMALL_SET
+#ifdef TFM_SMALL_SET && FP_SIZE >= 32
         if (y <= 16) {
            fp_mul_comba_small(A,B,C);
            return;
         }
 #endif        
-#if defined(TFM_MUL20)
+#if defined(TFM_MUL20) && FP_SIZE >= 40
         if (y <= 20) {
            fp_mul_comba20(A,B,C);
            return;
         }
 #endif
-#if defined(TFM_MUL24)
+#if defined(TFM_MUL24) && FP_SIZE >= 48
         if (yy >= 16 && y <= 24) {
            fp_mul_comba24(A,B,C);
            return;
         }
 #endif
-#if defined(TFM_MUL28)
+#if defined(TFM_MUL28) && FP_SIZE >= 56
         if (yy >= 20 && y <= 28) {
            fp_mul_comba28(A,B,C);
            return;
         }
 #endif
-#if defined(TFM_MUL32)
+#if defined(TFM_MUL32) && FP_SIZE >= 64
         if (yy >= 24 && y <= 32) {
            fp_mul_comba32(A,B,C);
            return;
         }
 #endif
-#if defined(TFM_MUL48)
+#if defined(TFM_MUL48) && FP_SIZE >= 96
         if (yy >= 40 && y <= 48) {
            fp_mul_comba48(A,B,C);
            return;
         }
 #endif        
-#if defined(TFM_MUL64)
+#if defined(TFM_MUL64) && FP_SIZE >= 128
         if (yy >= 56 && y <= 64) {
            fp_mul_comba64(A,B,C);
            return;
@@ -123,6 +123,6 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
 }
 
 
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */
+/* $Source: /cvs/libtom/tomsfastmath/src/mul/fp_mul.c,v $ */
+/* $Revision: 1.1 $ */
+/* $Date: 2006/12/31 21:25:53 $ */
