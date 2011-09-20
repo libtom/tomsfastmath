@@ -6,8 +6,8 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[32], c0, c1, c2, sc0, sc1, sc2;
 #ifdef TFM_ISO
-   fp_word   tt;   
-#endif   
+   fp_word tt;
+#endif
    switch (A->used) { 
    case 1:
       a = A->dp;
@@ -25,6 +25,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 2;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 2 * sizeof(fp_digit));
+      memset(B->dp + 2, 0, (FP_SIZE - 2) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -54,6 +55,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 4;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 4 * sizeof(fp_digit));
+      memset(B->dp + 4, 0, (FP_SIZE - 4) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -93,6 +95,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 6;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 6 * sizeof(fp_digit));
+      memset(B->dp + 6, 0, (FP_SIZE - 6) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -142,6 +145,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 8;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 8 * sizeof(fp_digit));
+      memset(B->dp + 8, 0, (FP_SIZE - 8) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -201,6 +205,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 10;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 10 * sizeof(fp_digit));
+      memset(B->dp + 10, 0, (FP_SIZE - 10) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -270,6 +275,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 12;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 12 * sizeof(fp_digit));
+      memset(B->dp + 12, 0, (FP_SIZE - 12) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -349,6 +355,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 14;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 14 * sizeof(fp_digit));
+      memset(B->dp + 14, 0, (FP_SIZE - 14) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -438,6 +445,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 16;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 16 * sizeof(fp_digit));
+      memset(B->dp + 16, 0, (FP_SIZE - 16) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -537,6 +545,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 18;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 18 * sizeof(fp_digit));
+      memset(B->dp + 18, 0, (FP_SIZE - 18) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -646,6 +655,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 20;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 20 * sizeof(fp_digit));
+      memset(B->dp + 20, 0, (FP_SIZE - 20) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -765,6 +775,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 22;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 22 * sizeof(fp_digit));
+      memset(B->dp + 22, 0, (FP_SIZE - 22) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -894,6 +905,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 24;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 24 * sizeof(fp_digit));
+      memset(B->dp + 24, 0, (FP_SIZE - 24) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -1033,6 +1045,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 26;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 26 * sizeof(fp_digit));
+      memset(B->dp + 26, 0, (FP_SIZE - 26) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -1182,6 +1195,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 28;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 28 * sizeof(fp_digit));
+      memset(B->dp + 28, 0, (FP_SIZE - 28) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -1341,6 +1355,7 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 30;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 30 * sizeof(fp_digit));
+      memset(B->dp + 30, 0, (FP_SIZE - 30) * sizeof(fp_digit));
       fp_clamp(B);
       break;
 
@@ -1510,13 +1525,11 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
       B->used = 32;
       B->sign = FP_ZPOS;
       memcpy(B->dp, b, 32 * sizeof(fp_digit));
+      memset(B->dp + 32, 0, (FP_SIZE - 32) * sizeof(fp_digit));
       fp_clamp(B);
       break;
+
 }
 }
 
 #endif /* TFM_SMALL_SET */
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */
