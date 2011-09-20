@@ -90,8 +90,9 @@ printf(
 "   B->used = %d;\n"
 "   B->sign = FP_ZPOS;\n"
 "   memcpy(B->dp, b, %d * sizeof(fp_digit));\n"
+"   memset(B->dp + %d, 0, (FP_SIZE - %d) * sizeof(fp_digit));\n"
 "   fp_clamp(B);\n"
-"}\n#endif\n\n\n", N+N, N+N);
+"}\n#endif\n\n\n", N+N, N+N, N+N, N+N);
 
   return 0;
 }
