@@ -84,11 +84,9 @@ void fp_sqr_comba7(fp_int *A, fp_int *B)
    B->used = 14;
    B->sign = FP_ZPOS;
    memcpy(B->dp, b, 14 * sizeof(fp_digit));
+   memset(B->dp + 14, 0, (FP_SIZE - 14) * sizeof(fp_digit));
    fp_clamp(B);
 }
 #endif
 
 
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

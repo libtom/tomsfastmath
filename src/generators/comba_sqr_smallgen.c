@@ -16,9 +16,16 @@ int main(int argc, char **argv)
    int x, y, z, N, f;
 
 printf(
+"#define TFM_DEFINES\n"
+"#include \"fp_sqr_comba.c\"\n"
+"\n"
+"#if defined(TFM_SMALL_SET)\n"
 "void fp_sqr_comba_small(fp_int *A, fp_int *B)\n"
 "{\n"
 "   fp_digit *a, b[32], c0, c1, c2, sc0, sc1, sc2;\n"
+"#ifdef TFM_ISO\n"
+"   fp_word tt;\n"
+"#endif\n"
 );
 
 printf("   switch (A->used) { \n");
@@ -95,11 +102,12 @@ printf(
 "      B->used = %d;\n"
 "      B->sign = FP_ZPOS;\n"
 "      memcpy(B->dp, b, %d * sizeof(fp_digit));\n"
+"      memset(B->dp + %d, 0, (FP_SIZE - %d) * sizeof(fp_digit));\n"
 "      fp_clamp(B);\n"
-"      break;\n\n", N+N, N+N);
+"      break;\n\n", N+N, N+N, N+N, N+N);
 }
 
-printf("}\n\n}\n");
+printf("}\n}\n\n#endif /* TFM_SMALL_SET */\n");
 
   return 0;
 }
