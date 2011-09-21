@@ -16,10 +16,16 @@ int main(int argc, char **argv)
    N = atoi(argv[1]);
 
 printf(
+"#define TFM_DEFINES\n"
+"#include \"fp_sqr_comba.c\"\n"
+"\n"
 "#ifdef TFM_SQR%d\n"
 "void fp_sqr_comba%d(fp_int *A, fp_int *B)\n"
 "{\n"
 "   fp_digit *a, b[%d], c0, c1, c2, sc0, sc1, sc2;\n"
+"#ifdef TFM_ISO\n"
+"   fp_word tt;\n"
+"#endif\n"
 "\n"
 "   a = A->dp;\n"
 "   COMBA_START; \n"
@@ -90,8 +96,9 @@ printf(
 "   B->used = %d;\n"
 "   B->sign = FP_ZPOS;\n"
 "   memcpy(B->dp, b, %d * sizeof(fp_digit));\n"
+"   memset(B->dp + %d, 0, (FP_SIZE - %d) * sizeof(fp_digit));\n"
 "   fp_clamp(B);\n"
-"}\n#endif\n\n\n", N+N, N+N);
+"}\n#endif\n\n\n", N+N, N+N, N+N, N+N);
 
   return 0;
 }
