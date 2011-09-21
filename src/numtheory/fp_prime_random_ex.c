@@ -35,7 +35,7 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
    }
 
    /* calc the maskAND value for the MSbyte*/
-   maskAND = 0xFF >> (8 - (size & 7));
+   maskAND = 0xFF >> ((8 - (size & 7)) & 7);
 
    /* calc the maskOR_msb */
    maskOR_msb        = 0;
