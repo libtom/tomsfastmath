@@ -55,6 +55,10 @@ int fp_prime_random_ex(fp_int *a, int size, int flags, tfm_prime_callback cb, vo
       /* make sure the MSbyte has the required number of bits */
       a->dp[dsize-1]    &= maskAND_msb;
 
+      /* Force a->used as well, it could be smaller if the highest bits were
+         generated as 0 by the callback. */
+      a->used           = dsize;
+
       /* modify the LSbyte as requested */
       a->dp[0]          |= maskOR_lsb;
 
