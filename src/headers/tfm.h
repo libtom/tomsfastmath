@@ -253,7 +253,7 @@
 #else
    /* this is to make porting into LibTomCrypt easier :-) */
 #ifndef CRYPT
-   #if defined(_MSC_VER) || defined(__BORLANDC__) 
+   #if defined(_MSC_VER) || defined(__BORLANDC__)
       typedef unsigned __int64   ulong64;
       typedef signed __int64     long64;
    #else
