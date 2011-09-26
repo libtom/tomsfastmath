@@ -12,7 +12,8 @@
 int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback cb, void *dat)
 {
    fp_digit maskAND_msb, maskOR_lsb;
-   int res, dsize;
+   int res, bsize, dsize;
+   unsigned char buf[FP_SIZE * sizeof(fp_digit)];
 
    /* sanity check the input */
    if (size <= 1 || cb == NULL || t <= 0 || t > FP_PRIME_SIZE) {
@@ -26,6 +27,8 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
 
    /* calc the size in fp_digit */
    dsize = (size + DIGIT_BIT - 1) >> DIGIT_SHIFT;
+   /* calc the size in bytes */
+   bsize = (size + 7) >> 3;
 
    /* calc the maskAND value for the MSbyte */
    maskAND_msb = FP_MASK >> ((DIGIT_BIT - size) & (DIGIT_BIT-1));
@@ -38,13 +41,17 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
 
    do {
       /* read the bytes */
-      if (cb((unsigned char*)&a->dp[0], dsize*DIGIT_BIT, dat) != dsize*DIGIT_BIT) {
+      if (cb(buf, bsize, dat) != bsize) {
          return FP_VAL;
       }
-      a->used = dsize;
+      fp_read_unsigned_bin(a, buf, bsize);
 
       /* make sure the MSbyte has the required number of bits */
       a->dp[dsize-1]    &= maskAND_msb;
+
+      /* Force a->used as well, it could be smaller if the highest bits were
+         generated as 0 by the callback. */
+      a->used           = dsize;
 
       /* modify the LSbyte as requested */
       a->dp[0]          |= maskOR_lsb;
