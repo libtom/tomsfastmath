@@ -10,10 +10,10 @@
 #include <tfm.h>
 
 #define fp_on_bitnum(a, bitnum) \
-    a->dp[(bitnum) >> DIGIT_SHIFT] |= 1 << ((bitnum) & (DIGIT_BIT-1));
+    a->dp[(bitnum) >> DIGIT_SHIFT] |= (fp_digit)1 << ((bitnum) & (DIGIT_BIT-1))
 
 #define fp_off_bitnum(a, bitnum) \
-    a->dp[(bitnum) >> DIGIT_SHIFT] &= ~(1 << ((bitnum) & (DIGIT_BIT-1)));
+    a->dp[(bitnum) >> DIGIT_SHIFT] &= ~((fp_digit)1 << ((bitnum) & (DIGIT_BIT-1)))
 
 /* This is possibly the mother of all prime generation functions, muahahahahaha! */
 int fp_prime_random_ex(fp_int *a, int size, int flags, tfm_prime_callback cb, void *dat)
