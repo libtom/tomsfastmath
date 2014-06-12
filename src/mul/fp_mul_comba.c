@@ -88,7 +88,7 @@ asm  (                                                    \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","cc");
 
 #elif defined(TFM_SSE2)
 /* use SSE2 optimizations */

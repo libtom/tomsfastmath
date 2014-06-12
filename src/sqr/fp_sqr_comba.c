@@ -109,7 +109,7 @@ asm(                                                     \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i) :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i) :"%rax","%rdx","cc");
 
 #define SQRADD2(i, j)                                     \
 asm(                                                     \
@@ -121,7 +121,7 @@ asm(                                                     \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2): "0"(c0), "1"(c1), "2"(c2), "g"(i), "g"(j)  :"%rax","%rdx","cc");
 
 #define SQRADDSC(i, j)                                    \
 asm(                                                     \
@@ -130,7 +130,7 @@ asm(                                                     \
      "movq  %%rax,%0     \n\t"                            \
      "movq  %%rdx,%1     \n\t"                            \
      "xorq  %2,%2        \n\t"                            \
-     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","%cc");
+     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","cc");
 
 #define SQRADDAC(i, j)                                                         \
 asm(                                                     \
@@ -139,7 +139,7 @@ asm(                                                     \
      "addq  %%rax,%0     \n\t"                            \
      "adcq  %%rdx,%1     \n\t"                            \
      "adcq  $0,%2        \n\t"                            \
-     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","%cc");
+     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","cc");
 
 #define SQRADDDB                                          \
 asm(                                                     \
@@ -149,7 +149,7 @@ asm(                                                     \
      "addq %6,%0         \n\t"                            \
      "adcq %7,%1         \n\t"                            \
      "adcq %8,%2         \n\t"                            \
-     :"=r"(c0), "=r"(c1), "=r"(c2) : "0"(c0), "1"(c1), "2"(c2), "r"(sc0), "r"(sc1), "r"(sc2) : "%cc");
+     :"=r"(c0), "=r"(c1), "=r"(c2) : "0"(c0), "1"(c1), "2"(c2), "r"(sc0), "r"(sc1), "r"(sc2) : "cc");
 
 #elif defined(TFM_SSE2)
 

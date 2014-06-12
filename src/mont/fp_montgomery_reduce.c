@@ -62,7 +62,7 @@ asm(                                                      \
    "movq %%rdx,%1 \n\t"                                   \
 :"=g"(_c[LO]), "=r"(cy)                                   \
 :"0"(_c[LO]), "1"(cy), "r"(mu), "r"(*tmpm++)              \
-: "%rax", "%rdx", "%cc")
+: "%rax", "%rdx", "cc")
 
 #define INNERMUL8 \
  asm(                  \
@@ -155,7 +155,7 @@ asm(                                                      \
  \
 :"=r"(_c), "=r"(cy)                    \
 : "0"(_c),  "1"(cy), "g"(mu), "r"(tmpm)\
-: "%rax", "%rdx", "%r10", "%r11", "%cc")
+: "%rax", "%rdx", "%r10", "%r11", "cc")
 
 
 #define PROPCARRY                           \
@@ -165,7 +165,7 @@ asm(                                        \
    "movzbq %%al,%1 \n\t"                    \
 :"=g"(_c[LO]), "=r"(cy)                     \
 :"0"(_c[LO]), "1"(cy)                       \
-: "%rax", "%cc")
+: "%rax", "cc")
 
 /******************************************************************/
 #elif defined(TFM_SSE2)
