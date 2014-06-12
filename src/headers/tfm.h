@@ -250,6 +250,7 @@
    typedef ulong64            fp_digit;
 #define SIZEOF_FP_DIGIT 8
    typedef unsigned long      fp_word __attribute__ ((mode(TI)));
+   #define DIGIT_SHIFT        6
 #else
    /* this is to make porting into LibTomCrypt easier :-) */
 #ifndef CRYPT
@@ -264,6 +265,7 @@
    typedef unsigned long      fp_digit;
 #define SIZEOF_FP_DIGIT 4
    typedef ulong64            fp_word;
+   #define DIGIT_SHIFT        5
 #endif
 
 /* # of digits this is */
@@ -436,9 +438,9 @@ int fp_isprime(fp_int *a);
 /* callback for fp_prime_random, should fill dst with random bytes and return how many read [upto len] */
 typedef int tfm_prime_callback(unsigned char *dst, int len, void *dat);
 
-#define fp_prime_random(a, t, size, bbs, cb, dat) fp_prime_random_ex(a, t, ((size) * 8) + 1, (bbs==1)?TFM_PRIME_BBS:0, cb, dat)
+#define fp_prime_random(a, size, bbs, cb, dat) fp_prime_random_ex(a, ((size) * 8) + 1, (bbs==1)?TFM_PRIME_BBS:0, cb, dat)
 
-int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback cb, void *dat);
+int fp_prime_random_ex(fp_int *a, int size, int flags, tfm_prime_callback cb, void *dat);
 
 /* radix conersions */
 int fp_count_bits(fp_int *a);
