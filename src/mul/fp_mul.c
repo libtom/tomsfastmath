@@ -1,10 +1,10 @@
 /* TomsFastMath, a fast ISO C bignum library.
- * 
+ *
  * This project is meant to fill in where LibTomMath
  * falls short.  That is speed ;-)
  *
  * This project is public domain and free for all purposes.
- * 
+ *
  * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
@@ -23,9 +23,9 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
      y  = MAX(A->used, B->used);
      yy = MIN(A->used, B->used);
     /* pick a comba (unrolled 4/8/16/32 x or rolled) based on the size
-       of the largest input.  We also want to avoid doing excess mults if the 
+       of the largest input.  We also want to avoid doing excess mults if the
        inputs are not close to the next power of two.  That is, for example,
-       if say y=17 then we would do (32-17)^2 = 225 unneeded multiplications 
+       if say y=17 then we would do (32-17)^2 = 225 unneeded multiplications
     */
 
 #ifdef TFM_MUL3
@@ -82,7 +82,7 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
            fp_mul_comba_small(A,B,C);
            return;
         }
-#endif        
+#endif
 #if defined(TFM_MUL20)
         if (y <= 20) {
            fp_mul_comba20(A,B,C);
@@ -112,7 +112,7 @@ void fp_mul(fp_int *A, fp_int *B, fp_int *C)
            fp_mul_comba48(A,B,C);
            return;
         }
-#endif        
+#endif
 #if defined(TFM_MUL64)
         if (yy >= 56 && y <= 64) {
            fp_mul_comba64(A,B,C);

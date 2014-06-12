@@ -1,10 +1,10 @@
 /* TomsFastMath, a fast ISO C bignum library.
- * 
+ *
  * This project is meant to fill in where LibTomMath
  * falls short.  That is speed ;-)
  *
  * This project is public domain and free for all purposes.
- * 
+ *
  * Tom St Denis, tomstdenis@gmail.com
  */
 
@@ -54,7 +54,7 @@ printf(
        for (y = 0; y < N; y++) {
            for (z = 0; z < N; z++) {
                if (y<=z && (y+z)==x) {
-                  if (y == z) { 
+                  if (y == z) {
                      printf("SQRADD(a[%d], a[%d]); ", y, y);
                   } else {
                      printf("SQRADD2(a[%d], a[%d]); ", y, z);
@@ -63,17 +63,17 @@ printf(
            }
        }
    } else {
-      // new method 
+      // new method
       /* do evens first */
        f = 0;
        for (y = 0; y < N; y++) {
            for (z = 0; z < N; z++) {
                if (z != y && z + y == x && y <= z) {
                   if (f == 0) {
-                     // first double 
+                     // first double
                      printf("SQRADDSC(a[%d], a[%d]); ", y, z);
                      f = 1;
-                  } else { 
+                  } else {
                      printf("SQRADDAC(a[%d], a[%d]); ", y, z);
                   }
                }
@@ -82,7 +82,7 @@ printf(
        // forward the carry
        printf("SQRADDDB; ");
        if ((x&1) == 0) {
-          // add the square 
+          // add the square
           printf("SQRADD(a[%d], a[%d]); ", x/2, x/2);
        }
     }
