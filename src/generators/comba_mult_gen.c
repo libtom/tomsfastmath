@@ -21,7 +21,7 @@ printf(
 "#define TFM_DEFINES\n"
 "#include \"fp_mul_comba.c\"\n"
 "\n"
-"#ifdef TFM_MUL%d\n"
+"#if defined(TFM_MUL%d) && FP_SIZE >= %d\n"
 "void fp_mul_comba%d(fp_int *A, fp_int *B, fp_int *C)\n"
 "{\n"
 "   fp_digit c0, c1, c2, at[%d];\n"
@@ -30,7 +30,7 @@ printf(
 "   memcpy(at+%d, B->dp, %d * sizeof(fp_digit));\n"
 "   COMBA_START;\n"
 "\n"
-"   COMBA_CLEAR;\n", N, N, N+N, N, N, N);
+"   COMBA_CLEAR;\n", N, N+N, N, N+N, N, N, N);
 
    /* now do the rows */
    for (x = 0; x < (N+N-1); x++) {
