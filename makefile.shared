@@ -45,7 +45,7 @@ src/sqr/fp_sqr_comba_4.o src/sqr/fp_sqr_comba_48.o src/sqr/fp_sqr_comba_6.o src/
 src/sqr/fp_sqr_comba_7.o src/sqr/fp_sqr_comba_8.o src/sqr/fp_sqr_comba_9.o \
 src/sqr/fp_sqr_comba_generic.o src/sqr/fp_sqr_comba_small_set.o src/sqr/fp_sqrmod.o 
 
-HEADERS=src/headers/tfm.h 
+HEADERS=src/headers/tfm.h
 
 #END_INS
 
@@ -100,10 +100,10 @@ test: $(LIBNAME) demo/test.o mtest/mtest
 timing: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME_S) $(PROF) -o test
 	
-stest: $(LIBNAME) demo/stest.o 
+stest: $(LIBNAME) demo/stest.o
 	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME_S) -o stest
 
-# $Source: /cvs/libtom/tomsfastmath/makefile.shared,v $ 
-# $Revision: 1.19 $ 
-# $Date: 2007/03/13 01:23:03 $ 
+# $Source$
+# $Revision$
+# $Date$
 

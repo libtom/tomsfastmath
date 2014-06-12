@@ -1,10 +1,10 @@
 /* TomsFastMath, a fast ISO C bignum library.
- * 
+ *
  * This project is meant to fill in where LibTomMath
  * falls short.  That is speed ;-)
  *
  * This project is public domain and free for all purposes.
- * 
+ *
  * Tom St Denis, tomstdenis@gmail.com
  */
 #ifndef TFM_H_
@@ -27,13 +27,13 @@
 /* externally define this symbol to ignore the default settings, useful for changing the build from the make process */
 #ifndef TFM_ALREADY_SET
 
-/* do we want the large set of small multiplications ? 
+/* do we want the large set of small multiplications ?
    Enable these if you are going to be doing a lot of small (<= 16 digit) multiplications say in ECC
    Or if you're on a 64-bit machine doing RSA as a 1024-bit integer == 16 digits ;-)
  */
 #define TFM_SMALL_SET
 
-/* do we want huge code 
+/* do we want huge code
    Enable these if you are doing 20, 24, 28, 32, 48, 64 digit multiplications (useful for RSA)
    Less important on 64-bit machines as 32 digits == 2048 bits
  */
@@ -81,7 +81,7 @@
 /* #define TFM_PRESCOTT */
 
 /* Do we want timing resistant fp_exptmod() ?
- * This makes it slower but also timing invariant with respect to the exponent 
+ * This makes it slower but also timing invariant with respect to the exponent
  */
 /* #define TFM_TIMING_RESISTANT */
 
@@ -106,7 +106,7 @@
 
 /* autodetect x86-64 and make sure we are using 64-bit digits with x86-64 asm */
 #if defined(__x86_64__)
-   #if defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM) 
+   #if defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM)
        #error x86-64 detected, x86-32/SSE2/ARM optimizations are not valid!
    #endif
    #if !defined(TFM_X86_64) && !defined(TFM_NO_ASM)
@@ -121,7 +121,7 @@
 
 /* try to detect x86-32 */
 #if defined(__i386__) && !defined(TFM_SSE2)
-   #if defined(TFM_X86_64) || defined(TFM_ARM) 
+   #if defined(TFM_X86_64) || defined(TFM_ARM)
        #error x86-32 detected, x86-64/ARM optimizations are not valid!
    #endif
    #if !defined(TFM_X86) && !defined(TFM_NO_ASM)
@@ -185,7 +185,7 @@
    #undef TFM_PPC32
    #undef TFM_PPC64
    #undef TFM_AVR32
-   #undef TFM_ASM   
+   #undef TFM_ASM
 #endif
 
 /* ECC helpers */
@@ -252,7 +252,7 @@
 #else
    /* this is to make porting into LibTomCrypt easier :-) */
 #ifndef CRYPT
-   #if defined(_MSC_VER) || defined(__BORLANDC__) 
+   #if defined(_MSC_VER) || defined(__BORLANDC__)
       typedef unsigned __int64   ulong64;
       typedef signed __int64     long64;
    #else
@@ -290,7 +290,7 @@
 /* a FP type */
 typedef struct {
     fp_digit dp[FP_SIZE];
-    int      used, 
+    int      used,
              sign;
 } fp_int;
 

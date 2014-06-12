@@ -28,7 +28,7 @@ printf(
 "#endif\n"
 "\n"
 "   a = A->dp;\n"
-"   COMBA_START; \n"
+"   COMBA_START;\n"
 "\n"
 "   /* clear carries */\n"
 "   CLEAR_CARRY;\n"

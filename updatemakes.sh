@@ -3,10 +3,12 @@
 bash genlist.sh > tmplist
 
 perl filter.pl makefile tmplist
-mv -f tmp.delme makefile
+sed -e 's/ *$//' < tmp.delme > makefile
+rm -f tmp.delme
 
 perl filter.pl makefile.shared tmplist
-mv -f tmp.delme makefile.shared
+sed -e 's/ *$//' < tmp.delme > makefile.shared
+rm -f tmp.delme
 
 rm -f tmplist
 rm -f tmp.delme

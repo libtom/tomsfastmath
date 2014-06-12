@@ -47,7 +47,7 @@ src/sqr/fp_sqr_comba_4.o src/sqr/fp_sqr_comba_48.o src/sqr/fp_sqr_comba_6.o src/
 src/sqr/fp_sqr_comba_7.o src/sqr/fp_sqr_comba_8.o src/sqr/fp_sqr_comba_9.o \
 src/sqr/fp_sqr_comba_generic.o src/sqr/fp_sqr_comba_small_set.o src/sqr/fp_sqrmod.o 
 
-HEADERS=src/headers/tfm.h 
+HEADERS=src/headers/tfm.h
 
 #END_INS
 
@@ -104,7 +104,7 @@ profiled:
 	rm -f test
 	CFLAGS="${CFLAGS} -fprofile-use" MAKE=${MAKE} ${MAKE} timing
 	
-stest: $(LIBNAME) demo/stest.o 
+stest: $(LIBNAME) demo/stest.o
 	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME) -o stest
 
 rsatest: $(LIBNAME) demo/rsa.o
@@ -154,6 +154,6 @@ zipup: no_oops docs clean
 	zip -9r tfm-$(VERSION).zip tomsfastmath-$(VERSION)/* ; \
 	mv -f tfm* ~ ; rm -rf tomsfastmath-$(VERSION)
 
-# $Source: /cvs/libtom/tomsfastmath/makefile,v $ 
-# $Revision: 1.38 $ 
-# $Date: 2007/03/13 01:23:03 $ 
+# $Source$
+# $Revision$
+# $Date$

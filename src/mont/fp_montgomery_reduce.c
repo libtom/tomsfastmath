@@ -1,19 +1,19 @@
 /* TomsFastMath, a fast ISO C bignum library.
- * 
+ *
  * This project is meant to fill in where LibTomMath
  * falls short.  That is speed ;-)
  *
  * This project is public domain and free for all purposes.
- * 
+ *
  * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
 
 /******************************************************************/
-#if defined(TFM_X86) && !defined(TFM_SSE2) 
+#if defined(TFM_X86) && !defined(TFM_SSE2)
 /* x86-32 code */
 
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -45,7 +45,7 @@ asm(                                        \
 #elif defined(TFM_X86_64)
 /* x86-64 code */
 
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -168,7 +168,7 @@ asm(                                        \
 : "%rax", "%cc")
 
 /******************************************************************/
-#elif defined(TFM_SSE2)  
+#elif defined(TFM_SSE2)
 /* SSE2 code (assumes 32-bit fp_digits) */
 /* XMM register assignments:
  * xmm0  *tmpm++, then Mu * (*tmpm++)
@@ -286,7 +286,7 @@ asm(                                        \
 #elif defined(TFM_ARM)
    /* ARMv4 code */
 
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -315,7 +315,7 @@ asm(                               \
 #elif defined(TFM_PPC32)
 
 /* PPC32 */
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -346,7 +346,7 @@ asm(                                 \
 #elif defined(TFM_PPC64)
 
 /* PPC64 */
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -377,7 +377,7 @@ asm(                                 \
 #elif defined(TFM_AVR32)
 
 /* AVR32 */
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -407,7 +407,7 @@ asm(                                 \
 #elif defined(TFM_MIPS)
 
 /* MIPS */
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -440,7 +440,7 @@ asm(                                 \
 #else
 
 /* ISO C code */
-#define MONT_START 
+#define MONT_START
 #define MONT_FINI
 #define LOOP_END
 #define LOOP_START \
@@ -526,7 +526,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
            PROPCARRY;
            ++_c;
        }
-  }         
+  }
 
   /* now copy out */
   _c   = c + pa;
@@ -543,7 +543,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
 
   a->used = pa+1;
   fp_clamp(a);
-  
+
   /* if A >= m then A = A - m */
   if (fp_cmp_mag (a, m) != FP_LT) {
     s_fp_sub (a, m, a);

@@ -1,10 +1,10 @@
 /*
- * 
+ *
  * This project is meant to fill in where LibTomMath
  * falls short.  That is speed ;-)
  *
  * This project is public domain and free for all purposes.
- * 
+ *
  * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
@@ -261,7 +261,7 @@ asm(                                                             \
 "  ADCS   %1,%1,r1                 \n\t"                         \
 "  ADC    %2,%2,#0                 \n\t"                         \
 :"=r"(c0), "=r"(c1), "=r"(c2) : "0"(c0), "1"(c1), "2"(c2), "r"(i) : "r0", "r1", "%cc");
-	
+
 /* for squaring some of the terms are doubled... */
 #define SQRADD2(i, j)                                            \
 asm(                                                             \
@@ -639,7 +639,7 @@ asm(                              \
    t = c0 + ((fp_word)i) * ((fp_word)j);  c0 = t;    \
    t = c1 + (t >> DIGIT_BIT);             c1 = t; c2 += t >> DIGIT_BIT; \
    } while (0);
-  
+
 
 /* for squaring some of the terms are doubled... */
 #define SQRADD2(i, j)                                                 \
