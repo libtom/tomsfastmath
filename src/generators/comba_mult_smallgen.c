@@ -7,6 +7,10 @@ int main(int argc, char **argv)
 
    /* print out preamble */
 printf(
+"#define TFM_DEFINES\n"
+"#include \"fp_mul_comba.c\"\n"
+"\n"
+"#if defined(TFM_SMALL_SET)\n"
 "void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C)\n"
 "{\n"
 "   fp_digit c0, c1, c2, at[32];\n"
@@ -51,7 +55,10 @@ printf(
 "      COMBA_FINI;\n"
 "      break;\n", N+N-1, N+N);
 }
-printf("   }\n}\n\n");
+printf("   }\n}\n\n#endif\n\n\n"
+"/* $Source$ */\n"
+"/* $Revision$ */\n"
+"/* $Date$ */\n");
 
   return 0;
 }
