@@ -1,7 +1,7 @@
 #define TFM_DEFINES
 #include "fp_mul_comba.c"
 
-#ifdef TFM_MUL48
+#if defined(TFM_MUL48) && FP_SIZE >= 96
 void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[96];
@@ -397,3 +397,8 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FINI;
 }
 #endif
+
+
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
