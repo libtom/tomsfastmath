@@ -19,7 +19,7 @@ printf(
 "#define TFM_DEFINES\n"
 "#include \"fp_sqr_comba.c\"\n"
 "\n"
-"#ifdef TFM_SQR%d\n"
+"#if defined(TFM_SQR%d) && FP_SIZE >= %d\n"
 "void fp_sqr_comba%d(fp_int *A, fp_int *B)\n"
 "{\n"
 "   fp_digit *a, b[%d], c0, c1, c2, sc0, sc1, sc2;\n"
@@ -35,7 +35,7 @@ printf(
 "\n"
 "   /* output 0 */\n"
 "   SQRADD(a[0],a[0]);\n"
-"   COMBA_STORE(b[0]);\n", N, N, N+N);
+"   COMBA_STORE(b[0]);\n", N, N+N, N, N+N);
 
    for (x = 1; x < N+N-1; x++) {
 printf(
