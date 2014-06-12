@@ -1,7 +1,7 @@
 #define TFM_DEFINES
 #include "fp_sqr_comba.c"
 
-#ifdef TFM_SQR6
+#if defined(TFM_SQR6) && FP_SIZE >= 12
 void fp_sqr_comba6(fp_int *A, fp_int *B)
 {
    fp_digit *a, b[12], c0, c1, c2, sc0, sc1, sc2;
