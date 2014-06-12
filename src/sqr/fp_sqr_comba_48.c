@@ -494,9 +494,11 @@ void fp_sqr_comba48(fp_int *A, fp_int *B)
    B->used = 96;
    B->sign = FP_ZPOS;
    memcpy(B->dp, b, 96 * sizeof(fp_digit));
-   memset(B->dp + 96, 0, (FP_SIZE - 96) * sizeof(fp_digit));
    fp_clamp(B);
 }
 #endif
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

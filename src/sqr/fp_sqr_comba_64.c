@@ -654,9 +654,11 @@ void fp_sqr_comba64(fp_int *A, fp_int *B)
    B->used = 128;
    B->sign = FP_ZPOS;
    memcpy(B->dp, b, 128 * sizeof(fp_digit));
-   memset(B->dp + 128, 0, (FP_SIZE - 128) * sizeof(fp_digit));
    fp_clamp(B);
 }
 #endif
 
 
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
