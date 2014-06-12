@@ -1,5 +1,7 @@
 /* TFM demo program */
 #include <tfm.h>
+#include <time.h>
+#include <unistd.h>
 
 void draw(fp_int *a)
 {
@@ -27,14 +29,17 @@ static ulong64 TIMFUNC (void)
          asm ("rdtsc":"=A"(a));
          return a;
       #elif defined(__i386__) || defined(__x86_64__)
-         ulong64 a;
-         __asm__ __volatile__ ("rdtsc\nmovl %%eax,%0\nmovl %%edx,4+%0\n"::"m"(a):"%eax","%edx");
-         return a;
-      #elif defined(TFM_PPC32) 
+         /* version from http://www.mcs.anl.gov/~kazutomo/rdtsc.html
+          * the old code always got a warning issued by gcc, clang did not complain...
+          */
+         unsigned hi, lo;
+         __asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi));
+         return ((ulong64)lo)|( ((ulong64)hi)<<32);
+      #elif defined(TFM_PPC32)
          unsigned long a, b;
          __asm__ __volatile__ ("mftbu %1 \nmftb %0\n":"=r"(a), "=r"(b));
          return (((ulong64)b) << 32ULL) | ((ulong64)a);
-      #elif defined(TFM_AVR32) 
+      #elif defined(TFM_AVR32)
 	 FILE *in;
          char buf[20];
 	 in = fopen("/sys/devices/system/cpu/cpu0/pccycles", "r");
@@ -77,7 +82,7 @@ int main(void)
 
   srand(time(NULL));
   printf("TFM Ident string:\n%s\n\n", fp_ident());
-  fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f); 
+  fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f);
   fp_zero(&a); draw(&a);
 
   /* test set and simple shifts */
@@ -86,7 +91,7 @@ int main(void)
   for (n = 0; n <= DIGIT_BIT; n++) {
       fp_mul_2(&a, &a); printf("(%d) ", fp_count_bits(&a));
       draw(&a);
-      
+
   }
   for (n = 0; n <= (DIGIT_BIT + 1); n++) {
       fp_div_2(&a, &a);
@@ -163,7 +168,7 @@ int main(void)
 
   fp_read_radix(&d, "123456789123", 16);
   for (n = 0; n < 1000000; n++) {
-      fp_add_d(&d, 1, &d); fp_sqrmod(&d, &a, &d); 
+      fp_add_d(&d, 1, &d); fp_sqrmod(&d, &a, &d);
       fp_mul(&d, &b, &c);
       fp_montgomery_reduce(&c, &a, fp);
       if (fp_cmp(&c, &d) != FP_EQ) {
@@ -185,7 +190,7 @@ int main(void)
 
   fp_read_radix(&d, "123456789123", 16);
   for (n = 0; n < 1000000; n++) {
-      fp_add_d(&d, 1, &d); fp_sqrmod(&d, &a, &d); 
+      fp_add_d(&d, 1, &d); fp_sqrmod(&d, &a, &d);
       fp_mul(&d, &b, &c);
       fp_montgomery_reduce(&c, &a, fp);
       if (fp_cmp(&c, &d) != FP_EQ) {
@@ -515,80 +520,80 @@ monttime:
 
      fp_montgomery_setup(&a, &fp);
      fp_sub_d(&a, 3, &b);
-     fp_sqr(&b, &b);      
-     fp_copy(&b, &c);      
-     fp_copy(&b, &d);      
+     fp_sqr(&b, &b);
+     fp_copy(&b, &c);
+     fp_copy(&b, &d);
 
      t2 = -1;
      for (ix = 0; ix < 100; ++ix) {
           t1 = TIMFUNC();
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
-          fp_montgomery_reduce(&c, &a, &fp);
-          fp_montgomery_reduce(&d, &a, &fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
+          fp_montgomery_reduce(&c, &a, fp);
+          fp_montgomery_reduce(&d, &a, fp);
           t2 = (TIMFUNC() - t1)>>6;
-          fp_copy(&b, &c);      
-          fp_copy(&b, &d);      
+          fp_copy(&b, &c);
+          fp_copy(&b, &d);
           if (t1<t2) { --ix; t2 = t1; }
       }
       printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
@@ -596,7 +601,7 @@ monttime:
 //#else
 expttime:
   printf("Exptmod:\n");
- 
+
   for (t = 512/DIGIT_BIT; t <= (FP_SIZE/2)-2; t += 256/DIGIT_BIT) {
       fp_zero(&a);
       fp_zero(&b);
@@ -616,8 +621,8 @@ expttime:
           fp_exptmod(&c, &b, &a, &d);
           fp_exptmod(&c, &b, &a, &d);
           t2 = (TIMFUNC() - t1)>>1;
-          fp_copy(&b, &c);      
-          fp_copy(&b, &d);      
+          fp_copy(&b, &c);
+          fp_copy(&b, &d);
           if (t1<t2) { t2 = t1; --ix; }
      }
      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
@@ -713,7 +718,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
 draw(&a);draw(&b);draw(&c);draw(&d);
              return 0;
           }
-       } else if (!strcmp(cmd, "mul")) { 
+       } else if (!strcmp(cmd, "mul")) {
           fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
@@ -725,7 +730,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
 draw(&a);draw(&b);draw(&c);draw(&d);
              return 0;
           }
-       } else if (!strcmp(cmd, "div")) { 
+       } else if (!strcmp(cmd, "div")) {
           fgets(buf, 4095, stdin); fp_read_radix(&a, buf, 64);
           fgets(buf, 4095, stdin); fp_read_radix(&b, buf, 64);
           fgets(buf, 4095, stdin); fp_read_radix(&c, buf, 64);
@@ -738,7 +743,7 @@ draw(&a);draw(&b);draw(&c);draw(&d); draw(&e); draw(&f);
              return 0;
           }
 
-       } else if (!strcmp(cmd, "sqr")) { 
+       } else if (!strcmp(cmd, "sqr")) {
           fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
 // continue;
@@ -749,7 +754,7 @@ draw(&a);draw(&b);draw(&c);draw(&d); draw(&e); draw(&f);
 draw(&a);draw(&b);draw(&c);
              return 0;
           }
-       } else if (!strcmp(cmd, "gcd")) { 
+       } else if (!strcmp(cmd, "gcd")) {
           fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
@@ -762,7 +767,7 @@ draw(&a);draw(&b);draw(&c);
 draw(&a);draw(&b);draw(&c);draw(&d);
              return 0;
           }
-       } else if (!strcmp(cmd, "lcm")) { 
+       } else if (!strcmp(cmd, "lcm")) {
              fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
@@ -775,7 +780,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
    draw(&a);draw(&b);draw(&c);draw(&d);
                 return 0;
              }
-       } else if (!strcmp(cmd, "expt")) {  
+       } else if (!strcmp(cmd, "expt")) {
              fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
@@ -788,7 +793,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
    draw(&a);draw(&b);draw(&c);draw(&d); draw(&e);
                 return 0;
              }
-       } else if (!strcmp(cmd, "invmod")) {  
+       } else if (!strcmp(cmd, "invmod")) {
              fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
@@ -870,8 +875,8 @@ draw(&a);draw(&b);draw(&c);draw(&d);
 
    }
 }
-  
-  
+
+
 
 /* $Source$ */
 /* $Revision$ */
