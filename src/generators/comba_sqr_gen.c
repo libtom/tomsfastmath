@@ -97,7 +97,11 @@ printf(
 "   B->sign = FP_ZPOS;\n"
 "   memcpy(B->dp, b, %d * sizeof(fp_digit));\n"
 "   fp_clamp(B);\n"
-"}\n#endif\n\n\n", N+N, N+N);
+"}\n#endif\n\n\n"
+"/* $Source$ */\n"
+"/* $Revision$ */\n"
+"/* $Date$ */\n"
+, N+N, N+N);
 
   return 0;
 }

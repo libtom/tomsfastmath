@@ -106,7 +106,11 @@ printf(
 "      break;\n\n", N+N, N+N);
 }
 
-printf("}\n}\n\n#endif /* TFM_SMALL_SET */\n");
+printf("}\n}\n\n#endif /* TFM_SMALL_SET */\n\n"
+"/* $Source$ */\n"
+"/* $Revision$ */\n"
+"/* $Date$ */\n"
+);
 
   return 0;
 }
