@@ -248,6 +248,7 @@
    typedef unsigned long ulong64;
 #endif
    typedef ulong64            fp_digit;
+#define SIZEOF_FP_DIGIT 8
    typedef unsigned long      fp_word __attribute__ ((mode(TI)));
 #else
    /* this is to make porting into LibTomCrypt easier :-) */
@@ -261,11 +262,12 @@
    #endif
 #endif
    typedef unsigned long      fp_digit;
+#define SIZEOF_FP_DIGIT 4
    typedef ulong64            fp_word;
 #endif
 
 /* # of digits this is */
-#define DIGIT_BIT  (int)((CHAR_BIT) * sizeof(fp_digit))
+#define DIGIT_BIT  ((CHAR_BIT) * SIZEOF_FP_DIGIT)
 #define FP_MASK    (fp_digit)(-1)
 #define FP_SIZE    (FP_MAX_SIZE/DIGIT_BIT)
 
