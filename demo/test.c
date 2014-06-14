@@ -159,7 +159,6 @@ int main(void)
   printf("Testing read_radix\n");
   fp_read_radix(&a, "123456789012345678901234567890", 16); draw(&a);
 
-#if 0
   /* test mont */
   printf("Montgomery test #1\n");
   fp_set(&a, 0x1234567ULL);
@@ -217,7 +216,6 @@ int main(void)
        }
    }
    printf("\n\n");
-#endif
 
 #ifdef TESTING
 goto testing;
