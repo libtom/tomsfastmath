@@ -5,6 +5,16 @@ VERSION=0.12
 
 CFLAGS += -Wall -W -Wshadow -Isrc/headers
 
+# Compiler and Linker Names
+ifndef PREFIX
+  PREFIX=
+endif
+
+CC?=$(PREFIX)gcc
+LD=$(PREFIX)ld
+AR=$(PREFIX)ar
+RANLIB=$(PREFIX)ranlib
+
 ifndef MAKE
    MAKE=make
 endif
@@ -79,7 +89,7 @@ default: $(LIBNAME)
 
 $(LIBNAME): $(OBJECTS)
 	$(AR) $(ARFLAGS) $@ $(OBJECTS)
-	ranlib $@
+	$(RANLIB) $@
 
 install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
@@ -88,7 +98,7 @@ install: $(LIBNAME)
 	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
 
 mtest/mtest: mtest/mtest.o
-	cd mtest ; CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
+	cd mtest ; CC=$(CC) CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
 
 test: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
@@ -97,12 +107,12 @@ timing: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
 
 profiled:
-	CFLAGS="${CFLAGS} -fprofile-generate" MAKE=${MAKE} ${MAKE} timing
+	CC=$(CC) PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-generate" MAKE=${MAKE} ${MAKE} timing
 	./test
 	rm -f `find . -type f | grep "[.]o" | xargs`
 	rm -f `find . -type f | grep "[.]a" | xargs`
 	rm -f test
-	CFLAGS="${CFLAGS} -fprofile-use" MAKE=${MAKE} ${MAKE} timing
+	CC=$(CC) PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-use" MAKE=${MAKE} ${MAKE} timing
 	
 stest: $(LIBNAME) demo/stest.o
 	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME) -o stest
