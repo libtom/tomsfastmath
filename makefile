@@ -90,7 +90,7 @@ install: $(LIBNAME)
 mtest/mtest: mtest/mtest.o
 	cd mtest ; CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
 
-test: $(LIBNAME) demo/test.o mtest/mtest
+test: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
 
 timing: $(LIBNAME) demo/test.o
