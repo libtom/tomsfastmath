@@ -8,6 +8,9 @@
 
 #ifndef DISPLAY
    #define DISPLAY(x) printf(x)
+   #define DISPLAY_P(...) printf(__VA_ARGS__)
+#else
+   #define DISPLAY_P(...) (void)0
 #endif
 
 
@@ -32,6 +35,8 @@ int main(void)
    modetxt_init();
    modetxt_gotoxy(0,0);
 #endif
+
+   DISPLAY_P("TFM Ident string:\n%s\n\n", fp_ident());
 
    /* test multiplication */
    fp_read_radix(&a, "3453534534535345345341230891273", 10);
@@ -140,7 +145,7 @@ int main(void)
 
 
    return 0;
-}   
+}
 
 
 /* $Source$ */
