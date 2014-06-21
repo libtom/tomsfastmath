@@ -456,6 +456,8 @@ void fp_read_signed_bin(fp_int *a, unsigned char *b, int c);
 void fp_to_signed_bin(fp_int *a, unsigned char *b);
 
 int fp_read_radix(fp_int *a, char *str, int radix);
+
+int fp_radix_size(fp_int *a, int radix, int *size);
 int fp_toradix(fp_int *a, char *str, int radix);
 int fp_toradix_n(fp_int * a, char *str, int radix, int maxlen);
 
