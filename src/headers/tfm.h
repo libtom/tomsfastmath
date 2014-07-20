@@ -317,6 +317,9 @@ const char *fp_ident(void);
 /* set to a small digit */
 void fp_set(fp_int *a, fp_digit b);
 
+/* makes a pseudo-random int of a given size */
+void fp_rand(fp_int *a, int digits);
+
 /* copy from a to b */
 #define fp_copy(a, b)      (void)(((a) != (b)) && memcpy((b), (a), sizeof(fp_int)))
 #define fp_init_copy(a, b) fp_copy(b, a)
