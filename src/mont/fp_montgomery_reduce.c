@@ -509,7 +509,7 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
        _c   = c + x;
        tmpm = m->dp;
        y = 0;
-       #if (defined(TFM_SSE2) || defined(TFM_X86_64))
+       #if defined(INNERMUL8)
         for (; y < (pa & ~7); y += 8) {
               INNERMUL8;
               _c   += 8;
