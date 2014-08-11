@@ -57,12 +57,12 @@ asm(                                            \
 
 #define SQRADDSC(i, j)                                    \
 asm(                                                     \
-     "movl  %6,%%eax     \n\t"                            \
-     "mull  %7           \n\t"                            \
+     "movl  %3,%%eax     \n\t"                            \
+     "mull  %4           \n\t"                            \
      "movl  %%eax,%0     \n\t"                            \
      "movl  %%edx,%1     \n\t"                            \
      "xorl  %2,%2        \n\t"                            \
-     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%eax","%edx","cc");
+     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "g"(i), "g"(j) :"%eax","%edx","cc");
 
 #define SQRADDAC(i, j)                                    \
 asm(                                                     \
@@ -125,12 +125,12 @@ asm(                                                     \
 
 #define SQRADDSC(i, j)                                    \
 asm(                                                     \
-     "movq  %6,%%rax     \n\t"                            \
-     "mulq  %7           \n\t"                            \
+     "movq  %3,%%rax     \n\t"                            \
+     "mulq  %4           \n\t"                            \
      "movq  %%rax,%0     \n\t"                            \
      "movq  %%rdx,%1     \n\t"                            \
      "xorq  %2,%2        \n\t"                            \
-     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "0"(sc0), "1"(sc1), "2"(sc2), "g"(i), "g"(j) :"%rax","%rdx","cc");
+     :"=r"(sc0), "=r"(sc1), "=r"(sc2): "g"(i), "g"(j) :"%rax","%rdx","cc");
 
 #define SQRADDAC(i, j)                                                         \
 asm(                                                     \
