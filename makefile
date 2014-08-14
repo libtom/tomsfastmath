@@ -97,9 +97,11 @@ install: $(LIBNAME)
 	install -g $(GROUP) -o $(USER) $(LIBNAME) $(DESTDIR)$(LIBPATH)
 	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
 
-mtest/mtest: mtest/mtest.o
-	cd mtest ; CC=$(CC) CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
+.PHONY: mtest
+mtest: $(LIBNAME)
+	cd mtest; CC="$(CC)" CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
 
+.PHONY: test
 test: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
 
@@ -107,10 +109,10 @@ timing: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
 
 profiled:
-	CC=$(CC) PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-generate" MAKE=${MAKE} ${MAKE} timing
+	CC="$(CC)" PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-generate" MAKE=${MAKE} ${MAKE} timing
 	./test
-	rm -f `find . -type f | grep "[.]o" | xargs`
-	rm -f `find . -type f | grep "[.]a" | xargs`
+	rm -f `find . -type f -name "*.o" | xargs`
+	rm -f `find . -type f -name "*.a" | xargs`
 	rm -f test
 	CC=$(CC) PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-use" MAKE=${MAKE} ${MAKE} timing
 	
@@ -135,21 +137,22 @@ docs: docdvi
 #This rule cleans the source tree of all compiled code, not including the pdf
 #documentation.
 clean:
-	rm -f `find . -type f | grep "[.]o" | xargs`
-	rm -f `find . -type f | grep "[.]lo"  | xargs`
-	rm -f `find . -type f | grep "[.]a" | xargs`
-	rm -f `find . -type f | grep "[.]la"  | xargs`
-	rm -f `find . -type f | grep "[.]obj" | xargs`
-	rm -f `find . -type f | grep "[.]lib" | xargs`
-	rm -f `find . -type f | grep "[.]exe" | xargs`
-	rm -f `find . -type f | grep "[.]gcda" | xargs`
-	rm -f `find . -type f | grep "[.]gcno" | xargs`
-	rm -f `find . -type f | grep "[.]il" | xargs`
-	rm -f `find . -type f | grep "[.]dyn" | xargs`
-	rm -f `find . -type f | grep "[.]dpi" | xargs`
-	rm -rf `find . -type d | grep "[.]libs" | xargs`
-	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc test mtest/mtest
-	cd mtest ; MAKE=${MAKE} ${MAKE} clean
+	rm -f `find . -type f -name "*.o" | xargs`
+	rm -f `find . -type f -name "*.lo"  | xargs`
+	rm -f `find . -type f -name "*.a" | xargs`
+	rm -f `find . -type f -name "*.la"  | xargs`
+	rm -f `find . -type f -name "*.obj" | xargs`
+	rm -f `find . -type f -name "*.lib" | xargs`
+	rm -f `find . -type f -name "*.exe" | xargs`
+	rm -f `find . -type f -name "*.gcov" | xargs`
+	rm -f `find . -type f -name "*.gcda" | xargs`
+	rm -f `find . -type f -name "*.gcno" | xargs`
+	rm -f `find . -type f -name "*.il" | xargs`
+	rm -f `find . -type f -name "*.dyn" | xargs`
+	rm -f `find . -type f -name "*.dpi" | xargs`
+	rm -rf `find . -type d -name "*.libs" | xargs`
+	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc test test.exe
+	cd mtest; MAKE=${MAKE} ${MAKE} clean
 
 no_oops: clean
 	cd .. ; cvs commit
