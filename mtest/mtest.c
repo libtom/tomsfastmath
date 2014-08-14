@@ -39,6 +39,7 @@ mulmod
 #include <time.h>
 #include <tommath.h>
 #define CRYPT
+#undef DIGIT_BIT
 #include "../src/headers/tfm.h"
 
 FILE *rng;
@@ -46,8 +47,8 @@ FILE *rng;
 /* 1-2048 bit numbers */
 void rand_num(mp_int *a)
 {
-   int n, size;
-   unsigned char buf[2048];
+   int size;
+   unsigned char buf[(FP_MAX_SIZE/16 - DIGIT_BIT/2) + 1];
 
    size = 1 + ((fgetc(rng)<<8) + fgetc(rng)) % (FP_MAX_SIZE/16 - DIGIT_BIT/2);
    buf[0] = (fgetc(rng)&1)?1:0;
@@ -59,8 +60,8 @@ void rand_num(mp_int *a)
 /* 1-256 bit numbers (to test things like exptmod) */
 void rand_num2(mp_int *a)
 {
-   int n, size;
-   unsigned char buf[2048];
+   int size;
+   unsigned char buf[(FP_MAX_SIZE/16 - DIGIT_BIT/2) + 1];
 
    size = 1 + ((fgetc(rng)<<8) + fgetc(rng)) % (FP_MAX_SIZE/16 - DIGIT_BIT/2);
    buf[0] = (fgetc(rng)&1)?1:0;
@@ -69,13 +70,15 @@ void rand_num2(mp_int *a)
    mp_read_raw(a, buf, 1+size);
 }
 
-#define mp_to64(a, b) mp_toradix(a, b, 64)
+#define mp_to64(a, b) mp_toradix_n(a, b, 64, sizeof(b))
 
 int main(void)
 {
    int n, tmp;
    mp_int a, b, c, d, e;
+#ifdef MTEST_NO_FULLSPEED
    clock_t t1;
+#endif
    char buf[4096];
 
    mp_init(&a);
@@ -88,7 +91,7 @@ int main(void)
    /* initial (2^n - 1)^2 testing, makes sure the comba multiplier works [it has the new carry code] */
 /*
    mp_set(&a, 1);
-   for (n = 1; n < 8192; n++) {
+   for (n = 1; n < ((FP_MAX_SIZE-(8*DIGIT_BIT))/2); n++) {
        mp_mul(&a, &a, &c);
        printf("mul\n");
        mp_to64(&a, buf);
@@ -111,9 +114,11 @@ int main(void)
       }
    }
 
+#ifdef MTEST_NO_FULLSPEED
    t1 = clock();
+#endif
    for (;;) {
-#if 0
+#ifdef MTEST_NO_FULLSPEED
       if (clock() - t1 > CLOCKS_PER_SEC) {
          sleep(2);
          t1 = clock();
