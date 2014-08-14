@@ -6,7 +6,7 @@
 use strict;
 
 open( OUT, ">mpi.c" ) or die "Couldn't open mpi.c for writing: $!";
-foreach my $filename (glob "*fp_*.c") {
+foreach my $filename (glob "src/*/*fp_*.c") {
    next if ($filename eq "fp_sqr_comba_generic.c");
    open( SRC, "<$filename" ) or die "Couldn't open $filename for reading: $!";
    print OUT "/* Start: $filename */\n";
