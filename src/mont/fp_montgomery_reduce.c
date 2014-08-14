@@ -29,7 +29,7 @@ asm(                                                      \
    "adcl $0,%%edx \n\t"                                   \
    "movl %%edx,%1 \n\t"                                   \
 :"=g"(_c[LO]), "=r"(cy)                                   \
-:"0"(_c[LO]), "1"(cy), "g"(mu), "g"(*tmpm++)              \
+:"0"(_c[LO]), "1"(cy), "r"(mu), "r"(*tmpm++)              \
 : "%eax", "%edx", "cc")
 
 #define PROPCARRY                           \
