@@ -3,7 +3,8 @@
 #
 VERSION=0:12
 
-CC=libtool --mode=compile --tag=CC gcc
+LT  ?= libtool
+LTCOMPILE = $(LT) --mode=compile --tag=CC $(CC)
 
 CFLAGS += -Wall -W -Wshadow -Isrc/headers
 
@@ -80,7 +81,10 @@ endif
 
 default: $(LIBNAME)
 
-objs: $(OBJECTS)
+$(OBJECTS): $(HEADERS)
+
+.c.o:
+	$(LTCOMPILE) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
 
 $(LIBNAME): $(OBJECTS)
 	libtool --silent --mode=link gcc $(CFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION)
@@ -94,14 +98,12 @@ install: $(LIBNAME)
 mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
 
-test: $(LIBNAME) demo/test.o mtest/mtest
-	$(CC) $(CFLAGS) demo/test.o $(LIBNAME_S) $(PROF) -o test
+.PHONY: test
+test: $(LIBNAME) demo/test.o
+	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o test demo/test.o $(LIBNAME)
 
-timing: $(LIBNAME) demo/test.o
-	$(CC) $(CFLAGS) demo/test.o $(LIBNAME_S) $(PROF) -o test
-	
 stest: $(LIBNAME) demo/stest.o
-	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME_S) -o stest
+	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o stest demo/stest.o $(LIBNAME)
 
 # $Source$
 # $Revision$

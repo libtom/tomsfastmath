@@ -8,6 +8,8 @@
 *.log
 *.toc
 *.out
+*.l[ao]
+/.libs
 
 test
 test.exe

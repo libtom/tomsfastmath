@@ -89,6 +89,8 @@ endif
 
 default: $(LIBNAME)
 
+$(OBJECTS): $(HEADERS)
+
 $(LIBNAME): $(OBJECTS)
 	$(AR) $(ARFLAGS) $@ $(OBJECTS)
 	$(RANLIB) $@
