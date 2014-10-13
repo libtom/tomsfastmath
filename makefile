@@ -10,7 +10,9 @@ ifndef PREFIX
   PREFIX=
 endif
 
-CC?=$(PREFIX)gcc
+ifeq ($(CC),cc)
+  CC = $(PREFIX)gcc
+endif
 LD=$(PREFIX)ld
 AR=$(PREFIX)ar
 RANLIB=$(PREFIX)ranlib
@@ -164,7 +166,7 @@ clean:
 	rm -f `find . -type f -name "*.dyn" | xargs`
 	rm -f `find . -type f -name "*.dpi" | xargs`
 	rm -rf `find . -type d -name "*.libs" | xargs`
-	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.toc test test.exe
+	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.out  tfm.toc  test  test.exe
 	cd mtest; MAKE=${MAKE} ${MAKE} clean
 
 no_oops: clean

@@ -1,10 +1,10 @@
 /* TomsFastMath, a fast ISO C bignum library.
- * 
+ *
  * This project is meant to fill in where LibTomMath
  * falls short.  That is speed ;-)
  *
  * This project is public domain and free for all purposes.
- * 
+ *
  * Tom St Denis, tomstdenis@gmail.com
  */
 #include <tfm.h>
@@ -58,7 +58,7 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
          err = FP_VAL;
          goto error;
       }
- 
+
       /* work over the MSbyte */
       tmp[0]    &= maskAND;
       tmp[0]    |= 1 << ((size - 1) & 7);
@@ -78,7 +78,7 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
          /* see if (a-1)/2 is prime */
          fp_sub_d(a, 1, a);
          fp_div_2(a, a);
- 
+
          /* is it prime? */
          res = fp_isprime(a);
       }
