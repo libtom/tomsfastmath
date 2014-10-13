@@ -1,0 +1,24 @@
+language: c
+compiler:
+  - gcc
+script: CC="${MYCC}" make test >test_gcc_1.txt 2>test_gcc_2.txt && ./test >test_std.txt 2>test_err.txt
+env:
+  - MYCC="gcc"
+  - MYCC="gcc -m32"
+  - MYCC="gcc-4.8"
+  - MYCC="gcc-4.8 -m32"
+matrix:
+  fast_finish: true
+before_script:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get -qq update
+  - sudo apt-get install gcc-4.8-multilib gcc-multilib build-essential
+after_failure:
+  - cat test_gcc_1.txt
+  - cat test_std.txt
+  - cat test_err.txt
+after_script:
+  - cat test_gcc_2.txt
+notifications:
+  irc: "chat.freenode.net#libtom"
+

@@ -10,6 +10,7 @@
 *.out
 *.l[ao]
 /.libs
+test_*.txt
 
 test
 test.exe
