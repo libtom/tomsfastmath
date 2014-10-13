@@ -16,7 +16,7 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
    int res, err, bsize, maskOR_msb_offset;
 
    /* sanity check the input */
-   if (size <= 1 || t <= 0) {
+   if (size <= 1 || t <= 0 || t > FP_PRIME_SIZE) {
       return FP_VAL;
    }
 
@@ -71,7 +71,7 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
       fp_read_unsigned_bin(a, tmp, bsize);
 
       /* is it prime? */
-      res = fp_isprime(a);
+      res = fp_isprime_ex(a, t);
       if (res == FP_NO) continue;
 
       if (flags & TFM_PRIME_SAFE) {
@@ -80,7 +80,7 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
          fp_div_2(a, a);
 
          /* is it prime? */
-         res = fp_isprime(a);
+         res = fp_isprime_ex(a, t);
       }
    } while (res == FP_NO);
 
