@@ -10,7 +10,7 @@
 #include <tfm.h>
 
 /* a few primes */
-static const fp_digit primes[256] = {
+static const fp_digit primes[FP_PRIME_SIZE] = {
   0x0002, 0x0003, 0x0005, 0x0007, 0x000B, 0x000D, 0x0011, 0x0013,
   0x0017, 0x001D, 0x001F, 0x0025, 0x0029, 0x002B, 0x002F, 0x0035,
   0x003B, 0x003D, 0x0043, 0x0047, 0x0049, 0x004F, 0x0053, 0x0059,
@@ -54,7 +54,7 @@ int fp_isprime_ex(fp_int *a, int t)
    fp_digit d;
    int      r, res;
 
-   if (t <= 0 || t > 256) {
+   if (t <= 0 || t > FP_PRIME_SIZE) {
      return FP_NO;
    }
 
