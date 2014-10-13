@@ -16,7 +16,7 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
    int res, err, bsize, maskOR_msb_offset;
 
    /* sanity check the input */
-   if (size <= 1 || t <= 0 || t > FP_PRIME_SIZE) {
+   if (size <= 1 || cb == NULL || t <= 0 || t > FP_PRIME_SIZE) {
       return FP_VAL;
    }
 
