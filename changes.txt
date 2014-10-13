@@ -1,3 +1,11 @@
+XXX, 2014
+v0.13.0
+     -- Add fp_rand()
+     -- Fix bug in fp_sub() reported by Martins Mozeiko
+     -- Fix bugs/apply patches in fp_mul() and fp_sqr() reported by rasky
+     -- Fix bugs in fp_read_radix()
+     -- Fix build issues for Linux x32 ABI
+
 March 14th, 2007
 0.12 -- Christophe Devine contributed MIPS asm w00t
      ++ quick release to get the MIPS code out there
