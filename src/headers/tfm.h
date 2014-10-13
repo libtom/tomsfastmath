@@ -433,6 +433,8 @@ void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result);
 
 /* 256 trial divisions + 8 Miller-Rabins, returns FP_YES if probable prime  */
 int fp_isprime(fp_int *a);
+/* extended version of fp_isprime, do 't' Miller-Rabins instead of only 8 */
+int fp_isprime_ex(fp_int *a, int t);
 
 /* Primality generation flags */
 #define TFM_PRIME_BBS      0x0001 /* BBS style prime */
