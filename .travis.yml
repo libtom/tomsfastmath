@@ -1,14 +1,20 @@
 language: c
 compiler:
   - gcc
-script: CC="${MYCC}" make test >test_gcc_1.txt 2>test_gcc_2.txt && ./test >test_std.txt 2>test_err.txt
+script: CC="${MYCC}" make ${SHARED} test >test_gcc_1.txt 2>test_gcc_2.txt && ./test >test_std.txt 2>test_err.txt
 env:
-  - MYCC="gcc"
-  - MYCC="gcc -m32"
-  - MYCC="gcc-4.8"
-  - MYCC="gcc-4.8 -m32"
-  - MYCC="gcc-4.9"
-  - MYCC="gcc-4.9 -m32"
+  - MYCC="gcc" SHARED=""
+  - MYCC="gcc -m32" SHARED=""
+  - MYCC="gcc-4.8" SHARED=""
+  - MYCC="gcc-4.8 -m32" SHARED=""
+  - MYCC="gcc-4.9" SHARED=""
+  - MYCC="gcc-4.9 -m32" SHARED=""
+  - MYCC="gcc" SHARED="-f makefile.shared"
+  - MYCC="gcc -m32" SHARED="-f makefile.shared"
+  - MYCC="gcc-4.8" SHARED="-f makefile.shared"
+  - MYCC="gcc-4.8 -m32" SHARED="-f makefile.shared"
+  - MYCC="gcc-4.9" SHARED="-f makefile.shared"
+  - MYCC="gcc-4.9 -m32" SHARED="-f makefile.shared"
 matrix:
   fast_finish: true
 before_script:
