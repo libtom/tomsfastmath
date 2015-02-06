@@ -87,7 +87,7 @@ $(OBJECTS): $(HEADERS)
 	$(LTCOMPILE) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
 
 $(LIBNAME): $(OBJECTS)
-	libtool --silent --mode=link gcc $(CFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION)
+	libtool --silent --mode=link --tag=CC $(CC) $(CFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION)
 
 install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
