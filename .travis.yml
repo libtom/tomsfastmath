@@ -1,7 +1,7 @@
 language: c
 compiler:
   - gcc
-script: CC="${MYCC}" make ${SHARED} test >test_gcc_1.txt 2>test_gcc_2.txt && ./test >test_std.txt 2>test_err.txt
+script: CC="${MYCC}" make ${SHARED} test_standalone >test_gcc_1.txt 2>test_gcc_2.txt && ./test >test_std.txt 2>test_err.txt
 env:
   - MYCC="gcc" SHARED=""
   - MYCC="gcc -m32" SHARED=""
