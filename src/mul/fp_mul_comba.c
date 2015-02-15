@@ -349,7 +349,9 @@ void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
       /* execute loop */
       COMBA_FORWARD;
       for (iz = 0; iz < iy; ++iz) {
-          MULADD(*tmpx++, *tmpy--);
+          fp_digit _tmpx = *tmpx++;
+          fp_digit _tmpy = *tmpy--;
+          MULADD(_tmpx, _tmpy);
       }
 
       /* store term */

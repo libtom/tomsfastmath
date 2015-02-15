@@ -68,12 +68,15 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
 
       /* execute loop */
       for (iz = 0; iz < iy; iz++) {
-          SQRADD2(*tmpx++, *tmpy--);
+          fp_digit _tmpx = *tmpx++;
+          fp_digit _tmpy = *tmpy--;
+          SQRADD2(_tmpx, _tmpy);
       }
 
       /* even columns have the square term in them */
       if ((ix&1) == 0) {
-          SQRADD(A->dp[ix>>1], A->dp[ix>>1]);
+          fp_digit _a_dp = A->dp[ix>>1];
+          SQRADD(_a_dp, A->dp[ix>>1]);
       }
 
       /* store it */
