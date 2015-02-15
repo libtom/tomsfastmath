@@ -3,6 +3,11 @@
 #include <time.h>
 #include <unistd.h>
 
+
+#ifndef TFM_DEMO_TEST_VS_MTEST
+#define TFM_DEMO_TEST_VS_MTEST 1
+#endif
+
 void draw(fp_int *a)
 {
   int x;
@@ -30,9 +35,11 @@ int myrng(unsigned char *dst, int len, void *dat)
 int main(void)
 {
   fp_int a,b,c,d,e,f;
+  unsigned long ix;
+#if TFM_DEMO_TEST_VS_MTEST
   unsigned long expt_n, add_n, sub_n, mul_n, div_n, sqr_n, mul2d_n, div2d_n, gcd_n, lcm_n, inv_n,
-                 div2_n, mul2_n, add_d_n, sub_d_n, mul_d_n, cnt, rr, ix;
-#ifndef TESTING
+                 div2_n, mul2_n, add_d_n, sub_d_n, mul_d_n, cnt, rr;
+#else
   fp_digit fp;
   int n, err;
 #endif
@@ -42,7 +49,7 @@ int main(void)
   fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f);
   fp_zero(&a);
 
-#ifndef TESTING
+#if TFM_DEMO_TEST_VS_MTEST == 0
 
   draw(&a);
 
@@ -179,7 +186,8 @@ int main(void)
    printf("\n\n");
 
 return 0;
-#endif
+
+#else
 
   fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f); fp_zero(&a);
 
@@ -422,6 +430,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
        }
 
    }
+#endif
 }
 
 

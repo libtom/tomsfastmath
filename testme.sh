@@ -7,7 +7,7 @@ _runtest()
   echo -n "Run test $1 $2"
   trap 'echo " - build not successful, errors are:" && cat test_gcc_errors.txt' INT TERM
   make clean > /dev/null
-  CC="${1}" make test -j9 $2 > /dev/null 2>test_gcc_errors.txt
+  CC="${1}" make test_standalone -j9 $2 > /dev/null 2>test_gcc_errors.txt
   trap - INT TERM
   local outfile="test_$(echo ${1}${2} | tr -d '\"' | tr ' ' '_').txt"
   trap 'echo " - tests not successful, failed at:" && tail ${outfile}' INT TERM

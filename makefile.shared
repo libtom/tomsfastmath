@@ -98,8 +98,16 @@ install: $(LIBNAME)
 mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
 
+demo/test.o: CFLAGS+=-Wno-unused-result
+
 .PHONY: test
 test: $(LIBNAME) demo/test.o
+	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o test demo/test.o $(LIBNAME)
+
+test_standalone: CFLAGS+=-DTFM_DEMO_TEST_VS_MTEST=0
+
+.PHONY: test_standalone
+test_standalone: $(LIBNAME) demo/test.o
 	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o test demo/test.o $(LIBNAME)
 
 stest: $(LIBNAME) demo/stest.o
