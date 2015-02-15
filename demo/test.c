@@ -3,6 +3,11 @@
 #include <time.h>
 #include <unistd.h>
 
+
+#ifndef TFM_DEMO_TEST_VS_MTEST
+#define TFM_DEMO_TEST_VS_MTEST 1
+#endif
+
 void draw(fp_int *a)
 {
   int x;
@@ -25,69 +30,18 @@ int myrng(unsigned char *dst, int len, void *dat)
    return len;
 }
 
-#ifndef TESTING
-/* RDTSC from Scott Duplichan */
-static ulong64 TIMFUNC (void)
-   {
-   #if defined __GNUC__
-      #if defined(INTEL_CC)
-	 ulong64 a;
-         asm ("rdtsc":"=A"(a));
-         return a;
-      #elif defined(__i386__) || defined(__x86_64__)
-         /* version from http://www.mcs.anl.gov/~kazutomo/rdtsc.html
-          * the old code always got a warning issued by gcc, clang did not complain...
-          */
-         unsigned hi, lo;
-         __asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi));
-         return ((ulong64)lo)|( ((ulong64)hi)<<32);
-      #elif defined(TFM_PPC32)
-         unsigned long a, b;
-         __asm__ __volatile__ ("mftbu %1 \nmftb %0\n":"=r"(a), "=r"(b));
-         return (((ulong64)b) << 32ULL) | ((ulong64)a);
-      #elif defined(TFM_AVR32)
-	 FILE *in;
-         char buf[20];
-	 in = fopen("/sys/devices/system/cpu/cpu0/pccycles", "r");
-	 fgets(buf, 20, in);
-	 fclose(in);
-	 return strtoul(buf, NULL, 10);
-      #else /* gcc-IA64 version */
-         unsigned long result;
-         __asm__ __volatile__("mov %0=ar.itc" : "=r"(result) :: "memory");
-         while (__builtin_expect ((int) result == -1, 0))
-         __asm__ __volatile__("mov %0=ar.itc" : "=r"(result) :: "memory");
-         return result;
-      #endif
-
-   // Microsoft and Intel Windows compilers
-   #elif defined _M_IX86
-     __asm rdtsc
-   #elif defined _M_AMD64
-     return __rdtsc ();
-   #elif defined _M_IA64
-     #if defined __INTEL_COMPILER
-       #include <ia64intrin.h>
-     #endif
-      return __getReg (3116);
-   #else
-     #error need rdtsc function for this build
-   #endif
-   }
-#endif
-
    char cmd[4096], buf[4096];
 
 int main(void)
 {
   fp_int a,b,c,d,e,f;
+  unsigned long ix;
+#if TFM_DEMO_TEST_VS_MTEST
   unsigned long expt_n, add_n, sub_n, mul_n, div_n, sqr_n, mul2d_n, div2d_n, gcd_n, lcm_n, inv_n,
-                 div2_n, mul2_n, add_d_n, sub_d_n, mul_d_n, cnt, rr, ix;
-#ifndef TESTING
-  unsigned long t;
+                 div2_n, mul2_n, add_d_n, sub_d_n, mul_d_n, cnt, rr;
+#else
   fp_digit fp;
   int n, err;
-  ulong64 t1, t2;
 #endif
 
   srand(time(NULL));
@@ -95,7 +49,7 @@ int main(void)
   fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f);
   fp_zero(&a);
 
-#ifndef TESTING
+#if TFM_DEMO_TEST_VS_MTEST == 0
 
   draw(&a);
 
@@ -231,410 +185,9 @@ int main(void)
    }
    printf("\n\n");
 
-#if 1
-
-t1 = TIMFUNC();
-sleep(1);
-printf("Ticks per second: %llu\n", TIMFUNC() - t1);
-
- /* do some timings... */
-  printf("Addition:\n");
-  for (t = 2; t <= FP_SIZE/2; t += 2) {
-      fp_zero(&a);
-      fp_zero(&b);
-      fp_zero(&c);
-      for (ix = 0; ix < t; ix++) {
-          a.dp[ix] = ix;
-          b.dp[ix] = ix;
-      }
-      a.used = t;
-      b.used = t;
-      t2 = -1;
-      for (ix = 0; ix < 25000; ++ix) {
-          t1 = TIMFUNC();
-          fp_add(&a, &b, &c); fp_add(&a, &b, &c);
-          fp_add(&a, &b, &c); fp_add(&a, &b, &c);
-          fp_add(&a, &b, &c); fp_add(&a, &b, &c);
-          fp_add(&a, &b, &c); fp_add(&a, &b, &c);
-          t2 = (TIMFUNC() - t1)>>3;
-          if (t1<t2) { --ix; t2 = t1; }
-      }
-      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
-  }
-  printf("Multiplication:\n");
-  for (t = 2; t < FP_SIZE/2; t += 2) {
-      fp_zero(&a);
-      fp_zero(&b);
-      fp_zero(&c);
-      for (ix = 0; ix < t; ix++) {
-          a.dp[ix] = ix;
-          b.dp[ix] = ix;
-      }
-      a.used = t;
-      b.used = t;
-      t2 = -1;
-      for (ix = 0; ix < 100; ++ix) {
-          t1 = TIMFUNC();
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          fp_mul(&a, &b, &c); fp_mul(&a, &b, &c);
-          t2 = (TIMFUNC() - t1)>>7;
-          if (t1<t2) { --ix; t2 = t1; }
-      }
-      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
-  }
-
-  printf("Squaring:\n");
-  for (t = 2; t < FP_SIZE/2; t += 2) {
-      fp_zero(&a);
-      fp_zero(&b);
-      for (ix = 0; ix < t; ix++) {
-          a.dp[ix] = ix;
-      }
-      a.used = t;
-      t2 = -1;
-      for (ix = 0; ix < 100; ++ix) {
-          t1 = TIMFUNC();
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          fp_sqr(&a, &b); fp_sqr(&a, &b);
-          t2 = (TIMFUNC() - t1)>>7;
-          if (t1<t2) { --ix; t2 = t1; }
-      }
-      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
-  }
-
-  printf("Invmod:\n");
-  for (t = 2; t < FP_SIZE/2; t += 2) {
-     fp_zero(&a);
-     for (ix = 0; ix < t; ix++) {
-         a.dp[ix] = ix | 1;
-     }
-     a.used = t;
-     fp_zero(&b);
-     for (ix = 0; ix < t; ix++) {
-         b.dp[ix] = rand();
-     }
-     b.used = t;
-     fp_clamp(&b);
-     fp_zero(&c);
-     t2 = -1;
-     for (ix = 0; ix < 100; ++ix) {
-          t1 = TIMFUNC();
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          fp_invmod(&b, &a, &c);
-          t2 = (TIMFUNC() - t1)>>6;
-          if (t1<t2) { --ix; t2 = t1; }
-      }
-      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
-  }
-
-  printf("Montgomery:\n");
-  for (t = 2; t <= (FP_SIZE/2)-4; t += 2) {
-//      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
-      fp_zero(&a);
-      for (ix = 0; ix < t; ix++) {
-          a.dp[ix] = ix | 1;
-      }
-      a.used = t;
-
-     fp_montgomery_setup(&a, &fp);
-     fp_sub_d(&a, 3, &b);
-     fp_sqr(&b, &b);
-     fp_copy(&b, &c);
-     fp_copy(&b, &d);
-
-     t2 = -1;
-     for (ix = 0; ix < 100; ++ix) {
-          t1 = TIMFUNC();
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          fp_montgomery_reduce(&c, &a, fp);
-          fp_montgomery_reduce(&d, &a, fp);
-          t2 = (TIMFUNC() - t1)>>6;
-          fp_copy(&b, &c);
-          fp_copy(&b, &d);
-          if (t1<t2) { --ix; t2 = t1; }
-      }
-      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
-  }
-
-  printf("Exptmod:\n");
-
-  for (t = 512/DIGIT_BIT; t <= (FP_SIZE/2)-2; t += 256/DIGIT_BIT) {
-      fp_zero(&a);
-      fp_zero(&b);
-      fp_zero(&c);
-      for (ix = 0; ix < t; ix++) {
-          a.dp[ix] = ix+1;
-          b.dp[ix] = (fp_digit)rand() * (fp_digit)rand();
-          c.dp[ix] = ix;
-      }
-      a.used = t;
-      b.used = t;
-      c.used = t;
-
-     t2 = -1;
-     for (ix = 0; ix < 500; ++ix) {
-          t1 = TIMFUNC();
-          fp_exptmod(&c, &b, &a, &d);
-          fp_exptmod(&c, &b, &a, &d);
-          t2 = (TIMFUNC() - t1)>>1;
-          fp_copy(&b, &c);
-          fp_copy(&b, &d);
-          if (t1<t2) { t2 = t1; --ix; }
-     }
-     printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
-  }
-  return 0;
-#endif
-
 return 0;
-#endif
+
+#else
 
   fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f); fp_zero(&a);
 
@@ -877,6 +430,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
        }
 
    }
+#endif
 }
 
 

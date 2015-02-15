@@ -87,7 +87,7 @@ $(OBJECTS): $(HEADERS)
 	$(LTCOMPILE) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
 
 $(LIBNAME): $(OBJECTS)
-	libtool --silent --mode=link gcc $(CFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION)
+	libtool --silent --mode=link --tag=CC $(CC) $(CFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION)
 
 install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
@@ -98,12 +98,24 @@ install: $(LIBNAME)
 mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
 
+demo/test.o: CFLAGS+=-Wno-unused-result
+
 .PHONY: test
 test: $(LIBNAME) demo/test.o
 	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o test demo/test.o $(LIBNAME)
 
+test_standalone: CFLAGS+=-DTFM_DEMO_TEST_VS_MTEST=0
+
+.PHONY: test_standalone
+test_standalone: $(LIBNAME) demo/test.o
+	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o test demo/test.o $(LIBNAME)
+
 stest: $(LIBNAME) demo/stest.o
 	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o stest demo/stest.o $(LIBNAME)
+
+.PHONY: timing
+timing: $(LIBNAME) demo/timing.o
+    $(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o timing demo/timing.o $(LIBNAME)
 
 # $Source$
 # $Revision$

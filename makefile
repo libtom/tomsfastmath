@@ -111,8 +111,14 @@ demo/test.o: CFLAGS+=-Wno-unused-result
 test: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
 
-timing: $(LIBNAME) demo/test.o
+test_standalone: CFLAGS+=-DTFM_DEMO_TEST_VS_MTEST=0
+
+.PHONY: test_standalone
+test_standalone: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
+
+timing: $(LIBNAME) demo/timing.o
+	$(CC) $(CFLAGS) demo/timing.o $(LIBNAME) $(PROF) -o timing
 
 profiled:
 	CC="$(CC)" PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-generate" MAKE=${MAKE} ${MAKE} timing
