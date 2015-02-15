@@ -190,6 +190,9 @@ zipup: no_oops docs clean
 	zip -9r tfm-$(VERSION).zip tomsfastmath-$(VERSION)/* ; \
 	mv -f tfm* ~ ; rm -rf tomsfastmath-$(VERSION)
 
+new_file:
+	bash updatemakes.sh
+
 # $Source$
 # $Revision$
 # $Date$
