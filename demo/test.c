@@ -25,57 +25,6 @@ int myrng(unsigned char *dst, int len, void *dat)
    return len;
 }
 
-#ifndef TESTING
-/* RDTSC from Scott Duplichan */
-static ulong64 TIMFUNC (void)
-   {
-   #if defined __GNUC__
-      #if defined(INTEL_CC)
-	 ulong64 a;
-         asm ("rdtsc":"=A"(a));
-         return a;
-      #elif defined(__i386__) || defined(__x86_64__)
-         /* version from http://www.mcs.anl.gov/~kazutomo/rdtsc.html
-          * the old code always got a warning issued by gcc, clang did not complain...
-          */
-         unsigned hi, lo;
-         __asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi));
-         return ((ulong64)lo)|( ((ulong64)hi)<<32);
-      #elif defined(TFM_PPC32)
-         unsigned long a, b;
-         __asm__ __volatile__ ("mftbu %1 \nmftb %0\n":"=r"(a), "=r"(b));
-         return (((ulong64)b) << 32ULL) | ((ulong64)a);
-      #elif defined(TFM_AVR32)
-	 FILE *in;
-         char buf[20];
-	 in = fopen("/sys/devices/system/cpu/cpu0/pccycles", "r");
-	 fgets(buf, 20, in);
-	 fclose(in);
-	 return strtoul(buf, NULL, 10);
-      #else /* gcc-IA64 version */
-         unsigned long result;
-         __asm__ __volatile__("mov %0=ar.itc" : "=r"(result) :: "memory");
-         while (__builtin_expect ((int) result == -1, 0))
-         __asm__ __volatile__("mov %0=ar.itc" : "=r"(result) :: "memory");
-         return result;
-      #endif
-
-   // Microsoft and Intel Windows compilers
-   #elif defined _M_IX86
-     __asm rdtsc
-   #elif defined _M_AMD64
-     return __rdtsc ();
-   #elif defined _M_IA64
-     #if defined __INTEL_COMPILER
-       #include <ia64intrin.h>
-     #endif
-      return __getReg (3116);
-   #else
-     #error need rdtsc function for this build
-   #endif
-   }
-#endif
-
    char cmd[4096], buf[4096];
 
 int main(void)
@@ -84,10 +33,8 @@ int main(void)
   unsigned long expt_n, add_n, sub_n, mul_n, div_n, sqr_n, mul2d_n, div2d_n, gcd_n, lcm_n, inv_n,
                  div2_n, mul2_n, add_d_n, sub_d_n, mul_d_n, cnt, rr, ix;
 #ifndef TESTING
-  unsigned long t;
   fp_digit fp;
   int n, err;
-  ulong64 t1, t2;
 #endif
 
   srand(time(NULL));
