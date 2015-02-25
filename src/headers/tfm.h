@@ -265,7 +265,7 @@
    #endif /* defined(_MSC_VER) ... */
 #endif /* CRYPT */
 
-   typedef unsigned long      fp_digit;
+   typedef unsigned int       fp_digit;
 #define SIZEOF_FP_DIGIT 4
    typedef ulong64            fp_word;
 #endif /* FP_64BIT */
