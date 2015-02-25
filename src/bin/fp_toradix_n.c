@@ -9,22 +9,6 @@
  */
 #include <tfm.h>
 
-/**
- * a:		pointer to fp_int representing the input number
- * str:		output buffer
- * radix:	number of character to use for encoding of the number
- * maxlen:	maximum number of the buffer that can be used
- *
- * The radix value can be in the range 2 to 64. This function converts number
- * a into a string str. This function writes at most size bytes (including the
- * terminating null byte to str. It behaves like snprintf(3) in regard to this.
- *
- * Return: If invalid parameter are detected a negative value is returned. On
- * success the function returns the number of bytes that would be written if
- * the function had enough space. Thus a return value of maxlen or more means
- * that the function was not able store all characters and the output is
- * incomplete.
- */
 int fp_toradix_n(fp_int *a, char *str, int radix, int maxlen)
 {
    int digs;
@@ -77,6 +61,8 @@ int fp_toradix_n(fp_int *a, char *str, int radix, int maxlen)
    /* append a NULL so the string is properly terminated */
    *str = '\0';
 
+   if (maxlen < 1)
+      return FP_VAL;
    return FP_OKAY;
 }
 
