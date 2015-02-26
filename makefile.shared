@@ -116,7 +116,7 @@ stest: $(LIBNAME) demo/stest.o
 
 .PHONY: timing
 timing: $(LIBNAME) demo/timing.o
-    $(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o timing demo/timing.o $(LIBNAME)
+	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o timing demo/timing.o $(LIBNAME)
 
 # $Source$
 # $Revision$
