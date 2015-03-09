@@ -113,6 +113,10 @@
    #error FP_MAX_SIZE must be a multiple of CHAR_BIT
 #endif
 
+#if __SIZEOF_LONG__ == 8
+	#define FP_64BIT
+#endif
+
 /* autodetect x86-64 and make sure we are using 64-bit digits with x86-64 asm */
 #if defined(__x86_64__)
    #if defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM)
