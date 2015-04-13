@@ -15,7 +15,7 @@ const char *fp_ident(void)
 
    memset(buf, 0, sizeof(buf));
    snprintf(buf, sizeof(buf)-1,
-"TomsFastMath (%s)\n"
+"TomsFastMath\n"
 "\n"
 "Sizeofs\n"
 "\tfp_digit = %lu\n"
@@ -70,7 +70,7 @@ const char *fp_ident(void)
 #ifdef TFM_HUGE
 " TFM_HUGE "
 #endif
-"\n", __DATE__, (unsigned long)sizeof(fp_digit), (unsigned long)sizeof(fp_word), FP_MAX_SIZE);
+"\n", (unsigned long)sizeof(fp_digit), (unsigned long)sizeof(fp_word), FP_MAX_SIZE);
 
    if (sizeof(fp_digit) == sizeof(fp_word)) {
       strncat(buf, "WARNING: sizeof(fp_digit) == sizeof(fp_word), this build is likely to not work properly.\n",
