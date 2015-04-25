@@ -16,6 +16,15 @@
 #include <ctype.h>
 #include <limits.h>
 
+/* 0xMaMiPaXX
+ * Major
+ * Minor
+ * Patch
+ * XX - undefined
+ */
+#define TFM_VERSION     0x000C0000
+#define TFM_VERSION_S   "0.12"
+
 #ifndef MIN
    #define MIN(x,y) ((x)<(y)?(x):(y))
 #endif

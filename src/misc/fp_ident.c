@@ -15,7 +15,7 @@ const char *fp_ident(void)
 
    memset(buf, 0, sizeof(buf));
    snprintf(buf, sizeof(buf)-1,
-"TomsFastMath\n"
+"TomsFastMath " TFM_VERSION_S "\n"
 #if defined(TFM_IDENT_BUILD_DATE)
 "Built on " __DATE__ " at " __TIME__ "\n"
 #endif
