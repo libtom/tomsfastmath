@@ -16,6 +16,9 @@ const char *fp_ident(void)
    memset(buf, 0, sizeof(buf));
    snprintf(buf, sizeof(buf)-1,
 "TomsFastMath\n"
+#if defined(TFM_IDENT_BUILD_DATE)
+"Built on " __DATE__ " at " __TIME__ "\n"
+#endif
 "\n"
 "Sizeofs\n"
 "\tfp_digit = %lu\n"
