@@ -9,6 +9,9 @@
 *.toc
 *.out
 *.l[ao]
+*.orig
+.project
+.cproject
 /.libs
 test_*.txt
 
