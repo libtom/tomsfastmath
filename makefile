@@ -1,7 +1,7 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0.12
+VERSION=0.13
 
 CFLAGS += -Wall -W -Wshadow -Isrc/headers
 

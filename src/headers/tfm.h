@@ -22,8 +22,8 @@
  * Patch
  * XX - undefined
  */
-#define TFM_VERSION     0x000C0000
-#define TFM_VERSION_S   "0.12"
+#define TFM_VERSION     0x000D0000
+#define TFM_VERSION_S   "v0.13.0"
 
 #ifndef MIN
    #define MIN(x,y) ((x)<(y)?(x):(y))
