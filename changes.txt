@@ -5,6 +5,9 @@ v0.13.0
      -- Fix bugs/apply patches in fp_mul() and fp_sqr() reported by rasky
      -- Fix bugs in fp_read_radix()
      -- Fix build issues for Linux x32 ABI
+     -- Sebastian Siewior provided fp_toradix_n() and
+        reported multiple issues on behalf of ClamAV.
+     -- Fix a load of compiler warnings.
 
 March 14th, 2007
 0.12 -- Christophe Devine contributed MIPS asm w00t
