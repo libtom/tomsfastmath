@@ -178,18 +178,18 @@ clean:
 	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.out  tfm.toc  test  test.exe
 	cd mtest; MAKE=${MAKE} ${MAKE} clean
 
-no_oops: clean
-	cd .. ; cvs commit
-	echo Scanning for scratch/dirty files
-	find . -type f | grep -v CVS | xargs -n 1 bash mess.sh
+.PHONY: pre_gen
+pre_gen:
+	perl gen.pl
+	mv mpi.c pre_gen/
 
-zipup: no_oops docs clean
-	perl gen.pl ; mv mpi.c pre_gen/ ; \
-	cd .. ; rm -rf tfm* tomsfastmath-$(VERSION) ; mkdir tomsfastmath-$(VERSION) ; \
-	cp -R ./tomsfastmath/* ./tomsfastmath-$(VERSION)/ ; \
-	tar -c tomsfastmath-$(VERSION)/* | bzip2 -9vvc > tfm-$(VERSION).tar.bz2 ; \
-	zip -9r tfm-$(VERSION).zip tomsfastmath-$(VERSION)/* ; \
-	mv -f tfm* ~ ; rm -rf tomsfastmath-$(VERSION)
+zipup:
+	rm -rf ../tomsfastmath-$(VERSION) && rm -f ../tfm-$(VERSION).zip ../tfm-$(VERSION).tar.bz2 && \
+	expsrc.sh -i . -o ../tomsfastmath-$(VERSION) --svntags --no-fetch -p '*.c' -p '*.h' && \
+	MAKE=${MAKE} ${MAKE} -C ../tomsfastmath-$(VERSION) docs && \
+	tar -c ../tomsfastmath-$(VERSION)/* | bzip2 -9vvc > ../tfm-$(VERSION).tar.bz2 && \
+	zip -9 -r ../tfm-$(VERSION).zip ../tomsfastmath-$(VERSION)/* && \
+	gpg -b -a ../tfm-$(VERSION).tar.bz2 && gpg -b -a ../tfm-$(VERSION).zip
 
 new_file:
 	bash updatemakes.sh
