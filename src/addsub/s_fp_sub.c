@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* unsigned subtraction ||a|| >= ||b|| ALWAYS! */
 void s_fp_sub(fp_int *a, fp_int *b, fp_int *c)

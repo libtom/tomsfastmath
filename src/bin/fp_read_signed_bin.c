@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 void fp_read_signed_bin(fp_int *a, unsigned char *b, int c)
 {

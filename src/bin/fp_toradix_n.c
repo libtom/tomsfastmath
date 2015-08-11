@@ -7,7 +7,7 @@
  *
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 int fp_toradix_n(fp_int *a, char *str, int radix, int maxlen)
 {

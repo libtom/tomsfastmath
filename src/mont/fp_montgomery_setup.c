@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* setups the montgomery reduction */
 int fp_montgomery_setup(fp_int *a, fp_digit *rho)
