@@ -60,7 +60,8 @@ src/sqr/fp_sqr_comba_48.o src/sqr/fp_sqr_comba_4.o src/sqr/fp_sqr_comba_64.o src
 src/sqr/fp_sqr_comba_7.o src/sqr/fp_sqr_comba_8.o src/sqr/fp_sqr_comba_9.o src/sqr/fp_sqr_comba.o \
 src/sqr/fp_sqr_comba_generic.o src/sqr/fp_sqr_comba_small_set.o src/sqr/fp_sqrmod.o
 
-HEADERS=src/headers/tfm.h
+HEADERS_PUB:=src/headers/tfm.h
+HEADERS=src/headers/tfm_private.h $(HEADERS_PUB)
 
 #END_INS
 
@@ -100,7 +101,7 @@ install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
 	install -g $(GROUP) -o $(USER) $(LIBNAME) $(DESTDIR)$(LIBPATH)
-	install -g $(GROUP) -o $(USER) $(HEADERS) $(DESTDIR)$(INCPATH)
+	install -g $(GROUP) -o $(USER) $(HEADERS_PUB) $(DESTDIR)$(INCPATH)
 
 .PHONY: mtest
 mtest: $(LIBNAME)
