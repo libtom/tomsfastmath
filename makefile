@@ -181,7 +181,8 @@ clean:
 .PHONY: pre_gen
 pre_gen:
 	perl gen.pl
-	mv mpi.c pre_gen/
+	sed -e 's/[[:blank:]]*$$//' mpi.c > pre_gen/mpi.c
+	rm mpi.c
 
 zipup:
 	rm -rf ../tomsfastmath-$(VERSION) && rm -f ../tfm-$(VERSION).zip ../tfm-$(VERSION).tar.bz2 && \
