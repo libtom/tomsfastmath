@@ -7,7 +7,7 @@
  *
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* c = a * b */
 void fp_mul(fp_int *A, fp_int *B, fp_int *C)

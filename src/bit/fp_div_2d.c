@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* c = a / 2**b */
 void fp_div_2d(fp_int *a, int b, fp_int *c, fp_int *d)

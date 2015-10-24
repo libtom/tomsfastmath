@@ -7,7 +7,7 @@
  *
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /******************************************************************/
 #if defined(TFM_X86) && !defined(TFM_SSE2)

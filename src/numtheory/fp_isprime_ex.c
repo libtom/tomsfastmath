@@ -7,7 +7,7 @@
  *
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* a few primes */
 static const fp_digit primes[FP_PRIME_SIZE] = {

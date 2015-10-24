@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 static const int lnz[16] = {
    4, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0

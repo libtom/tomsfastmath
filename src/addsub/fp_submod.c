@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* d = a - b (mod c) */
 int fp_submod(fp_int *a, fp_int *b, fp_int *c, fp_int *d)

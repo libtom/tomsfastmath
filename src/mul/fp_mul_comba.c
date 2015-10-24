@@ -12,7 +12,7 @@
 
 */
 
-#include <tfm.h>
+#include <tfm_private.h>
 
 #if defined(TFM_PRESCOTT) && defined(TFM_SSE2)
    #undef TFM_SSE2

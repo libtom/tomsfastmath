@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* c = a * a (mod b) */
 int fp_sqrmod(fp_int *a, fp_int *b, fp_int *c)

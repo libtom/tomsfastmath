@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* compare against a single digit */
 int fp_cmp_d(fp_int *a, fp_digit b)

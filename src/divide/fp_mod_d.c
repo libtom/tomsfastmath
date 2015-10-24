@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* c = a mod b, 0 <= c < b  */
 int fp_mod_d(fp_int *a, fp_digit b, fp_digit *c)

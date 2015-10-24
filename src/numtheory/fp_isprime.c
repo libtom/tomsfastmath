@@ -7,7 +7,7 @@
  *
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 int fp_isprime(fp_int *a)
 {

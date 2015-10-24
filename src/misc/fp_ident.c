@@ -7,7 +7,7 @@
  *
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include "tfm.h"
+#include <tfm_private.h>
 
 const char *fp_ident(void)
 {

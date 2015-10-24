@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* reverse an array, used for radix code */
 void fp_reverse (unsigned char *s, int len)

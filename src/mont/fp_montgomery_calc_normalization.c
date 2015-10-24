@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* computes a = B**n mod b without division or multiplication useful for
  * normalizing numbers in a Montgomery system.

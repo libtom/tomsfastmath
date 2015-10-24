@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* Miller-Rabin test of "a" to the base of "b" as described in 
  * HAC pp. 139 Algorithm 4.24
