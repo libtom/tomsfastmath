@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* c = a * 2**d */
 void fp_mul_2d(fp_int *a, int b, fp_int *c)

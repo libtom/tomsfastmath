@@ -8,8 +8,32 @@
 
 #ifndef DISPLAY
    #define DISPLAY(x) printf(x)
+   #define DISPLAY_P(...) printf(__VA_ARGS__)
+#else
+   #define DISPLAY_P(...) (void)0
+   #define fp_dump(n,p) do{}while(0)
 #endif
 
+#ifndef fp_dump
+void fp_dump(const char* n, fp_int* p)
+{
+  int sz;
+  if (fp_radix_size(p, 2, &sz) != FP_OKAY)
+    return;
+  char* str = malloc(sz);
+  if (!str)
+    return;
+#ifdef STEST_VERBOSE
+  fp_toradix(p, str, 2);
+  DISPLAY_P("%s = 0b%s\n", n, str);
+  fp_toradix(p, str, 16);
+  DISPLAY_P("%s = 0x%s\n", n, str);
+#endif
+  fp_toradix(p, str, 10);
+  DISPLAY_P("%s = %s\n", n, str);
+  free(str);
+}
+#endif
 
 #ifdef GBA_MODE
 int c_main(void)
@@ -33,6 +57,8 @@ int main(void)
    modetxt_gotoxy(0,0);
 #endif
 
+   DISPLAY_P("TFM Ident string:\n%s\n\n", fp_ident());
+
    /* test multiplication */
    fp_read_radix(&a, "3453534534535345345341230891273", 10);
    fp_read_radix(&b, "2394873294871238934718923" , 10);
@@ -40,7 +66,7 @@ int main(void)
    fp_mul(&a, &b, &d);
    if (fp_cmp(&c, &d)) {
       DISPLAY("mul failed\n");
-      return 0;
+      return -1;
    } else {
       DISPLAY("mul passed\n");
    }
@@ -52,7 +78,7 @@ int main(void)
    fp_mul(&a, &b, &d);
    if (fp_cmp(&c, &d)) {
       DISPLAY("mul failed\n");
-      return 0;
+      return -1;
    } else {
       DISPLAY("mul passed\n");
    }
@@ -64,7 +90,7 @@ int main(void)
    fp_mul(&a, &b, &d);
    if (fp_cmp(&c, &d)) {
       DISPLAY("mul failed\n");
-      return 0;
+      return -1;
    } else {
       DISPLAY("mul passed\n");
    }
@@ -75,7 +101,7 @@ int main(void)
    fp_sqr(&a, &c);
    if (fp_cmp(&c, &b)) {
       DISPLAY("sqr failed\n");
-      return 0;
+      return -1;
    } else {
       DISPLAY("sqr passed\n");
    }
@@ -85,7 +111,7 @@ int main(void)
    fp_sqr(&a, &c);
    if (fp_cmp(&c, &b)) {
       DISPLAY("sqr failed\n");
-      return 0;
+      return -1;
    } else {
       DISPLAY("sqr passed\n");
    }
@@ -95,7 +121,7 @@ int main(void)
    fp_sqr(&a, &c);
    if (fp_cmp(&c, &b)) {
       DISPLAY("sqr failed\n");
-      return 0;
+      return -1;
    } else {
       DISPLAY("sqr passed\n");
    }
@@ -104,12 +130,19 @@ int main(void)
    /* montgomery reductions */
    fp_read_radix(&a, "234892374892374893489123428937892781237863278637826327367637836278362783627836783678363", 10);
    fp_read_radix(&b, "4447823492749823749234123489273987393983289319382762756425425425642727352327452374521", 10);
+#ifdef FP_64BIT
+   fp_read_radix(&c, "942974496560863503657226741422301598807235487941674147660989764036913926327577165648", 10);
+#else
    fp_read_radix(&c, "2396271882990732698083317035605836523697277786556053771759862552557086442129695099100", 10);
-   fp_montgomery_setup(&b, &dp);
+#endif
+   if (fp_montgomery_setup(&b, &dp) != FP_OKAY)
+      DISPLAY("mont setup failed\n");
    fp_montgomery_reduce(&a, &b, dp);
    if (fp_cmp(&a, &c)) {
       DISPLAY("mont failed\n");
-      return 0;
+      fp_dump("a (is    )", &a);
+      fp_dump("c (should)", &c);
+      return -1;
    } else {
       DISPLAY("mont passed\n");
    }
@@ -117,11 +150,14 @@ int main(void)
    fp_read_radix(&a, "2348923748923748934891234456645654645645684576353428937892781237863278637826327367637836278362783627836783678363", 10);
    fp_read_radix(&b, "444782349274982374923412348927398739398328931938276275642542542564272735232745237452123424324324444121111119", 10);
    fp_read_radix(&c, "45642613844554582908652603086180267403823312390990082328515008314514368668691233331246183943400359349283420", 10);
-   fp_montgomery_setup(&b, &dp);
+   if (fp_montgomery_setup(&b, &dp) != FP_OKAY)
+      DISPLAY("mont setup failed\n");
    fp_montgomery_reduce(&a, &b, dp);
    if (fp_cmp(&a, &c)) {
       DISPLAY("mont failed\n");
-      return 0;
+      fp_dump("a (is    )", &a);
+      fp_dump("c (should)", &c);
+      return -1;
    } else {
       DISPLAY("mont passed\n");
    }
@@ -129,18 +165,21 @@ int main(void)
    fp_read_radix(&a, "234823424242342923748923748934891234456645654645645684576353424972378234762378623891236834132352375235378462378489378927812378632786378263273676378362783627555555555539568389052478124618461834763837685723645827529034853490580134568947341278498542893481762349723907847892983627836783678363", 10);
    fp_read_radix(&b, "44478234927456563455982374923412348927398739398328931938276275642485623481638279025465891276312903262837562349056234783648712314678120389173890128905425242424239784256427", 10);
    fp_read_radix(&c, "33160865265453361650564031464519042126185632333462754084489985719613480783282357410514898819797738034600484519472656152351777186694609218202276509271061460265488348645081", 10);
-   fp_montgomery_setup(&b, &dp);
+   if (fp_montgomery_setup(&b, &dp) != FP_OKAY)
+      DISPLAY("mont setup failed\n");
    fp_montgomery_reduce(&a, &b, dp);
    if (fp_cmp(&a, &c)) {
       DISPLAY("mont failed\n");
-      return 0;
+      fp_dump("a (is    )", &a);
+      fp_dump("c (should)", &c);
+      return -1;
    } else {
       DISPLAY("mont passed\n");
    }
 
 
    return 0;
-}   
+}
 
 
 /* $Source$ */

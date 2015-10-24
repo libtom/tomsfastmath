@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* unsigned subtraction ||a|| >= ||b|| ALWAYS! */
 void s_fp_sub(fp_int *a, fp_int *b, fp_int *c)
@@ -27,7 +27,7 @@ void s_fp_sub(fp_int *a, fp_int *b, fp_int *c)
   for (; x < a->used; x++) {
      t         = ((fp_word)a->dp[x]) - t;
      c->dp[x]  = (fp_digit)t;
-     t         = (t >> DIGIT_BIT);
+     t         = (t >> DIGIT_BIT)&1;
    }
   for (; x < oldused; x++) {
      c->dp[x] = 0;

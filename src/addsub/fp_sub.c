@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* c = a - b */
 void fp_sub(fp_int *a, fp_int *b, fp_int *c)

@@ -7,7 +7,7 @@
  * 
  * Tom St Denis, tomstdenis@gmail.com
  */
-#include <tfm.h>
+#include <tfm_private.h>
 
 /* unsigned addition */
 void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
@@ -16,7 +16,7 @@ void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
   register fp_word  t;
 
   y       = MAX(a->used, b->used);
-  oldused = c->used;
+  oldused = MIN(c->used, FP_SIZE);
   c->used = y;
  
   t = 0;

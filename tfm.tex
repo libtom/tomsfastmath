@@ -49,7 +49,7 @@
 \begin{document}
 \frontmatter
 \pagestyle{empty}
-\title{TomsFastMath User Manual \\ v0.12}
+\title{TomsFastMath User Manual \\ v0.13.0}
 \author{Tom St Denis \\ tomstdenis@gmail.com}
 \maketitle
 This text and library are all hereby placed in the public domain.  This book has been formatted for B5 
@@ -412,12 +412,17 @@ the least common multiple of $a$ and $b$ and store it in $c$.
 To quickly test a number for primality call this function.
 
 \index{fp\_isprime}
+\index{fp\_isprime\_ex}
 \begin{verbatim}
-int fp_isprime(fp_int *a);
+int fp_isprime_ex(fp_int *a, int t);
 \end{verbatim}
 This will return \textbf{FP\_YES} if $a$ is probably prime.  It uses 256 trial divisions and
-eight rounds of Rabin-Miller testing.  Note that this routine performs modular exponentiations
+$t$ rounds of Rabin-Miller testing.  Note that this routine performs modular exponentiations
 which means that $a$ must be in a valid range of precision.
+The valid range of $t$ is $1 \ldots 256$.
+
+For backwards compatibility reasons the API function fp\_isprime(a) is still available
+and simply calls fp\_isprime\_ex(a, 8).
 
 \chapter{Porting TomsFastMath}
 \label{chap:asmops}

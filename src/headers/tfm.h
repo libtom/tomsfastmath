@@ -1,10 +1,10 @@
 /* TomsFastMath, a fast ISO C bignum library.
- * 
+ *
  * This project is meant to fill in where LibTomMath
  * falls short.  That is speed ;-)
  *
  * This project is public domain and free for all purposes.
- * 
+ *
  * Tom St Denis, tomstdenis@gmail.com
  */
 #ifndef TFM_H_
@@ -15,6 +15,15 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <limits.h>
+
+/* 0xMaMiPaXX
+ * Major
+ * Minor
+ * Patch
+ * XX - undefined
+ */
+#define TFM_VERSION     0x000D0000
+#define TFM_VERSION_S   "v0.13.0"
 
 #ifndef MIN
    #define MIN(x,y) ((x)<(y)?(x):(y))
@@ -27,13 +36,13 @@
 /* externally define this symbol to ignore the default settings, useful for changing the build from the make process */
 #ifndef TFM_ALREADY_SET
 
-/* do we want the large set of small multiplications ? 
+/* do we want the large set of small multiplications ?
    Enable these if you are going to be doing a lot of small (<= 16 digit) multiplications say in ECC
    Or if you're on a 64-bit machine doing RSA as a 1024-bit integer == 16 digits ;-)
  */
 #define TFM_SMALL_SET
 
-/* do we want huge code 
+/* do we want huge code
    Enable these if you are doing 20, 24, 28, 32, 48, 64 digit multiplications (useful for RSA)
    Less important on 64-bit machines as 32 digits == 2048 bits
  */
@@ -81,7 +90,7 @@
 /* #define TFM_PRESCOTT */
 
 /* Do we want timing resistant fp_exptmod() ?
- * This makes it slower but also timing invariant with respect to the exponent 
+ * This makes it slower but also timing invariant with respect to the exponent
  */
 /* #define TFM_TIMING_RESISTANT */
 
@@ -104,9 +113,13 @@
    #error FP_MAX_SIZE must be a multiple of CHAR_BIT
 #endif
 
+#if __SIZEOF_LONG__ == 8
+	#define FP_64BIT
+#endif
+
 /* autodetect x86-64 and make sure we are using 64-bit digits with x86-64 asm */
 #if defined(__x86_64__)
-   #if defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM) 
+   #if defined(TFM_X86) || defined(TFM_SSE2) || defined(TFM_ARM)
        #error x86-64 detected, x86-32/SSE2/ARM optimizations are not valid!
    #endif
    #if !defined(TFM_X86_64) && !defined(TFM_NO_ASM)
@@ -121,7 +134,7 @@
 
 /* try to detect x86-32 */
 #if defined(__i386__) && !defined(TFM_SSE2)
-   #if defined(TFM_X86_64) || defined(TFM_ARM) 
+   #if defined(TFM_X86_64) || defined(TFM_ARM)
        #error x86-32 detected, x86-64/ARM optimizations are not valid!
    #endif
    #if !defined(TFM_X86) && !defined(TFM_NO_ASM)
@@ -185,7 +198,7 @@
    #undef TFM_PPC32
    #undef TFM_PPC64
    #undef TFM_AVR32
-   #undef TFM_ASM   
+   #undef TFM_ASM
 #endif
 
 /* ECC helpers */
@@ -245,27 +258,33 @@
 #if defined(FP_64BIT)
    /* for GCC only on supported platforms */
 #ifndef CRYPT
-   typedef unsigned long ulong64;
-#endif
+   typedef unsigned long long ulong64;
+#endif /* CRYPT */
+
    typedef ulong64            fp_digit;
+#define SIZEOF_FP_DIGIT 8
    typedef unsigned long      fp_word __attribute__ ((mode(TI)));
+
 #else
+
    /* this is to make porting into LibTomCrypt easier :-) */
 #ifndef CRYPT
-   #if defined(_MSC_VER) || defined(__BORLANDC__) 
+   #if defined(_MSC_VER) || defined(__BORLANDC__)
       typedef unsigned __int64   ulong64;
       typedef signed __int64     long64;
    #else
       typedef unsigned long long ulong64;
       typedef signed long long   long64;
-   #endif
-#endif
-   typedef unsigned long      fp_digit;
+   #endif /* defined(_MSC_VER) ... */
+#endif /* CRYPT */
+
+   typedef unsigned int       fp_digit;
+#define SIZEOF_FP_DIGIT 4
    typedef ulong64            fp_word;
-#endif
+#endif /* FP_64BIT */
 
 /* # of digits this is */
-#define DIGIT_BIT  (int)((CHAR_BIT) * sizeof(fp_digit))
+#define DIGIT_BIT  ((CHAR_BIT) * SIZEOF_FP_DIGIT)
 #define FP_MASK    (fp_digit)(-1)
 #define FP_SIZE    (FP_MAX_SIZE/DIGIT_BIT)
 
@@ -290,7 +309,7 @@
 /* a FP type */
 typedef struct {
     fp_digit dp[FP_SIZE];
-    int      used, 
+    int      used,
              sign;
 } fp_int;
 
@@ -310,6 +329,9 @@ const char *fp_ident(void);
 
 /* set to a small digit */
 void fp_set(fp_int *a, fp_digit b);
+
+/* makes a pseudo-random int of a given size */
+void fp_rand(fp_int *a, int digits);
 
 /* copy from a to b */
 #define fp_copy(a, b)      (void)(((a) != (b)) && memcpy((b), (a), sizeof(fp_int)))
@@ -422,8 +444,11 @@ int fp_exptmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
 /* perform a Miller-Rabin test of a to the base b and store result in "result" */
 void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result);
 
+#define FP_PRIME_SIZE      256
 /* 256 trial divisions + 8 Miller-Rabins, returns FP_YES if probable prime  */
 int fp_isprime(fp_int *a);
+/* extended version of fp_isprime, do 't' Miller-Rabins instead of only 8 */
+int fp_isprime_ex(fp_int *a, int t);
 
 /* Primality generation flags */
 #define TFM_PRIME_BBS      0x0001 /* BBS style prime */
@@ -450,118 +475,12 @@ void fp_read_signed_bin(fp_int *a, unsigned char *b, int c);
 void fp_to_signed_bin(fp_int *a, unsigned char *b);
 
 int fp_read_radix(fp_int *a, char *str, int radix);
+
+int fp_radix_size(fp_int *a, int radix, int *size);
 int fp_toradix(fp_int *a, char *str, int radix);
 int fp_toradix_n(fp_int * a, char *str, int radix, int maxlen);
 
-
-/* VARIOUS LOW LEVEL STUFFS */
-void s_fp_add(fp_int *a, fp_int *b, fp_int *c);
-void s_fp_sub(fp_int *a, fp_int *b, fp_int *c);
-void fp_reverse(unsigned char *s, int len);
-
-void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C);
-
-#ifdef TFM_SMALL_SET
-void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C);
 #endif
-
-#ifdef TFM_MUL3
-void fp_mul_comba3(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL4
-void fp_mul_comba4(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL6
-void fp_mul_comba6(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL7
-void fp_mul_comba7(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL8
-void fp_mul_comba8(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL9
-void fp_mul_comba9(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL12
-void fp_mul_comba12(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL17
-void fp_mul_comba17(fp_int *A, fp_int *B, fp_int *C);
-#endif
-
-#ifdef TFM_MUL20
-void fp_mul_comba20(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL24
-void fp_mul_comba24(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL28
-void fp_mul_comba28(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL32
-void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL48
-void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C);
-#endif
-#ifdef TFM_MUL64
-void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C);
-#endif
-
-void fp_sqr_comba(fp_int *A, fp_int *B);
-
-#ifdef TFM_SMALL_SET
-void fp_sqr_comba_small(fp_int *A, fp_int *B);
-#endif
-
-#ifdef TFM_SQR3
-void fp_sqr_comba3(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR4
-void fp_sqr_comba4(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR6
-void fp_sqr_comba6(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR7
-void fp_sqr_comba7(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR8
-void fp_sqr_comba8(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR9
-void fp_sqr_comba9(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR12
-void fp_sqr_comba12(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR17
-void fp_sqr_comba17(fp_int *A, fp_int *B);
-#endif
-
-#ifdef TFM_SQR20
-void fp_sqr_comba20(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR24
-void fp_sqr_comba24(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR28
-void fp_sqr_comba28(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR32
-void fp_sqr_comba32(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR48
-void fp_sqr_comba48(fp_int *A, fp_int *B);
-#endif
-#ifdef TFM_SQR64
-void fp_sqr_comba64(fp_int *A, fp_int *B);
-#endif
-extern const char *fp_s_rmap;
-
-#endif
-
 
 /* $Source$ */
 /* $Revision$ */
