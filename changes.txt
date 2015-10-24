@@ -1,12 +1,13 @@
-XXX, 2014
+October 24th, 2015
 v0.13.0
      -- Add fp_rand()
      -- Fix bug in fp_sub() reported by Martins Mozeiko
      -- Fix bugs/apply patches in fp_mul() and fp_sqr() reported by rasky
      -- Fix bugs in fp_read_radix()
      -- Fix build issues for Linux x32 ABI
-     -- Sebastian Siewior provided fp_toradix_n() and
-        reported multiple issues on behalf of ClamAV.
+     -- Sebastian Siewior provided fp_toradix_n(),
+        reported multiple issues on behalf of ClamAV
+        and did most of the testing work to be able to push this release out.
      -- Fix a load of compiler warnings.
 
 March 14th, 2007
