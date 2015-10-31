@@ -9,7 +9,7 @@
  */
 #include <tfm_private.h>
 
-int fp_read_radix(fp_int *a, char *str, int radix)
+int fp_read_radix(fp_int *a, const char *str, int radix)
 {
   int     y, neg;
   char    ch;
