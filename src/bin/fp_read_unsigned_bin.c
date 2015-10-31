@@ -9,7 +9,7 @@
  */
 #include <tfm_private.h>
 
-void fp_read_unsigned_bin(fp_int *a, unsigned char *b, int c)
+void fp_read_unsigned_bin(fp_int *a, const unsigned char *b, int c)
 {
   /* zero the int */
   fp_zero (a);
