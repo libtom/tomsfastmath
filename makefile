@@ -190,6 +190,7 @@ zipup:
 	expsrc.sh -i . -o ../tomsfastmath-$(VERSION) --svntags --no-fetch -p '*.c' -p '*.h' && \
 	MAKE=${MAKE} ${MAKE} -C ../tomsfastmath-$(VERSION) docs && \
 	tar -c ../tomsfastmath-$(VERSION)/* | xz -cz > ../tfm-$(VERSION).tar.xz && \
+	find ../tomsfastmath-$(VERSION)/ -type f -exec unix2dos -q {} \; && \
 	zip -9 -r ../tfm-$(VERSION).zip ../tomsfastmath-$(VERSION)/* && \
 	gpg -b -a ../tfm-$(VERSION).tar.xz && gpg -b -a ../tfm-$(VERSION).zip
 
