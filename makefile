@@ -189,9 +189,9 @@ zipup:
 	rm -rf ../tomsfastmath-$(VERSION) && rm -f ../tfm-$(VERSION).zip ../tfm-$(VERSION).tar.bz2 && \
 	expsrc.sh -i . -o ../tomsfastmath-$(VERSION) --svntags --no-fetch -p '*.c' -p '*.h' && \
 	MAKE=${MAKE} ${MAKE} -C ../tomsfastmath-$(VERSION) docs && \
-	tar -c ../tomsfastmath-$(VERSION)/* | bzip2 -9vvc > ../tfm-$(VERSION).tar.bz2 && \
+	tar -c ../tomsfastmath-$(VERSION)/* | xz -cz > ../tfm-$(VERSION).tar.xz && \
 	zip -9 -r ../tfm-$(VERSION).zip ../tomsfastmath-$(VERSION)/* && \
-	gpg -b -a ../tfm-$(VERSION).tar.bz2 && gpg -b -a ../tfm-$(VERSION).zip
+	gpg -b -a ../tfm-$(VERSION).tar.xz && gpg -b -a ../tfm-$(VERSION).zip
 
 new_file:
 	bash updatemakes.sh
