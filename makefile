@@ -33,6 +33,10 @@ ifneq ($V,1)
 endif
 	${silent} ${CC} ${CFLAGS} -c $< -o $@
 
+ifdef COMPILE_DEBUG
+#debug
+CFLAGS += -g3
+else
 ifndef IGNORE_SPEED
 
 CFLAGS += -O3 -funroll-loops
@@ -44,6 +48,7 @@ CFLAGS += -O3 -funroll-loops
 #speed
 CFLAGS += -fomit-frame-pointer
 
+endif
 endif
 
 #START_INS
