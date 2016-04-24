@@ -21,6 +21,18 @@ ifndef MAKE
    MAKE=make
 endif
 
+ifeq ($V,1)
+silent=
+else
+silent=@
+endif
+
+%.o: %.c
+ifneq ($V,1)
+	@echo "   * ${CC} $@"
+endif
+	${silent} ${CC} ${CFLAGS} -c $< -o $@
+
 ifndef IGNORE_SPEED
 
 CFLAGS += -O3 -funroll-loops
