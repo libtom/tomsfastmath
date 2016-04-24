@@ -97,6 +97,11 @@ install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
 	install -g $(GROUP) -o $(USER) $(HEADERS_PUB) $(DESTDIR)$(INCPATH)
 
+HEADER_FILES=$(notdir $(HEADERS_PUB))
+uninstall:
+	libtool --mode=uninstall rm $(DESTDIR)$(LIBPATH)/$(LIBNAME)
+	rm $(HEADER_FILES:%=$(DESTDIR)$(INCPATH)/%)
+
 mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
 

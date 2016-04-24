@@ -103,6 +103,11 @@ install: $(LIBNAME)
 	install -g $(GROUP) -o $(USER) $(LIBNAME) $(DESTDIR)$(LIBPATH)
 	install -g $(GROUP) -o $(USER) $(HEADERS_PUB) $(DESTDIR)$(INCPATH)
 
+HEADER_FILES=$(notdir $(HEADERS_PUB))
+uninstall:
+	rm $(DESTDIR)$(LIBPATH)/$(LIBNAME)
+	rm $(HEADER_FILES:%=$(DESTDIR)$(INCPATH)/%)
+
 .PHONY: mtest
 mtest: $(LIBNAME)
 	cd mtest; CC="$(CC)" CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
