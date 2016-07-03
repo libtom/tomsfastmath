@@ -89,7 +89,7 @@ $(OBJECTS): $(HEADERS)
 	$(LTCOMPILE) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
 
 $(LIBNAME): $(OBJECTS)
-	libtool --mode=link --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) `find . -type f | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION) -export-symbols libtfm.symbols
+	libtool --mode=link --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) `find . -type f | LC_ALL=C sort | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION) -export-symbols libtfm.symbols
 
 install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
