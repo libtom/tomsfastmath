@@ -31,6 +31,7 @@ fp_mul_d
 fp_mulmod
 fp_prime_random_ex
 fp_radix_size
+fp_rand
 fp_read_radix
 fp_read_signed_bin
 fp_read_unsigned_bin
