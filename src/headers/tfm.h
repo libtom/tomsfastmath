@@ -252,6 +252,19 @@
    #endif
 #endif
 
+/* platforms that can use a better rand function */
+#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
+    #define FP_USE_ALT_RAND 1
+#endif
+
+/* use arc4random on platforms that support it */
+#ifdef FP_USE_ALT_RAND
+    #define FP_GEN_RANDOM()    arc4random()
+    #define FP_GEN_RANDOM_MAX  0xffffffff
+#else
+    #define FP_GEN_RANDOM()    rand()
+    #define FP_GEN_RANDOM_MAX  RAND_MAX
+#endif
 
 /* some default configurations.
  */
