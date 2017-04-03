@@ -279,6 +279,21 @@ void fp_init_copy(fp_int *a, fp_int *b)
 This will initialize $a$ as a copy of $b$.  Note that for compatibility with LibTomMath the function
 fp\_copy() is also provided.
 
+\subsection{Initialization with a random value}
+To initialize an integer with a random value of a specific length use the fp\_rand() function.
+
+\index{fp\_rand}
+\begin{verbatim}
+void fp_rand(fp_int *a, int digits)
+\end{verbatim}
+
+This will initialize $a$ with $digits$ random digits.
+
+\index{FP\_GEN\_RANDOM} \index{FP\_GEN\_RANDOM\_MAX}
+The source of the random data is \textbf{arc4random()} on *BSD systems that provide this function
+and the standard C function \textbf{rand()} on all other systems. It can be configured at compile time
+by pre-defining \textbf{FP\_GEN\_RANDOM} and \textbf{FP\_GEN\_RANDOM\_MAX}.
+
 \chapter{Arithmetic Operations}
 \section{Odds and Evens}
 To quickly and easily tell if an integer is zero, odd or even use the following functions.
