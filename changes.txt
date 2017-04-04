@@ -1,3 +1,9 @@
+April 4th, 2017
+v0.13.1
+     -- Fix missing fp_rand symbol in shared library
+     -- Fix some parameters in API signatures that should've been const
+     -- Bugfixes and improvements contributed by Sebastian Siewior, Reiner Herrmann and Mathias Tausig
+
 October 24th, 2015
 v0.13.0
      -- Add fp_rand()
