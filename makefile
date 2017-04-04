@@ -1,7 +1,7 @@
 #makefile for TomsFastMath
 #
 #
-VERSION=0.13
+VERSION=0.13.1
 
 CFLAGS += -Wall -W -Wshadow -Isrc/headers
 
@@ -21,6 +21,22 @@ ifndef MAKE
    MAKE=make
 endif
 
+ifeq ($V,1)
+silent=
+else
+silent=@
+endif
+
+%.o: %.c
+ifneq ($V,1)
+	@echo "   * ${CC} $@"
+endif
+	${silent} ${CC} ${CFLAGS} -c $< -o $@
+
+ifdef COMPILE_DEBUG
+#debug
+CFLAGS += -g3
+else
 ifndef IGNORE_SPEED
 
 CFLAGS += -O3 -funroll-loops
@@ -32,6 +48,7 @@ CFLAGS += -O3 -funroll-loops
 #speed
 CFLAGS += -fomit-frame-pointer
 
+endif
 endif
 
 #START_INS
@@ -102,6 +119,11 @@ install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
 	install -g $(GROUP) -o $(USER) $(LIBNAME) $(DESTDIR)$(LIBPATH)
 	install -g $(GROUP) -o $(USER) $(HEADERS_PUB) $(DESTDIR)$(INCPATH)
+
+HEADER_FILES=$(notdir $(HEADERS_PUB))
+uninstall:
+	rm $(DESTDIR)$(LIBPATH)/$(LIBNAME)
+	rm $(HEADER_FILES:%=$(DESTDIR)$(INCPATH)/%)
 
 .PHONY: mtest
 mtest: $(LIBNAME)
@@ -189,9 +211,10 @@ zipup:
 	rm -rf ../tomsfastmath-$(VERSION) && rm -f ../tfm-$(VERSION).zip ../tfm-$(VERSION).tar.bz2 && \
 	expsrc.sh -i . -o ../tomsfastmath-$(VERSION) --svntags --no-fetch -p '*.c' -p '*.h' && \
 	MAKE=${MAKE} ${MAKE} -C ../tomsfastmath-$(VERSION) docs && \
-	tar -c ../tomsfastmath-$(VERSION)/* | bzip2 -9vvc > ../tfm-$(VERSION).tar.bz2 && \
+	tar -c ../tomsfastmath-$(VERSION)/* | xz -cz > ../tfm-$(VERSION).tar.xz && \
+	find ../tomsfastmath-$(VERSION)/ -type f -exec unix2dos -q {} \; && \
 	zip -9 -r ../tfm-$(VERSION).zip ../tomsfastmath-$(VERSION)/* && \
-	gpg -b -a ../tfm-$(VERSION).tar.bz2 && gpg -b -a ../tfm-$(VERSION).zip
+	gpg -b -a ../tfm-$(VERSION).tar.xz && gpg -b -a ../tfm-$(VERSION).zip
 
 new_file:
 	bash updatemakes.sh

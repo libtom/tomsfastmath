@@ -22,8 +22,8 @@
  * Patch
  * XX - undefined
  */
-#define TFM_VERSION     0x000D0000
-#define TFM_VERSION_S   "v0.13.0"
+#define TFM_VERSION     0x000D0100
+#define TFM_VERSION_S   "v0.13.1"
 
 #ifndef MIN
    #define MIN(x,y) ((x)<(y)?(x):(y))
@@ -252,6 +252,17 @@
    #endif
 #endif
 
+/* use arc4random on platforms that support it */
+#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
+    #define FP_GEN_RANDOM()    arc4random()
+    #define FP_GEN_RANDOM_MAX  0xffffffff
+#endif
+
+/* use rand() as fall-back if there's no better rand function */
+#ifndef FP_GEN_RANDOM
+   #define FP_GEN_RANDOM()    rand()
+   #define FP_GEN_RANDOM_MAX  RAND_MAX
+#endif
 
 /* some default configurations.
  */
