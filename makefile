@@ -141,6 +141,9 @@ test_standalone: CFLAGS+=-DTFM_DEMO_TEST_VS_MTEST=0
 test_standalone: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
 
+testme: test mtest
+	./mtest/mtest -15 | ./test
+
 timing: $(LIBNAME) demo/timing.o
 	$(CC) $(CFLAGS) demo/timing.o $(LIBNAME) $(PROF) -o timing
 
@@ -151,7 +154,33 @@ profiled:
 	rm -f `find . -type f -name "*.a" | xargs`
 	rm -f test
 	CC=$(CC) PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-use" MAKE=${MAKE} ${MAKE} timing
-	
+
+# target that pre-processes all coverage data
+lcov-single-create:
+	lcov --capture --no-external --directory src -q --output-file coverage_std.info
+
+# target that removes all coverage output
+cleancov-clean:
+	rm -f `find . -type f -name "*.info" | xargs`
+	rm -rf coverage/
+
+# generates html output from all coverage_*.info files
+lcov:
+	lcov `find -name 'coverage_*.info' -exec echo -n " -a {}" \;` -o coverage.info -q 2>/dev/null
+	genhtml coverage.info --output-directory coverage
+
+# combines all necessary steps to create the coverage from a single testrun with e.g.
+lcov-single: | cleancov-clean lcov-single-create lcov
+
+
+#make the code coverage of the library
+coverage: CFLAGS += -fprofile-arcs -ftest-coverage
+coverage: LDFLAGS += -lgcov
+coverage: LIB_PRE = -Wl,--whole-archive
+coverage: LIB_POST = -Wl,--no-whole-archive
+
+coverage: | testme lcov-single
+
 stest: $(LIBNAME) demo/stest.o
 	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME) -o stest
 

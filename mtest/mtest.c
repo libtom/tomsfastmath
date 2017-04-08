@@ -38,7 +38,6 @@ mulmod
 #include <stdlib.h>
 #include <time.h>
 #include <tommath.h>
-#define CRYPT
 #undef DIGIT_BIT
 #include "../src/headers/tfm.h"
 
@@ -72,8 +71,9 @@ void rand_num2(mp_int *a)
 
 #define mp_to64(a, b) mp_toradix_n(a, b, 64, sizeof(b))
 
-int main(void)
+int main(int argc, char *argv[])
 {
+   long long max;
    int n, tmp;
    mp_int a, b, c, d, e;
 #ifdef MTEST_NO_FULLSPEED
@@ -87,6 +87,27 @@ int main(void)
    mp_init(&d);
    mp_init(&e);
 
+
+   if (argc > 1) {
+       max = strtol(argv[1], NULL, 0);
+       printf("%lld\n", max);
+       if (max < 0) {
+           max = -max;
+           printf("%lld\n", max);
+           if (max < 64) {
+               unsigned long long m = (1ULL << (max)) + 1;
+               max = (long long)m;
+           } else {
+               max = 1;
+           }
+           printf("%lld\n", max);
+       } else if (max == 0) {
+           max = 1;
+       }
+   }
+   else {
+       max = 0;
+   }
 
    /* initial (2^n - 1)^2 testing, makes sure the comba multiplier works [it has the new carry code] */
 /*
@@ -125,6 +146,11 @@ int main(void)
       }
 #endif
        n = fgetc(rng) % 16;
+       if (max != 0) {
+           --max;
+           if (max == 0)
+             n = 255;
+       }
    if (n == 0) {
        /* add tests */
        rand_num(&a);
@@ -318,6 +344,9 @@ int main(void)
       printf("%s\n%d\n", buf, tmp);
       mp_to64(&b, buf);
       printf("%s\n", buf);
+   } else if (n == 255) {
+      printf("exit\n");
+      break;
    }
    }
    fclose(rng);

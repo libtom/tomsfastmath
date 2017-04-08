@@ -427,6 +427,9 @@ draw(&a);draw(&b);draw(&c);draw(&d);
                  printf("d == %lu\n", ix);
                  return 0;
               }
+       } else if (!strcmp(cmd, "exit")) {
+              printf("\nokay, exiting now\n");
+              return 0;
        }
 
    }

@@ -15,6 +15,12 @@
 /.libs
 test_*.txt
 
+*.gcda
+*.gcno
+*.info
+coverage/
+compat_reports/
+
 test
 test.exe
 mtest
