@@ -167,10 +167,13 @@ cleancov-clean:
 # generates html output from all coverage_*.info files
 lcov:
 	lcov `find -name 'coverage_*.info' -exec echo -n " -a {}" \;` -o coverage.info -q 2>/dev/null
-	genhtml coverage.info --output-directory coverage
+	genhtml coverage.info --output-directory coverage -q
 
 # combines all necessary steps to create the coverage from a single testrun with e.g.
-lcov-single: | cleancov-clean lcov-single-create lcov
+lcov-single:
+	$(MAKE) cleancov-clean
+	$(MAKE) lcov-single-create
+	$(MAKE) lcov
 
 
 #make the code coverage of the library
@@ -179,7 +182,9 @@ coverage: LDFLAGS += -lgcov
 coverage: LIB_PRE = -Wl,--whole-archive
 coverage: LIB_POST = -Wl,--no-whole-archive
 
-coverage: | testme lcov-single
+coverage:
+	$(MAKE) testme
+	$(MAKE) lcov-single
 
 stest: $(LIBNAME) demo/stest.o
 	$(CC) $(CFLAGS) demo/stest.o $(LIBNAME) -o stest
