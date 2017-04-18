@@ -14,6 +14,12 @@ void fp_read_unsigned_bin(fp_int *a, const unsigned char *b, int c)
   /* zero the int */
   fp_zero (a);
 
+  if ((unsigned)c > (FP_SIZE * sizeof(fp_digit))) {
+     int excess = c - (FP_SIZE * sizeof(fp_digit));
+     c -= excess;
+     b += excess;
+  }
+
   /* If we know the endianness of this architecture, and we're using
      32-bit fp_digits, we can optimize this */
 #if (defined(ENDIAN_LITTLE) || defined(ENDIAN_BIG)) && !defined(FP_64BIT)
@@ -24,11 +30,6 @@ void fp_read_unsigned_bin(fp_int *a, const unsigned char *b, int c)
   {
      unsigned char *pd = (unsigned char *)a->dp;
 
-     if ((unsigned)c > (FP_SIZE * sizeof(fp_digit))) {
-        int excess = c - (FP_SIZE * sizeof(fp_digit));
-        c -= excess;
-        b += excess;
-     }
      a->used = (c + sizeof(fp_digit) - 1)/sizeof(fp_digit);
      /* read the bytes in */
 #ifdef ENDIAN_BIG
@@ -55,7 +56,10 @@ void fp_read_unsigned_bin(fp_int *a, const unsigned char *b, int c)
   for (; c > 0; c--) {
      fp_mul_2d (a, 8, a);
      a->dp[0] |= *b++;
-     a->used += 1;
+
+     if (a->used == 0) {
+         a->used = 1;
+     }
   }
 #endif
   fp_clamp (a);
