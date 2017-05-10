@@ -47,6 +47,8 @@ src/sqr/fp_sqr_comba_48.o src/sqr/fp_sqr_comba_4.o src/sqr/fp_sqr_comba_64.o src
 src/sqr/fp_sqr_comba_7.o src/sqr/fp_sqr_comba_8.o src/sqr/fp_sqr_comba_9.o src/sqr/fp_sqr_comba.o \
 src/sqr/fp_sqr_comba_generic.o src/sqr/fp_sqr_comba_small_set.o src/sqr/fp_sqrmod.o
 
+LOBJECTS = $(OBJECTS:.o=.lo)
+
 HEADERS_PUB:=src/headers/tfm.h
 HEADERS=src/headers/tfm_private.h $(HEADERS_PUB)
 
@@ -89,7 +91,7 @@ $(OBJECTS): $(HEADERS)
 	$(LTCOMPILE) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
 
 $(LIBNAME): $(OBJECTS)
-	libtool --mode=link --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) `find . -type f | LC_ALL=C sort | grep "[.]lo" | xargs` -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION) -export-symbols libtfm.symbols
+	libtool --mode=link --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) $(LOBJECTS) -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION) -export-symbols libtfm.symbols
 
 install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
