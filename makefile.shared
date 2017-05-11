@@ -55,25 +55,9 @@ HEADERS=src/headers/tfm_private.h $(HEADERS_PUB)
 #END_INS
 
 
-ifndef LIBPATH
-   LIBPATH=/usr/lib
-endif
-
-ifndef INCPATH
-   INCPATH=/usr/include
-endif
-
-ifndef INSTALL_GROUP
-   GROUP=wheel
-else
-   GROUP=$(INSTALL_GROUP)
-endif
-
-ifndef INSTALL_USER
-   USER=root
-else
-   USER=$(INSTALL_USER)
-endif
+DESTDIR  ?= /usr/local
+LIBPATH  ?= $(DESTDIR)/lib
+INCPATH  ?= $(DESTDIR)/include
 
 ifndef LIBNAME
 	LIBNAME=libtfm.la
@@ -94,15 +78,15 @@ $(LIBNAME): $(OBJECTS)
 	libtool --mode=link --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) $(LOBJECTS) -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION) -export-symbols libtfm.symbols
 
 install: $(LIBNAME)
-	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
-	libtool --mode=install install -c $(LIBNAME) $(DESTDIR)$(LIBPATH)/$(LIBNAME)
-	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(INCPATH)
-	install -g $(GROUP) -o $(USER) $(HEADERS_PUB) $(DESTDIR)$(INCPATH)
+	install -d $(LIBPATH)
+	libtool --mode=install install $(LIBNAME) $(LIBPATH)/$(LIBNAME)
+	install -d $(INCPATH)
+	install $(HEADERS_PUB) $(INCPATH)
 
 HEADER_FILES=$(notdir $(HEADERS_PUB))
 uninstall:
-	libtool --mode=uninstall rm $(DESTDIR)$(LIBPATH)/$(LIBNAME)
-	rm $(HEADER_FILES:%=$(DESTDIR)$(INCPATH)/%)
+	libtool --mode=uninstall rm $(LIBPATH)/$(LIBNAME)
+	rm $(HEADER_FILES:%=$(INCPATH)/%)
 
 mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
