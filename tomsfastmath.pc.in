@@ -1,0 +1,4 @@
+Name: TomFastMath
+Description: Fast multiple-precision integer library
+Version: @VERSION@
+Libs: -ltfm

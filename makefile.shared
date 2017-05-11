@@ -15,6 +15,7 @@ UNINSTALL_CMD = $(LT) --mode=uninstall rm
 include makefile_include.mk
 
 
+VERSION := $(shell [ -e .git ] && { git describe --tags --abbrev=0 | sed -e 's/^v//' ; } || echo $(VERSION))
 
 #START_INS
 OBJECTS=src/addsub/fp_add.o src/addsub/fp_add_d.o src/addsub/fp_addmod.o src/addsub/fp_cmp.o \
@@ -59,8 +60,12 @@ $(LIBNAME): $(OBJECTS)
 	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) $(LOBJECTS) -o $(LIBNAME) -rpath $(LIBPATH) -version-info $(VERSION_LIB) -export-symbols libtfm.symbols
 
 install: .common_install
+	sed -e 's,^Version:.*,Version: $(VERSION),' tomsfastmath.pc.in > tomsfastmath.pc
+	install -d $(LIBPATH)/pkgconfig
+	install -m 644 tomsfastmath.pc $(LIBPATH)/pkgconfig/
 
 uninstall: .common_uninstall
+	rm $(LIBPATH)/pkgconfig/tomsfastmath.pc
 
 mtest/mtest: mtest/mtest.c
 	cd mtest ; make mtest
