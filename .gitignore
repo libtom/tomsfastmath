@@ -15,6 +15,7 @@
 /.libs
 test_*.txt
 *.pc
+doc/tfm.pdf
 
 *.gcda
 *.gcno
