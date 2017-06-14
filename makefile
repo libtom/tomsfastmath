@@ -148,6 +148,6 @@ stest: $(LIBNAME) demo/stest.o
 rsatest: $(LIBNAME) demo/rsa.o
 	$(CC) $(CFLAGS) demo/rsa.o $(LIBNAME) -o rsatest
 
-# $Source$
-# $Revision$
-# $Date$
+# ref:         $Format:%D$
+# git commit:  $Format:%H$
+# commit time: $Format:%ai$

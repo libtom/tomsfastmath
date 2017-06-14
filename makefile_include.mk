@@ -103,14 +103,22 @@ pre_gen:
 	sed -e 's/[[:blank:]]*$$//' mpi.c > pre_gen/mpi.c
 	rm mpi.c
 
-zipup:
-	rm -rf ../tomsfastmath-$(VERSION) && rm -f ../tfm-$(VERSION).zip ../tfm-$(VERSION).tar.bz2 && \
-	expsrc.sh -i . -o ../tomsfastmath-$(VERSION) --svntags --no-fetch -p '*.c' -p '*.h' && \
-	MAKE=${MAKE} ${MAKE} -C ../tomsfastmath-$(VERSION) docs && \
-	tar -c ../tomsfastmath-$(VERSION)/* | xz -cz > ../tfm-$(VERSION).tar.xz && \
-	find ../tomsfastmath-$(VERSION)/ -type f -exec unix2dos -q {} \; && \
-	zip -9 -r ../tfm-$(VERSION).zip ../tomsfastmath-$(VERSION)/* && \
-	gpg -b -a ../tfm-$(VERSION).tar.xz && gpg -b -a ../tfm-$(VERSION).zip
+zipup: pre_gen doc/tfm.pdf
+	@# Update the index, so diff-index won't fail in case the pdf has been created.
+	@#   As the pdf creation modifies tfm.tex, git sometimes detects the
+	@#   modified file, but misses that it's put back to its original version.
+	@git update-index --refresh
+	@git diff-index --quiet HEAD -- || ( echo "FAILURE: uncommited changes or not a git" && exit 1 )
+	rm -rf tomsfastmath-$(VERSION) tfm-$(VERSION).*
+	@# files/dirs excluded from "git archive" are defined in .gitattributes
+	git archive --format=tar --prefix=tomsfastmath-$(VERSION)/ HEAD | tar x
+	mkdir -p tomsfastmath-$(VERSION)/doc
+	cp doc/tfm.pdf tomsfastmath-$(VERSION)/doc/tfm.pdf
+	tar -c tomsfastmath-$(VERSION)/ | xz -6e -c - > tfm-$(VERSION).tar.xz
+	zip -9rq tfm-$(VERSION).zip tomsfastmath-$(VERSION)
+	rm -rf tomsfastmath-$(VERSION)
+	gpg -b -a tfm-$(VERSION).tar.xz
+	gpg -b -a tfm-$(VERSION).zip
 
 new_file:
 	bash updatemakes.sh
