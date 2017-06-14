@@ -16,14 +16,14 @@
 #include <ctype.h>
 #include <limits.h>
 
-/* 0xMaMiPaXX
+/* 0xMaMiPaDe
  * Major
  * Minor
  * Patch
- * XX - undefined
+ * Development - 00=release, 01=in-development
  */
-#define TFM_VERSION     0x000D0100
-#define TFM_VERSION_S   "v0.13.1"
+#define TFM_VERSION     0x000D0101
+#define TFM_VERSION_S   "v0.13.1-next"
 
 #ifndef MIN
    #define MIN(x,y) ((x)<(y)?(x):(y))
