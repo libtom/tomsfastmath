@@ -91,6 +91,12 @@ clean:
 	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.out  tfm.toc  test  test.exe
 	cd mtest; MAKE=${MAKE} ${MAKE} clean
 
+docs:
+	$(MAKE) -C doc/ $@ V=$(V)
+
+doc/tfm.pdf:
+	$(MAKE) -C doc/ tfm.pdf V=$(V)
+
 .PHONY: pre_gen
 pre_gen:
 	perl gen.pl

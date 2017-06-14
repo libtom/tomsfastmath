@@ -148,29 +148,6 @@ stest: $(LIBNAME) demo/stest.o
 rsatest: $(LIBNAME) demo/rsa.o
 	$(CC) $(CFLAGS) demo/rsa.o $(LIBNAME) -o rsatest
 
-docdvi: tfm.tex
-	cp tfm.tex tfm.bak
-	touch --reference=tfm.tex tfm.bak
-	(printf "%s" "\def\fixedpdfdate{"; date +'D:%Y%m%d%H%M%S%:z' -d @$$(stat --format=%Y tfm.tex) | sed "s/:\([0-9][0-9]\)$$/'\1'}/g") > tfm-deterministic.tex
-	printf "%s\n" "\pdfinfo{" >> tfm-deterministic.tex
-	printf "%s\n" "  /CreationDate (\fixedpdfdate)" >> tfm-deterministic.tex
-	printf "%s\n}\n" "  /ModDate (\fixedpdfdate)" >> tfm-deterministic.tex
-	cat tfm.tex >> tfm-deterministic.tex
-	mv tfm-deterministic.tex tfm.tex
-	touch --reference=tfm.bak tfm.tex
-	touch tfm.ind
-	latex tfm >/dev/null
-	latex tfm >/dev/null
-	makeindex tfm
-	latex tfm >/dev/null
-
-docs: docdvi
-	latex tfm >/dev/null
-	pdflatex tfm >/dev/null
-	sed -b -i 's,^/ID \[.*\]$$,/ID [<0> <0>],g' tfm.pdf
-	mv tfm.bak tfm.tex
-	mv -f tfm.pdf doc
-
 # $Source$
 # $Revision$
 # $Date$
