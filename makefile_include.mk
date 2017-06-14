@@ -23,6 +23,7 @@ VERSION_LIB=1:0:0
 # by giving them as a parameter to make:
 #  make CFLAGS="-I./src/headers/ -DLTC_SOURCE ..." ...
 #
+
 CFLAGS += -Wall -W -Wshadow -Isrc/headers
 
 ifdef COMPILE_DEBUG
@@ -31,7 +32,12 @@ CFLAGS += -g3
 else
 ifndef IGNORE_SPEED
 
-CFLAGS += -O3 -funroll-loops
+CFLAGS += -O3
+
+PLATFORM := $(shell uname | sed -e 's/_.*//')
+ifneq ($(PLATFORM), Darwin)
+CFLAGS += -funroll-loops
+endif
 
 #profiling
 #PROF=-pg -g
