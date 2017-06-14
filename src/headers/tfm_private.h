@@ -10,7 +10,7 @@
 #ifndef TFM_PRIVATE_H_
 #define TFM_PRIVATE_H_
 
-#include <tfm.h>
+#include "tfm.h"
 
 /* VARIOUS LOW LEVEL STUFFS */
 void s_fp_add(fp_int *a, fp_int *b, fp_int *c);
