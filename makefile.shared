@@ -14,9 +14,6 @@ UNINSTALL_CMD = $(LT) --mode=uninstall rm
 
 include makefile_include.mk
 
-
-VERSION := $(shell [ -e .git ] && { git describe --tags --abbrev=0 | sed -e 's/^v//' ; } || echo $(VERSION))
-
 #START_INS
 OBJECTS=src/addsub/fp_add.o src/addsub/fp_add_d.o src/addsub/fp_addmod.o src/addsub/fp_cmp.o \
 src/addsub/fp_cmp_d.o src/addsub/fp_cmp_mag.o src/addsub/fp_sub.o src/addsub/fp_sub_d.o \

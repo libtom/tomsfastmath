@@ -9,13 +9,17 @@
  */
 #include <tfm_private.h>
 
+#ifndef GIT_VERSION
+#define GIT_VERSION TFM_VERSION_S
+#endif
+
 const char *fp_ident(void)
 {
    static char buf[1024];
 
    memset(buf, 0, sizeof(buf));
    snprintf(buf, sizeof(buf)-1,
-"TomsFastMath " TFM_VERSION_S "\n"
+"TomsFastMath " GIT_VERSION "\n"
 #if defined(TFM_IDENT_BUILD_DATE)
 "Built on " __DATE__ " at " __TIME__ "\n"
 #endif

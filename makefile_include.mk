@@ -16,6 +16,11 @@ VERSION=0.13.1-next
 VERSION_LIB=1:0:0
 VERSION_PC=0.13.1
 
+GIT_VERSION := $(shell [ -e .git ] && { printf git- ; git describe --tags --always --dirty ; } || echo $(VERSION))
+ifneq ($(GIT_VERSION),)
+CFLAGS += -DGIT_VERSION=\"$(GIT_VERSION)\"
+endif
+
 # Compiler and Linker Names
 ifndef CROSS_COMPILE
   CROSS_COMPILE:=
