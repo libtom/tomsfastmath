@@ -1,4 +1,5 @@
 /* TFM timing analysis */
+#define _GNU_SOURCE
 #include <tfm.h>
 #include <time.h>
 #include <unistd.h>
@@ -65,21 +66,11 @@ static void print_line(ulong64 b, ulong64 t)
    printf("%llu;%s;%llu;%llu\n", ticks, p_str, b, t);
 }
 
-int main(void)
+static void Addition(ulong64 t1)
 {
-   fp_int a,b,c,d;
-   ulong64 t1, t2;
-   fp_digit fp;
+   fp_int a,b,c;
+   ulong64 t2;
    unsigned long t, ix;
-
-   t1 = TIMFUNC();
-   sleep(1);
-   ticks = TIMFUNC() - t1;
-   fprintf(stderr, "Ticks per second: %llu\n", ticks);
-
-   printf("Ticks/sec;Algorithm;bits;time\n");
-   /* do some timings... */
-   print_start("Addition");
    for (t = 2; t <= FP_SIZE / 2; t += 2) {
       fp_zero(&a);
       fp_zero(&b);
@@ -109,7 +100,13 @@ int main(void)
       }
       print_line(t * DIGIT_BIT, t2);
    }
-   print_start("Multiplication");
+}
+
+static void Multiplication(ulong64 t1)
+{
+   fp_int a,b,c;
+   ulong64 t2;
+   unsigned long t, ix;
    for (t = 2; t < FP_SIZE / 2; t += 2) {
       fp_zero(&a);
       fp_zero(&b);
@@ -259,8 +256,13 @@ int main(void)
       }
       print_line(t * DIGIT_BIT, t2);
    }
+}
 
-   print_start("Squaring");
+static void Squaring(ulong64 t1)
+{
+   fp_int a,b;
+   ulong64 t2;
+   unsigned long t, ix;
    for (t = 2; t < FP_SIZE / 2; t += 2) {
       fp_zero(&a);
       fp_zero(&b);
@@ -407,8 +409,13 @@ int main(void)
       }
       print_line(t * DIGIT_BIT, t2);
    }
+}
 
-   print_start("Invmod");
+static void Invmod(ulong64 t1)
+{
+   fp_int a,b,c;
+   ulong64 t2;
+   unsigned long t, ix;
    for (t = 2; t < FP_SIZE / 2; t += 2) {
       fp_zero(&a);
       for (ix = 0; ix < t; ix++) {
@@ -497,8 +504,14 @@ int main(void)
       }
       print_line(t * DIGIT_BIT, t2);
    }
+}
 
-   print_start("Montgomery");
+static void Montgomery(ulong64 t1)
+{
+   fp_int a,b,c,d;
+   ulong64 t2;
+   fp_digit fp;
+   unsigned long t, ix;
    for (t = 2; t <= (FP_SIZE / 2) - 4; t += 2) {
       //      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
       fp_zero(&a);
@@ -590,9 +603,13 @@ int main(void)
       }
       print_line(t * DIGIT_BIT, t2);
    }
+}
 
-   print_start("Exptmod");
-
+static void Exptmod(ulong64 t1)
+{
+   fp_int a,b,c,d;
+   ulong64 t2;
+   unsigned long t, ix;
    for (t = 512 / DIGIT_BIT; t <= (FP_SIZE / 2) - 2; t += 256 / DIGIT_BIT) {
       fp_zero(&a);
       fp_zero(&b);
@@ -621,5 +638,41 @@ int main(void)
       }
       print_line(t * DIGIT_BIT, t2);
    }
+}
+
+#define FN(n) { n, #n }
+struct {
+   void (*fn)(ulong64 t1);
+   const char* name;
+} funcs[] = {
+             FN(Addition),
+             FN(Multiplication),
+             FN(Squaring),
+             FN(Invmod),
+             FN(Montgomery),
+             FN(Exptmod),
+};
+
+int main(int argc, char **argv)
+{
+   ulong64 t1;
+   unsigned int t;
+   char* arg = NULL;
+
+   if (argc > 1) arg = argv[1];
+
+   t1 = TIMFUNC();
+   sleep(1);
+   ticks = TIMFUNC() - t1;
+   fprintf(stderr, "Ticks per second: %llu\n", ticks);
+
+   printf("Ticks/sec;Algorithm;bits;time\n");
+   /* do some timings... */
+   for (t = 0; t < sizeof(funcs)/sizeof(funcs[0]); ++t) {
+      if(arg != NULL && strcasestr(funcs[t].name, arg) == NULL) continue;
+      print_start(funcs[t].name);
+      funcs[t].fn(t1);
+   }
+
    return 0;
 }
