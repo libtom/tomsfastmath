@@ -24,13 +24,22 @@ printf(
 "#if defined(TFM_MUL%d) && FP_SIZE >= %d\n"
 "void fp_mul_comba%d(fp_int *A, fp_int *B, fp_int *C)\n"
 "{\n"
-"   fp_digit c0, c1, c2, at[%d];\n"
+"   fp_digit c0, c1, c2, at[%d];\n", N, N+N, N, N+N);
+if (N == 32) {
+printf(
+"   int out_size;\n"
 "\n"
+"   out_size = A->used + B->used;\n");
+} else {
+printf(
+"\n");
+}
+printf(
 "   memcpy(at, A->dp, %d * sizeof(fp_digit));\n"
 "   memcpy(at+%d, B->dp, %d * sizeof(fp_digit));\n"
 "   COMBA_START;\n"
 "\n"
-"   COMBA_CLEAR;\n", N, N+N, N, N+N, N, N, N);
+"   COMBA_CLEAR;\n", N, N, N);
 
    /* now do the rows */
    for (x = 0; x < (N+N-1); x++) {
@@ -50,6 +59,14 @@ printf(
 printf(
 "\n"
 "   COMBA_STORE(C->dp[%d]);\n", x);
+if (N == 32 && N*2 != (x+2) &&(x+2) >= 40 && (x+2)%8 == 0) {
+   printf(
+"\n"
+"   /* early out at %d digits, %d*32==%d, or two %d bit operands */\n"
+"   if (out_size <= %d) { COMBA_STORE2(C->dp[%d]); C->used = %d; C->sign = A->sign ^ B->sign; fp_clamp(C); COMBA_FINI; return; }\n"
+"\n"
+   , x+2, x+2, (x+2)*32, (x+2)*16, x+2, x+1, x+2);
+}
    }
 printf(
 "   COMBA_STORE2(C->dp[%d]);\n"
