@@ -109,20 +109,22 @@ HEADER_FILES=$(notdir $(HEADERS_PUB))
 #This rule cleans the source tree of all compiled code, not including the pdf
 #documentation.
 clean:
-	rm -f `find . -type f -name "*.o" | xargs`
-	rm -f `find . -type f -name "*.lo"  | xargs`
-	rm -f `find . -type f -name "*.a" | xargs`
-	rm -f `find . -type f -name "*.la"  | xargs`
-	rm -f `find . -type f -name "*.obj" | xargs`
-	rm -f `find . -type f -name "*.lib" | xargs`
-	rm -f `find . -type f -name "*.exe" | xargs`
-	rm -f `find . -type f -name "*.gcov" | xargs`
-	rm -f `find . -type f -name "*.gcda" | xargs`
-	rm -f `find . -type f -name "*.gcno" | xargs`
-	rm -f `find . -type f -name "*.il" | xargs`
-	rm -f `find . -type f -name "*.dyn" | xargs`
-	rm -f `find . -type f -name "*.dpi" | xargs`
-	rm -rf `find . -type d -name "*.libs" | xargs`
+	find . -type f    -name "*.o"   \
+               -o -name "*.lo"  \
+               -o -name "*.a"   \
+               -o -name "*.la"  \
+               -o -name "*.obj" \
+               -o -name "*.lib" \
+               -o -name "*.exe" \
+               -o -name "*.dll" \
+               -o -name "*.so"  \
+               -o -name "*.gcov"\
+               -o -name "*.gcda"\
+               -o -name "*.gcno"\
+               -o -name "*.il"  \
+               -o -name "*.dyn" \
+               -o -name "*.dpi"  | xargs rm -f
+	find . -type d  -name "*.libs" | xargs rm -rf
 	rm -f tfm.aux  tfm.dvi  tfm.idx  tfm.ilg  tfm.ind  tfm.lof  tfm.log  tfm.out  tfm.toc  test  test.exe
 	cd mtest; MAKE=${MAKE} ${MAKE} clean
 
