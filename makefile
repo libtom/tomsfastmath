@@ -64,12 +64,6 @@ install: .common_install
 
 uninstall: .common_uninstall
 
-.PHONY: mtest
-mtest: $(LIBNAME)
-	cd mtest; CC="$(CC)" CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} mtest
-
-demo/test.o: CFLAGS+=-Wno-unused-result
-
 .PHONY: test
 test: $(LIBNAME) demo/test.o
 	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test

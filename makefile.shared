@@ -67,11 +67,6 @@ install: .common_install
 uninstall: .common_uninstall
 	rm $(DESTDIR)$(LIBPATH)/pkgconfig/tomsfastmath.pc
 
-mtest/mtest: mtest/mtest.c
-	cd mtest ; make mtest
-
-demo/test.o: CFLAGS+=-Wno-unused-result
-
 .PHONY: test
 test: $(LIBNAME) demo/test.o
 	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o test demo/test.o $(LIBNAME)

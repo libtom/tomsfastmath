@@ -82,6 +82,12 @@ INCPATH  ?= $(PREFIX)/include
 default: $(LIBNAME)
 
 
+demo/test.o: CFLAGS+=-Wno-unused-result
+
+.PHONY: mtest
+mtest: $(LIBNAME)
+	CC="$(CC)" CFLAGS="$(CFLAGS) -I../" MAKE=${MAKE} ${MAKE} -C mtest/ mtest
+
 .common_install: $(LIBNAME)
 	install -d $(DESTDIR)$(LIBPATH)
 	$(INSTALL_CMD) $(LIBNAME) $(DESTDIR)$(LIBPATH)/$(LIBNAME)
