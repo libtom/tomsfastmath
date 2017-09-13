@@ -10,6 +10,7 @@
 
 /* program emits a NxN comba multiplier */
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv)
 {
