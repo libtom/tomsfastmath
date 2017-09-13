@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void)
+int main(int argc, char **argv)
 {
-   int x, y, z;
+   int x, y, z, N = 16;
+   if (argc > 1) N = atoi(argv[1]);
 
 printf(
 #if 1
-"#ifdef TFM_SMALL_SET\n"
+"#ifdef TFM_SMALL_MONT_SET\n"
 "/* computes x/R == x (mod N) via Montgomery Reduction */\n"
 "void fp_montgomery_reduce_small(fp_int *a, fp_int *m, fp_digit mp)\n"
 "{\n"
@@ -34,7 +36,7 @@ printf(
 "\n"
 "   switch (pa) {\n");
 
-for (x = 1; x <= 16; x++) {
+for (x = 1; x <= N; x++) {
 if (x > 16 && (x != 32 && x != 48 && x != 64)) continue;
 if (x > 16) printf("#ifdef TFM_HUGE\n");
 
