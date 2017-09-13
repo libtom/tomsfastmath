@@ -5,7 +5,9 @@
 void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[96];
+   int out_size;
 
+   out_size = A->used + B->used;
    memcpy(at, A->dp, 48 * sizeof(fp_digit));
    memcpy(at+48, B->dp, 48 * sizeof(fp_digit));
    COMBA_START;
@@ -166,6 +168,10 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FORWARD;
    MULADD(at[0], at[86]);    MULADD(at[1], at[85]);    MULADD(at[2], at[84]);    MULADD(at[3], at[83]);    MULADD(at[4], at[82]);    MULADD(at[5], at[81]);    MULADD(at[6], at[80]);    MULADD(at[7], at[79]);    MULADD(at[8], at[78]);    MULADD(at[9], at[77]);    MULADD(at[10], at[76]);    MULADD(at[11], at[75]);    MULADD(at[12], at[74]);    MULADD(at[13], at[73]);    MULADD(at[14], at[72]);    MULADD(at[15], at[71]);    MULADD(at[16], at[70]);    MULADD(at[17], at[69]);    MULADD(at[18], at[68]);    MULADD(at[19], at[67]);    MULADD(at[20], at[66]);    MULADD(at[21], at[65]);    MULADD(at[22], at[64]);    MULADD(at[23], at[63]);    MULADD(at[24], at[62]);    MULADD(at[25], at[61]);    MULADD(at[26], at[60]);    MULADD(at[27], at[59]);    MULADD(at[28], at[58]);    MULADD(at[29], at[57]);    MULADD(at[30], at[56]);    MULADD(at[31], at[55]);    MULADD(at[32], at[54]);    MULADD(at[33], at[53]);    MULADD(at[34], at[52]);    MULADD(at[35], at[51]);    MULADD(at[36], at[50]);    MULADD(at[37], at[49]);    MULADD(at[38], at[48]);
    COMBA_STORE(C->dp[38]);
+
+   /* early out at 40 digits, 40*32==1280, or two 640 bit operands */
+   if (out_size <= 40) { COMBA_STORE2(C->dp[39]); C->used = 40; C->sign = A->sign ^ B->sign; fp_clamp(C); COMBA_FINI; return; }
+
    /* 39 */
    COMBA_FORWARD;
    MULADD(at[0], at[87]);    MULADD(at[1], at[86]);    MULADD(at[2], at[85]);    MULADD(at[3], at[84]);    MULADD(at[4], at[83]);    MULADD(at[5], at[82]);    MULADD(at[6], at[81]);    MULADD(at[7], at[80]);    MULADD(at[8], at[79]);    MULADD(at[9], at[78]);    MULADD(at[10], at[77]);    MULADD(at[11], at[76]);    MULADD(at[12], at[75]);    MULADD(at[13], at[74]);    MULADD(at[14], at[73]);    MULADD(at[15], at[72]);    MULADD(at[16], at[71]);    MULADD(at[17], at[70]);    MULADD(at[18], at[69]);    MULADD(at[19], at[68]);    MULADD(at[20], at[67]);    MULADD(at[21], at[66]);    MULADD(at[22], at[65]);    MULADD(at[23], at[64]);    MULADD(at[24], at[63]);    MULADD(at[25], at[62]);    MULADD(at[26], at[61]);    MULADD(at[27], at[60]);    MULADD(at[28], at[59]);    MULADD(at[29], at[58]);    MULADD(at[30], at[57]);    MULADD(at[31], at[56]);    MULADD(at[32], at[55]);    MULADD(at[33], at[54]);    MULADD(at[34], at[53]);    MULADD(at[35], at[52]);    MULADD(at[36], at[51]);    MULADD(at[37], at[50]);    MULADD(at[38], at[49]);    MULADD(at[39], at[48]);
@@ -198,6 +204,10 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FORWARD;
    MULADD(at[0], at[94]);    MULADD(at[1], at[93]);    MULADD(at[2], at[92]);    MULADD(at[3], at[91]);    MULADD(at[4], at[90]);    MULADD(at[5], at[89]);    MULADD(at[6], at[88]);    MULADD(at[7], at[87]);    MULADD(at[8], at[86]);    MULADD(at[9], at[85]);    MULADD(at[10], at[84]);    MULADD(at[11], at[83]);    MULADD(at[12], at[82]);    MULADD(at[13], at[81]);    MULADD(at[14], at[80]);    MULADD(at[15], at[79]);    MULADD(at[16], at[78]);    MULADD(at[17], at[77]);    MULADD(at[18], at[76]);    MULADD(at[19], at[75]);    MULADD(at[20], at[74]);    MULADD(at[21], at[73]);    MULADD(at[22], at[72]);    MULADD(at[23], at[71]);    MULADD(at[24], at[70]);    MULADD(at[25], at[69]);    MULADD(at[26], at[68]);    MULADD(at[27], at[67]);    MULADD(at[28], at[66]);    MULADD(at[29], at[65]);    MULADD(at[30], at[64]);    MULADD(at[31], at[63]);    MULADD(at[32], at[62]);    MULADD(at[33], at[61]);    MULADD(at[34], at[60]);    MULADD(at[35], at[59]);    MULADD(at[36], at[58]);    MULADD(at[37], at[57]);    MULADD(at[38], at[56]);    MULADD(at[39], at[55]);    MULADD(at[40], at[54]);    MULADD(at[41], at[53]);    MULADD(at[42], at[52]);    MULADD(at[43], at[51]);    MULADD(at[44], at[50]);    MULADD(at[45], at[49]);    MULADD(at[46], at[48]);
    COMBA_STORE(C->dp[46]);
+
+   /* early out at 48 digits, 48*32==1536, or two 768 bit operands */
+   if (out_size <= 48) { COMBA_STORE2(C->dp[47]); C->used = 48; C->sign = A->sign ^ B->sign; fp_clamp(C); COMBA_FINI; return; }
+
    /* 47 */
    COMBA_FORWARD;
    MULADD(at[0], at[95]);    MULADD(at[1], at[94]);    MULADD(at[2], at[93]);    MULADD(at[3], at[92]);    MULADD(at[4], at[91]);    MULADD(at[5], at[90]);    MULADD(at[6], at[89]);    MULADD(at[7], at[88]);    MULADD(at[8], at[87]);    MULADD(at[9], at[86]);    MULADD(at[10], at[85]);    MULADD(at[11], at[84]);    MULADD(at[12], at[83]);    MULADD(at[13], at[82]);    MULADD(at[14], at[81]);    MULADD(at[15], at[80]);    MULADD(at[16], at[79]);    MULADD(at[17], at[78]);    MULADD(at[18], at[77]);    MULADD(at[19], at[76]);    MULADD(at[20], at[75]);    MULADD(at[21], at[74]);    MULADD(at[22], at[73]);    MULADD(at[23], at[72]);    MULADD(at[24], at[71]);    MULADD(at[25], at[70]);    MULADD(at[26], at[69]);    MULADD(at[27], at[68]);    MULADD(at[28], at[67]);    MULADD(at[29], at[66]);    MULADD(at[30], at[65]);    MULADD(at[31], at[64]);    MULADD(at[32], at[63]);    MULADD(at[33], at[62]);    MULADD(at[34], at[61]);    MULADD(at[35], at[60]);    MULADD(at[36], at[59]);    MULADD(at[37], at[58]);    MULADD(at[38], at[57]);    MULADD(at[39], at[56]);    MULADD(at[40], at[55]);    MULADD(at[41], at[54]);    MULADD(at[42], at[53]);    MULADD(at[43], at[52]);    MULADD(at[44], at[51]);    MULADD(at[45], at[50]);    MULADD(at[46], at[49]);    MULADD(at[47], at[48]);
@@ -230,6 +240,10 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FORWARD;
    MULADD(at[7], at[95]);    MULADD(at[8], at[94]);    MULADD(at[9], at[93]);    MULADD(at[10], at[92]);    MULADD(at[11], at[91]);    MULADD(at[12], at[90]);    MULADD(at[13], at[89]);    MULADD(at[14], at[88]);    MULADD(at[15], at[87]);    MULADD(at[16], at[86]);    MULADD(at[17], at[85]);    MULADD(at[18], at[84]);    MULADD(at[19], at[83]);    MULADD(at[20], at[82]);    MULADD(at[21], at[81]);    MULADD(at[22], at[80]);    MULADD(at[23], at[79]);    MULADD(at[24], at[78]);    MULADD(at[25], at[77]);    MULADD(at[26], at[76]);    MULADD(at[27], at[75]);    MULADD(at[28], at[74]);    MULADD(at[29], at[73]);    MULADD(at[30], at[72]);    MULADD(at[31], at[71]);    MULADD(at[32], at[70]);    MULADD(at[33], at[69]);    MULADD(at[34], at[68]);    MULADD(at[35], at[67]);    MULADD(at[36], at[66]);    MULADD(at[37], at[65]);    MULADD(at[38], at[64]);    MULADD(at[39], at[63]);    MULADD(at[40], at[62]);    MULADD(at[41], at[61]);    MULADD(at[42], at[60]);    MULADD(at[43], at[59]);    MULADD(at[44], at[58]);    MULADD(at[45], at[57]);    MULADD(at[46], at[56]);    MULADD(at[47], at[55]);
    COMBA_STORE(C->dp[54]);
+
+   /* early out at 56 digits, 56*32==1792, or two 896 bit operands */
+   if (out_size <= 56) { COMBA_STORE2(C->dp[55]); C->used = 56; C->sign = A->sign ^ B->sign; fp_clamp(C); COMBA_FINI; return; }
+
    /* 55 */
    COMBA_FORWARD;
    MULADD(at[8], at[95]);    MULADD(at[9], at[94]);    MULADD(at[10], at[93]);    MULADD(at[11], at[92]);    MULADD(at[12], at[91]);    MULADD(at[13], at[90]);    MULADD(at[14], at[89]);    MULADD(at[15], at[88]);    MULADD(at[16], at[87]);    MULADD(at[17], at[86]);    MULADD(at[18], at[85]);    MULADD(at[19], at[84]);    MULADD(at[20], at[83]);    MULADD(at[21], at[82]);    MULADD(at[22], at[81]);    MULADD(at[23], at[80]);    MULADD(at[24], at[79]);    MULADD(at[25], at[78]);    MULADD(at[26], at[77]);    MULADD(at[27], at[76]);    MULADD(at[28], at[75]);    MULADD(at[29], at[74]);    MULADD(at[30], at[73]);    MULADD(at[31], at[72]);    MULADD(at[32], at[71]);    MULADD(at[33], at[70]);    MULADD(at[34], at[69]);    MULADD(at[35], at[68]);    MULADD(at[36], at[67]);    MULADD(at[37], at[66]);    MULADD(at[38], at[65]);    MULADD(at[39], at[64]);    MULADD(at[40], at[63]);    MULADD(at[41], at[62]);    MULADD(at[42], at[61]);    MULADD(at[43], at[60]);    MULADD(at[44], at[59]);    MULADD(at[45], at[58]);    MULADD(at[46], at[57]);    MULADD(at[47], at[56]);
@@ -262,6 +276,10 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FORWARD;
    MULADD(at[15], at[95]);    MULADD(at[16], at[94]);    MULADD(at[17], at[93]);    MULADD(at[18], at[92]);    MULADD(at[19], at[91]);    MULADD(at[20], at[90]);    MULADD(at[21], at[89]);    MULADD(at[22], at[88]);    MULADD(at[23], at[87]);    MULADD(at[24], at[86]);    MULADD(at[25], at[85]);    MULADD(at[26], at[84]);    MULADD(at[27], at[83]);    MULADD(at[28], at[82]);    MULADD(at[29], at[81]);    MULADD(at[30], at[80]);    MULADD(at[31], at[79]);    MULADD(at[32], at[78]);    MULADD(at[33], at[77]);    MULADD(at[34], at[76]);    MULADD(at[35], at[75]);    MULADD(at[36], at[74]);    MULADD(at[37], at[73]);    MULADD(at[38], at[72]);    MULADD(at[39], at[71]);    MULADD(at[40], at[70]);    MULADD(at[41], at[69]);    MULADD(at[42], at[68]);    MULADD(at[43], at[67]);    MULADD(at[44], at[66]);    MULADD(at[45], at[65]);    MULADD(at[46], at[64]);    MULADD(at[47], at[63]);
    COMBA_STORE(C->dp[62]);
+
+   /* early out at 64 digits, 64*32==2048, or two 1024 bit operands */
+   if (out_size <= 64) { COMBA_STORE2(C->dp[63]); C->used = 64; C->sign = A->sign ^ B->sign; fp_clamp(C); COMBA_FINI; return; }
+
    /* 63 */
    COMBA_FORWARD;
    MULADD(at[16], at[95]);    MULADD(at[17], at[94]);    MULADD(at[18], at[93]);    MULADD(at[19], at[92]);    MULADD(at[20], at[91]);    MULADD(at[21], at[90]);    MULADD(at[22], at[89]);    MULADD(at[23], at[88]);    MULADD(at[24], at[87]);    MULADD(at[25], at[86]);    MULADD(at[26], at[85]);    MULADD(at[27], at[84]);    MULADD(at[28], at[83]);    MULADD(at[29], at[82]);    MULADD(at[30], at[81]);    MULADD(at[31], at[80]);    MULADD(at[32], at[79]);    MULADD(at[33], at[78]);    MULADD(at[34], at[77]);    MULADD(at[35], at[76]);    MULADD(at[36], at[75]);    MULADD(at[37], at[74]);    MULADD(at[38], at[73]);    MULADD(at[39], at[72]);    MULADD(at[40], at[71]);    MULADD(at[41], at[70]);    MULADD(at[42], at[69]);    MULADD(at[43], at[68]);    MULADD(at[44], at[67]);    MULADD(at[45], at[66]);    MULADD(at[46], at[65]);    MULADD(at[47], at[64]);
@@ -294,6 +312,10 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FORWARD;
    MULADD(at[23], at[95]);    MULADD(at[24], at[94]);    MULADD(at[25], at[93]);    MULADD(at[26], at[92]);    MULADD(at[27], at[91]);    MULADD(at[28], at[90]);    MULADD(at[29], at[89]);    MULADD(at[30], at[88]);    MULADD(at[31], at[87]);    MULADD(at[32], at[86]);    MULADD(at[33], at[85]);    MULADD(at[34], at[84]);    MULADD(at[35], at[83]);    MULADD(at[36], at[82]);    MULADD(at[37], at[81]);    MULADD(at[38], at[80]);    MULADD(at[39], at[79]);    MULADD(at[40], at[78]);    MULADD(at[41], at[77]);    MULADD(at[42], at[76]);    MULADD(at[43], at[75]);    MULADD(at[44], at[74]);    MULADD(at[45], at[73]);    MULADD(at[46], at[72]);    MULADD(at[47], at[71]);
    COMBA_STORE(C->dp[70]);
+
+   /* early out at 72 digits, 72*32==2304, or two 1152 bit operands */
+   if (out_size <= 72) { COMBA_STORE2(C->dp[71]); C->used = 72; C->sign = A->sign ^ B->sign; fp_clamp(C); COMBA_FINI; return; }
+
    /* 71 */
    COMBA_FORWARD;
    MULADD(at[24], at[95]);    MULADD(at[25], at[94]);    MULADD(at[26], at[93]);    MULADD(at[27], at[92]);    MULADD(at[28], at[91]);    MULADD(at[29], at[90]);    MULADD(at[30], at[89]);    MULADD(at[31], at[88]);    MULADD(at[32], at[87]);    MULADD(at[33], at[86]);    MULADD(at[34], at[85]);    MULADD(at[35], at[84]);    MULADD(at[36], at[83]);    MULADD(at[37], at[82]);    MULADD(at[38], at[81]);    MULADD(at[39], at[80]);    MULADD(at[40], at[79]);    MULADD(at[41], at[78]);    MULADD(at[42], at[77]);    MULADD(at[43], at[76]);    MULADD(at[44], at[75]);    MULADD(at[45], at[74]);    MULADD(at[46], at[73]);    MULADD(at[47], at[72]);
@@ -326,6 +348,10 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FORWARD;
    MULADD(at[31], at[95]);    MULADD(at[32], at[94]);    MULADD(at[33], at[93]);    MULADD(at[34], at[92]);    MULADD(at[35], at[91]);    MULADD(at[36], at[90]);    MULADD(at[37], at[89]);    MULADD(at[38], at[88]);    MULADD(at[39], at[87]);    MULADD(at[40], at[86]);    MULADD(at[41], at[85]);    MULADD(at[42], at[84]);    MULADD(at[43], at[83]);    MULADD(at[44], at[82]);    MULADD(at[45], at[81]);    MULADD(at[46], at[80]);    MULADD(at[47], at[79]);
    COMBA_STORE(C->dp[78]);
+
+   /* early out at 80 digits, 80*32==2560, or two 1280 bit operands */
+   if (out_size <= 80) { COMBA_STORE2(C->dp[79]); C->used = 80; C->sign = A->sign ^ B->sign; fp_clamp(C); COMBA_FINI; return; }
+
    /* 79 */
    COMBA_FORWARD;
    MULADD(at[32], at[95]);    MULADD(at[33], at[94]);    MULADD(at[34], at[93]);    MULADD(at[35], at[92]);    MULADD(at[36], at[91]);    MULADD(at[37], at[90]);    MULADD(at[38], at[89]);    MULADD(at[39], at[88]);    MULADD(at[40], at[87]);    MULADD(at[41], at[86]);    MULADD(at[42], at[85]);    MULADD(at[43], at[84]);    MULADD(at[44], at[83]);    MULADD(at[45], at[82]);    MULADD(at[46], at[81]);    MULADD(at[47], at[80]);
@@ -358,6 +384,10 @@ void fp_mul_comba48(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FORWARD;
    MULADD(at[39], at[95]);    MULADD(at[40], at[94]);    MULADD(at[41], at[93]);    MULADD(at[42], at[92]);    MULADD(at[43], at[91]);    MULADD(at[44], at[90]);    MULADD(at[45], at[89]);    MULADD(at[46], at[88]);    MULADD(at[47], at[87]);
    COMBA_STORE(C->dp[86]);
+
+   /* early out at 88 digits, 88*32==2816, or two 1408 bit operands */
+   if (out_size <= 88) { COMBA_STORE2(C->dp[87]); C->used = 88; C->sign = A->sign ^ B->sign; fp_clamp(C); COMBA_FINI; return; }
+
    /* 87 */
    COMBA_FORWARD;
    MULADD(at[40], at[95]);    MULADD(at[41], at[94]);    MULADD(at[42], at[93]);    MULADD(at[43], at[92]);    MULADD(at[44], at[91]);    MULADD(at[45], at[90]);    MULADD(at[46], at[89]);    MULADD(at[47], at[88]);

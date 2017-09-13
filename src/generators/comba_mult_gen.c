@@ -25,7 +25,7 @@ printf(
 "void fp_mul_comba%d(fp_int *A, fp_int *B, fp_int *C)\n"
 "{\n"
 "   fp_digit c0, c1, c2, at[%d];\n", N, N+N, N, N+N);
-if (N == 32) {
+if (N >= 32) {
 printf(
 "   int out_size;\n"
 "\n"
@@ -59,7 +59,7 @@ printf(
 printf(
 "\n"
 "   COMBA_STORE(C->dp[%d]);\n", x);
-if (N == 32 && N*2 != (x+2) &&(x+2) >= 40 && (x+2)%8 == 0) {
+if (N >= 32 && N*2 != (x+2) &&(x+2) >= 40 && (x+2)%8 == 0) {
    printf(
 "\n"
 "   /* early out at %d digits, %d*32==%d, or two %d bit operands */\n"
