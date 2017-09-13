@@ -41,33 +41,61 @@ mulmod
 #undef DIGIT_BIT
 #include "../src/headers/tfm.h"
 
+#ifdef TFM_MTEST_REAL_RAND
+#define getRandChar() fgetc(rng)
 FILE *rng;
+#else
+#define getRandChar() (rand()&0xFF)
+#endif
 
-/* 1-2048 bit numbers */
 void rand_num(mp_int *a)
 {
    int size;
-   unsigned char buf[(FP_MAX_SIZE/16 - DIGIT_BIT/2) + 1];
+   unsigned char buf[2048];
+   size_t sz;
 
-   size = 1 + ((fgetc(rng)<<8) + fgetc(rng)) % (FP_MAX_SIZE/16 - DIGIT_BIT/2);
-   buf[0] = (fgetc(rng)&1)?1:0;
-   fread(buf+1, 1, size, rng);
-   while (buf[1] == 0) buf[1] = fgetc(rng);
+   size = 1 + ((getRandChar()<<8) + getRandChar()) % 101;
+   buf[0] = (getRandChar()&1)?1:0;
+#ifdef TFM_MTEST_REAL_RAND
+   sz = fread(buf+1, 1, size, rng);
+#else
+   sz = 1;
+   while (sz < (unsigned)size) {
+       buf[sz] = getRandChar();
+       ++sz;
+   }
+#endif
+   if (sz != (unsigned)size) {
+       fprintf(stderr, "\nWarning: fread failed\n\n");
+   }
+   while (buf[1] == 0) buf[1] = getRandChar();
    mp_read_raw(a, buf, 1+size);
 }
 
-/* 1-256 bit numbers (to test things like exptmod) */
 void rand_num2(mp_int *a)
 {
    int size;
-   unsigned char buf[(FP_MAX_SIZE/16 - DIGIT_BIT/2) + 1];
+   unsigned char buf[2048];
+   size_t sz;
 
-   size = 1 + ((fgetc(rng)<<8) + fgetc(rng)) % (FP_MAX_SIZE/16 - DIGIT_BIT/2);
-   buf[0] = (fgetc(rng)&1)?1:0;
-   fread(buf+1, 1, size, rng);
-   while (buf[1] == 0) buf[1] = fgetc(rng);
+   size = 10 + ((getRandChar()<<8) + getRandChar()) % 101;
+   buf[0] = (getRandChar()&1)?1:0;
+#ifdef TFM_MTEST_REAL_RAND
+   sz = fread(buf+1, 1, size, rng);
+#else
+   sz = 1;
+   while (sz < (unsigned)size) {
+       buf[sz] = getRandChar();
+       ++sz;
+   }
+#endif
+   if (sz != (unsigned)size) {
+       fprintf(stderr, "\nWarning: fread failed\n\n");
+   }
+   while (buf[1] == 0) buf[1] = getRandChar();
    mp_read_raw(a, buf, 1+size);
 }
+
 
 #define mp_to64(a, b) mp_toradix_n(a, b, 64, sizeof(b))
 
@@ -126,6 +154,7 @@ int main(int argc, char *argv[])
    }
 */
 
+#ifdef TFM_MTEST_REAL_RAND
    rng = fopen("/dev/urandom", "rb");
    if (rng == NULL) {
       rng = fopen("/dev/random", "rb");
@@ -134,6 +163,9 @@ int main(int argc, char *argv[])
          rng = stdin;
       }
    }
+#else
+   srand(23);
+#endif
 
 #ifdef MTEST_NO_FULLSPEED
    t1 = clock();
@@ -145,7 +177,7 @@ int main(int argc, char *argv[])
          t1 = clock();
       }
 #endif
-       n = fgetc(rng) % 16;
+       n = getRandChar() % 16;
        if (max != 0) {
            --max;
            if (max == 0)
@@ -214,7 +246,7 @@ int main(int argc, char *argv[])
       /* mul_2d test */
       rand_num(&a);
       mp_copy(&a, &b);
-      n = fgetc(rng) & 63;
+      n = getRandChar() & 63;
       mp_mul_2d(&b, n, &b);
       mp_to64(&a, buf);
       printf("mul2d\n");
@@ -226,7 +258,7 @@ int main(int argc, char *argv[])
       /* div_2d test */
       rand_num(&a);
       mp_copy(&a, &b);
-      n = fgetc(rng) & 63;
+      n = getRandChar() & 63;
       mp_div_2d(&b, n, &b, NULL);
       mp_to64(&a, buf);
       printf("div2d\n");
@@ -349,7 +381,9 @@ int main(int argc, char *argv[])
       break;
    }
    }
+#ifdef TFM_MTEST_REAL_RAND
    fclose(rng);
+#endif
    return 0;
 }
 
