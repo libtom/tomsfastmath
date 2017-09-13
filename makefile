@@ -11,23 +11,6 @@ UNINSTALL_CMD = rm
 
 include makefile_include.mk
 
-
-# Compiler and Linker Names
-ifndef PREFIX
-  PREFIX=
-endif
-
-ifeq ($(CC),cc)
-  CC = $(PREFIX)gcc
-endif
-LD=$(PREFIX)ld
-AR=$(PREFIX)ar
-RANLIB=$(PREFIX)ranlib
-
-ifndef MAKE
-   MAKE=make
-endif
-
 ifeq ($V,1)
 silent=
 else
@@ -104,12 +87,12 @@ timing: $(LIBNAME) demo/timing.o
 	$(CC) $(CFLAGS) demo/timing.o $(LIBNAME) $(PROF) -o timing
 
 profiled:
-	CC="$(CC)" PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-generate" MAKE=${MAKE} ${MAKE} timing
+	CC="$(CC)" CROSS_COMPILE="${CROSS_COMPILE} CFLAGS="${CFLAGS} -fprofile-generate" MAKE=${MAKE} ${MAKE} timing
 	./test
 	rm -f `find . -type f -name "*.o" | xargs`
 	rm -f `find . -type f -name "*.a" | xargs`
 	rm -f test
-	CC=$(CC) PREFIX="${PREFIX} CFLAGS="${CFLAGS} -fprofile-use" MAKE=${MAKE} ${MAKE} timing
+	CC=$(CC) CROSS_COMPILE="${CROSS_COMPILE} CFLAGS="${CFLAGS} -fprofile-use" MAKE=${MAKE} ${MAKE} timing
 
 # target that pre-processes all coverage data
 lcov-single-create:

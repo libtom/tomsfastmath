@@ -14,6 +14,23 @@ endif
 #
 VERSION=0.13.1-next
 VERSION_LIB=1:0:0
+VERSION_PC=0.13.1
+
+# Compiler and Linker Names
+ifndef CROSS_COMPILE
+  CROSS_COMPILE:=
+endif
+
+ifeq ($(CC),cc)
+  CC := $(CROSS_COMPILE)gcc
+endif
+LD:=$(CROSS_COMPILE)ld
+AR:=$(CROSS_COMPILE)ar
+RANLIB=$(CROSS_COMPILE)ranlib
+
+ifndef MAKE
+   MAKE=make
+endif
 
 #
 # Compilation flags
@@ -52,9 +69,10 @@ endif
 #
 # (Un)Install related variables
 #
-DESTDIR  ?= /usr/local
-LIBPATH  ?= $(DESTDIR)/lib
-INCPATH  ?= $(DESTDIR)/include
+DESTDIR  ?=
+PREFIX   ?= /usr/local
+LIBPATH  ?= $(PREFIX)/lib
+INCPATH  ?= $(PREFIX)/include
 
 
 #
@@ -65,16 +83,16 @@ default: $(LIBNAME)
 
 
 .common_install: $(LIBNAME)
-	install -d $(LIBPATH)
-	$(INSTALL_CMD) $(LIBNAME) $(LIBPATH)/$(LIBNAME)
-	install -d $(INCPATH)
-	install $(HEADERS_PUB) $(INCPATH)
+	install -d $(DESTDIR)$(LIBPATH)
+	$(INSTALL_CMD) $(LIBNAME) $(DESTDIR)$(LIBPATH)/$(LIBNAME)
+	install -d $(DESTDIR)$(INCPATH)
+	install $(HEADERS_PUB) $(DESTDIR)$(INCPATH)
 
 
 HEADER_FILES=$(notdir $(HEADERS_PUB))
 .common_uninstall:
-	$(UNINSTALL_CMD) $(LIBPATH)/$(LIBNAME)
-	rm $(HEADER_FILES:%=$(INCPATH)/%)
+	$(UNINSTALL_CMD) $(DESTDIR)$(LIBPATH)/$(LIBNAME)
+	rm $(HEADER_FILES:%=$(DESTDIR)$(INCPATH)/%)
 
 
 #This rule cleans the source tree of all compiled code, not including the pdf
