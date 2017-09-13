@@ -17,6 +17,13 @@ else
 silent=@
 endif
 
+ifeq ($(COVERAGE),1)
+CFLAGS += -fprofile-arcs -ftest-coverage
+LDFLAGS += -lgcov
+LIB_PRE = -Wl,--whole-archive
+LIB_POST = -Wl,--no-whole-archive
+endif
+
 %.o: %.c
 ifneq ($V,1)
 	@echo "   * ${CC} $@"
@@ -66,13 +73,13 @@ uninstall: .common_uninstall
 
 .PHONY: test
 test: $(LIBNAME) demo/test.o
-	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
+	$(CC) $(CFLAGS) demo/test.o $(LIB_PRE) $(LIBNAME) $(LIB_POST) $(PROF) -o test
 
 test_standalone: CFLAGS+=-DTFM_DEMO_TEST_VS_MTEST=0
 
 .PHONY: test_standalone
 test_standalone: $(LIBNAME) demo/test.o
-	$(CC) $(CFLAGS) demo/test.o $(LIBNAME) $(PROF) -o test
+	$(CC) $(CFLAGS) demo/test.o $(LIB_PRE) $(LIBNAME) $(LIB_POST) $(PROF) -o test
 
 testme: test mtest
 	./mtest/mtest -15 | ./test
@@ -115,8 +122,7 @@ coverage: LDFLAGS += -lgcov
 coverage: LIB_PRE = -Wl,--whole-archive
 coverage: LIB_POST = -Wl,--no-whole-archive
 
-coverage:
-	$(MAKE) testme
+coverage: testme
 	$(MAKE) lcov-single
 
 stest: $(LIBNAME) demo/stest.o
