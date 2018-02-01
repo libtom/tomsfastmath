@@ -16,8 +16,10 @@ int main(int argc, char **argv)
    int x, y, z, N, f;
 
 printf(
+"#ifndef TFM_PRE_GEN_MPI_C\n"
 "#define TFM_DEFINES\n"
 "#include \"fp_sqr_comba.c\"\n"
+"#endif\n"
 "\n"
 "#if defined(TFM_SMALL_SET)\n"
 "void fp_sqr_comba_small(fp_int *A, fp_int *B)\n"

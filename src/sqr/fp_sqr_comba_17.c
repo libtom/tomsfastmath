@@ -1,5 +1,7 @@
+#ifndef TFM_PRE_GEN_MPI_C
 #define TFM_DEFINES
 #include "fp_sqr_comba.c"
+#endif
 
 #if defined(TFM_SQR17) && FP_SIZE >= 34
 void fp_sqr_comba17(fp_int *A, fp_int *B)

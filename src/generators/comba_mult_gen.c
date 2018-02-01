@@ -19,8 +19,10 @@ int main(int argc, char **argv)
 
    /* print out preamble */
 printf(
+"#ifndef TFM_PRE_GEN_MPI_C\n"
 "#define TFM_DEFINES\n"
 "#include \"fp_mul_comba.c\"\n"
+"#endif\n"
 "\n"
 "#if defined(TFM_MUL%d) && FP_SIZE >= %d\n"
 "void fp_mul_comba%d(fp_int *A, fp_int *B, fp_int *C)\n"

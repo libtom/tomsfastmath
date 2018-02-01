@@ -1,5 +1,7 @@
+#ifndef TFM_PRE_GEN_MPI_C
 #define TFM_DEFINES
 #include "fp_mul_comba.c"
+#endif
 
 #if defined(TFM_MUL7) && FP_SIZE >= 14
 void fp_mul_comba7(fp_int *A, fp_int *B, fp_int *C)

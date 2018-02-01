@@ -1,5 +1,7 @@
+#ifndef TFM_PRE_GEN_MPI_C
 #define TFM_DEFINES
 #include "fp_mul_comba.c"
+#endif
 
 #if defined(TFM_SMALL_SET)
 void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C)

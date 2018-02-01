@@ -8,8 +8,10 @@
  * Tom St Denis, tomstdenis@gmail.com
  */
 
+#ifndef TFM_PRE_GEN_MPI_C
 #define TFM_DEFINES
 #include "fp_sqr_comba.c"
+#endif
 
 /* generic comba squarer */
 void fp_sqr_comba(fp_int *A, fp_int *B)

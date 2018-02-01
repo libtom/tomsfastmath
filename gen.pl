@@ -6,6 +6,7 @@
 use strict;
 
 open( OUT, ">mpi.c" ) or die "Couldn't open mpi.c for writing: $!";
+print OUT "#define TFM_PRE_GEN_MPI_C\n";
 foreach my $filename (glob "src/*/*fp_*.c") {
    next if ($filename eq "fp_sqr_comba_generic.c");
    open( SRC, "<$filename" ) or die "Couldn't open $filename for reading: $!";

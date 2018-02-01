@@ -17,8 +17,10 @@ int main(int argc, char **argv)
    N = atoi(argv[1]);
 
 printf(
+"#ifndef TFM_PRE_GEN_MPI_C\n"
 "#define TFM_DEFINES\n"
 "#include \"fp_sqr_comba.c\"\n"
+"#endif\n"
 "\n"
 "#if defined(TFM_SQR%d) && FP_SIZE >= %d\n"
 "void fp_sqr_comba%d(fp_int *A, fp_int *B)\n"

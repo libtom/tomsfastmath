@@ -1,5 +1,7 @@
+#ifndef TFM_PRE_GEN_MPI_C
 #define TFM_DEFINES
 #include "fp_mul_comba.c"
+#endif
 
 #if defined(TFM_MUL32) && FP_SIZE >= 64
 void fp_mul_comba32(fp_int *A, fp_int *B, fp_int *C)
