@@ -13,7 +13,7 @@ int fp_toradix_n(fp_int *a, char *str, int radix, int maxlen)
 {
    int digs;
    fp_int t;
-   fp_digit d;
+   fp_digit d = 0;
    char *_s = str;
 
    /* check range of the radix */
