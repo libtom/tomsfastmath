@@ -335,7 +335,7 @@ const char *fp_ident(void);
 
 /* zero/even/odd ? */
 #define fp_iszero(a) (((a)->used == 0) ? FP_YES : FP_NO)
-#define fp_iseven(a) (((a)->used >= 0 && (((a)->dp[0] & 1) == 0)) ? FP_YES : FP_NO)
+#define fp_iseven(a) (((a)->used == 0 && (((a)->dp[0] & 1) == 0)) ? FP_YES : FP_NO)
 #define fp_isodd(a)  (((a)->used > 0  && (((a)->dp[0] & 1) == 1)) ? FP_YES : FP_NO)
 
 /* set to a small digit */
