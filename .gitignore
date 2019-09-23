@@ -16,6 +16,7 @@
 test_*.txt
 *.pc
 doc/tfm.pdf
+pre_gen/
 
 *.gcda
 *.gcno
