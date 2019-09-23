@@ -57,14 +57,7 @@ printf(
 "      COMBA_FINI;\n"
 "      break;\n", N+N-1, N+N);
 }
-printf("   }\n}\n\n#endif\n\n\n"
-"/* $Source$ */\n"
-"/* $Revision$ */\n"
-"/* $Date$ */\n");
+printf("   }\n}\n\n#endif\n");
 
   return 0;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

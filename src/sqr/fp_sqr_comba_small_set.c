@@ -1519,7 +1519,3 @@ void fp_sqr_comba_small(fp_int *A, fp_int *B)
 }
 
 #endif /* TFM_SMALL_SET */
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

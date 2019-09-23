@@ -59,8 +59,3 @@ void fp_sqr_comba4(fp_int *A, fp_int *B)
    fp_clamp(B);
 }
 #endif
-
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

@@ -573,8 +573,3 @@ void fp_mul_comba64(fp_int *A, fp_int *B, fp_int *C)
    COMBA_FINI;
 }
 #endif
-
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- * 
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- * 
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
 int fp_count_bits (fp_int * a)
@@ -30,7 +23,3 @@ int fp_count_bits (fp_int * a)
   }
   return r;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

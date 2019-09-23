@@ -435,9 +435,3 @@ draw(&a);draw(&b);draw(&c);draw(&d);
    }
 #endif
 }
-
-
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

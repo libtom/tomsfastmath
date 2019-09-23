@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- *
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 
 /* Generates squaring comba code... it learns it knows our secrets! */
 #include <stdio.h>
@@ -108,15 +101,8 @@ printf(
 "      break;\n\n", N+N, N+N);
 }
 
-printf("}\n}\n\n#endif /* TFM_SMALL_SET */\n\n"
-"/* $Source$ */\n"
-"/* $Revision$ */\n"
-"/* $Date$ */\n"
+printf("}\n}\n\n#endif /* TFM_SMALL_SET */\n"
 );
 
   return 0;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

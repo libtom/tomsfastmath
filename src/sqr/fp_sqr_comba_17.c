@@ -189,8 +189,3 @@ void fp_sqr_comba17(fp_int *A, fp_int *B)
    fp_clamp(B);
 }
 #endif
-
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

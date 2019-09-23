@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- *
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -100,15 +93,8 @@ printf(
 "   B->sign = FP_ZPOS;\n"
 "   memcpy(B->dp, b, %d * sizeof(fp_digit));\n"
 "   fp_clamp(B);\n"
-"}\n#endif\n\n\n"
-"/* $Source$ */\n"
-"/* $Revision$ */\n"
-"/* $Date$ */\n"
+"}\n#endif\n"
 , N+N, N+N);
 
   return 0;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */
