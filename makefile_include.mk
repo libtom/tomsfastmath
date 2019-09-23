@@ -134,7 +134,6 @@ docs:
 doc/tfm.pdf:
 	$(MAKE) -C doc/ tfm.pdf V=$(V)
 
-.PHONY: pre_gen
 pre_gen:
 	mkdir -p pre_gen
 	perl gen.pl
@@ -161,3 +160,5 @@ zipup: doc/tfm.pdf
 
 new_file:
 	bash updatemakes.sh
+
+.PHONY: pre_gen doc/tfm.pdf
