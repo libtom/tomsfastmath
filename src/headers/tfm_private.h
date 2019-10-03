@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- *
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #ifndef TFM_PRIVATE_H_
 #define TFM_PRIVATE_H_
 
@@ -119,7 +112,3 @@ void fp_sqr_comba64(fp_int *A, fp_int *B);
 extern const char *fp_s_rmap;
 
 #endif
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

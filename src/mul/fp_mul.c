@@ -125,8 +125,3 @@ clean:
        C->dp[y] = 0;
     }
 }
-
-
-/* $Source: /cvs/libtom/tomsfastmath/src/mul/fp_mul.c,v $ */
-/* $Revision: 1.1 $ */
-/* $Date: 2006/12/31 21:25:53 $ */

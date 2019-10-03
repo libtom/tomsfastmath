@@ -112,8 +112,3 @@ clean:
        B->dp[y] = 0;
     }
 }
-
-
-/* $Source: /cvs/libtom/tomsfastmath/src/sqr/fp_sqr.c,v $ */
-/* $Revision: 1.1 $ */
-/* $Date: 2006/12/31 21:25:53 $ */

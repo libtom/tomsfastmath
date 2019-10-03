@@ -27,6 +27,7 @@ mulmod
 1
 
  */
+/* SPDX-License-Identifier: Unlicense */
 
 #ifdef MP_8BIT
 #define THE_MASK 127

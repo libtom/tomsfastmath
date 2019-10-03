@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# SPDX-License-Identifier: Unlicense
 
 bash genlist.sh > tmplist
 

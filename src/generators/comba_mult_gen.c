@@ -12,6 +12,8 @@ int main(int argc, char **argv)
 
    /* print out preamble */
 printf(
+"/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */\n"
+"/* SPDX-License-Identifier: Unlicense */\n"
 "#ifndef TFM_PRE_GEN_MPI_C\n"
 "#define TFM_DEFINES\n"
 "#include \"fp_mul_comba.c\"\n"

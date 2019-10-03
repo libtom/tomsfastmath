@@ -1,6 +1,8 @@
 #!/bin/bash -e
 #
 # Can be run with e.g. ./testme.sh "gcc-4.8 gcc-4.9", defaults to ./testme.sh "gcc"
+#
+# SPDX-License-Identifier: Unlicense
 
 _runtest()
 {

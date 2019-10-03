@@ -3,6 +3,7 @@
 # Generates a "single file" you can use to quickly
 # add the whole source without any makefile troubles
 #
+# SPDX-License-Identifier: Unlicense
 use strict;
 
 open( OUT, ">mpi.c" ) or die "Couldn't open mpi.c for writing: $!";

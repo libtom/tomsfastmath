@@ -1,6 +1,7 @@
 #
 # Include makefile used by makefile + makefile.shared
 #  (GNU make only)
+# SPDX-License-Identifier: Unlicense
 
 ifndef INSTALL_CMD
 $(error your makefile must define INSTALL_CMD)

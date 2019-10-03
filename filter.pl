@@ -1,6 +1,8 @@
 #!/usr/bin/perl
-
+#
 # we want to filter every between START_INS and END_INS out and then insert crap from another file (this is fun)
+#
+# SPDX-License-Identifier: Unlicense
 
 $dst = shift;
 $ins = shift;
