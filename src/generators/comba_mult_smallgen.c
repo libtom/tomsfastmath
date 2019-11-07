@@ -1,3 +1,6 @@
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
+
 /* program emits a NxN comba multiplier for 1x1 to 16x16 */
 #include <stdio.h>
 
@@ -7,6 +10,8 @@ int main(int argc, char **argv)
 
    /* print out preamble */
 printf(
+"/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */\n"
+"/* SPDX-License-Identifier: Unlicense */\n"
 "#ifndef TFM_PRE_GEN_MPI_C\n"
 "#define TFM_DEFINES\n"
 "#include \"fp_mul_comba.c\"\n"
@@ -57,14 +62,7 @@ printf(
 "      COMBA_FINI;\n"
 "      break;\n", N+N-1, N+N);
 }
-printf("   }\n}\n\n#endif\n\n\n"
-"/* $Source$ */\n"
-"/* $Revision$ */\n"
-"/* $Date$ */\n");
+printf("   }\n}\n\n#endif\n");
 
   return 0;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

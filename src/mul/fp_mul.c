@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- *
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
 /* c = a * b */
@@ -132,8 +125,3 @@ clean:
        C->dp[y] = 0;
     }
 }
-
-
-/* $Source: /cvs/libtom/tomsfastmath/src/mul/fp_mul.c,v $ */
-/* $Revision: 1.1 $ */
-/* $Date: 2006/12/31 21:25:53 $ */

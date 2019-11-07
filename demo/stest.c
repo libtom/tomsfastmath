@@ -1,3 +1,6 @@
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
+
 /* A simple static test program. */
 #include <tfm.h>
 
@@ -180,8 +183,3 @@ int main(void)
 
    return 0;
 }
-
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

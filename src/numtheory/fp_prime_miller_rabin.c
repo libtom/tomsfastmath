@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- * 
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- * 
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
 /* Miller-Rabin test of "a" to the base of "b" as described in 
@@ -71,7 +64,3 @@ void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result)
   /* probably prime now */
   *result = FP_YES;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

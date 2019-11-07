@@ -1,6 +1,6 @@
-#makefile for TomsFastMath
-#
-#
+# makefile for TomsFastMath, a fast ISO C bignum library. -- Tom St Denis
+# SPDX-License-Identifier: Unlicense
+
 ifndef LIBNAME
 	LIBNAME=libtfm.la
 endif
@@ -80,8 +80,3 @@ stest: $(LIBNAME) demo/stest.o
 .PHONY: timing
 timing: $(LIBNAME) demo/timing.o
 	$(LT) --mode=link --tag=CC $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o timing demo/timing.o $(LIBNAME)
-
-# $Source$
-# $Revision$
-# $Date$
-

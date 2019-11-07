@@ -1,3 +1,6 @@
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,6 +11,8 @@ int main(int argc, char **argv)
 
 printf(
 #if 1
+"/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */\n"
+"/* SPDX-License-Identifier: Unlicense */\n"
 "#ifdef TFM_SMALL_MONT_SET\n"
 "/* computes x/R == x (mod N) via Montgomery Reduction */\n"
 "void fp_montgomery_reduce_small(fp_int *a, fp_int *m, fp_digit mp)\n"

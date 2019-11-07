@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- * 
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- * 
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
 static int fp_invmod_slow (fp_int * a, fp_int * b, fp_int * c)
@@ -201,7 +194,3 @@ top:
   c->sign = neg;
   return FP_OKAY;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

@@ -1,12 +1,5 @@
-/*
- *
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
 #if defined(TFM_PRESCOTT) && defined(TFM_SSE2)
@@ -671,7 +664,3 @@ asm(                              \
    } while (0);
 
 #endif
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

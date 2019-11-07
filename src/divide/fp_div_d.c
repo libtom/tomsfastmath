@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- * 
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- * 
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
 static int s_is_power_of_two(fp_digit b, int *p)
@@ -91,8 +84,3 @@ int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
  
   return FP_OKAY;
 }
-
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

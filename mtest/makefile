@@ -1,3 +1,6 @@
+# TomsFastMath, a fast ISO C bignum library. -- Tom St Denis
+# SPDX-License-Identifier: Unlicense
+
 CFLAGS += -Wall -W -O3 -Wno-unused-result
 
 default: mtest

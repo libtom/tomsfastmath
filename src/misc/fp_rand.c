@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- *
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
 #if FP_GEN_RANDOM_MAX == 0xffffffff
@@ -59,7 +52,3 @@ void fp_rand(fp_int *a, int digits)
    return;
 
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

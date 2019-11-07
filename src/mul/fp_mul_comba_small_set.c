@@ -1,3 +1,5 @@
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #ifndef TFM_PRE_GEN_MPI_C
 #define TFM_DEFINES
 #include "fp_mul_comba.c"
@@ -1228,8 +1230,3 @@ void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C)
 }
 
 #endif
-
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

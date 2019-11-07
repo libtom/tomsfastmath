@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- *
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
 /* This is possibly the mother of all prime generation functions, muahahahahaha! */
@@ -95,7 +88,3 @@ error:
    free(tmp);
    return err;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

@@ -1,12 +1,11 @@
-/* TomsFastMath, a fast ISO C bignum library.
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis
  *
  * This project is meant to fill in where LibTomMath
  * falls short.  That is speed ;-)
  *
  * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
  */
+/* SPDX-License-Identifier: Unlicense */
 #ifndef TFM_H_
 #define TFM_H_
 
@@ -492,7 +491,3 @@ int fp_toradix(fp_int *a, char *str, int radix);
 int fp_toradix_n(fp_int * a, char *str, int radix, int maxlen);
 
 #endif
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

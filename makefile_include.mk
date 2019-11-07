@@ -1,6 +1,7 @@
 #
 # Include makefile used by makefile + makefile.shared
 #  (GNU make only)
+# SPDX-License-Identifier: Unlicense
 
 ifndef INSTALL_CMD
 $(error your makefile must define INSTALL_CMD)
@@ -134,13 +135,13 @@ docs:
 doc/tfm.pdf:
 	$(MAKE) -C doc/ tfm.pdf V=$(V)
 
-.PHONY: pre_gen
 pre_gen:
+	mkdir -p pre_gen
 	perl gen.pl
 	sed -e 's/[[:blank:]]*$$//' mpi.c > pre_gen/mpi.c
 	rm mpi.c
 
-zipup: pre_gen doc/tfm.pdf
+zipup: doc/tfm.pdf
 	@# Update the index, so diff-index won't fail in case the pdf has been created.
 	@#   As the pdf creation modifies tfm.tex, git sometimes detects the
 	@#   modified file, but misses that it's put back to its original version.
@@ -151,6 +152,7 @@ zipup: pre_gen doc/tfm.pdf
 	git archive --format=tar --prefix=tomsfastmath-$(VERSION)/ HEAD | tar x
 	mkdir -p tomsfastmath-$(VERSION)/doc
 	cp doc/tfm.pdf tomsfastmath-$(VERSION)/doc/tfm.pdf
+	$(MAKE) -C tomsfastmath-$(VERSION)/ pre_gen
 	tar -c tomsfastmath-$(VERSION)/ | xz -6e -c - > tfm-$(VERSION).tar.xz
 	zip -9rq tfm-$(VERSION).zip tomsfastmath-$(VERSION)
 	rm -rf tomsfastmath-$(VERSION)
@@ -159,3 +161,5 @@ zipup: pre_gen doc/tfm.pdf
 
 new_file:
 	bash updatemakes.sh
+
+.PHONY: pre_gen doc/tfm.pdf

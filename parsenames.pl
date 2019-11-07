@@ -4,6 +4,7 @@
 # wrapped at 80 chars 
 # 
 # Tom St Denis
+# SPDX-License-Identifier: Unlicense
 @a = split(" ", $ARGV[1]);
 $b = "$ARGV[0]=";
 $len = length($b);
@@ -20,7 +21,3 @@ foreach my $obj (@a) {
 #if ($ARGV[0] eq "HEADERS") { print "testprof/tomcrypt_test.h"; }
 
 print "\n\n";
-
-# $Source: /cvs/libtom/tomsfastmath/parsenames.pl,v $   
-# $Revision: 1.1 $   
-# $Date: 2006/12/31 21:31:40 $ 

@@ -1,12 +1,5 @@
-/* TomsFastMath, a fast ISO C bignum library.
- *
- * This project is meant to fill in where LibTomMath
- * falls short.  That is speed ;-)
- *
- * This project is public domain and free for all purposes.
- *
- * Tom St Denis, tomstdenis@gmail.com
- */
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 
 /* program emits a NxN comba multiplier */
 #include <stdio.h>
@@ -19,6 +12,8 @@ int main(int argc, char **argv)
 
    /* print out preamble */
 printf(
+"/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */\n"
+"/* SPDX-License-Identifier: Unlicense */\n"
 "#ifndef TFM_PRE_GEN_MPI_C\n"
 "#define TFM_DEFINES\n"
 "#include \"fp_mul_comba.c\"\n"
@@ -77,15 +72,8 @@ printf(
 "   C->sign = A->sign ^ B->sign;\n"
 "   fp_clamp(C);\n"
 "   COMBA_FINI;\n"
-"}\n#endif\n\n\n"
-"/* $Source$ */\n"
-"/* $Revision$ */\n"
-"/* $Date$ */\n"
+"}\n#endif\n"
 , N+N-1, N+N);
 
   return 0;
 }
-
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */

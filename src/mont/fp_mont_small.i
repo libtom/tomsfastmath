@@ -1,3 +1,5 @@
+/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */
+/* SPDX-License-Identifier: Unlicense */
 #ifdef TFM_SMALL_MONT_SET
 /* computes x/R == x (mod N) via Montgomery Reduction */
 void fp_montgomery_reduce_small(fp_int *a, fp_int *m, fp_digit mp)

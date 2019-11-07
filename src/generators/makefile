@@ -1,3 +1,6 @@
+# TomsFastMath, a fast ISO C bignum library. -- Tom St Denis
+# SPDX-License-Identifier: Unlicense
+
 all: comba_sqr_gen comba_sqr_smallgen
 
 clean:
