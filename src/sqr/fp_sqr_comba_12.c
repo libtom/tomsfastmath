@@ -8,7 +8,8 @@
 #if defined(TFM_SQR12) && FP_SIZE >= 24
 void fp_sqr_comba12(fp_int *A, fp_int *B)
 {
-   fp_digit *a, b[24], c0, c1, c2, sc0, sc1, sc2;
+   fp_digit *a, b[24], c0, c1, c2;
+   fp_digit sc0, sc1, sc2;
 #ifdef TFM_ISO
    fp_word tt;
 #endif

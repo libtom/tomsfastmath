@@ -20,7 +20,14 @@ printf(
 "#if defined(TFM_SQR%d) && FP_SIZE >= %d\n"
 "void fp_sqr_comba%d(fp_int *A, fp_int *B)\n"
 "{\n"
-"   fp_digit *a, b[%d], c0, c1, c2, sc0, sc1, sc2;\n"
+"   fp_digit *a, b[%d], c0, c1, c2;\n", N, N+N, N, N+N);
+
+if (N > 4) {
+printf(
+"   fp_digit sc0, sc1, sc2;\n");
+}
+
+printf(
 "#ifdef TFM_ISO\n"
 "   fp_word tt;\n"
 "#endif\n"
@@ -33,7 +40,7 @@ printf(
 "\n"
 "   /* output 0 */\n"
 "   SQRADD(a[0],a[0]);\n"
-"   COMBA_STORE(b[0]);\n", N, N+N, N, N+N);
+"   COMBA_STORE(b[0]);\n");
 
    for (x = 1; x < N+N-1; x++) {
 printf(
