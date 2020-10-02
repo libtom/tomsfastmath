@@ -285,24 +285,55 @@ asm(                                        \
 #define LOOP_START \
    mu = c[x] * mp
 
+#ifdef __thumb2__
+//#pragma message ("Using 32 bit ARM Thumb2 Assembly Optimizations")
 #define INNERMUL                    \
 asm(                                \
-    " LDR    r0,%1            \n\t" \
-    " ADDS   r0,r0,%0         \n\t" \
-    " MOVCS  %0,#1            \n\t" \
-    " MOVCC  %0,#0            \n\t" \
-    " UMLAL  r0,%0,%3,%4      \n\t" \
-    " STR    r0,%1            \n\t" \
-:"=r"(cy),"=m"(_c[0]):"0"(cy),"r"(mu),"r"(*tmpm++),"1"(_c[0]):"r0","cc");
-
+	" LDR    r0,%1            \n\t" \
+	" ADDS   r0,r0,%0         \n\t" \
+	" ITE CS                  \n\t" \
+	" MOVCS  %0,#1            \n\t" \
+	" MOVCC  %0,#0            \n\t" \
+	" UMLAL  r0,%0,%3,%4      \n\t" \
+	" STR    r0,%1            \n\t" \
+	:"=r"(cy),"=m"(_c[0])\
+	:"0"(cy),"r"(mu),"r"(*tmpm++),"m"(_c[0])\
+	:"r0","%cc");
 #define PROPCARRY                  \
 asm(                               \
-    " LDR   r0,%1            \n\t" \
-    " ADDS  r0,r0,%0         \n\t" \
-    " STR   r0,%1            \n\t" \
-    " MOVCS %0,#1            \n\t" \
-    " MOVCC %0,#0            \n\t" \
-:"=r"(cy),"=m"(_c[0]):"0"(cy),"1"(_c[0]):"r0","cc");
+	" LDR   r0,%1            \n\t" \
+	" ADDS  r0,r0,%0         \n\t" \
+	" STR   r0,%1            \n\t" \
+	" ITE CS                 \n\t" \
+	" MOVCS %0,#1            \n\t" \
+	" MOVCC %0,#0            \n\t" \
+	:"=r"(cy),"=m"(_c[0])\
+	:"0"(cy),"m"(_c[0])\
+	:"r0","%cc");
+#else /* Non-Thumb2 code */
+//#pragma message ("Using 32 bit ARM Assembly Optimizations")
+#define INNERMUL                    \
+asm(                                \
+	" LDR    r0,%1            \n\t" \
+	" ADDS   r0,r0,%0         \n\t" \
+	" MOVCS  %0,#1            \n\t" \
+	" MOVCC  %0,#0            \n\t" \
+	" UMLAL  r0,%0,%3,%4      \n\t" \
+	" STR    r0,%1            \n\t" \
+	:"=r"(cy),"=m"(_c[0])\
+	:"0"(cy),"r"(mu),"r"(*tmpm++),"m"(_c[0])\
+	:"r0","%cc");
+#define PROPCARRY                  \
+asm(                               \
+	" LDR   r0,%1            \n\t" \
+	" ADDS  r0,r0,%0         \n\t" \
+	" STR   r0,%1            \n\t" \
+	" MOVCS %0,#1            \n\t" \
+	" MOVCC %0,#0            \n\t" \
+	:"=r"(cy),"=m"(_c[0])\
+	:"0"(cy),"m"(_c[0])\
+	:"r0","%cc");
+#endif /* __thumb2__ */
 
 /******************************************************************/
 #elif defined(TFM_PPC32)
