@@ -9,16 +9,18 @@ silent=@
 silent_stdout= > /dev/null
 endif
 
+all: tfm.pdf
+
 docdvi: tfm.tex
 	cp tfm.tex tfm.bak
-	touch --reference=tfm.tex tfm.bak
+	touch -r tfm.tex tfm.bak
 	(printf "%s" "\def\fixedpdfdate{"; date +'D:%Y%m%d%H%M%S%:z' -d @$$(stat --format=%Y tfm.tex) | sed "s/:\([0-9][0-9]\)$$/'\1'}/g") > tfm-deterministic.tex
 	printf "%s\n" "\pdfinfo{" >> tfm-deterministic.tex
 	printf "%s\n" "  /CreationDate (\fixedpdfdate)" >> tfm-deterministic.tex
 	printf "%s\n}\n" "  /ModDate (\fixedpdfdate)" >> tfm-deterministic.tex
 	cat tfm.tex >> tfm-deterministic.tex
 	mv tfm-deterministic.tex tfm.tex
-	touch --reference=tfm.bak tfm.tex
+	touch -r tfm.bak tfm.tex
 	touch tfm.ind
 	latex tfm $(silent_stdout)
 	latex tfm $(silent_stdout)
