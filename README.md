@@ -1,7 +1,7 @@
 tomsfastmath
 ============
 
-See doc/tfm.pdf for a detailed documentation
+See doc/tfm.pdf for a detailed documentation (https://github.com/libtom/tomsfastmath/releases/download/v0.13.1/tfm-0.13.1.pdf for a recent release).
 
 
 Project Status
