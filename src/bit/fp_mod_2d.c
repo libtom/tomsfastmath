@@ -15,7 +15,7 @@ void fp_mod_2d(fp_int *a, int b, fp_int *c)
 
    /* get copy of input */
    fp_copy(a, c);
- 
+
    /* if 2**d is larger than we just return */
    if (b >= (DIGIT_BIT * a->used)) {
       return;

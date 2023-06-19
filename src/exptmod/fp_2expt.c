@@ -10,13 +10,13 @@ void fp_2expt(fp_int *a, int b)
    /* zero a as per default */
    fp_zero (a);
 
-   if (b < 0) { 
+   if (b < 0) {
       return;
    }
 
    z = b / DIGIT_BIT;
    if (z >= FP_SIZE) {
-      return; 
+      return;
    }
 
   /* set the used count of where the bit will go */

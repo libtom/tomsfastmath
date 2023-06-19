@@ -16,5 +16,5 @@ void fp_lcm(fp_int *a, fp_int *b, fp_int *c)
    } else {
       fp_div(b, &t1, &t2, NULL);
       fp_mul(a, &t2, c);
-   }   
+   }
 }

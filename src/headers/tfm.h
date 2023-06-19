@@ -113,7 +113,7 @@
 #endif
 
 #if __SIZEOF_LONG__ == 8
-	#define FP_64BIT
+   #define FP_64BIT
 #endif
 
 /* autodetect x86-64 and make sure we are using 64-bit digits with x86-64 asm */

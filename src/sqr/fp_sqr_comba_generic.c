@@ -14,7 +14,7 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
   fp_int    tmp, *dst;
 #ifdef TFM_ISO
   fp_word   tt;
-#endif    
+#endif
 
   /* get size of output and trim */
   pa = A->used + A->used;
@@ -34,7 +34,7 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
      dst = B;
   }
 
-  for (ix = 0; ix < pa; ix++) { 
+  for (ix = 0; ix < pa; ix++) {
       int      tx, ty, iy;
       fp_digit *tmpy, *tmpx;
 
@@ -51,9 +51,9 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
        */
       iy = MIN(A->used-tx, ty+1);
 
-      /* now for squaring tx can never equal ty 
-       * we halve the distance since they approach 
-       * at a rate of 2x and we have to round because 
+      /* now for squaring tx can never equal ty
+       * we halve the distance since they approach
+       * at a rate of 2x and we have to round because
        * odd cases need to be executed
        */
       iy = MIN(iy, (ty-tx+1)>>1);

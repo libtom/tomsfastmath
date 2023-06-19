@@ -281,7 +281,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
           fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
-//continue;
+          /*continue;*/
           fp_copy(&a, &d);
           fp_mul(&d, &b, &d);
           if (fp_cmp(&c, &d) != FP_EQ) {
@@ -294,7 +294,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
           fgets(buf, 4095, stdin); fp_read_radix(&b, buf, 64);
           fgets(buf, 4095, stdin); fp_read_radix(&c, buf, 64);
           fgets(buf, 4095, stdin); fp_read_radix(&d, buf, 64);
-// continue;
+          /*continue;*/
           fp_div(&a, &b, &e, &f);
           if (fp_cmp(&c, &e) != FP_EQ || fp_cmp(&d, &f) != FP_EQ) {
              printf("\ndiv %lu failure!\n", div_n);
@@ -305,7 +305,7 @@ draw(&a);draw(&b);draw(&c);draw(&d); draw(&e); draw(&f);
        } else if (!strcmp(cmd, "sqr")) { ++sqr_n;
           fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
-// continue;
+          /*continue;*/
           fp_copy(&a, &c);
           fp_sqr(&c, &c);
           if (fp_cmp(&b, &c) != FP_EQ) {
@@ -317,7 +317,7 @@ draw(&a);draw(&b);draw(&c);
           fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
           fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
-// continue;
+          /*continue;*/
           fp_copy(&a, &d);
           fp_gcd(&d, &b, &d);
           d.sign = c.sign;
@@ -330,7 +330,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
              fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
-//continue;
+             /*continue;*/
              fp_copy(&a, &d);
              fp_lcm(&d, &b, &d);
              d.sign = c.sign;
@@ -344,7 +344,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
              fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&d, buf, 64);
-// continue;
+             /*continue;*/
              fp_copy(&a, &e);
              fp_exptmod(&e, &b, &c, &e);
              if (fp_cmp(&d, &e) != FP_EQ) {
@@ -356,7 +356,7 @@ draw(&a);draw(&b);draw(&c);draw(&d);
              fgets(buf, 4095, stdin);  fp_read_radix(&a, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&b, buf, 64);
              fgets(buf, 4095, stdin);  fp_read_radix(&c, buf, 64);
-//continue;
+             /*continue;*/
              fp_invmod(&a, &b, &d);
 #if 1
              fp_mulmod(&d,&a,&b,&e);

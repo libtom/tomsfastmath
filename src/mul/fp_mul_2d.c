@@ -19,7 +19,7 @@ void fp_mul_2d(fp_int *a, int b, fp_int *c)
 
    /* shift the digits */
    if (b != 0) {
-      carry = 0;   
+      carry = 0;
       shift = DIGIT_BIT - b;
       for (x = 0; x < c->used; x++) {
           carrytmp = c->dp[x] >> shift;
