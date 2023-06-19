@@ -1,0 +1,130 @@
+#############################################################################
+#                                                                           #
+#      GitHub Actions test-suite for TomsFastMath                           #
+#      (https://github.com/libtom/tomsfastmath.git)                         #
+#                                                                           #
+#############################################################################
+
+name: CI
+
+# Tests restricted to the following branches.
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - /^release\/.*$/
+      - /^support\/.*$/
+      - /^ci\/.*$/
+  pull_request:
+    branches:
+      - master
+      - develop
+      - /^release\/.*$/
+      - /^support\/.*$/
+      - /^ci\/.*$/
+
+jobs:
+  Testme:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04 ]
+          # The environment given to the programs in the build
+          # We have only one program and the variable $BUILDOPTIONS
+          # has only the options to that program: testme.sh
+
+        config:
+          # GCC for the x86-64 architecture (64-bit longs and 64-bit pointers)
+          - { CC: 'gcc',       DEPS: 'gcc' }
+          - { CC: 'gcc-10',    DEPS: 'gcc-10' }
+          - { CC: 'gcc-8',     DEPS: 'gcc-8' }
+          - { CC: 'gcc-7',     DEPS: 'gcc-7' }
+
+          # clang for x86-64 architecture (64-bit longs and 64-bit pointers)
+          - { CC: 'clang',     DEPS: 'clang' }
+          - { CC: 'clang-10',  DEPS: 'clang-10 llvm-10' }
+          - { CC: 'clang-12',  DEPS: 'clang-12 llvm-12' }
+          - { CC: 'clang-9',   DEPS: 'clang-9 llvm-9' }
+          - { CC: 'clang-8',   DEPS: 'clang-8 llvm-8' }
+          - { CC: 'clang-7',   DEPS: 'clang-7 llvm-7' }
+          - { CC: 'clang-6.0', DEPS: 'clang-6.0 llvm-6.0' }
+
+        makefile: [ makefile, makefile.shared ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install libtool-bin -y ${{ matrix.config.DEPS }}
+          sudo apt-cache search gcc | grep '^gcc-[0-9\.]* '
+          sudo apt-cache search clang | grep compiler
+      - name: run tests
+        env:
+          CC: ${{ matrix.config.CC }}
+        run: |
+          $CC -dumpversion
+          make -f ${{ matrix.makefile }} test_standalone >gcc_errors_1.log 2>gcc_errors_2.log
+          ./test >test_std.log 2>test_err.log
+      # In case of a CI error a success might get signaled
+      # even without any test run. This file also keeps any notes
+      # printed from the tests which might come handy from time
+      # to time.
+      - name: regular logs
+        if: ${{ !failure() }}
+        run: |
+          cat test_*.log || true
+      # Compilation failures are in gcc_errors_*.log
+      # Failed tests in test_*.log
+      # Files do not exist in case of success
+      - name: error logs
+        if: ${{ failure() }}
+        run: |
+          cat test_*.log || true
+          cat gcc_errors_*.log || true
+
+  amalgam:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: build stest with amalgamated sources
+        run: |
+          make amalgamated_stest
+
+  CMake:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04, ubuntu-22.04 ]
+        build_type: [ '', -DCMAKE_BUILD_TYPE=Debug, -DCMAKE_BUILD_TYPE=Release, -DCMAKE_BUILD_TYPE=RelWithDebInfo, -DCMAKE_BUILD_TYPE=MinSizeRel ]
+        cc: [ clang, gcc ]
+        config:
+          # Static library build
+          - { CMAKEOPTIONS: '-DBUILD_SHARED_LIBS=Off' }
+          # Shared library build
+          - { CMAKEOPTIONS: '-DBUILD_SHARED_LIBS=On'  }
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y cmake gcc clang llvm
+      - name: build
+        run: |
+          mkdir build
+          cd build
+          CC=${{ matrix.cc }} cmake ${{ matrix.config.CMAKEOPTIONS }} ${{ matrix.build_type }} ..
+          make -j$(nproc)
+      - name: test
+        run: |
+          cd build
+          CC=${{ matrix.cc }} cmake ${{ matrix.config.CMAKEOPTIONS }} ${{ matrix.build_type }} -DBUILD_TESTING=On ..
+          make -j$(nproc)
+          ctest
+      - name: test (in demo folder)
+        run: |
+          mkdir -p demo/build
+          cd demo/build
+          CC=${{ matrix.cc }} cmake ${{ matrix.config.CMAKEOPTIONS }} ${{ matrix.build_type }} ..
+          make -j$(nproc)
+          ctest
