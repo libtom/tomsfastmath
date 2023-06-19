@@ -9,4 +9,4 @@ Name: TomFastMath
 Description: Fast multiple-precision integer library
 Version: @PROJECT_VERSION@
 Libs: -L${libdir} -ltfm
-Cflags: -I${includedir}/tomsfastmath
+Cflags: -I${includedir}
