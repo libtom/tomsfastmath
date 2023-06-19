@@ -98,7 +98,7 @@ mtest: $(LIBNAME)
 	install -d $(DESTDIR)$(LIBPATH)
 	$(INSTALL_CMD) $(LIBNAME) $(DESTDIR)$(LIBPATH)/$(LIBNAME)
 	install -d $(DESTDIR)$(INCPATH)
-	install $(HEADERS_PUB) $(DESTDIR)$(INCPATH)
+	install $(HEADERS_PUB) $(DESTDIR)$(INCPATH)/tomsfastmath
 
 
 HEADER_FILES=$(notdir $(HEADERS_PUB))
@@ -135,11 +135,21 @@ docs:
 doc/tfm.pdf:
 	$(MAKE) -C doc/ tfm.pdf V=$(V)
 
-pre_gen:
+
+SOURCES = $(OBJECTS:.o=.c)
+pre_gen/tfm_amalgam.c: $(SOURCES)
 	mkdir -p pre_gen
-	perl gen.pl
-	sed -e 's/[[:blank:]]*$$//' mpi.c > pre_gen/mpi.c
-	rm mpi.c
+	@printf "\
+	/* TomsFastMath, a fast ISO C bignum library. -- Tom St Denis */\n\
+	/* SPDX-License-Identifier: Unlicense */\n\
+	\n\
+	/*** AUTO-GENERATED FILE! DO NOT EDIT MANUALLY ***/\n\
+	\n\
+	#define TFM_PRE_GEN_MPI_C\n\
+	\n"  > $@
+	cat $(SOURCES) >> $@
+
+amalgam pre_gen: pre_gen/tfm_amalgam.c
 
 zipup: doc/tfm.pdf
 	@# Update the index, so diff-index won't fail in case the pdf has been created.
@@ -162,4 +172,4 @@ zipup: doc/tfm.pdf
 new_file:
 	bash updatemakes.sh
 
-.PHONY: pre_gen doc/tfm.pdf
+.PHONY: doc/tfm.pdf

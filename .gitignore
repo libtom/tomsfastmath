@@ -12,11 +12,13 @@
 *.orig
 .project
 .cproject
+.settings/
 /.libs
 test_*.txt
 *.pc
 doc/tfm.pdf
 pre_gen/
+*build*/
 
 *.gcda
 *.gcno
@@ -25,12 +27,8 @@ coverage/
 compat_reports/
 
 test
-test.exe
 mtest
-mtest.exe
 stest
-stest.exe
 rsatest
-rsatest.exe
 timing
-timing.exe
+*.exe
