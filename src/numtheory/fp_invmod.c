@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-static int fp_invmod_slow (fp_int * a, fp_int * b, fp_int * c)
+static int s_fp_invmod_slow (fp_int * a, fp_int * b, fp_int * c)
 {
   fp_int  x, y, u, v, A, B, C, D;
   int     res;
@@ -96,12 +96,12 @@ top:
   while (fp_cmp_d(&C, 0) == FP_LT) {
       fp_add(&C, b, &C);
   }
-  
+
   /* too big */
   while (fp_cmp_mag(&C, b) != FP_LT) {
       fp_sub(&C, b, &C);
   }
-  
+
   /* C is now the inverse */
   fp_copy(&C, c);
   return FP_OKAY;
@@ -115,7 +115,7 @@ int fp_invmod(fp_int *a, fp_int *b, fp_int *c)
 
   /* 2. [modified] b must be odd   */
   if (fp_iseven (b) == FP_YES) {
-    return fp_invmod_slow(a,b,c);
+    return s_fp_invmod_slow(a,b,c);
   }
 
   /* init all our temps */

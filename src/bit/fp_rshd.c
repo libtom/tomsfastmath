@@ -21,7 +21,7 @@ void fp_rshd(fp_int *a, int x)
    for (; y < a->used; y++) {
       a->dp[y] = 0;
    }
-   
+
    /* decrement count */
    a->used -= x;
    fp_clamp(a);

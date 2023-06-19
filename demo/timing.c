@@ -41,7 +41,7 @@ static ulong64 TIMFUNC(void)
       return result;
    #endif
 
-// Microsoft and Intel Windows compilers
+/* Microsoft and Intel Windows compilers */
 #elif defined _M_IX86
   __asm rdtsc
 #elif defined _M_AMD64
@@ -516,7 +516,7 @@ static void Montgomery(ulong64 t1)
    fp_digit fp;
    unsigned long t, ix;
    for (t = 2; t <= (FP_SIZE / 2) - 4; t += 2) {
-      //      printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2);
+      /* printf("%5lu-bit: %9llu\n", t * DIGIT_BIT, t2); */
       fp_zero(&a);
       for (ix = 0; ix < t; ix++) {
          a.dp[ix] = ix | 1;

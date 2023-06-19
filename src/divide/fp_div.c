@@ -17,7 +17,7 @@ int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
   if (fp_cmp_mag (a, b) == FP_LT) {
     if (d != NULL) {
       fp_copy (a, d);
-    } 
+    }
     if (c != NULL) {
       fp_zero (c);
     }
@@ -67,7 +67,7 @@ int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
       continue;
     }
 
-    /* step 3.1 if xi == yt then set q{i-t-1} to b-1, 
+    /* step 3.1 if xi == yt then set q{i-t-1} to b-1,
      * otherwise set q{i-t-1} to (xi*b + x{i-1})/yt */
     if (x.dp[i] == y.dp[t]) {
       q.dp[i - t - 1] = ((((fp_word)1) << DIGIT_BIT) - 1);
@@ -79,10 +79,10 @@ int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
       q.dp[i - t - 1] = (fp_digit) (tmp);
     }
 
-    /* while (q{i-t-1} * (yt * b + y{t-1})) > 
-             xi * b**2 + xi-1 * b + xi-2 
-     
-       do q{i-t-1} -= 1; 
+    /* while (q{i-t-1} * (yt * b + y{t-1})) >
+             xi * b**2 + xi-1 * b + xi-2
+
+       do q{i-t-1} -= 1;
     */
     q.dp[i - t - 1] = (q.dp[i - t - 1] + 1);
     do {
@@ -116,10 +116,10 @@ int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
     }
   }
 
-  /* now q is the quotient and x is the remainder 
-   * [which we have to normalize] 
+  /* now q is the quotient and x is the remainder
+   * [which we have to normalize]
    */
-  
+
   /* get sign before writing to c */
   x.sign = x.used == 0 ? FP_ZPOS : a->sign;
 
@@ -132,7 +132,7 @@ int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
   if (d != NULL) {
     fp_div_2d (&x, norm, &x, NULL);
 
-/* the following is a kludge, essentially we were seeing the right remainder but 
+/* the following is a kludge, essentially we were seeing the right remainder but
    with excess digits that should have been zero
  */
     for (i = b->used; i < x.used; i++) {

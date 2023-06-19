@@ -66,14 +66,14 @@ printf(
            }
        }
    } else {
-      // new method
+      /* new method */
       /* do evens first */
        f = 0;
        for (y = 0; y < N; y++) {
            for (z = 0; z < N; z++) {
                if (z != y && z + y == x && y <= z) {
                   if (f == 0) {
-                     // first double
+                     /* first double */
                      printf("SQRADDSC(a[%d], a[%d]); ", y, z);
                      f = 1;
                   } else {
@@ -82,10 +82,10 @@ printf(
                }
            }
        }
-       // forward the carry
+       /* forward the carry */
        printf("SQRADDDB; ");
        if ((x&1) == 0) {
-          // add the square
+          /* add the square */
           printf("SQRADD(a[%d], a[%d]); ", x/2, x/2);
        }
     }

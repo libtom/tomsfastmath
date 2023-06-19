@@ -22,7 +22,7 @@ printf(
 "\n"
 "#if defined(USE_MEMSET)\n"
 "   /* now zero the buff */\n"
-"   memset(c, 0, sizeof c);\n"
+"   memset(c, 0, sizeof(c));\n"
 "#endif\n"
 "   pa = m->used;\n"
 "\n"
@@ -95,7 +95,7 @@ printf("         break;\n");
            PROPCARRY;                                      \
            ++_c;                                           \
        }                                                   \
-  }         
+  }
 
 
 
@@ -125,7 +125,7 @@ printf(
 "\n"
 "  a->used = pa+1;\n"
 "  fp_clamp(a);\n"
-"\n"  
+"\n"
 "  /* if A >= m then A = A - m */\n"
 "  if (fp_cmp_mag (a, m) != FP_LT) {\n"
 "    s_fp_sub (a, m, a);\n"

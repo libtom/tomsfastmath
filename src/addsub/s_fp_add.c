@@ -11,7 +11,7 @@ void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
   y       = MAX(a->used, b->used);
   oldused = MIN(c->used, FP_SIZE);
   c->used = y;
- 
+
   t = 0;
   for (x = 0; x < y; x++) {
       t         += ((fp_word)a->dp[x]) + ((fp_word)b->dp[x]);

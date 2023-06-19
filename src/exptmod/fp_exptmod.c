@@ -4,11 +4,11 @@
 
 #ifdef TFM_TIMING_RESISTANT
 
-/* timing resistant montgomery ladder based exptmod 
+/* timing resistant montgomery ladder based exptmod
 
    Based on work by Marc Joye, Sung-Ming Yen, "The Montgomery Powering Ladder", Cryptographic Hardware and Embedded Systems, CHES 2002
 */
-static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+static int s_fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 {
   fp_int   R[2];
   fp_digit buf, mp;
@@ -19,9 +19,9 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
      return err;
   }
 
-  fp_init(&R[0]);   
-  fp_init(&R[1]);   
-   
+  fp_init(&R[0]);
+  fp_init(&R[1]);
+
   /* now we need R mod m */
   fp_montgomery_calc_normalization (&R[0], P);
 
@@ -37,7 +37,7 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
   /* for j = t-1 downto 0 do
         r_!k = R0*R1; r_k = r_k^2
   */
-  
+
   /* set initial mode and bit cnt */
   bitcnt = 1;
   buf    = 0;
@@ -67,14 +67,14 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
    fp_montgomery_reduce(&R[0], P, mp);
    fp_copy(&R[0], Y);
    return FP_OKAY;
-}   
+}
 
 #else
 
-/* y = g**x (mod b) 
+/* y = g**x (mod b)
  * Some restrictions... x must be positive and < b
  */
-static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+static int s_fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 {
   fp_int   M[64], res;
   fp_digit buf, mp;
@@ -92,10 +92,10 @@ static int _fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
     winsize = 5;
   } else {
     winsize = 6;
-  } 
+  }
 
   /* init M array */
-  memset(M, 0, sizeof(M)); 
+  memset(M, 0, sizeof(M));
 
   /* now setup montgomery  */
   if ((err = fp_montgomery_setup (P, &mp)) != FP_OKAY) {
@@ -237,7 +237,7 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 {
    fp_int tmp;
    int    err;
-   
+
 #ifdef TFM_CHECK
    /* prevent overflows */
    if (P->used > (FP_SIZE/2)) {
@@ -253,13 +253,13 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
          return err;
       }
       X->sign = FP_ZPOS;
-      err =  _fp_exptmod(&tmp, X, P, Y);
+      err =  s_fp_exptmod(&tmp, X, P, Y);
       if (X != Y) {
          X->sign = FP_NEG;
       }
       return err;
    } else {
       /* Positive exponent so just exptmod */
-      return _fp_exptmod(G, X, P, Y);
+      return s_fp_exptmod(G, X, P, Y);
    }
 }

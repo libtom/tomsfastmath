@@ -2,11 +2,11 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-/* Miller-Rabin test of "a" to the base of "b" as described in 
+/* Miller-Rabin test of "a" to the base of "b" as described in
  * HAC pp. 139 Algorithm 4.24
  *
  * Sets result to 0 if definitely composite or 1 if probably prime.
- * Randomly the chance of error is no more than 1/4 and often 
+ * Randomly the chance of error is no more than 1/4 and often
  * very much lower.
  */
 void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result)
@@ -20,7 +20,7 @@ void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result)
   /* ensure b > 1 */
   if (fp_cmp_d(b, 1) != FP_GT) {
      return;
-  }     
+  }
 
   /* get n1 = a - 1 */
   fp_init_copy(&n1, a);

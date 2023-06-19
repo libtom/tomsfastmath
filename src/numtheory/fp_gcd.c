@@ -33,7 +33,7 @@ void fp_gcd(fp_int *a, fp_int *b, fp_int *c)
       fp_init_copy(&u, b);
       fp_init_copy(&v, a);
    }
- 
+
    fp_zero(&r);
    while (fp_iszero(&v) == FP_NO) {
       fp_mod(&u, &v, &r);

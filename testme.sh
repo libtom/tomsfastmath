@@ -28,10 +28,10 @@ fi
 
 for gopt in ${gccopt};
 do
-	for gccv in ${gccver};
-	do
-		_runtest "${gccv} ${gopt}" "-f makefile.shared"
-		_runtest "${gccv} ${gopt}" ""
-	done
+  for gccv in ${gccver};
+  do
+    _runtest "${gccv} ${gopt}" "-f makefile.shared"
+    _runtest "${gccv} ${gopt}" ""
+  done
 done
 

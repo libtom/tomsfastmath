@@ -57,13 +57,13 @@ int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
 
   /* no easy answer [c'est la vie].  Just division */
   fp_init(&q);
-  
+
   q.used = a->used;
   q.sign = a->sign;
   w = 0;
   for (ix = a->used - 1; ix >= 0; ix--) {
      w = (w << ((fp_word)DIGIT_BIT)) | ((fp_word)a->dp[ix]);
-     
+
      if (w >= b) {
         t = (fp_digit)(w / b);
         w -= ((fp_word)t) * ((fp_word)b);
@@ -72,15 +72,15 @@ int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
       }
       q.dp[ix] = (fp_digit)t;
   }
-  
+
   if (d != NULL) {
      *d = (fp_digit)w;
   }
-  
+
   if (c != NULL) {
      fp_clamp(&q);
      fp_copy(&q, c);
   }
- 
+
   return FP_OKAY;
 }

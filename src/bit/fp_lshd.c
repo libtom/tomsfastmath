@@ -16,7 +16,7 @@ void fp_lshd(fp_int *a, int x)
    for (; y >= x; y--) {
        a->dp[y] = a->dp[y-x];
    }
- 
+
    /* zero lower digits */
    for (; y >= 0; y--) {
        a->dp[y] = 0;
