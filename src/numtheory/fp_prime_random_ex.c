@@ -5,8 +5,10 @@
 /* This is possibly the mother of all prime generation functions, muahahahahaha! */
 int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback cb, void *dat)
 {
-   unsigned char *tmp, maskAND, maskOR_msb, maskOR_lsb;
-   int res, err, bsize, maskOR_msb_offset;
+   /* calc the byte size */
+   unsigned char tmp[(size>>3)+(size&7?1:0)];
+   unsigned char maskAND, maskOR_msb, maskOR_lsb;
+   int res, maskOR_msb_offset;
 
    /* sanity check the input */
    if (size <= 1 || cb == NULL || t <= 0 || t > FP_PRIME_SIZE) {
@@ -16,15 +18,6 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
    /* TFM_PRIME_SAFE implies TFM_PRIME_BBS */
    if (flags & TFM_PRIME_SAFE) {
       flags |= TFM_PRIME_BBS;
-   }
-
-   /* calc the byte size */
-   bsize = (size>>3)+(size&7?1:0);
-
-   /* we need a buffer of bsize bytes */
-   tmp = malloc(bsize);
-   if (tmp == NULL) {
-      return FP_MEM;
    }
 
    /* calc the maskAND value for the MSbyte*/
@@ -47,9 +40,8 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
 
    do {
       /* read the bytes */
-      if (cb(tmp, bsize, dat) != bsize) {
-         err = FP_VAL;
-         goto error;
+      if (cb(tmp, sizeof(tmp), dat) != (int)sizeof(tmp)) {
+         return FP_VAL;
       }
 
       /* work over the MSbyte */
@@ -58,10 +50,10 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
 
       /* mix in the maskORs */
       tmp[maskOR_msb_offset]   |= maskOR_msb;
-      tmp[bsize-1]             |= maskOR_lsb;
+      tmp[sizeof(tmp)-1]       |= maskOR_lsb;
 
       /* read it in */
-      fp_read_unsigned_bin(a, tmp, bsize);
+      fp_read_unsigned_bin(a, tmp, sizeof(tmp));
 
       /* is it prime? */
       res = fp_isprime_ex(a, t);
@@ -83,8 +75,5 @@ int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback
       fp_add_d(a, 1, a);
    }
 
-   err = FP_OKAY;
-error:
-   free(tmp);
-   return err;
+   return FP_OKAY;
 }
