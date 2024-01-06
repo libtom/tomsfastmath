@@ -53,7 +53,8 @@ src/sqr/fp_sqr.o src/sqr/fp_sqr_comba.o src/sqr/fp_sqr_comba_12.o src/sqr/fp_sqr
 src/sqr/fp_sqr_comba_20.o src/sqr/fp_sqr_comba_24.o src/sqr/fp_sqr_comba_28.o src/sqr/fp_sqr_comba_3.o \
 src/sqr/fp_sqr_comba_32.o src/sqr/fp_sqr_comba_4.o src/sqr/fp_sqr_comba_48.o src/sqr/fp_sqr_comba_6.o \
 src/sqr/fp_sqr_comba_64.o src/sqr/fp_sqr_comba_7.o src/sqr/fp_sqr_comba_8.o src/sqr/fp_sqr_comba_9.o \
-src/sqr/fp_sqr_comba_generic.o src/sqr/fp_sqr_comba_small_set.o src/sqr/fp_sqrmod.o
+src/sqr/fp_sqr_comba_generic.o src/sqr/fp_sqr_comba_small_set.o src/sqr/fp_sqrmod.o \
+src/misc/fp_memcpy.o src/misc/fp_memset.o
 
 HEADERS_PUB=src/headers/tfm.h
 HEADERS=src/headers/tfm_private.h $(HEADERS_PUB)
