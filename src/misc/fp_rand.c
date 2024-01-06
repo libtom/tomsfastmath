@@ -2,6 +2,8 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
+#ifdef FP_GEN_RANDOM
+
 #if FP_GEN_RANDOM_MAX == 0xffffffff
   #define FP_GEN_RANDOM_SHIFT  32
 #elif FP_GEN_RANDOM_MAX == 32767
@@ -52,3 +54,4 @@ void fp_rand(fp_int *a, int digits)
    return;
 
 }
+#endif

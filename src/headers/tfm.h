@@ -9,11 +9,26 @@
 #ifndef TFM_H_
 #define TFM_H_
 
+#if TFM_NO_STDLIB
+/* do nothing */
+#elif defined(TFM_NO_STDLIB)
+/* defined but false, make sure `#ifdef TFM_NO_STDLIB` works */
+#undef TFM_NO_STDLIB
+#elif (defined(__wasm) || defined(__wasm__) || defined(__WASM__))
+/* disable stdlib by default for web assembly */
+#define TFM_NO_STDLIB
+#endif
+
+#include <limits.h>
+#ifndef TFM_NO_STDLIB
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <limits.h>
+#else
+#include <stddef.h>
+#include <stdint.h>
+#endif
 
 /* 0xMaMiPaDe
  * Major
@@ -251,16 +266,22 @@
    #endif
 #endif
 
-/* use arc4random on platforms that support it */
-#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
-    #define FP_GEN_RANDOM()    arc4random()
-    #define FP_GEN_RANDOM_MAX  0xffffffff
-#endif
+#ifdef FP_GEN_RANDOM
+   #ifndef FP_GEN_RANDOM_MAX
+      #error FP_GEN_RANDOM_MAX must be defined with FP_GEN_RANDOM
+   #endif
+#elif !defined(TFM_NO_STDLIB)
+   /* use arc4random on platforms that support it */
+   #if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
+      #define FP_GEN_RANDOM()    arc4random()
+      #define FP_GEN_RANDOM_MAX  0xffffffff
+   #endif
 
-/* use rand() as fall-back if there's no better rand function */
-#ifndef FP_GEN_RANDOM
-   #define FP_GEN_RANDOM()    rand()
-   #define FP_GEN_RANDOM_MAX  RAND_MAX
+   /* use rand() as fall-back if there's no better rand function */
+   #ifndef FP_GEN_RANDOM
+      #define FP_GEN_RANDOM()    rand()
+      #define FP_GEN_RANDOM_MAX  RAND_MAX
+   #endif
 #endif
 
 /* some default configurations.
@@ -340,11 +361,17 @@ const char *fp_ident(void);
 /* set to a small digit */
 void fp_set(fp_int *a, fp_digit b);
 
+#ifdef FP_GEN_RANDOM
 /* makes a pseudo-random int of a given size */
 void fp_rand(fp_int *a, int digits);
+#endif
 
 /* copy from a to b */
-#define fp_copy(a, b)      (void)(((a) != (b)) && memcpy((b), (a), sizeof(fp_int)))
+#define fp_copy(a, b) do { \
+   void *_a = (a); \
+   void *_b = (b); \
+   if (_a != _b) memcpy(_b, _a, sizeof(fp_int)); \
+} while (0)
 #define fp_init_copy(a, b) fp_copy(b, a)
 
 /* clamp digits */
