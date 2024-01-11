@@ -53,6 +53,10 @@ int fp_isprime_ex(fp_int *a, int t)
 
    /* do trial division */
    for (r = 0; r < 256; r++) {
+     if (fp_cmp_d(a,primes[r])== FP_EQ) {
+			printf("a is in the table\n");
+			return FP_YES;
+		}
        fp_mod_d(a, primes[r], &d);
        if (d == 0) {
           return FP_NO;
