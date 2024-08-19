@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-int fp_signed_bin_size(fp_int *a)
+int fp_signed_bin_size(const fp_int *a)
 {
   return 1 + fp_unsigned_bin_size (a);
 }

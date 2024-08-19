@@ -518,21 +518,21 @@ typedef int tfm_prime_callback(unsigned char *dst, int len, void *dat);
 
 int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback cb, void *dat);
 
-/* radix conersions */
-int fp_count_bits(fp_int *a);
+/* radix conversions */
+int fp_count_bits(const fp_int *a);
 
-int fp_unsigned_bin_size(fp_int *a);
+int fp_unsigned_bin_size(const fp_int *a);
 void fp_read_unsigned_bin(fp_int *a, const unsigned char *b, int c);
-void fp_to_unsigned_bin(fp_int *a, unsigned char *b);
+void fp_to_unsigned_bin(const fp_int *a, unsigned char *b);
 
-int fp_signed_bin_size(fp_int *a);
+int fp_signed_bin_size(const fp_int *a);
 void fp_read_signed_bin(fp_int *a, const unsigned char *b, int c);
-void fp_to_signed_bin(fp_int *a, unsigned char *b);
+void fp_to_signed_bin(const fp_int *a, unsigned char *b);
 
 int fp_read_radix(fp_int *a, const char *str, int radix);
 
-int fp_radix_size(fp_int *a, int radix, int *size);
-int fp_toradix(fp_int *a, char *str, int radix);
-int fp_toradix_n(fp_int * a, char *str, int radix, int maxlen);
+int fp_radix_size(const fp_int *a, int radix, int *size);
+int fp_toradix(const fp_int *a, char *str, int radix);
+int fp_toradix_n(const fp_int * a, char *str, int radix, int maxlen);
 
 #endif

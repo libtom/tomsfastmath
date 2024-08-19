@@ -14,7 +14,7 @@
  *
  * Return: FP_VAL on error, FP_OKAY on success.
  */
-int fp_toradix(fp_int *a, char *str, int radix)
+int fp_toradix(const fp_int *a, char *str, int radix)
 {
    return fp_toradix_n(a, str, radix, INT_MAX);
 }
