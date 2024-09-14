@@ -21,8 +21,53 @@
  * Patch
  * Development - 00=release, 01=in-development
  */
-#define TFM_VERSION     0x000D0101
-#define TFM_VERSION_S   "v0.13.1-next"
+#define TFM_VERSION_MAJ    0
+#define TFM_VERSION_MIN    13
+#define TFM_VERSION_PAT    1
+#define TFM_VERSION_DEV    1
+
+
+#define TFM_VERSION     PRIVATE__TFM_VERSION_4(TFM_VERSION_MAJ, \
+                                               TFM_VERSION_MIN, \
+                                               TFM_VERSION_PAT, \
+                                               TFM_VERSION_DEV)
+
+#define TFM_VERSION_S   PRIVATE__TFM_CONC(TFM_VERSION_MAJ, \
+                                          TFM_VERSION_MIN, \
+                                          TFM_VERSION_PAT, \
+                                          TFM_VERSION_DEV)
+
+/* Please use the `TFM_VERSION_3()` macro if you want to compile-time check
+ * for a specific TFM version.
+ * Your code could look as follows:
+
+#if TFM_VERSION <= TFM_VERSION_3(0, 13, 1)
+// do stuff to work with old TFM
+#else
+// do stuff to work with new TFM
+#endif
+
+ */
+
+#define TFM_VERSION_3(maj, min, pat) PRIVATE__TFM_VERSION_4(maj, min, pat, 0)
+
+
+/* Private stuff from here on.
+ * As said by Stanley Kirk Burrell in 1989 "You can't touch this" */
+#define PRIVATE__TFM_VERSION_4(maj, min, pat, dev) ((maj) << 24 | (min) << 16 | (pat) << 8 | (dev))
+
+#define PRIVATE__TFM_VERSION_DEV_STR_0
+#define PRIVATE__TFM_VERSION_DEV_STR_1 "-next"
+
+#define PRIVATE__TFM_VERSION_PASTE(v) PRIVATE__TFM_VERSION_DEV_STR_ ## v
+#define PRIVATE__TFM_VERSION_DEV_STR(v) PRIVATE__TFM_VERSION_PASTE(v)
+
+#define PRIVATE__TFM_STR(s) #s
+#define PRIVATE__TFM_CONC(maj, min, pat, dev) "v" PRIVATE__TFM_STR(maj) \
+                                                "." PRIVATE__TFM_STR(min) \
+                                                "." PRIVATE__TFM_STR(pat) \
+                                                PRIVATE__TFM_VERSION_DEV_STR(dev)
+/* End of private stuff */
 
 #ifndef MIN
    #define MIN(x,y) ((x)<(y)?(x):(y))
