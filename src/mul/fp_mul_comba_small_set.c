@@ -6,7 +6,7 @@
 #endif
 
 #if defined(TFM_SMALL_SET)
-void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C)
+void fp_mul_comba_small(const fp_int *A, const fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[32];
    switch (MAX(A->used, B->used)) {

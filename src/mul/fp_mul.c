@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* c = a * b */
-void fp_mul(fp_int *A, fp_int *B, fp_int *C)
+void fp_mul(const fp_int *A, const fp_int *B, fp_int *C)
 {
     int   y, old_used;
 #if FP_SIZE >= 48

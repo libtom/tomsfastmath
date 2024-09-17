@@ -6,9 +6,10 @@
 #endif
 
 #if defined(TFM_SMALL_SET)
-void fp_sqr_comba_small(fp_int *A, fp_int *B)
+void fp_sqr_comba_small(const fp_int *A, fp_int *B)
 {
-   fp_digit *a, b[32], c0, c1, c2, sc0, sc1, sc2;
+   const fp_digit *a;
+   fp_digit b[32], c0, c1, c2, sc0, sc1, sc2;
 #ifdef TFM_ISO
    fp_word tt;
 #endif

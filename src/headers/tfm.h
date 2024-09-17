@@ -429,16 +429,16 @@ void fp_add(const fp_int *a, const fp_int *b, fp_int *c);
 void fp_sub(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = a * b */
-void fp_mul(fp_int *a, fp_int *b, fp_int *c);
+void fp_mul(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* b = a*a  */
-void fp_sqr(fp_int *a, fp_int *b);
+void fp_sqr(const fp_int *a, fp_int *b);
 
 /* a/b => cb + d == a */
-int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_div(const fp_int *a, const fp_int *b, fp_int *c, fp_int *d);
 
 /* c = a mod b, 0 <= c < b  */
-int fp_mod(fp_int *a, fp_int *b, fp_int *c);
+int fp_mod(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* compare against a single digit */
 int fp_cmp_d(const fp_int *a, fp_digit b);
@@ -450,13 +450,13 @@ void fp_add_d(const fp_int *a, fp_digit b, fp_int *c);
 void fp_sub_d(const fp_int *a, fp_digit b, fp_int *c);
 
 /* c = a * b */
-void fp_mul_d(fp_int *a, fp_digit b, fp_int *c);
+void fp_mul_d(const fp_int *a, fp_digit b, fp_int *c);
 
 /* a/b => cb + d == a */
-int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d);
+int fp_div_d(const fp_int *a, fp_digit b, fp_int *c, fp_digit *d);
 
 /* c = a mod b, 0 <= c < b  */
-int fp_mod_d(fp_int *a, fp_digit b, fp_digit *c);
+int fp_mod_d(const fp_int *a, fp_digit b, fp_digit *c);
 
 /* ---> number theory <--- */
 /* d = a + b (mod c) */

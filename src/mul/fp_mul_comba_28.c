@@ -6,7 +6,7 @@
 #endif
 
 #if defined(TFM_MUL28) && FP_SIZE >= 56
-void fp_mul_comba28(fp_int *A, fp_int *B, fp_int *C)
+void fp_mul_comba28(const fp_int *A, const fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[56];
 
