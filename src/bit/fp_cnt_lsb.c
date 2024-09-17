@@ -7,7 +7,7 @@ static const int lnz[16] = {
 };
 
 /* Counts the number of lsbs which are zero before the first zero bit */
-int fp_cnt_lsb(fp_int *a)
+int fp_cnt_lsb(const fp_int *a)
 {
    int x;
    fp_digit q, qq;

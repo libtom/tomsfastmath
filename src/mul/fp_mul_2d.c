@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* c = a * 2**d */
-void fp_mul_2d(fp_int *a, int b, fp_int *c)
+void fp_mul_2d(const fp_int *a, int b, fp_int *c)
 {
    fp_digit carry, carrytmp, shift;
    int x;

@@ -412,15 +412,15 @@ int fp_cmp(const fp_int *a, const fp_int *b);
 int fp_cmp_mag(const fp_int *a, const fp_int *b);
 
 /* power of 2 operations */
-void fp_div_2d(fp_int *a, int b, fp_int *c, fp_int *d);
-void fp_mod_2d(fp_int *a, int b, fp_int *c);
-void fp_mul_2d(fp_int *a, int b, fp_int *c);
+void fp_div_2d(const fp_int *a, int b, fp_int *c, fp_int *d);
+void fp_mod_2d(const fp_int *a, int b, fp_int *c);
+void fp_mul_2d(const fp_int *a, int b, fp_int *c);
 void fp_2expt (fp_int *a, int b);
-void fp_mul_2(fp_int *a, fp_int *c);
-void fp_div_2(fp_int *a, fp_int *c);
+void fp_mul_2(const fp_int *a, fp_int *c);
+void fp_div_2(const fp_int *a, fp_int *c);
 
 /* Counts the number of lsbs which are zero before the first zero bit */
-int fp_cnt_lsb(fp_int *a);
+int fp_cnt_lsb(const fp_int *a);
 
 /* c = a + b */
 void fp_add(const fp_int *a, const fp_int *b, fp_int *c);
