@@ -6,7 +6,7 @@
 #endif
 
 #if defined(TFM_MUL3) && FP_SIZE >= 6
-void fp_mul_comba3(fp_int *A, fp_int *B, fp_int *C)
+void fp_mul_comba3(const fp_int *A, const fp_int *B, fp_int *C)
 {
    fp_digit c0, c1, c2, at[6];
 
@@ -20,15 +20,15 @@ void fp_mul_comba3(fp_int *A, fp_int *B, fp_int *C)
    COMBA_STORE(C->dp[0]);
    /* 1 */
    COMBA_FORWARD;
-   MULADD(at[0], at[4]);    MULADD(at[1], at[3]);
+   MULADD(at[0], at[4]);   MULADD(at[1], at[3]);
    COMBA_STORE(C->dp[1]);
    /* 2 */
    COMBA_FORWARD;
-   MULADD(at[0], at[5]);    MULADD(at[1], at[4]);    MULADD(at[2], at[3]);
+   MULADD(at[0], at[5]);   MULADD(at[1], at[4]);   MULADD(at[2], at[3]);
    COMBA_STORE(C->dp[2]);
    /* 3 */
    COMBA_FORWARD;
-   MULADD(at[1], at[5]);    MULADD(at[2], at[4]);
+   MULADD(at[1], at[5]);   MULADD(at[2], at[4]);
    COMBA_STORE(C->dp[3]);
    /* 4 */
    COMBA_FORWARD;

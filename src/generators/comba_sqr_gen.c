@@ -18,9 +18,10 @@ printf(
 "#endif\n"
 "\n"
 "#if defined(TFM_SQR%d) && FP_SIZE >= %d\n"
-"void fp_sqr_comba%d(fp_int *A, fp_int *B)\n"
+"void fp_sqr_comba%d(const fp_int *A, fp_int *B)\n"
 "{\n"
-"   fp_digit *a, b[%d], c0, c1, c2;\n", N, N+N, N, N+N);
+"   const fp_digit *a;\n"
+"   fp_digit b[%d], c0, c1, c2;\n", N, N+N, N, N+N);
 
 if (N > 4) {
 printf(

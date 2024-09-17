@@ -9,7 +9,7 @@ void fp_montgomery_reduce_small(fp_int *a, fp_int *m, fp_digit mp)
 
 #if defined(USE_MEMSET)
    /* now zero the buff */
-   memset(c, 0, sizeof c);
+   memset(c, 0, sizeof(c));
 #endif
    pa = m->used;
 
