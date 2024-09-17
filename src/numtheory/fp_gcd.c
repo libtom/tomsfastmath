@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* c = (a, b) */
-void fp_gcd(fp_int *a, fp_int *b, fp_int *c)
+void fp_gcd(const fp_int *a, const fp_int *b, fp_int *c)
 {
    fp_int u, v, r;
 

@@ -41,7 +41,7 @@ static const fp_digit primes[FP_PRIME_SIZE] = {
   0x062B, 0x062F, 0x063D, 0x0641, 0x0647, 0x0649, 0x064D, 0x0653
 };
 
-int fp_isprime_ex(fp_int *a, int t)
+int fp_isprime_ex(const fp_int *a, int t)
 {
    fp_int   b;
    fp_digit d;

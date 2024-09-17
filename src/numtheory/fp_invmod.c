@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-static int s_fp_invmod_slow (fp_int * a, fp_int * b, fp_int * c)
+static int s_fp_invmod_slow (const fp_int * a, const fp_int * b, fp_int * c)
 {
   fp_int  x, y, u, v, A, B, C, D;
   int     res;
@@ -108,7 +108,7 @@ top:
 }
 
 /* c = 1/a (mod b) for odd b only */
-int fp_invmod(fp_int *a, fp_int *b, fp_int *c)
+int fp_invmod(const fp_int *a, const fp_int *b, fp_int *c)
 {
   fp_int  x, y, u, v, B, D;
   int     neg;

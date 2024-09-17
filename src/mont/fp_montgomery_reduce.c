@@ -456,9 +456,10 @@ asm(                                 \
 #endif
 
 /* computes x/R == x (mod N) via Montgomery Reduction */
-void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
+void fp_montgomery_reduce(fp_int *a, const fp_int *m, fp_digit mp)
 {
-   fp_digit c[FP_SIZE], *_c, *tmpm, mu;
+   const fp_digit *tmpm;
+   fp_digit c[FP_SIZE], *_c, *tmpa, mu;
    int      oldused, x, y, pa;
 
    /* bail if too large */
@@ -519,13 +520,13 @@ void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp)
 
   /* now copy out */
   _c   = c + pa;
-  tmpm = a->dp;
+  tmpa = a->dp;
   for (x = 0; x < pa+1; x++) {
-     *tmpm++ = *_c++;
+     *tmpa++ = *_c++;
   }
 
   for (; x < oldused; x++)   {
-     *tmpm++ = 0;
+     *tmpa++ = 0;
   }
 
   MONT_FINI;

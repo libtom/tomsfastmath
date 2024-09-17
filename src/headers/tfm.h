@@ -460,50 +460,50 @@ int fp_mod_d(const fp_int *a, fp_digit b, fp_digit *c);
 
 /* ---> number theory <--- */
 /* d = a + b (mod c) */
-int fp_addmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_addmod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 
 /* d = a - b (mod c) */
-int fp_submod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_submod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 
 /* d = a * b (mod c) */
-int fp_mulmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_mulmod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 
 /* c = a * a (mod b) */
-int fp_sqrmod(fp_int *a, fp_int *b, fp_int *c);
+int fp_sqrmod(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = 1/a (mod b) */
-int fp_invmod(fp_int *a, fp_int *b, fp_int *c);
+int fp_invmod(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = (a, b) */
-void fp_gcd(fp_int *a, fp_int *b, fp_int *c);
+void fp_gcd(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = [a, b] */
-void fp_lcm(fp_int *a, fp_int *b, fp_int *c);
+void fp_lcm(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* setups the montgomery reduction */
-int fp_montgomery_setup(fp_int *a, fp_digit *mp);
+int fp_montgomery_setup(const fp_int *a, fp_digit *mp);
 
 /* computes a = B**n mod b without division or multiplication useful for
  * normalizing numbers in a Montgomery system.
  */
-void fp_montgomery_calc_normalization(fp_int *a, fp_int *b);
+void fp_montgomery_calc_normalization(fp_int *a, const fp_int *b);
 
 /* computes x/R == x (mod N) via Montgomery Reduction */
-void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp);
+void fp_montgomery_reduce(fp_int *a, const fp_int *m, fp_digit mp);
 
 /* d = a**b (mod c) */
-int fp_exptmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_exptmod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 
 /* primality stuff */
 
 /* perform a Miller-Rabin test of a to the base b and store result in "result" */
-void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result);
+void fp_prime_miller_rabin (const fp_int * a, const fp_int * b, int *result);
 
 #define FP_PRIME_SIZE      256
 /* 256 trial divisions + 8 Miller-Rabins, returns FP_YES if probable prime  */
-int fp_isprime(fp_int *a);
+int fp_isprime(const fp_int *a);
 /* extended version of fp_isprime, do 't' Miller-Rabins instead of only 8 */
-int fp_isprime_ex(fp_int *a, int t);
+int fp_isprime_ex(const fp_int *a, int t);
 
 /* Primality generation flags */
 #define TFM_PRIME_BBS      0x0001 /* BBS style prime */
