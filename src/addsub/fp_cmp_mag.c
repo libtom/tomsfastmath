@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-int fp_cmp_mag(fp_int *a, fp_int *b)
+int fp_cmp_mag(const fp_int *a, const fp_int *b)
 {
    int x;
 

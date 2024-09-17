@@ -406,10 +406,10 @@ void fp_rshd(fp_int *a, int x);
 void fp_lshd(fp_int *a, int x);
 
 /* signed comparison */
-int fp_cmp(fp_int *a, fp_int *b);
+int fp_cmp(const fp_int *a, const fp_int *b);
 
 /* unsigned comparison */
-int fp_cmp_mag(fp_int *a, fp_int *b);
+int fp_cmp_mag(const fp_int *a, const fp_int *b);
 
 /* power of 2 operations */
 void fp_div_2d(fp_int *a, int b, fp_int *c, fp_int *d);
@@ -423,10 +423,10 @@ void fp_div_2(fp_int *a, fp_int *c);
 int fp_cnt_lsb(fp_int *a);
 
 /* c = a + b */
-void fp_add(fp_int *a, fp_int *b, fp_int *c);
+void fp_add(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = a - b */
-void fp_sub(fp_int *a, fp_int *b, fp_int *c);
+void fp_sub(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = a * b */
 void fp_mul(fp_int *a, fp_int *b, fp_int *c);
@@ -441,13 +441,13 @@ int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
 int fp_mod(fp_int *a, fp_int *b, fp_int *c);
 
 /* compare against a single digit */
-int fp_cmp_d(fp_int *a, fp_digit b);
+int fp_cmp_d(const fp_int *a, fp_digit b);
 
 /* c = a + b */
-void fp_add_d(fp_int *a, fp_digit b, fp_int *c);
+void fp_add_d(const fp_int *a, fp_digit b, fp_int *c);
 
 /* c = a - b */
-void fp_sub_d(fp_int *a, fp_digit b, fp_int *c);
+void fp_sub_d(const fp_int *a, fp_digit b, fp_int *c);
 
 /* c = a * b */
 void fp_mul_d(fp_int *a, fp_digit b, fp_int *c);

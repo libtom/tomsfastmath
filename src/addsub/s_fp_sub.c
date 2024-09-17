@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* unsigned subtraction ||a|| >= ||b|| ALWAYS! */
-void s_fp_sub(fp_int *a, fp_int *b, fp_int *c)
+void s_fp_sub(const fp_int *a, const fp_int *b, fp_int *c)
 {
   int      x, oldbused, oldused;
   fp_word  t;

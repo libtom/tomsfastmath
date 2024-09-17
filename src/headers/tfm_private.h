@@ -19,8 +19,8 @@
 #endif
 
 /* VARIOUS LOW LEVEL STUFFS */
-FP_PRIVATE void s_fp_add(fp_int *a, fp_int *b, fp_int *c);
-FP_PRIVATE void s_fp_sub(fp_int *a, fp_int *b, fp_int *c);
+FP_PRIVATE void s_fp_add(const fp_int *a, const fp_int *b, fp_int *c);
+FP_PRIVATE void s_fp_sub(const fp_int *a, const fp_int *b, fp_int *c);
 FP_PRIVATE void fp_reverse(unsigned char *s, int len);
 
 FP_PRIVATE void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C);
