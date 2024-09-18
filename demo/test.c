@@ -11,6 +11,35 @@
 #define TFM_DEMO_TEST_VS_MTEST 1
 #endif
 
+static void check_version_macro(void)
+{
+   int err = 0;
+   if (!TFM_VERSION_DEV && !(TFM_VERSION == TFM_VERSION_3(TFM_VERSION_MAJ,TFM_VERSION_MIN,TFM_VERSION_PAT))) {
+      printf("Version check #1 failed \"!TFM_VERSION_DEV && !(%xu == %xu)\"\n", TFM_VERSION, TFM_VERSION_3(TFM_VERSION_MAJ,TFM_VERSION_MIN,TFM_VERSION_PAT));
+      err = 1;
+   } else {
+      printf("Version check #1 passed\n");
+   }
+
+   if (TFM_VERSION_DEV && !(TFM_VERSION > TFM_VERSION_3(TFM_VERSION_MAJ,TFM_VERSION_MIN,TFM_VERSION_PAT))) {
+      printf("Version check #2 failed \"TFM_VERSION_DEV && !(%xu > %xu)\"\n", TFM_VERSION, TFM_VERSION_3(TFM_VERSION_MAJ,TFM_VERSION_MIN,TFM_VERSION_PAT));
+      err = 1;
+   } else {
+      printf("Version check #2 passed\n");
+   }
+
+   /* TFM_VERSION_3() was only introduced after 0.13.1 so this can never be the case (hopefully) */
+   if (TFM_VERSION < TFM_VERSION_3(0,13,1)) {
+      printf("Version check #3 failed \"%xu < %xu\"\n", TFM_VERSION, TFM_VERSION_3(0,13,1));
+      err = 1;
+   } else {
+      printf("Version check #3 passed\n");
+   }
+
+   if (err)
+      exit(EXIT_FAILURE);
+}
+
 void draw(fp_int *a)
 {
   int x;
@@ -51,6 +80,8 @@ int main(void)
   printf("TFM Ident string:\n%s\n\n", fp_ident());
   fp_zero(&b); fp_zero(&c); fp_zero(&d); fp_zero(&e); fp_zero(&f);
   fp_zero(&a);
+
+  check_version_macro();
 
 #if TFM_DEMO_TEST_VS_MTEST == 0
 
