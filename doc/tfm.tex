@@ -276,7 +276,7 @@ To initialize an integer with a copy of another integer use the fp\_init\_copy()
 
 \index{fp\_init\_copy}
 \begin{verbatim}
-void fp_init_copy(fp_int *a, fp_int *b)
+void fp_init_copy(fp_int *a, const fp_int *b)
 \end{verbatim}
 
 This will initialize $a$ as a copy of $b$.  Note that for compatibility with LibTomMath the function
@@ -303,9 +303,9 @@ To quickly and easily tell if an integer is zero, odd or even use the following 
 
 \index{fp\_iszero} \index{fp\_iseven} \index{fp\_isodd}
 \begin{verbatim}
-int fp_iszero(fp_int *a);
-int fp_iseven(fp_int *a);
-int fp_isodd(fp_int *a);
+int fp_iszero(const fp_int *a);
+int fp_iseven(const fp_int *a);
+int fp_isodd(const fp_int *a);
 \end{verbatim}
 
 These will return \textbf{FP\_YES} if the answer to their respective questions is yes.  Otherwise they
@@ -317,9 +317,10 @@ To negate or compute the absolute of an integer use the following functions.
 
 \index{fp\_neg} \index{fp\_abs}
 \begin{verbatim}
-void fp_neg(fp_int *a, fp_int *b);
-void fp_abs(fp_int *a, fp_int *b);
+void fp_neg(fp_int *a, const fp_int *b);
+void fp_abs(fp_int *a, const fp_int *b);
 \end{verbatim}
+
 This will compute the negation (or absolute) of $a$ and store the result in $b$.  Note that these
 are implemented as macros and as such you should avoid using ++ or --~-- operators on the input
 operand.
@@ -329,9 +330,10 @@ To perform signed or unsigned comparisons use following functions.
 
 \index{fp\_cmp} \index{fp\_cmp\_mag}
 \begin{verbatim}
-int fp_cmp(fp_int *a, fp_int *b);
-int fp_cmp_mag(fp_int *a, fp_int *b);
+int fp_cmp(const fp_int *a, const fp_int *b);
+int fp_cmp_mag(const fp_int *a, const fp_int *b);
 \end{verbatim}
+
 These will compare $a$ to $b$.  They will return \textbf{FP\_GT} if $a$ is larger than $b$,
 \textbf{FP\_EQ} if they are equal and \textbf{FP\_LT} if $a$ is less than $b$.
 
@@ -352,13 +354,14 @@ To shift individual bits of an fp\_int use the following functions.
 
 \index{fp\_div\_2d} \index{fp\_mod\_2d} \index{fp\_mul\_2d} \index{fp\_div\_2} \index{fp\_mul\_2}
 \begin{verbatim}
-void fp_div_2d(fp_int *a, int b, fp_int *c, fp_int *d);
-void fp_mod_2d(fp_int *a, int b, fp_int *c);
-void fp_mul_2d(fp_int *a, int b, fp_int *c);
-void fp_mul_2(fp_int *a, fp_int *c);
-void fp_div_2(fp_int *a, fp_int *c);
-void fp_2expt(fp_int *a, int b);
+void fp_div_2d(const fp_int *a, int b, fp_int *c, fp_int *d);
+void fp_mod_2d(const fp_int *a, int b, fp_int *c);
+void fp_mul_2d(const fp_int *a, int b, fp_int *c);
+void fp_mul_2(const fp_int *a, fp_int *c);
+void fp_div_2(const fp_int *a, fp_int *c);
+void fp_2expt(const fp_int *a, int b);
 \end{verbatim}
+
 fp\_div\_2d() will divide $a$ by $2^b$ and store the quotient in $c$ and remainder in $d$.  Either of
 $c$ or $d$ can be \textbf{NULL} if their value is not required.  fp\_mod\_2d() is a shortcut to
 compute the remainder directly.  fp\_mul\_2d() will multiply $a$ by $2^b$ and store the result in $c$.
@@ -370,8 +373,9 @@ To quickly count the number of least significant bits that are zero use the foll
 
 \index{fp\_cnt\_lsb}
 \begin{verbatim}
-int fp_cnt_lsb(fp_int *a);
+int fp_cnt_lsb(const fp_int *a);
 \end{verbatim}
+
 This will return the number of adjacent least significant bits that are zero.  This is equivalent
 to the number of times two evenly divides $a$.
 
@@ -381,12 +385,12 @@ The following functions round out the basic algebraic functionality of the libra
 
 \index{fp\_add} \index{fp\_sub} \index{fp\_mul} \index{fp\_sqr} \index{fp\_div} \index{fp\_mod}
 \begin{verbatim}
-void fp_add(fp_int *a, fp_int *b, fp_int *c);
-void fp_sub(fp_int *a, fp_int *b, fp_int *c);
-void fp_mul(fp_int *a, fp_int *b, fp_int *c);
-void fp_sqr(fp_int *a, fp_int *b);
-int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
-int fp_mod(fp_int *a, fp_int *b, fp_int *c);
+void fp_add(const fp_int *a, const fp_int *b, fp_int *c);
+void fp_sub(const fp_int *a, const fp_int *b, fp_int *c);
+void fp_mul(const fp_int *a, const fp_int *b, fp_int *c);
+void fp_sqr(const fp_int *a, fp_int *b);
+int fp_div(const fp_int *a, const fp_int *b, fp_int *c, fp_int *d);
+int fp_mod(const fp_int *a, const fp_int *b, fp_int *c);
 \end{verbatim}
 
 The functions fp\_add(), fp\_sub() and fp\_mul() perform their respective operations on $a$ and
@@ -402,8 +406,9 @@ To compute a modular exponentiation use the following function.
 
 \index{fp\_exptmod}
 \begin{verbatim}
-int fp_exptmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_exptmod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 \end{verbatim}
+
 This computes $d \equiv a^b \mbox{ (mod }c\mbox{)}$ for any odd $c$ and $b$.  $b$ may be negative so long as
 $a^{-1} \mbox{ (mod }c\mbox{)}$ exists.  The initial value of $a$ may be larger than $c$.  The size of $c$ must be
 half of the maximum precision used during the build of the library.  For example, by default $c$ must be less
@@ -416,9 +421,9 @@ functions.
 
 \index{fp\_invmod} \index{fp\_gcd} \index{fp\_lcm}
 \begin{verbatim}
-int fp_invmod(fp_int *a, fp_int *b, fp_int *c);
-void fp_gcd(fp_int *a, fp_int *b, fp_int *c);
-void fp_lcm(fp_int *a, fp_int *b, fp_int *c);
+int fp_invmod(const fp_int *a, const fp_int *b, fp_int *c);
+void fp_gcd(const fp_int *a, const fp_int *b, fp_int *c);
+void fp_lcm(const fp_int *a, const fp_int *b, fp_int *c);
 \end{verbatim}
 
 The fp\_invmod() function will find the modular inverse of $a$ modulo an odd modulus $b$ and store
@@ -432,8 +437,9 @@ To quickly test a number for primality call this function.
 \index{fp\_isprime}
 \index{fp\_isprime\_ex}
 \begin{verbatim}
-int fp_isprime_ex(fp_int *a, int t);
+int fp_isprime_ex(const fp_int *a, int t);
 \end{verbatim}
+
 This will return \textbf{FP\_YES} if $a$ is probably prime.  It uses 256 trial divisions and
 $t$ rounds of Rabin-Miller testing.  Note that this routine performs modular exponentiations
 which means that $a$ must be in a valid range of precision.
