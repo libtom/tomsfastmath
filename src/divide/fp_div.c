@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* a/b => cb + d == a */
-int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d)
+int fp_div(const fp_int *a, const fp_int *b, fp_int *c, fp_int *d)
 {
   fp_int  q, x, y, t1, t2;
   int     n, t, i, norm, neg;

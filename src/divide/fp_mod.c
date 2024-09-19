@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* c = a mod b, 0 <= c < b  */
-int fp_mod(fp_int *a, fp_int *b, fp_int *c)
+int fp_mod(const fp_int *a, const fp_int *b, fp_int *c)
 {
    fp_int t;
    int    err;

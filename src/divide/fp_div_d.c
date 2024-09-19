@@ -21,7 +21,7 @@ static int s_is_power_of_two(fp_digit b, int *p)
 }
 
 /* a/b => cb + d == a */
-int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
+int fp_div_d(const fp_int *a, fp_digit b, fp_int *c, fp_digit *d)
 {
   fp_int   q;
   fp_word  w;

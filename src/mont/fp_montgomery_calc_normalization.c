@@ -5,7 +5,7 @@
 /* computes a = B**n mod b without division or multiplication useful for
  * normalizing numbers in a Montgomery system.
  */
-void fp_montgomery_calc_normalization(fp_int *a, fp_int *b)
+void fp_montgomery_calc_normalization(fp_int *a, const fp_int *b)
 {
   int     x, bits;
 

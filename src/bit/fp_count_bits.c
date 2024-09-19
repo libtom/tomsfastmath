@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-int fp_count_bits (fp_int * a)
+int fp_count_bits (const fp_int * a)
 {
   int     r;
   fp_digit q;

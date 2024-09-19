@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-int fp_cmp(fp_int *a, fp_int *b)
+int fp_cmp(const fp_int *a, const fp_int *b)
 {
    if (a->sign == FP_NEG && b->sign == FP_ZPOS) {
       return FP_LT;

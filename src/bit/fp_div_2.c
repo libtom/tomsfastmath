@@ -3,14 +3,15 @@
 #include <tfm_private.h>
 
 /* b = a/2 */
-void fp_div_2(fp_int * a, fp_int * b)
+void fp_div_2(const fp_int * a, fp_int * b)
 {
   int     x, oldused;
 
   oldused = b->used;
   b->used = a->used;
   {
-    register fp_digit r, rr, *tmpa, *tmpb;
+    register const fp_digit *tmpa;
+    register fp_digit r, rr, *tmpb;
 
     /* source alias */
     tmpa = a->dp + b->used - 1;

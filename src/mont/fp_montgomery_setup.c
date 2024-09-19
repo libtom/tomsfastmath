@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* setups the montgomery reduction */
-int fp_montgomery_setup(fp_int *a, fp_digit *rho)
+int fp_montgomery_setup(const fp_int *a, fp_digit *rho)
 {
   fp_digit x, b;
 

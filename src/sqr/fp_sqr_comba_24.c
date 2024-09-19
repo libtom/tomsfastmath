@@ -6,9 +6,10 @@
 #endif
 
 #if defined(TFM_SQR24) && FP_SIZE >= 48
-void fp_sqr_comba24(fp_int *A, fp_int *B)
+void fp_sqr_comba24(const fp_int *A, fp_int *B)
 {
-   fp_digit *a, b[48], c0, c1, c2;
+   const fp_digit *a;
+   fp_digit b[48], c0, c1, c2;
    fp_digit sc0, sc1, sc2;
 #ifdef TFM_ISO
    fp_word tt;

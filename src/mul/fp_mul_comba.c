@@ -302,11 +302,12 @@ asm(                              \
 #ifndef TFM_DEFINES
 
 /* generic PxQ multiplier */
-void fp_mul_comba(fp_int *A, fp_int *B, fp_int *C)
+void fp_mul_comba(const fp_int *A, const fp_int *B, fp_int *C)
 {
-   int       ix, iy, iz, tx, ty, pa;
-   fp_digit  c0, c1, c2, *tmpx, *tmpy;
-   fp_int    tmp, *dst;
+   int             ix, iy, iz, tx, ty, pa;
+   const fp_digit *tmpx, *tmpy;
+   fp_digit        c0, c1, c2;
+   fp_int          tmp, *dst;
 
    COMBA_START;
    COMBA_CLEAR;

@@ -6,9 +6,10 @@
 #endif
 
 #if defined(TFM_SQR3) && FP_SIZE >= 6
-void fp_sqr_comba3(fp_int *A, fp_int *B)
+void fp_sqr_comba3(const fp_int *A, fp_int *B)
 {
-   fp_digit *a, b[6], c0, c1, c2;
+   const fp_digit *a;
+   fp_digit b[6], c0, c1, c2;
 #ifdef TFM_ISO
    fp_word tt;
 #endif

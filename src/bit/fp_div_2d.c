@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* c = a / 2**b */
-void fp_div_2d(fp_int *a, int b, fp_int *c, fp_int *d)
+void fp_div_2d(const fp_int *a, int b, fp_int *c, fp_int *d)
 {
   fp_digit D, r, rr;
   int      x;

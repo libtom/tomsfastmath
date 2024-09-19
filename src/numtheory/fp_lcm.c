@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* c = [a, b] */
-void fp_lcm(fp_int *a, fp_int *b, fp_int *c)
+void fp_lcm(const fp_int *a, const fp_int *b, fp_int *c)
 {
    fp_int  t1, t2;
 

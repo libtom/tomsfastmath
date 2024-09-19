@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* c = a * a (mod b) */
-int fp_sqrmod(fp_int *a, fp_int *b, fp_int *c)
+int fp_sqrmod(const fp_int *a, const fp_int *b, fp_int *c)
 {
   fp_int tmp;
   fp_zero(&tmp);

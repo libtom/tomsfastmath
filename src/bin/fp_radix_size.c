@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-int fp_radix_size(fp_int *a, int radix, int *size)
+int fp_radix_size(const fp_int *a, int radix, int *size)
 {
   fp_int  t;
   fp_digit d;

@@ -7,7 +7,7 @@
 #endif
 
 /* generic comba squarer */
-void fp_sqr_comba(fp_int *A, fp_int *B)
+void fp_sqr_comba(const fp_int *A, fp_int *B)
 {
   int       pa, ix, iz;
   fp_digit  c0, c1, c2;
@@ -35,8 +35,8 @@ void fp_sqr_comba(fp_int *A, fp_int *B)
   }
 
   for (ix = 0; ix < pa; ix++) {
-      int      tx, ty, iy;
-      fp_digit *tmpy, *tmpx;
+      int             tx, ty, iy;
+      const fp_digit *tmpy, *tmpx;
 
       /* get offsets into the two bignums */
       ty = MIN(A->used-1, ix);

@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* c = a * b */
-void fp_mul_d(fp_int *a, fp_digit b, fp_int *c)
+void fp_mul_d(const fp_int *a, fp_digit b, fp_int *c)
 {
    fp_word  w;
    int      x, oldused;

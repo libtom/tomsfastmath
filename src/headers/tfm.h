@@ -406,104 +406,104 @@ void fp_rshd(fp_int *a, int x);
 void fp_lshd(fp_int *a, int x);
 
 /* signed comparison */
-int fp_cmp(fp_int *a, fp_int *b);
+int fp_cmp(const fp_int *a, const fp_int *b);
 
 /* unsigned comparison */
-int fp_cmp_mag(fp_int *a, fp_int *b);
+int fp_cmp_mag(const fp_int *a, const fp_int *b);
 
 /* power of 2 operations */
-void fp_div_2d(fp_int *a, int b, fp_int *c, fp_int *d);
-void fp_mod_2d(fp_int *a, int b, fp_int *c);
-void fp_mul_2d(fp_int *a, int b, fp_int *c);
+void fp_div_2d(const fp_int *a, int b, fp_int *c, fp_int *d);
+void fp_mod_2d(const fp_int *a, int b, fp_int *c);
+void fp_mul_2d(const fp_int *a, int b, fp_int *c);
 void fp_2expt (fp_int *a, int b);
-void fp_mul_2(fp_int *a, fp_int *c);
-void fp_div_2(fp_int *a, fp_int *c);
+void fp_mul_2(const fp_int *a, fp_int *c);
+void fp_div_2(const fp_int *a, fp_int *c);
 
 /* Counts the number of lsbs which are zero before the first zero bit */
-int fp_cnt_lsb(fp_int *a);
+int fp_cnt_lsb(const fp_int *a);
 
 /* c = a + b */
-void fp_add(fp_int *a, fp_int *b, fp_int *c);
+void fp_add(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = a - b */
-void fp_sub(fp_int *a, fp_int *b, fp_int *c);
+void fp_sub(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = a * b */
-void fp_mul(fp_int *a, fp_int *b, fp_int *c);
+void fp_mul(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* b = a*a  */
-void fp_sqr(fp_int *a, fp_int *b);
+void fp_sqr(const fp_int *a, fp_int *b);
 
 /* a/b => cb + d == a */
-int fp_div(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_div(const fp_int *a, const fp_int *b, fp_int *c, fp_int *d);
 
 /* c = a mod b, 0 <= c < b  */
-int fp_mod(fp_int *a, fp_int *b, fp_int *c);
+int fp_mod(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* compare against a single digit */
-int fp_cmp_d(fp_int *a, fp_digit b);
+int fp_cmp_d(const fp_int *a, fp_digit b);
 
 /* c = a + b */
-void fp_add_d(fp_int *a, fp_digit b, fp_int *c);
+void fp_add_d(const fp_int *a, fp_digit b, fp_int *c);
 
 /* c = a - b */
-void fp_sub_d(fp_int *a, fp_digit b, fp_int *c);
+void fp_sub_d(const fp_int *a, fp_digit b, fp_int *c);
 
 /* c = a * b */
-void fp_mul_d(fp_int *a, fp_digit b, fp_int *c);
+void fp_mul_d(const fp_int *a, fp_digit b, fp_int *c);
 
 /* a/b => cb + d == a */
-int fp_div_d(fp_int *a, fp_digit b, fp_int *c, fp_digit *d);
+int fp_div_d(const fp_int *a, fp_digit b, fp_int *c, fp_digit *d);
 
 /* c = a mod b, 0 <= c < b  */
-int fp_mod_d(fp_int *a, fp_digit b, fp_digit *c);
+int fp_mod_d(const fp_int *a, fp_digit b, fp_digit *c);
 
 /* ---> number theory <--- */
 /* d = a + b (mod c) */
-int fp_addmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_addmod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 
 /* d = a - b (mod c) */
-int fp_submod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_submod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 
 /* d = a * b (mod c) */
-int fp_mulmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_mulmod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 
 /* c = a * a (mod b) */
-int fp_sqrmod(fp_int *a, fp_int *b, fp_int *c);
+int fp_sqrmod(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = 1/a (mod b) */
-int fp_invmod(fp_int *a, fp_int *b, fp_int *c);
+int fp_invmod(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = (a, b) */
-void fp_gcd(fp_int *a, fp_int *b, fp_int *c);
+void fp_gcd(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* c = [a, b] */
-void fp_lcm(fp_int *a, fp_int *b, fp_int *c);
+void fp_lcm(const fp_int *a, const fp_int *b, fp_int *c);
 
 /* setups the montgomery reduction */
-int fp_montgomery_setup(fp_int *a, fp_digit *mp);
+int fp_montgomery_setup(const fp_int *a, fp_digit *mp);
 
 /* computes a = B**n mod b without division or multiplication useful for
  * normalizing numbers in a Montgomery system.
  */
-void fp_montgomery_calc_normalization(fp_int *a, fp_int *b);
+void fp_montgomery_calc_normalization(fp_int *a, const fp_int *b);
 
 /* computes x/R == x (mod N) via Montgomery Reduction */
-void fp_montgomery_reduce(fp_int *a, fp_int *m, fp_digit mp);
+void fp_montgomery_reduce(fp_int *a, const fp_int *m, fp_digit mp);
 
 /* d = a**b (mod c) */
-int fp_exptmod(fp_int *a, fp_int *b, fp_int *c, fp_int *d);
+int fp_exptmod(const fp_int *a, const fp_int *b, const fp_int *c, fp_int *d);
 
 /* primality stuff */
 
 /* perform a Miller-Rabin test of a to the base b and store result in "result" */
-void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result);
+void fp_prime_miller_rabin (const fp_int * a, const fp_int * b, int *result);
 
 #define FP_PRIME_SIZE      256
 /* 256 trial divisions + 8 Miller-Rabins, returns FP_YES if probable prime  */
-int fp_isprime(fp_int *a);
+int fp_isprime(const fp_int *a);
 /* extended version of fp_isprime, do 't' Miller-Rabins instead of only 8 */
-int fp_isprime_ex(fp_int *a, int t);
+int fp_isprime_ex(const fp_int *a, int t);
 
 /* Primality generation flags */
 #define TFM_PRIME_BBS      0x0001 /* BBS style prime */
@@ -518,21 +518,21 @@ typedef int tfm_prime_callback(unsigned char *dst, int len, void *dat);
 
 int fp_prime_random_ex(fp_int *a, int t, int size, int flags, tfm_prime_callback cb, void *dat);
 
-/* radix conersions */
-int fp_count_bits(fp_int *a);
+/* radix conversions */
+int fp_count_bits(const fp_int *a);
 
-int fp_unsigned_bin_size(fp_int *a);
+int fp_unsigned_bin_size(const fp_int *a);
 void fp_read_unsigned_bin(fp_int *a, const unsigned char *b, int c);
-void fp_to_unsigned_bin(fp_int *a, unsigned char *b);
+void fp_to_unsigned_bin(const fp_int *a, unsigned char *b);
 
-int fp_signed_bin_size(fp_int *a);
+int fp_signed_bin_size(const fp_int *a);
 void fp_read_signed_bin(fp_int *a, const unsigned char *b, int c);
-void fp_to_signed_bin(fp_int *a, unsigned char *b);
+void fp_to_signed_bin(const fp_int *a, unsigned char *b);
 
 int fp_read_radix(fp_int *a, const char *str, int radix);
 
-int fp_radix_size(fp_int *a, int radix, int *size);
-int fp_toradix(fp_int *a, char *str, int radix);
-int fp_toradix_n(fp_int * a, char *str, int radix, int maxlen);
+int fp_radix_size(const fp_int *a, int radix, int *size);
+int fp_toradix(const fp_int *a, char *str, int radix);
+int fp_toradix_n(const fp_int * a, char *str, int radix, int maxlen);
 
 #endif

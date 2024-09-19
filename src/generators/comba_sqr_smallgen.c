@@ -17,21 +17,22 @@ printf(
 "#endif\n"
 "\n"
 "#if defined(TFM_SMALL_SET)\n"
-"void fp_sqr_comba_small(fp_int *A, fp_int *B)\n"
+"void fp_sqr_comba_small(const fp_int *A, fp_int *B)\n"
 "{\n"
-"   fp_digit *a, b[32], c0, c1, c2, sc0, sc1, sc2;\n"
+"   const fp_digit *a;\n"
+"   fp_digit b[32], c0, c1, c2, sc0, sc1, sc2;\n"
 "#ifdef TFM_ISO\n"
 "   fp_word tt;\n"
 "#endif\n"
 );
 
-printf("   switch (A->used) { \n");
+printf("   switch (A->used) {\n");
 
 for (N = 1; N <= 16; N++) {
 printf(
 "   case %d:\n"
 "      a = A->dp;\n"
-"      COMBA_START; \n"
+"      COMBA_START;\n"
 "\n"
 "      /* clear carries */\n"
 "      CLEAR_CARRY;\n"
@@ -58,9 +59,9 @@ printf(
            for (z = 0; z < N; z++) {
                if (y<=z && (y+z)==x) {
                   if (y == z) {
-                     printf("   SQRADD(a[%d], a[%d]); ", y, y);
+                     printf("   SQRADD(a[%d], a[%d]);", y, y);
                   } else {
-                     printf("   SQRADD2(a[%d], a[%d]); ", y, z);
+                     printf("   SQRADD2(a[%d], a[%d]);", y, z);
                   }
                }
            }
@@ -74,19 +75,19 @@ printf(
                if (z != y && z + y == x && y <= z) {
                   if (f == 0) {
                      /* first double */
-                     printf("SQRADDSC(a[%d], a[%d]); ", y, z);
+                     printf("   SQRADDSC(a[%d], a[%d]);", y, z);
                      f = 1;
                   } else {
-                     printf("SQRADDAC(a[%d], a[%d]); ", y, z);
+                     printf("   SQRADDAC(a[%d], a[%d]);", y, z);
                   }
                }
            }
        }
        /* forward the carry */
-       printf("SQRADDDB; ");
+       printf("SQRADDDB;");
        if ((x&1) == 0) {
           /* add the square */
-          printf("SQRADD(a[%d], a[%d]); ", x/2, x/2);
+          printf(" SQRADD(a[%d], a[%d]);", x/2, x/2);
        }
     }
 printf("\n      COMBA_STORE(b[%d]);\n", x);

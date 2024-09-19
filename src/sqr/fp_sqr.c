@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* b = a*a  */
-void fp_sqr(fp_int *A, fp_int *B)
+void fp_sqr(const fp_int *A, fp_int *B)
 {
     int     y, old_used;
 

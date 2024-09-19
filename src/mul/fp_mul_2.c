@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-void fp_mul_2(fp_int * a, fp_int * b)
+void fp_mul_2(const fp_int * a, fp_int * b)
 {
   int     x, oldused;
 
@@ -10,7 +10,8 @@ void fp_mul_2(fp_int * a, fp_int * b)
   b->used = a->used;
 
   {
-    register fp_digit r, rr, *tmpa, *tmpb;
+    register const fp_digit *tmpa;
+    register fp_digit r, rr, *tmpb;
 
     /* alias for source */
     tmpa = a->dp;

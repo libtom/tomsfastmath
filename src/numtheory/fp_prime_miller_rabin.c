@@ -9,7 +9,7 @@
  * Randomly the chance of error is no more than 1/4 and often
  * very much lower.
  */
-void fp_prime_miller_rabin (fp_int * a, fp_int * b, int *result)
+void fp_prime_miller_rabin (const fp_int * a, const fp_int * b, int *result)
 {
   fp_int  n1, y, r;
   int     s, j;

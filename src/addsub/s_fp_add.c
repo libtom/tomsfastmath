@@ -3,7 +3,7 @@
 #include <tfm_private.h>
 
 /* unsigned addition */
-void s_fp_add(fp_int *a, fp_int *b, fp_int *c)
+void s_fp_add(const fp_int *a, const fp_int *b, fp_int *c)
 {
   int      x, y, oldused;
   register fp_word  t;

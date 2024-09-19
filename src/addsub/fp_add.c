@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-void fp_add(fp_int *a, fp_int *b, fp_int *c)
+void fp_add(const fp_int *a, const fp_int *b, fp_int *c)
 {
   int     sa, sb;
 

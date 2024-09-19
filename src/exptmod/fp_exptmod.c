@@ -8,7 +8,7 @@
 
    Based on work by Marc Joye, Sung-Ming Yen, "The Montgomery Powering Ladder", Cryptographic Hardware and Embedded Systems, CHES 2002
 */
-static int s_fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+static int s_fp_exptmod(fp_int * G, const fp_int * X, const fp_int * P, fp_int * Y)
 {
   fp_int   R[2];
   fp_digit buf, mp;
@@ -74,7 +74,7 @@ static int s_fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 /* y = g**x (mod b)
  * Some restrictions... x must be positive and < b
  */
-static int s_fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+static int s_fp_exptmod(const fp_int * G, const fp_int * X, const fp_int * P, fp_int * Y)
 {
   fp_int   M[64], res;
   fp_digit buf, mp;
@@ -232,8 +232,12 @@ static int s_fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
 
 #endif
 
-
-int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
+/*
+ * X should really be const...  however, if it's negative, this function
+ * temporarly changes it to be positive, so we leave it non-const for the
+ * sake of efficiency.
+ */
+int fp_exptmod(const fp_int * G, const fp_int * X, const fp_int * P, fp_int * Y)
 {
    fp_int tmp;
    int    err;
@@ -252,11 +256,15 @@ int fp_exptmod(fp_int * G, fp_int * X, fp_int * P, fp_int * Y)
       if ((err = fp_invmod(&tmp, P, &tmp)) != FP_OKAY) {
          return err;
       }
+#if 0                   /* s_fp_exptmod() doesn't look at the sign! */
       X->sign = FP_ZPOS;
+#endif
       err =  s_fp_exptmod(&tmp, X, P, Y);
+#if 0                   /* X->sign is unchanged... */
       if (X != Y) {
          X->sign = FP_NEG;
       }
+#endif
       return err;
    } else {
       /* Positive exponent so just exptmod */

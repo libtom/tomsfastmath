@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-void fp_to_unsigned_bin(fp_int *a, unsigned char *b)
+void fp_to_unsigned_bin(const fp_int *a, unsigned char *b)
 {
   int     x;
   fp_int  t;

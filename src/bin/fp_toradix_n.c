@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: Unlicense */
 #include <tfm_private.h>
 
-int fp_toradix_n(fp_int *a, char *str, int radix, int maxlen)
+int fp_toradix_n(const fp_int *a, char *str, int radix, int maxlen)
 {
    int digs;
    fp_int t;

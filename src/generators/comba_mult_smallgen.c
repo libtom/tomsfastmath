@@ -18,10 +18,10 @@ printf(
 "#endif\n"
 "\n"
 "#if defined(TFM_SMALL_SET)\n"
-"void fp_mul_comba_small(fp_int *A, fp_int *B, fp_int *C)\n"
+"void fp_mul_comba_small(const fp_int *A, const fp_int *B, fp_int *C)\n"
 "{\n"
 "   fp_digit c0, c1, c2, at[32];\n"
-"   switch (MAX(A->used, B->used)) { \n"
+"   switch (MAX(A->used, B->used)) {\n"
 );
 
 for (N = 1; N <= 16; N++) {
@@ -43,10 +43,11 @@ if (x > 0) {
 printf(
 "      COMBA_FORWARD;\n");
 }
+printf("   ");
       for (y = 0; y < N; y++) {
       for (z = 0; z < N; z++) {
           if ((y+z)==x) {
-             printf("      MULADD(at[%d], at[%d]); ", y, z+N);
+             printf("   MULADD(at[%d], at[%d]);", y, z+N);
           }
       }
       }
