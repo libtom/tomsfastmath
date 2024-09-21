@@ -86,6 +86,9 @@ testme: test mtest
 timing: $(LIBNAME) demo/timing.o
 	$(CC) $(CFLAGS) demo/timing.o $(LIBNAME) $(PROF) -o timing
 
+ident: $(LIBNAME)
+	$(CC) $(CFLAGS) -DSTANDALONE src/misc/fp_ident.c $(LIBNAME) $(PROF) -o ident
+
 profiled:
 	CC="$(CC)" CROSS_COMPILE="${CROSS_COMPILE} CFLAGS="${CFLAGS} -fprofile-generate" MAKE=${MAKE} ${MAKE} timing
 	./test
