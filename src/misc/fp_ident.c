@@ -6,7 +6,8 @@
 #define GIT_VERSION TFM_VERSION_S
 #endif
 
-#define dnstrcon(D, N, S) dnmemcpy((D), (N), S, sizeof(S)-1)
+#define dnstrcon_direct(D, N, S) do { dnmemcpy((D), (N), S, sizeof(S)-1); } while(0)
+#define dnstrcon(D, N, S) do { if (dnmemcpy((D), (N), S, sizeof(S)-1) == -1) goto err_out; } while(0)
 static signed long dnmemcpy(char **d, size_t *n, const char *s, size_t len) {
    if (len >= *n) return -1;
    memcpy(*d, s, len);
@@ -22,7 +23,8 @@ static signed long dnmemcpy(char **d, size_t *n, const char *s, size_t len) {
 #define U_DIGITS(T) (1 + ((sizeof(T) * 8UL)     * 30103UL) / 100000UL)
 #define S_DIGITS(T) (2 + ((sizeof(T) * 8UL - 1) * 30103UL) / 100000UL)
 
-static signed long dnstrul(char **d, size_t *n, unsigned long value) {
+#define dnstrul(D, N, V) do { if (dnstrul_impl((D), (N), (V)) == -1) goto err_out; } while(0)
+static signed long dnstrul_impl(char **d, size_t *n, unsigned long value) {
    char digits[U_DIGITS(unsigned long)+1]; /* fit digits plus null byte */
    char *digit = digits + (sizeof(digits) - 1);
    size_t len = 0;
@@ -39,7 +41,7 @@ static signed long dnstrul(char **d, size_t *n, unsigned long value) {
 
 const char *fp_ident(void)
 {
-   static char buf[1024];
+   static char buf[512];
    char *d = buf;
    size_t n = sizeof(buf);
 
@@ -60,9 +62,19 @@ const char *fp_ident(void)
    dnstrul(&d, &n, sizeof(fp_word));
    dnstrcon(&d, &n,
 "\n\n"
-"FP_MAX_SIZE = "
+"FP_MAX_SIZE      = "
    );
    dnstrul(&d, &n, FP_MAX_SIZE);
+   dnstrcon(&d, &n,
+"\n"
+"SIZEOF_FP_DIGIT  = "
+   );
+   dnstrul(&d, &n, SIZEOF_FP_DIGIT);
+   dnstrcon(&d, &n,
+"\n"
+"DIGIT_SHIFT      = "
+   );
+   dnstrul(&d, &n, DIGIT_SHIFT);
    dnstrcon(&d, &n,
 "\n\n"
 "Defines: \n"
@@ -124,13 +136,25 @@ const char *fp_ident(void)
 
    memset(d, 0, n);
    return buf;
+err_out:
+   d = buf;
+   n = sizeof(buf);
+   *d = '\0';
+
+   dnstrcon_direct(&d, &n,
+      "ERROR: Buffer too small.\n"
+   );
+
+   return buf;
 }
 
 #ifdef STANDALONE
 
 int main(void)
 {
-   printf("%s\n", fp_ident());
+   const char* ident = fp_ident();
+   printf("%s\n", ident);
+   printf("ident len: %lu\n", (unsigned long)strlen(ident));
    return 0;
 }
 
