@@ -6,23 +6,77 @@
 #define GIT_VERSION TFM_VERSION_S
 #endif
 
+#define dnstrcon_direct(D, N, S) do { dnmemcpy((D), (N), S, sizeof(S)-1); } while(0)
+#define dnstrcon(D, N, S) do { if (dnmemcpy((D), (N), S, sizeof(S)-1) == -1) goto err_out; } while(0)
+static signed long dnmemcpy(char **d, size_t *n, const char *s, size_t len) {
+   if (len >= *n) return -1;
+   memcpy(*d, s, len);
+   *n -= len;
+   *d += len;
+   **d = '\0';
+   return len;
+}
+
+/* log(2)/log(10) ~= 0.30102999... ~= 30103 / 100000
+ * we need to add one byte because this rounds to zero, and one for sign
+ * these provide exact answer for integers up to 4720 bytes wide... */
+#define U_DIGITS(T) (1 + ((sizeof(T) * 8UL)     * 30103UL) / 100000UL)
+#define S_DIGITS(T) (2 + ((sizeof(T) * 8UL - 1) * 30103UL) / 100000UL)
+
+#define dnstrul(D, N, V) do { if (dnstrul_impl((D), (N), (V)) == -1) goto err_out; } while(0)
+static signed long dnstrul_impl(char **d, size_t *n, unsigned long value) {
+   char digits[U_DIGITS(unsigned long)+1]; /* fit digits plus null byte */
+   char *digit = digits + (sizeof(digits) - 1);
+   size_t len = 0;
+   *digit = '\0';
+   do {
+      *--digit = '0' + (value % 10);
+      value /= 10;
+      ++len;
+      if (digit < digits) return -1;
+   } while (value);
+   if (len >= *n) return -1;
+   return dnmemcpy(d, n, digit, len);
+}
+
 const char *fp_ident(void)
 {
-   static char buf[1024];
+   static char buf[512];
+   char *d = buf;
+   size_t n = sizeof(buf);
 
-   memset(buf, 0, sizeof(buf));
-   snprintf(buf, sizeof(buf)-1,
+   dnstrcon(&d, &n,
 "TomsFastMath " GIT_VERSION "\n"
 #if defined(TFM_IDENT_BUILD_DATE)
 "Built on " __DATE__ " at " __TIME__ "\n"
 #endif
 "\n"
 "Sizeofs\n"
-"\tfp_digit = %lu\n"
-"\tfp_word  = %lu\n"
+"\tfp_digit = "
+   );
+   dnstrul(&d, &n, sizeof(fp_digit));
+   dnstrcon(&d, &n,
 "\n"
-"FP_MAX_SIZE = %u\n"
+"\tfp_word  = "
+   );
+   dnstrul(&d, &n, sizeof(fp_word));
+   dnstrcon(&d, &n,
+"\n\n"
+"FP_MAX_SIZE      = "
+   );
+   dnstrul(&d, &n, FP_MAX_SIZE);
+   dnstrcon(&d, &n,
 "\n"
+"SIZEOF_FP_DIGIT  = "
+   );
+   dnstrul(&d, &n, SIZEOF_FP_DIGIT);
+   dnstrcon(&d, &n,
+"\n"
+"DIGIT_SHIFT      = "
+   );
+   dnstrul(&d, &n, DIGIT_SHIFT);
+   dnstrcon(&d, &n,
+"\n\n"
 "Defines: \n"
 #ifdef __i386__
 " __i386__ "
@@ -70,12 +124,27 @@ const char *fp_ident(void)
 #ifdef TFM_HUGE
 " TFM_HUGE "
 #endif
-"\n", (unsigned long)sizeof(fp_digit), (unsigned long)sizeof(fp_word), FP_MAX_SIZE);
+"\n"
+   );
 
    if (sizeof(fp_digit) == sizeof(fp_word)) {
-      strncat(buf, "WARNING: sizeof(fp_digit) == sizeof(fp_word), this build is likely to not work properly.\n",
-              sizeof(buf) - strlen(buf) - 1);
+      dnstrcon(&d, &n,
+         "WARNING: sizeof(fp_digit) == sizeof(fp_word),"
+         " this build is likely to not work properly.\n"
+      );
    }
+
+   memset(d, 0, n);
+   return buf;
+err_out:
+   d = buf;
+   n = sizeof(buf);
+   *d = '\0';
+
+   dnstrcon_direct(&d, &n,
+      "ERROR: Buffer too small.\n"
+   );
+
    return buf;
 }
 
@@ -83,7 +152,9 @@ const char *fp_ident(void)
 
 int main(void)
 {
-   printf("%s\n", fp_ident());
+   const char* ident = fp_ident();
+   printf("%s\n", ident);
+   printf("ident len: %lu\n", (unsigned long)strlen(ident));
    return 0;
 }
 

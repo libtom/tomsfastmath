@@ -31,4 +31,5 @@ mtest
 stest
 rsatest
 timing
+ident
 *.exe
