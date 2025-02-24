@@ -33,7 +33,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-20.04 ]
+        os: [ ubuntu-22.04 ]
           # The environment given to the programs in the build
           # We have only one program and the variable $BUILDOPTIONS
           # has only the options to that program: testme.sh
@@ -41,22 +41,22 @@ jobs:
         config:
           # GCC for the x86-64 architecture (64-bit longs and 64-bit pointers)
           - { CC: 'gcc',       DEPS: 'gcc' }
+          - { CC: 'gcc-9',     DEPS: 'gcc-9' }
           - { CC: 'gcc-10',    DEPS: 'gcc-10' }
-          - { CC: 'gcc-8',     DEPS: 'gcc-8' }
-          - { CC: 'gcc-7',     DEPS: 'gcc-7' }
+          - { CC: 'gcc-11',    DEPS: 'gcc-11' }
+          - { CC: 'gcc-12',    DEPS: 'gcc-12' }
 
           # clang for x86-64 architecture (64-bit longs and 64-bit pointers)
           - { CC: 'clang',     DEPS: 'clang' }
-          - { CC: 'clang-10',  DEPS: 'clang-10 llvm-10' }
+          - { CC: 'clang-11',  DEPS: 'clang-11 llvm-11' }
           - { CC: 'clang-12',  DEPS: 'clang-12 llvm-12' }
-          - { CC: 'clang-9',   DEPS: 'clang-9 llvm-9' }
-          - { CC: 'clang-8',   DEPS: 'clang-8 llvm-8' }
-          - { CC: 'clang-7',   DEPS: 'clang-7 llvm-7' }
-          - { CC: 'clang-6.0', DEPS: 'clang-6.0 llvm-6.0' }
+          - { CC: 'clang-13',  DEPS: 'clang-13 llvm-13' }
+          - { CC: 'clang-14',  DEPS: 'clang-14 llvm-14' }
+          - { CC: 'clang-15',  DEPS: 'clang-15 llvm-15' }
 
         makefile: [ makefile, makefile.shared ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: install dependencies
         run: |
           sudo apt-get update -qq
@@ -88,9 +88,9 @@ jobs:
           cat gcc_errors_*.log || true
 
   amalgam:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: build stest with amalgamated sources
         run: |
           make amalgamated_stest
@@ -99,7 +99,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-20.04, ubuntu-22.04 ]
+        os: [ ubuntu-22.04, ubuntu-24.04 ]
         build_type: [ '', -DCMAKE_BUILD_TYPE=Debug, -DCMAKE_BUILD_TYPE=Release, -DCMAKE_BUILD_TYPE=RelWithDebInfo, -DCMAKE_BUILD_TYPE=MinSizeRel ]
         cc: [ clang, gcc ]
         config:
@@ -108,7 +108,7 @@ jobs:
           # Shared library build
           - { CMAKEOPTIONS: '-DBUILD_SHARED_LIBS=On'  }
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: install dependencies
         run: |
           sudo apt-get update -qq
